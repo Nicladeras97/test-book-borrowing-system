@@ -23,8 +23,8 @@ Partial Class Form3
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Panel1 = New Panel()
-        PictureBox3 = New PictureBox()
-        PictureBox2 = New PictureBox()
+        Button2 = New Button()
+        Button1 = New Button()
         Label1 = New Label()
         PictureBox1 = New PictureBox()
         FlowLayoutPanel1 = New FlowLayoutPanel()
@@ -32,8 +32,6 @@ Partial Class Form3
         PictureBox4 = New PictureBox()
         TextBox1 = New TextBox()
         Panel1.SuspendLayout()
-        CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox4, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -41,8 +39,8 @@ Partial Class Form3
         ' Panel1
         ' 
         Panel1.BackColor = Color.LightBlue
-        Panel1.Controls.Add(PictureBox3)
-        Panel1.Controls.Add(PictureBox2)
+        Panel1.Controls.Add(Button2)
+        Panel1.Controls.Add(Button1)
         Panel1.Controls.Add(Label1)
         Panel1.Controls.Add(PictureBox1)
         Panel1.Dock = DockStyle.Top
@@ -51,25 +49,29 @@ Partial Class Form3
         Panel1.Size = New Size(984, 53)
         Panel1.TabIndex = 2
         ' 
-        ' PictureBox3
+        ' Button2
         ' 
-        PictureBox3.Image = My.Resources.Resources.notification
-        PictureBox3.Location = New Point(950, 17)
-        PictureBox3.Name = "PictureBox3"
-        PictureBox3.Size = New Size(15, 16)
-        PictureBox3.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox3.TabIndex = 3
-        PictureBox3.TabStop = False
+        Button2.BackgroundImage = My.Resources.Resources.notification
+        Button2.BackgroundImageLayout = ImageLayout.Zoom
+        Button2.FlatAppearance.BorderSize = 0
+        Button2.FlatStyle = FlatStyle.Flat
+        Button2.Location = New Point(948, 17)
+        Button2.Name = "Button2"
+        Button2.Size = New Size(15, 15)
+        Button2.TabIndex = 9
+        Button2.UseVisualStyleBackColor = True
         ' 
-        ' PictureBox2
+        ' Button1
         ' 
-        PictureBox2.Image = My.Resources.Resources.home
-        PictureBox2.Location = New Point(916, 17)
-        PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(15, 16)
-        PictureBox2.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox2.TabIndex = 2
-        PictureBox2.TabStop = False
+        Button1.BackgroundImage = My.Resources.Resources.home
+        Button1.BackgroundImageLayout = ImageLayout.Zoom
+        Button1.FlatAppearance.BorderSize = 0
+        Button1.FlatStyle = FlatStyle.Flat
+        Button1.Location = New Point(920, 17)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(15, 15)
+        Button1.TabIndex = 8
+        Button1.UseVisualStyleBackColor = True
         ' 
         ' Label1
         ' 
@@ -94,7 +96,7 @@ Partial Class Form3
         ' 
         FlowLayoutPanel1.Location = New Point(119, 238)
         FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        FlowLayoutPanel1.Size = New Size(734, 260)
+        FlowLayoutPanel1.Size = New Size(730, 290)
         FlowLayoutPanel1.TabIndex = 9
         ' 
         ' Label2
@@ -122,7 +124,7 @@ Partial Class Form3
         TextBox1.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TextBox1.Location = New Point(148, 95)
         TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(705, 26)
+        TextBox1.Size = New Size(701, 26)
         TextBox1.TabIndex = 6
         TextBox1.Text = "Search"
         ' 
@@ -142,8 +144,6 @@ Partial Class Form3
         Text = "Form3"
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
-        CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox4, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
@@ -151,12 +151,17 @@ Partial Class Form3
     End Sub
 
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents PictureBox3 As PictureBox
-    Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents Label1 As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
     Friend WithEvents Label2 As Label
     Friend WithEvents PictureBox4 As PictureBox
     Friend WithEvents TextBox1 As TextBox
+
+    Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Button1 As Button
 End Class

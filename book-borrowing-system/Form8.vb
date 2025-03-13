@@ -1,20 +1,32 @@
 ﻿Imports MySql.Data.MySqlClient
+Imports System.IO
 
 Public Class Form8
-    Dim connString As String = "server=localhost; user=root; password=; database=borrowing_system;"
-
+    Dim connString As String = "server=localhost; user=root; password=; database=book-borrowing;"
     Private bookID As String
     Private bookTitle As String
     Private bookImage As String
+    Private copies As Integer
 
-    Public Sub New(id As String, title As String, image As String, status As String)
+    Public Sub New(selectedBookID As String, title As String, imagePath As String, availableCopies As Integer)
         InitializeComponent()
-        bookID = id
+        bookID = selectedBookID
         bookTitle = title
-        bookImage = image
+        bookImage = imagePath
+        copies = availableCopies
+
+        Label3.Text = bookID
+        Label2.Text = bookTitle
+        Label10.Text = copies.ToString()
+
+        If File.Exists(bookImage) Then
+            PictureBox5.Image = Image.FromFile(bookImage)
+        Else
+            PictureBox5.Image = My.Resources.image
+        End If
     End Sub
 
-    Private Sub BorrowForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub Form8_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         PictureBox5.ImageLocation = bookImage
         Label2.Text = bookTitle
         Label3.Text = bookID
@@ -31,62 +43,73 @@ Public Class Form8
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Dim form As New Form2()
-        form.Show()
         Me.Close()
+        Form2.Show()
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim conn As New MySqlConnection(connString)
+        If String.IsNullOrWhiteSpace(TextBox1.Text) OrElse
+           String.IsNullOrWhiteSpace(TextBox2.Text) OrElse
+           String.IsNullOrWhiteSpace(TextBox3.Text) Then
+            MessageBox.Show("Please fill in all fields!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
 
-        Try
-            conn.Open()
+        If copies <= 0 Then
+            MessageBox.Show("No available copies for borrowing!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
 
-            Dim studentNumber As String = TextBox1.Text
-            Dim fullName = TextBox2.Text
-            Dim contactNumber = TextBox3.Text
-            Dim borrowDate = DateTimePicker1.Value
-            Dim dueDate = DateTimePicker2.Value
+        Using conn As New MySqlConnection(connString)
+            Try
+                conn.Open()
 
-            Dim checkUserQuery = "SELECT COUNT(*) FROM users WHERE StudNo = @StudNo"
-            Dim checkCmd As New MySqlCommand(checkUserQuery, conn)
-            checkCmd.Parameters.AddWithValue("@StudNo", studentNumber)
-            Dim userExists = Convert.ToInt32(checkCmd.ExecuteScalar)
+                Dim studentNumber As String = TextBox1.Text
+                Dim fullName As String = TextBox2.Text
+                Dim contactNumber As String = TextBox3.Text
+                Dim borrowDate As Date = DateTimePicker1.Value
+                Dim dueDate As Date = DateTimePicker2.Value
 
-            If userExists = 0 Then
-                Dim insertUserQuery = "INSERT INTO users (StudNo, FName, CNumber) VALUES (@StudNo, @FName, @CNumber)"
-                Dim insertUserCmd As New MySqlCommand(insertUserQuery, conn)
-                insertUserCmd.Parameters.AddWithValue("@StudNo", studentNumber)
-                insertUserCmd.Parameters.AddWithValue("@FName", fullName)
-                insertUserCmd.Parameters.AddWithValue("@CNumber", contactNumber)
-                insertUserCmd.ExecuteNonQuery()
-            End If
+                Dim checkUserQuery As String = "SELECT COUNT(*) FROM users WHERE StudNo = @StudNo"
+                Using checkCmd As New MySqlCommand(checkUserQuery, conn)
+                    checkCmd.Parameters.AddWithValue("@StudNo", studentNumber)
+                    Dim userExists As Integer = Convert.ToInt32(checkCmd.ExecuteScalar())
 
-            Dim insertQuery = "INSERT INTO borrow (StudNo, BookID, BorrowDate, DueDate, StatusID) 
-                                         VALUES (@StudNo, @BookID, @BorrowDate, @DueDate, 'Borrowed')"
-            Dim cmd As New MySqlCommand(insertQuery, conn)
-            cmd.Parameters.AddWithValue("@StudNo", studentNumber)
-            cmd.Parameters.AddWithValue("@BookID", bookID)
-            cmd.Parameters.AddWithValue("@BorrowDate", borrowDate)
-            cmd.Parameters.AddWithValue("@DueDate", dueDate)
-            cmd.ExecuteNonQuery()
+                    If userExists = 0 Then
+                        Dim insertUserQuery As String = "INSERT INTO users (StudNo, FullName, ContactNumber) VALUES (@StudNo, @FullName, @ContactNumber)"
+                        Using insertUserCmd As New MySqlCommand(insertUserQuery, conn)
+                            insertUserCmd.Parameters.AddWithValue("@StudNo", studentNumber)
+                            insertUserCmd.Parameters.AddWithValue("@FullName", fullName)
+                            insertUserCmd.Parameters.AddWithValue("@ContactNumber", contactNumber)
+                            insertUserCmd.ExecuteNonQuery()
+                        End Using
+                    End If
+                End Using
 
-            Dim updateQuery = "UPDATE book SET StatusID = 'Borrowed' WHERE BookID = @BookID"
-            Dim cmdUpdate As New MySqlCommand(updateQuery, conn)
-            cmdUpdate.Parameters.AddWithValue("@BookID", bookID)
-            cmdUpdate.ExecuteNonQuery()
+                Dim insertQuery As String = "INSERT INTO borrow (StudNo, BookID, BorrowDate, DueDate, StatusName) VALUES (@StudNo, @BookID, @BorrowDate, @DueDate, 'Borrowed')"
+                Using cmd As New MySqlCommand(insertQuery, conn)
+                    cmd.Parameters.AddWithValue("@StudNo", studentNumber)
+                    cmd.Parameters.AddWithValue("@BookID", bookID)
+                    cmd.Parameters.AddWithValue("@BorrowDate", borrowDate)
+                    cmd.Parameters.AddWithValue("@DueDate", dueDate)
+                    cmd.ExecuteNonQuery()
+                End Using
 
-            MessageBox.Show("Book successfully borrowed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Dim updateQuery As String = "UPDATE book SET Copies = Copies - 1, Status = CASE WHEN Copies = 1 THEN 'Borrowed' ELSE 'Available' END WHERE BookID = @BookID"
+                Using cmdUpdate As New MySqlCommand(updateQuery, conn)
+                    cmdUpdate.Parameters.AddWithValue("@BookID", bookID)
+                    cmdUpdate.ExecuteNonQuery()
+                End Using
 
-            Dim displayForm As New Form2
-            displayForm.Show()
-            Close()
+                MessageBox.Show("Book successfully borrowed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-        Catch ex As Exception
-            MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Finally
-            If conn.State = ConnectionState.Open Then conn.Close()
-        End Try
+                Form2.Show()
+                Me.Close()
+
+            Catch ex As Exception
+                MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End Using
     End Sub
 
 End Class

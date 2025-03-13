@@ -23,6 +23,8 @@ Partial Class Form11
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Panel1 = New Panel()
+        Button2 = New Button()
+        Button1 = New Button()
         Label1 = New Label()
         PictureBox1 = New PictureBox()
         Panel2 = New Panel()
@@ -34,8 +36,6 @@ Partial Class Form11
         Panel4 = New Panel()
         PictureBox6 = New PictureBox()
         Label4 = New Label()
-        Button2 = New Button()
-        Button1 = New Button()
         Panel1.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         Panel2.SuspendLayout()
@@ -58,6 +58,30 @@ Partial Class Form11
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(984, 53)
         Panel1.TabIndex = 0
+        ' 
+        ' Button2
+        ' 
+        Button2.BackgroundImage = My.Resources.Resources.notification
+        Button2.BackgroundImageLayout = ImageLayout.Zoom
+        Button2.FlatAppearance.BorderSize = 0
+        Button2.FlatStyle = FlatStyle.Flat
+        Button2.Location = New Point(948, 17)
+        Button2.Name = "Button2"
+        Button2.Size = New Size(15, 15)
+        Button2.TabIndex = 9
+        Button2.UseVisualStyleBackColor = True
+        ' 
+        ' Button1
+        ' 
+        Button1.BackgroundImage = My.Resources.Resources.logout
+        Button1.BackgroundImageLayout = ImageLayout.Zoom
+        Button1.FlatAppearance.BorderSize = 0
+        Button1.FlatStyle = FlatStyle.Flat
+        Button1.Location = New Point(920, 17)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(15, 15)
+        Button1.TabIndex = 8
+        Button1.UseVisualStyleBackColor = True
         ' 
         ' Label1
         ' 
@@ -167,30 +191,6 @@ Partial Class Form11
         Label4.Size = New Size(89, 16)
         Label4.TabIndex = 0
         Label4.Text = "Book Records"
-        ' 
-        ' Button2
-        ' 
-        Button2.BackgroundImage = My.Resources.Resources.notification
-        Button2.BackgroundImageLayout = ImageLayout.Zoom
-        Button2.FlatAppearance.BorderSize = 0
-        Button2.FlatStyle = FlatStyle.Flat
-        Button2.Location = New Point(948, 17)
-        Button2.Name = "Button2"
-        Button2.Size = New Size(15, 15)
-        Button2.TabIndex = 9
-        Button2.UseVisualStyleBackColor = True
-        ' 
-        ' Button1
-        ' 
-        Button1.BackgroundImage = My.Resources.Resources.logout
-        Button1.BackgroundImageLayout = ImageLayout.Zoom
-        Button1.FlatAppearance.BorderSize = 0
-        Button1.FlatStyle = FlatStyle.Flat
-        Button1.Location = New Point(920, 17)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(15, 15)
-        Button1.TabIndex = 8
-        Button1.UseVisualStyleBackColor = True
         ' 
         ' Form11
         ' 

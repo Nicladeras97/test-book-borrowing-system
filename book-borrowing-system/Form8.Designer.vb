@@ -23,8 +23,7 @@ Partial Class Form8
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Panel1 = New Panel()
-        PictureBox3 = New PictureBox()
-        PictureBox2 = New PictureBox()
+        Button3 = New Button()
         Label1 = New Label()
         PictureBox1 = New PictureBox()
         Label2 = New Label()
@@ -44,9 +43,9 @@ Partial Class Form8
         DateTimePicker1 = New DateTimePicker()
         DateTimePicker2 = New DateTimePicker()
         Button2 = New Button()
+        Label10 = New Label()
+        Label11 = New Label()
         Panel1.SuspendLayout()
-        CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox5, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -54,8 +53,7 @@ Partial Class Form8
         ' Panel1
         ' 
         Panel1.BackColor = Color.LightBlue
-        Panel1.Controls.Add(PictureBox3)
-        Panel1.Controls.Add(PictureBox2)
+        Panel1.Controls.Add(Button3)
         Panel1.Controls.Add(Label1)
         Panel1.Controls.Add(PictureBox1)
         Panel1.Dock = DockStyle.Top
@@ -64,25 +62,17 @@ Partial Class Form8
         Panel1.Size = New Size(984, 53)
         Panel1.TabIndex = 3
         ' 
-        ' PictureBox3
+        ' Button3
         ' 
-        PictureBox3.Image = My.Resources.Resources.notification
-        PictureBox3.Location = New Point(950, 17)
-        PictureBox3.Name = "PictureBox3"
-        PictureBox3.Size = New Size(15, 16)
-        PictureBox3.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox3.TabIndex = 3
-        PictureBox3.TabStop = False
-        ' 
-        ' PictureBox2
-        ' 
-        PictureBox2.Image = My.Resources.Resources.home
-        PictureBox2.Location = New Point(916, 17)
-        PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(15, 16)
-        PictureBox2.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox2.TabIndex = 2
-        PictureBox2.TabStop = False
+        Button3.BackgroundImage = My.Resources.Resources.notification
+        Button3.BackgroundImageLayout = ImageLayout.Zoom
+        Button3.FlatAppearance.BorderSize = 0
+        Button3.FlatStyle = FlatStyle.Flat
+        Button3.Location = New Point(948, 17)
+        Button3.Name = "Button3"
+        Button3.Size = New Size(15, 15)
+        Button3.TabIndex = 9
+        Button3.UseVisualStyleBackColor = True
         ' 
         ' Label1
         ' 
@@ -126,7 +116,7 @@ Partial Class Form8
         ' 
         Label3.AutoSize = True
         Label3.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label3.Location = New Point(76, 225)
+        Label3.Location = New Point(274, 232)
         Label3.Name = "Label3"
         Label3.Size = New Size(44, 18)
         Label3.TabIndex = 7
@@ -205,9 +195,9 @@ Partial Class Form8
         ' 
         ' TextBox6
         ' 
-        TextBox6.Location = New Point(274, 382)
+        TextBox6.Location = New Point(316, 382)
         TextBox6.Name = "TextBox6"
-        TextBox6.Size = New Size(247, 22)
+        TextBox6.Size = New Size(205, 22)
         TextBox6.TabIndex = 19
         ' 
         ' Label9
@@ -260,12 +250,34 @@ Partial Class Form8
         Button2.TabIndex = 23
         Button2.UseVisualStyleBackColor = True
         ' 
+        ' Label10
+        ' 
+        Label10.AutoSize = True
+        Label10.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label10.Location = New Point(274, 384)
+        Label10.Name = "Label10"
+        Label10.Size = New Size(26, 18)
+        Label10.TabIndex = 24
+        Label10.Text = "00"
+        ' 
+        ' Label11
+        ' 
+        Label11.AutoSize = True
+        Label11.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label11.Location = New Point(76, 232)
+        Label11.Name = "Label11"
+        Label11.Size = New Size(64, 18)
+        Label11.TabIndex = 25
+        Label11.Text = "Book ID"
+        ' 
         ' Form8
         ' 
         AutoScaleDimensions = New SizeF(7F, 16F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(984, 561)
+        Controls.Add(Label11)
+        Controls.Add(Label10)
         Controls.Add(Button2)
         Controls.Add(DateTimePicker2)
         Controls.Add(DateTimePicker1)
@@ -289,8 +301,6 @@ Partial Class Form8
         Text = "Borrow Book"
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
-        CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox5, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
@@ -298,8 +308,6 @@ Partial Class Form8
     End Sub
 
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents PictureBox3 As PictureBox
-    Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents Label1 As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label2 As Label
@@ -319,4 +327,7 @@ Partial Class Form8
     Friend WithEvents DateTimePicker1 As DateTimePicker
     Friend WithEvents DateTimePicker2 As DateTimePicker
     Friend WithEvents Button2 As Button
+    Friend WithEvents Button3 As Button
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Label11 As Label
 End Class

@@ -22,6 +22,7 @@ Partial Class Form5
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Panel1 = New Panel()
         PictureBox3 = New PictureBox()
         PictureBox2 = New PictureBox()
@@ -30,23 +31,24 @@ Partial Class Form5
         PictureBox4 = New PictureBox()
         Label2 = New Label()
         Panel2 = New Panel()
-        TableLayoutPanel1 = New TableLayoutPanel()
-        Label3 = New Label()
-        Label4 = New Label()
-        Label5 = New Label()
-        Label6 = New Label()
-        Label7 = New Label()
-        Label8 = New Label()
-        Label9 = New Label()
         PictureBox5 = New PictureBox()
+        DataGridView1 = New DataGridView()
+        Column1 = New DataGridViewTextBoxColumn()
+        Column2 = New DataGridViewTextBoxColumn()
+        Column3 = New DataGridViewTextBoxColumn()
+        Column4 = New DataGridViewTextBoxColumn()
+        Column5 = New DataGridViewTextBoxColumn()
+        Column6 = New DataGridViewTextBoxColumn()
+        Column7 = New DataGridViewTextBoxColumn()
+        Column8 = New DataGridViewTextBoxColumn()
         Panel1.SuspendLayout()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox4, ComponentModel.ISupportInitialize).BeginInit()
         Panel2.SuspendLayout()
-        TableLayoutPanel1.SuspendLayout()
         CType(PictureBox5, ComponentModel.ISupportInitialize).BeginInit()
+        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Panel1
@@ -130,102 +132,6 @@ Partial Class Form5
         Panel2.Size = New Size(108, 27)
         Panel2.TabIndex = 7
         ' 
-        ' TableLayoutPanel1
-        ' 
-        TableLayoutPanel1.ColumnCount = 7
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 21.283783F))
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 78.71622F))
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 183F))
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 163F))
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 117F))
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 63F))
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 75F))
-        TableLayoutPanel1.Controls.Add(Label9, 6, 0)
-        TableLayoutPanel1.Controls.Add(Label8, 5, 0)
-        TableLayoutPanel1.Controls.Add(Label7, 4, 0)
-        TableLayoutPanel1.Controls.Add(Label6, 3, 0)
-        TableLayoutPanel1.Controls.Add(Label5, 2, 0)
-        TableLayoutPanel1.Controls.Add(Label3, 0, 0)
-        TableLayoutPanel1.Controls.Add(Label4, 1, 0)
-        TableLayoutPanel1.Location = New Point(38, 131)
-        TableLayoutPanel1.Name = "TableLayoutPanel1"
-        TableLayoutPanel1.Padding = New Padding(4)
-        TableLayoutPanel1.RowCount = 2
-        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 10.7416878F))
-        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 89.25831F))
-        TableLayoutPanel1.Size = New Size(906, 389)
-        TableLayoutPanel1.TabIndex = 8
-        ' 
-        ' Label3
-        ' 
-        Label3.AutoSize = True
-        Label3.FlatStyle = FlatStyle.Flat
-        Label3.Location = New Point(7, 4)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(53, 16)
-        Label3.TabIndex = 0
-        Label3.Text = "Book ID"
-        ' 
-        ' Label4
-        ' 
-        Label4.AutoSize = True
-        Label4.FlatStyle = FlatStyle.Flat
-        Label4.Location = New Point(70, 4)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(65, 16)
-        Label4.TabIndex = 1
-        Label4.Text = "Book Title"
-        ' 
-        ' Label5
-        ' 
-        Label5.AutoSize = True
-        Label5.FlatStyle = FlatStyle.Flat
-        Label5.Location = New Point(303, 4)
-        Label5.Name = "Label5"
-        Label5.Size = New Size(78, 16)
-        Label5.TabIndex = 2
-        Label5.Text = "Book Author"
-        ' 
-        ' Label6
-        ' 
-        Label6.AutoSize = True
-        Label6.FlatStyle = FlatStyle.Flat
-        Label6.Location = New Point(486, 4)
-        Label6.Name = "Label6"
-        Label6.Size = New Size(37, 16)
-        Label6.TabIndex = 3
-        Label6.Text = "ISBN"
-        ' 
-        ' Label7
-        ' 
-        Label7.AutoSize = True
-        Label7.FlatStyle = FlatStyle.Flat
-        Label7.Location = New Point(649, 4)
-        Label7.Name = "Label7"
-        Label7.Size = New Size(59, 16)
-        Label7.TabIndex = 4
-        Label7.Text = "Category"
-        ' 
-        ' Label8
-        ' 
-        Label8.AutoSize = True
-        Label8.FlatStyle = FlatStyle.Flat
-        Label8.Location = New Point(766, 4)
-        Label8.Name = "Label8"
-        Label8.Size = New Size(47, 32)
-        Label8.TabIndex = 5
-        Label8.Text = "No. of Copies"
-        ' 
-        ' Label9
-        ' 
-        Label9.AutoSize = True
-        Label9.FlatStyle = FlatStyle.Flat
-        Label9.Location = New Point(829, 4)
-        Label9.Name = "Label9"
-        Label9.Size = New Size(45, 16)
-        Label9.TabIndex = 6
-        Label9.Text = "Status"
-        ' 
         ' PictureBox5
         ' 
         PictureBox5.Image = My.Resources.Resources.back
@@ -236,14 +142,83 @@ Partial Class Form5
         PictureBox5.TabIndex = 9
         PictureBox5.TabStop = False
         ' 
+        ' DataGridView1
+        ' 
+        DataGridView1.AllowUserToOrderColumns = True
+        DataGridView1.BackgroundColor = Color.White
+        DataGridView1.BorderStyle = BorderStyle.None
+        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridView1.Columns.AddRange(New DataGridViewColumn() {Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8})
+        DataGridView1.GridColor = SystemColors.InfoText
+        DataGridView1.Location = New Point(38, 136)
+        DataGridView1.Name = "DataGridView1"
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.TopCenter
+        DataGridViewCellStyle1.BackColor = SystemColors.Control
+        DataGridViewCellStyle1.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle1.ForeColor = SystemColors.MenuText
+        DataGridViewCellStyle1.SelectionBackColor = Color.LightBlue
+        DataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
+        DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridView1.Size = New Size(908, 68)
+        DataGridView1.TabIndex = 10
+        ' 
+        ' Column1
+        ' 
+        Column1.HeaderText = "Book ID"
+        Column1.Name = "Column1"
+        Column1.ReadOnly = True
+        ' 
+        ' Column2
+        ' 
+        Column2.HeaderText = "Title"
+        Column2.Name = "Column2"
+        Column2.ReadOnly = True
+        ' 
+        ' Column3
+        ' 
+        Column3.HeaderText = "Author"
+        Column3.Name = "Column3"
+        Column3.ReadOnly = True
+        ' 
+        ' Column4
+        ' 
+        Column4.HeaderText = "Year"
+        Column4.Name = "Column4"
+        Column4.ReadOnly = True
+        ' 
+        ' Column5
+        ' 
+        Column5.HeaderText = "ISBN"
+        Column5.Name = "Column5"
+        Column5.ReadOnly = True
+        ' 
+        ' Column6
+        ' 
+        Column6.HeaderText = "Category"
+        Column6.Name = "Column6"
+        Column6.ReadOnly = True
+        ' 
+        ' Column7
+        ' 
+        Column7.HeaderText = "Status"
+        Column7.Name = "Column7"
+        Column7.ReadOnly = True
+        ' 
+        ' Column8
+        ' 
+        Column8.HeaderText = "Copies"
+        Column8.Name = "Column8"
+        Column8.ReadOnly = True
+        ' 
         ' Form5
         ' 
         AutoScaleDimensions = New SizeF(7F, 16F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(984, 561)
+        Controls.Add(DataGridView1)
         Controls.Add(PictureBox5)
-        Controls.Add(TableLayoutPanel1)
         Controls.Add(Panel1)
         Controls.Add(Panel2)
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
@@ -257,9 +232,8 @@ Partial Class Form5
         CType(PictureBox4, ComponentModel.ISupportInitialize).EndInit()
         Panel2.ResumeLayout(False)
         Panel2.PerformLayout()
-        TableLayoutPanel1.ResumeLayout(False)
-        TableLayoutPanel1.PerformLayout()
         CType(PictureBox5, ComponentModel.ISupportInitialize).EndInit()
+        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
@@ -271,13 +245,14 @@ Partial Class Form5
     Friend WithEvents PictureBox4 As PictureBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label8 As Label
-    Friend WithEvents Label7 As Label
-    Friend WithEvents Label6 As Label
-    Friend WithEvents Label5 As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label9 As Label
     Friend WithEvents PictureBox5 As PictureBox
+    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As DataGridViewTextBoxColumn
+    Friend WithEvents Column5 As DataGridViewTextBoxColumn
+    Friend WithEvents Column6 As DataGridViewTextBoxColumn
+    Friend WithEvents Column7 As DataGridViewTextBoxColumn
+    Friend WithEvents Column8 As DataGridViewTextBoxColumn
 End Class

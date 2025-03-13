@@ -2,19 +2,14 @@
 Imports System.IO
 
 Public Class Form2
-    Dim connString As String = "server=localhost; user=root; password=; database=borrowing-system;"
-
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        Dim back As New Form11()
-        back.Show()
-        Me.Hide()
-    End Sub
+    Dim connString As String = "server=localhost; user=root; password=; database=book-borrowing"
+    Dim conn As New MySqlConnection(connString)
 
     Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        LoadBooks("")
+        LoadBooks()
     End Sub
 
-    Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox1.TextChanged
+    Private Sub TextBox1_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox1.TextChanged
         LoadBooks(TextBox1.Text)
     End Sub
 
@@ -22,91 +17,88 @@ Public Class Form2
         LoadBooks(TextBox1.Text)
     End Sub
 
-    Private Sub LoadBooks(Optional searchQuery As String = "")
+    Public Sub LoadBooks(Optional searchQuery As String = "")
         FlowLayoutPanel1.Controls.Clear()
 
         Using conn As New MySqlConnection(connString)
-            Dim query As String = "SELECT * FROM book WHERE StatusID = 'Available' AND (Title LIKE @search OR Author LIKE @search)"
+            Dim query As String = "SELECT * FROM book WHERE Title LIKE @search OR Author LIKE @search"
             Using cmd As New MySqlCommand(query, conn)
                 cmd.Parameters.AddWithValue("@search", "%" & searchQuery & "%")
 
                 Try
                     conn.Open()
                     Dim reader As MySqlDataReader = cmd.ExecuteReader()
-
                     While reader.Read()
                         Dim bookID As String = reader("BookID").ToString()
-
                         Dim bookPanel As New Panel With {
-                            .Size = New Size(200, 350),
-                            .BorderStyle = BorderStyle.None,
-                            .BackColor = Color.LightBlue,
-                            .Padding = New Padding(10)
-                        }
-
-                        Dim bookTitle As New Label With {
-                            .Text = reader("Title").ToString(),
-                            .Location = New Point(10, 220),
-                            .Size = New Size(180, 20),
-                            .Font = New Font("Arial", 10, FontStyle.Bold),
-                            .ForeColor = Color.Black,
-                            .BackColor = Color.Transparent,
-                            .TextAlign = ContentAlignment.MiddleCenter,
-                            .AutoSize = False
-                        }
-
-                        Dim bookAuthor As New Label With {
-                            .Text = "By: " & reader("Author").ToString(),
-                            .Location = New Point(10, 245),
-                            .Size = New Size(180, 15),
-                            .Font = New Font("Arial", 8, FontStyle.Regular),
-                            .ForeColor = Color.Black,
-                            .BackColor = Color.Transparent,
-                            .TextAlign = ContentAlignment.MiddleCenter,
-                            .AutoSize = False
+                            .Size = New Size(182, 280),
+                            .BackColor = Color.WhiteSmoke,
+                            .BorderStyle = BorderStyle.None
                         }
 
                         Dim bookImage As New PictureBox With {
-                            .Size = New Size(180, 200),
-                            .Location = New Point(10, 10),
-                            .SizeMode = PictureBoxSizeMode.Zoom,
-                            .BackColor = Color.Transparent
+                            .Size = New Size(100, 137),
+                            .Location = New Point(38, 13),
+                            .SizeMode = PictureBoxSizeMode.StretchImage
                         }
 
                         Dim imagePath As String = reader("Image").ToString()
-                        If File.Exists(imagePath) Then
-                            bookImage.Image = Image.FromFile(imagePath)
-                        Else
+                        Try
+                            If File.Exists(imagePath) Then
+                                bookImage.Image = Image.FromFile(imagePath)
+                            Else
+                                bookImage.Image = My.Resources.image
+                            End If
+                        Catch ex As Exception
                             bookImage.Image = My.Resources.image
-                        End If
+                        End Try
+
+                        Dim bookTitle As New Label With {
+                            .Text = reader("Title").ToString(),
+                            .AutoSize = False,
+                            .Location = New Point(10, 160),
+                            .Size = New Size(160, 40),
+                            .TextAlign = ContentAlignment.MiddleCenter,
+                            .Font = New Font("Arial", 10, FontStyle.Bold)
+                        }
+
+                        Dim bookAuthor As New Label With {
+                            .Text = reader("Author").ToString(),
+                            .Location = New Point(10, 200),
+                            .Size = New Size(160, 20),
+                            .TextAlign = ContentAlignment.MiddleCenter
+                        }
+
+                        Dim bookCopies As New Label With {
+                            .Text = "Copies: " & reader("Copies").ToString(),
+                            .Location = New Point(10, 220),
+                            .Size = New Size(160, 20),
+                            .TextAlign = ContentAlignment.MiddleCenter
+                        }
 
                         Dim btnBorrow As New Button With {
                             .Text = "Borrow",
-                            .Size = New Size(90, 30),
-                            .Location = New Point(55, 270),
+                            .Size = New Size(80, 30),
+                            .Location = New Point(51, 240),
                             .BackColor = Color.Green,
-                            .ForeColor = Color.White,
-                            .Font = New Font("Arial", 9, FontStyle.Bold),
-                            .FlatStyle = FlatStyle.Flat,
-                            .Tag = bookID
+                            .ForeColor = Color.White
                         }
-                        btnBorrow.FlatAppearance.BorderSize = 0
-                        btnBorrow.Cursor = Cursors.Hand
+                        btnBorrow.Tag = bookID
                         AddHandler btnBorrow.Click, AddressOf BorrowBook
 
+                        bookImage.Tag = bookID
                         bookPanel.Controls.Add(bookImage)
                         bookPanel.Controls.Add(bookTitle)
                         bookPanel.Controls.Add(bookAuthor)
+                        bookPanel.Controls.Add(bookCopies)
                         bookPanel.Controls.Add(btnBorrow)
 
-                        bookPanel.Tag = reader("BookID")
                         FlowLayoutPanel1.Controls.Add(bookPanel)
                     End While
                     reader.Close()
 
                 Catch ex As Exception
-                    MessageBox.Show("Error: " & ex.Message, "Database Error",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("Error: " & ex.Message)
                 End Try
             End Using
         End Using
@@ -115,13 +107,13 @@ Public Class Form2
     Private Sub BorrowBook(sender As Object, e As EventArgs)
         Dim btn As Button = DirectCast(sender, Button)
         Dim bookID As String = btn.Tag.ToString()
-
-        Dim bookTitle As String = ""
-        Dim bookImage As String = ""
-        Dim bookStatusID As String = ""
+        Dim title As String = ""
+        Dim author As String = ""
+        Dim copies As Integer = 0
+        Dim imagePath As String = ""
 
         Using conn As New MySqlConnection(connString)
-            Dim query As String = "SELECT Title, Image, StatusID FROM book WHERE BookID = @bookID"
+            Dim query As String = "SELECT Title, Author, Copies, Image FROM book WHERE BookID = @bookID"
             Using cmd As New MySqlCommand(query, conn)
                 cmd.Parameters.AddWithValue("@bookID", bookID)
 
@@ -129,19 +121,31 @@ Public Class Form2
                     conn.Open()
                     Dim reader As MySqlDataReader = cmd.ExecuteReader()
                     If reader.Read() Then
-                        bookTitle = reader("Title").ToString()
-                        bookImage = reader("Image").ToString()
-                        bookStatusID = reader("StatusID").ToString()
+                        title = reader("Title").ToString()
+                        author = reader("Author").ToString()
+                        copies = Convert.ToInt32(reader("Copies"))
+                        imagePath = reader("Image").ToString()
+                        reader.Close()
+
+                        Dim borrowForm As New Form8(bookID, title, imagePath, copies)
+                        borrowForm.Show()
+                        Me.Hide()
+
+                    Else
+                        MessageBox.Show("This book is not available!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
-                    reader.Close()
+
                 Catch ex As Exception
-                    MessageBox.Show("Error fetching book details: " & ex.Message)
+                    MessageBox.Show("Error: " & ex.Message)
                 End Try
             End Using
         End Using
+    End Sub
 
-        Dim borrowForm As New Form8(bookID, bookTitle, bookImage, bookStatusID)
-        borrowForm.Show()
-        Me.Close()
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim back As New Form11()
+        back.Show()
+        Me.Hide()
     End Sub
 End Class

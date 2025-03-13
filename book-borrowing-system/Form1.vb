@@ -6,18 +6,18 @@ Public Class Form1
     Dim reader As MySqlDataReader
 
     Private Sub OK_Click(sender As Object, e As EventArgs) Handles OK.Click
-        conn = New MySqlConnection("server=localhost; user=root; password=; database=borrowing-system;")
+        conn = New MySqlConnection("server=localhost; user=root; password=; database=book-borrowing;")
 
         Try
             conn.Open()
-            Dim query As String = "SELECT * FROM login WHERE Username=@Username AND Pass=@Pass"
+            Dim query As String = "SELECT * FROM login WHERE Username=@Username AND Password=@Password"
             cmd = New MySqlCommand(query, conn)
-            cmd.Parameters.AddWithValue("@username", UsernameTextBox.Text)
-            cmd.Parameters.AddWithValue("@pass", PasswordTextBox.Text)
+            cmd.Parameters.AddWithValue("@Username", UsernameTextBox.Text)
+            cmd.Parameters.AddWithValue("@Password", PasswordTextBox.Text)
 
             reader = cmd.ExecuteReader()
             If reader.HasRows Then
-                MsgBox("Login Successful!", MsgBoxStyle.Information)
+                'MsgBox("Login Successful!", MsgBoxStyle.Information)
 
                 Form11.Show()
                 Me.Hide()
