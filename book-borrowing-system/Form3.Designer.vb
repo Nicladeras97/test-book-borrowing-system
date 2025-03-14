@@ -29,11 +29,10 @@ Partial Class Form3
         PictureBox1 = New PictureBox()
         FlowLayoutPanel1 = New FlowLayoutPanel()
         Label2 = New Label()
-        PictureBox4 = New PictureBox()
         TextBox1 = New TextBox()
+        Button3 = New Button()
         Panel1.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox4, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Panel1
@@ -109,16 +108,6 @@ Partial Class Form3
         Label2.TabIndex = 8
         Label2.Text = "Borrowed Books"
         ' 
-        ' PictureBox4
-        ' 
-        PictureBox4.Image = My.Resources.Resources.search
-        PictureBox4.Location = New Point(119, 95)
-        PictureBox4.Name = "PictureBox4"
-        PictureBox4.Size = New Size(23, 28)
-        PictureBox4.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox4.TabIndex = 7
-        PictureBox4.TabStop = False
-        ' 
         ' TextBox1
         ' 
         TextBox1.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
@@ -128,15 +117,27 @@ Partial Class Form3
         TextBox1.TabIndex = 6
         TextBox1.Text = "Search"
         ' 
+        ' Button3
+        ' 
+        Button3.BackgroundImage = My.Resources.Resources.search
+        Button3.BackgroundImageLayout = ImageLayout.Zoom
+        Button3.FlatAppearance.BorderSize = 0
+        Button3.FlatStyle = FlatStyle.Flat
+        Button3.Location = New Point(119, 95)
+        Button3.Name = "Button3"
+        Button3.Size = New Size(23, 26)
+        Button3.TabIndex = 10
+        Button3.UseVisualStyleBackColor = True
+        ' 
         ' Form3
         ' 
         AutoScaleDimensions = New SizeF(7F, 16F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(984, 561)
+        Controls.Add(Button3)
         Controls.Add(FlowLayoutPanel1)
         Controls.Add(Label2)
-        Controls.Add(PictureBox4)
         Controls.Add(TextBox1)
         Controls.Add(Panel1)
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
@@ -145,7 +146,6 @@ Partial Class Form3
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox4, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -155,13 +155,9 @@ Partial Class Form3
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
     Friend WithEvents Label2 As Label
-    Friend WithEvents PictureBox4 As PictureBox
     Friend WithEvents TextBox1 As TextBox
-
-    Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
 
     Friend WithEvents Button2 As Button
     Friend WithEvents Button1 As Button
+    Friend WithEvents Button3 As Button
 End Class

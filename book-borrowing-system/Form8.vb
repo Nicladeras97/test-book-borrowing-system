@@ -27,7 +27,6 @@ Public Class Form8
     End Sub
 
     Private Sub Form8_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        PictureBox5.ImageLocation = bookImage
         Label2.Text = bookTitle
         Label3.Text = bookID
     End Sub
@@ -55,6 +54,11 @@ Public Class Form8
             Return
         End If
 
+        If Not IsNumeric(TextBox3.Text) Then
+            MessageBox.Show("Please enter a valid contact number!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
         If copies <= 0 Then
             MessageBox.Show("No available copies for borrowing!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
@@ -69,6 +73,18 @@ Public Class Form8
                 Dim contactNumber As String = TextBox3.Text
                 Dim borrowDate As Date = DateTimePicker1.Value
                 Dim dueDate As Date = DateTimePicker2.Value
+
+                Dim checkBorrowQuery As String = "SELECT COUNT(*) FROM borrow WHERE StudNo = @StudNo AND BookID = @BookID AND StatusName = 'Borrowed'"
+                Using checkBorrowCmd As New MySqlCommand(checkBorrowQuery, conn)
+                    checkBorrowCmd.Parameters.AddWithValue("@StudNo", studentNumber)
+                    checkBorrowCmd.Parameters.AddWithValue("@BookID", bookID)
+                    Dim alreadyBorrowed As Integer = Convert.ToInt32(checkBorrowCmd.ExecuteScalar())
+
+                    If alreadyBorrowed > 0 Then
+                        MessageBox.Show("You have already borrowed this book!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        Return
+                    End If
+                End Using
 
                 Dim checkUserQuery As String = "SELECT COUNT(*) FROM users WHERE StudNo = @StudNo"
                 Using checkCmd As New MySqlCommand(checkUserQuery, conn)
@@ -95,7 +111,10 @@ Public Class Form8
                     cmd.ExecuteNonQuery()
                 End Using
 
-                Dim updateQuery As String = "UPDATE book SET Copies = Copies - 1, Status = CASE WHEN Copies = 1 THEN 'Borrowed' ELSE 'Available' END WHERE BookID = @BookID"
+                Dim updateQuery As String = "UPDATE book 
+                    SET Copies = Copies - 1, 
+                        Status = CASE WHEN Copies - 1 = 0 THEN 'Borrowed' ELSE 'Available' END 
+                    WHERE BookID = @BookID"
                 Using cmdUpdate As New MySqlCommand(updateQuery, conn)
                     cmdUpdate.Parameters.AddWithValue("@BookID", bookID)
                     cmdUpdate.ExecuteNonQuery()
@@ -111,5 +130,4 @@ Public Class Form8
             End Try
         End Using
     End Sub
-
 End Class
