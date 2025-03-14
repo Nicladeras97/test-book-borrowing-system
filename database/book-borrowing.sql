@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2025 at 05:46 AM
+-- Generation Time: Mar 14, 2025 at 10:26 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,7 +44,7 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`BookID`, `Title`, `Author`, `Year`, `ISBN`, `Category`, `Status`, `Image`, `Copies`) VALUES
-(1, 'The Hunger Games', 'Suzanne Collins', '2018', '978-0-439-02352-8', 'Non-Fiction', 'Available', 'C:\\Users\\PC\\source\\repos\\Nicladeras97\\test-book-borrowing-system\\book-borrowing-system\\img\\books\\book1.jpg', 7);
+(1, 'The Hunger Games', 'Suzanne Collins', '2018', '978-0-439-02352-8', 'Non-Fiction', 'Available', 'C:\\Users\\PC\\source\\repos\\Nicladeras97\\book-borrowing-system-mysql\\book-borrowing-system\\img\\books\\book1.jpg', 4);
 
 -- --------------------------------------------------------
 
@@ -68,7 +68,10 @@ CREATE TABLE `borrow` (
 --
 
 INSERT INTO `borrow` (`BorrowID`, `StudNo`, `BookID`, `BorrowDate`, `DueDate`, `StatusName`, `Title`, `Image`) VALUES
-(5, '211083', 1, '2025-03-14', '2025-03-15', 'Borrowed', NULL, NULL);
+(1, '211083', 1, '2025-03-14', '2025-03-15', 'Borrowed', NULL, NULL),
+(2, '211241', 1, '2025-03-14', '2025-03-18', 'Borrowed', NULL, NULL),
+(3, '213425', 1, '2025-03-14', '2025-03-18', 'Borrowed', NULL, NULL),
+(4, '211456', 1, '2025-03-14', '2025-03-21', 'Borrowed', 'The Hunger Games', 'C:\\Users\\PC\\source\\repos\\Nicladeras97\\book-borrowing-system-mysql\\book-borrowing-system\\img\\books\\book1.jpg');
 
 -- --------------------------------------------------------
 
@@ -124,6 +127,14 @@ CREATE TABLE `returned` (
   `Conditions` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `returned`
+--
+
+INSERT INTO `returned` (`ReturnID`, `StudNo`, `BorrowID`, `ReturnDate`, `Conditions`) VALUES
+(1, '211083', 0, '2025-03-14', 'Good Condition'),
+(2, '211083', 1, '2025-03-14', 'Good Condition');
+
 -- --------------------------------------------------------
 
 --
@@ -144,7 +155,10 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`UserID`, `StudNo`, `FullName`, `ContactNumber`) VALUES
 (1, '211083', 'Monica Cano', '09123456789'),
 (2, '', '', ''),
-(3, 'd', 'd', 'dd');
+(3, 'd', 'd', 'dd'),
+(4, '211241', 'Monic', '09123456789'),
+(5, '213425', 'Monique', '09123456789'),
+(6, '211456', 'Monica Cano', '09123456789');
 
 --
 -- Indexes for dumped tables
@@ -207,7 +221,7 @@ ALTER TABLE `book`
 -- AUTO_INCREMENT for table `borrow`
 --
 ALTER TABLE `borrow`
-  MODIFY `BorrowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `BorrowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `login`
@@ -219,13 +233,13 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `returned`
 --
 ALTER TABLE `returned`
-  MODIFY `ReturnID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ReturnID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
