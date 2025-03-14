@@ -102,12 +102,14 @@ Public Class Form8
                     End If
                 End Using
 
-                Dim insertQuery As String = "INSERT INTO borrow (StudNo, BookID, BorrowDate, DueDate, StatusName) VALUES (@StudNo, @BookID, @BorrowDate, @DueDate, 'Borrowed')"
+                Dim insertQuery As String = "INSERT INTO borrow (StudNo, BookID, BorrowDate, DueDate, StatusName, Title, Image) VALUES (@StudNo, @BookID, @BorrowDate, @DueDate, 'Borrowed', @Title, @Image)"
                 Using cmd As New MySqlCommand(insertQuery, conn)
                     cmd.Parameters.AddWithValue("@StudNo", studentNumber)
                     cmd.Parameters.AddWithValue("@BookID", bookID)
                     cmd.Parameters.AddWithValue("@BorrowDate", borrowDate)
                     cmd.Parameters.AddWithValue("@DueDate", dueDate)
+                    cmd.Parameters.AddWithValue("@Title", bookTitle)
+                    cmd.Parameters.AddWithValue("@Image", bookImage)
                     cmd.ExecuteNonQuery()
                 End Using
 
@@ -130,4 +132,5 @@ Public Class Form8
             End Try
         End Using
     End Sub
+
 End Class

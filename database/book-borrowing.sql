@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2025 at 11:54 PM
+-- Generation Time: Mar 14, 2025 at 05:46 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -33,10 +33,18 @@ CREATE TABLE `book` (
   `Author` varchar(255) NOT NULL,
   `Year` varchar(4) DEFAULT NULL,
   `ISBN` varchar(20) DEFAULT NULL,
-  `CategoryName` varchar(100) DEFAULT NULL,
-  `StatusName` varchar(50) DEFAULT NULL,
-  `Image` varchar(255) DEFAULT NULL
+  `Category` varchar(100) NOT NULL,
+  `Status` varchar(50) NOT NULL DEFAULT 'Available',
+  `Image` varchar(255) DEFAULT NULL,
+  `Copies` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `book`
+--
+
+INSERT INTO `book` (`BookID`, `Title`, `Author`, `Year`, `ISBN`, `Category`, `Status`, `Image`, `Copies`) VALUES
+(1, 'The Hunger Games', 'Suzanne Collins', '2018', '978-0-439-02352-8', 'Non-Fiction', 'Available', 'C:\\Users\\PC\\source\\repos\\Nicladeras97\\test-book-borrowing-system\\book-borrowing-system\\img\\books\\book1.jpg', 7);
 
 -- --------------------------------------------------------
 
@@ -50,8 +58,17 @@ CREATE TABLE `borrow` (
   `BookID` int(11) DEFAULT NULL,
   `BorrowDate` date DEFAULT NULL,
   `DueDate` date DEFAULT NULL,
-  `StatusName` varchar(50) DEFAULT NULL
+  `StatusName` varchar(50) DEFAULT NULL,
+  `Title` varchar(255) DEFAULT NULL,
+  `Image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `borrow`
+--
+
+INSERT INTO `borrow` (`BorrowID`, `StudNo`, `BookID`, `BorrowDate`, `DueDate`, `StatusName`, `Title`, `Image`) VALUES
+(5, '211083', 1, '2025-03-14', '2025-03-15', 'Borrowed', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -60,8 +77,19 @@ CREATE TABLE `borrow` (
 --
 
 CREATE TABLE `category` (
-  `CategoryName` varchar(100) NOT NULL
+  `Category` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`Category`) VALUES
+('Fiction'),
+('History'),
+('Journal'),
+('Non-Fiction'),
+('Textbook');
 
 -- --------------------------------------------------------
 
@@ -74,6 +102,13 @@ CREATE TABLE `login` (
   `Username` varchar(100) NOT NULL,
   `Password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `login`
+--
+
+INSERT INTO `login` (`LibraryID`, `Username`, `Password`) VALUES
+(1, 'user', 'user');
 
 -- --------------------------------------------------------
 
@@ -92,16 +127,6 @@ CREATE TABLE `returned` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `status`
---
-
-CREATE TABLE `status` (
-  `StatusName` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `users`
 --
 
@@ -113,6 +138,15 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`UserID`, `StudNo`, `FullName`, `ContactNumber`) VALUES
+(1, '211083', 'Monica Cano', '09123456789'),
+(2, '', '', ''),
+(3, 'd', 'd', 'dd');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -120,9 +154,7 @@ CREATE TABLE `users` (
 -- Indexes for table `book`
 --
 ALTER TABLE `book`
-  ADD PRIMARY KEY (`BookID`),
-  ADD KEY `CategoryName` (`CategoryName`),
-  ADD KEY `StatusName` (`StatusName`);
+  ADD PRIMARY KEY (`BookID`);
 
 --
 -- Indexes for table `borrow`
@@ -137,7 +169,7 @@ ALTER TABLE `borrow`
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
-  ADD PRIMARY KEY (`CategoryName`);
+  ADD PRIMARY KEY (`Category`);
 
 --
 -- Indexes for table `login`
@@ -155,12 +187,6 @@ ALTER TABLE `returned`
   ADD KEY `BorrowID` (`BorrowID`);
 
 --
--- Indexes for table `status`
---
-ALTER TABLE `status`
-  ADD PRIMARY KEY (`StatusName`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -175,19 +201,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `book`
 --
 ALTER TABLE `book`
-  MODIFY `BookID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `BookID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `borrow`
 --
 ALTER TABLE `borrow`
-  MODIFY `BorrowID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `BorrowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `LibraryID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `LibraryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `returned`
@@ -199,33 +225,7 @@ ALTER TABLE `returned`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `book`
---
-ALTER TABLE `book`
-  ADD CONSTRAINT `book_ibfk_1` FOREIGN KEY (`CategoryName`) REFERENCES `category` (`CategoryName`) ON DELETE SET NULL,
-  ADD CONSTRAINT `book_ibfk_2` FOREIGN KEY (`StatusName`) REFERENCES `status` (`StatusName`) ON DELETE SET NULL;
-
---
--- Constraints for table `borrow`
---
-ALTER TABLE `borrow`
-  ADD CONSTRAINT `borrow_ibfk_1` FOREIGN KEY (`StudNo`) REFERENCES `users` (`StudNo`) ON DELETE CASCADE,
-  ADD CONSTRAINT `borrow_ibfk_2` FOREIGN KEY (`BookID`) REFERENCES `book` (`BookID`) ON DELETE CASCADE,
-  ADD CONSTRAINT `borrow_ibfk_3` FOREIGN KEY (`StatusName`) REFERENCES `status` (`StatusName`) ON DELETE SET NULL;
-
---
--- Constraints for table `returned`
---
-ALTER TABLE `returned`
-  ADD CONSTRAINT `returned_ibfk_1` FOREIGN KEY (`StudNo`) REFERENCES `users` (`StudNo`) ON DELETE CASCADE,
-  ADD CONSTRAINT `returned_ibfk_2` FOREIGN KEY (`BorrowID`) REFERENCES `borrow` (`BorrowID`) ON DELETE CASCADE;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

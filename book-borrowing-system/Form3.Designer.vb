@@ -27,12 +27,12 @@ Partial Class Form3
         Button1 = New Button()
         Label1 = New Label()
         PictureBox1 = New PictureBox()
-        FlowLayoutPanel1 = New FlowLayoutPanel()
         Label2 = New Label()
         TextBox1 = New TextBox()
-        Button3 = New Button()
+        DataGridView1 = New DataGridView()
         Panel1.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Panel1
@@ -91,43 +91,35 @@ Partial Class Form3
         PictureBox1.TabIndex = 0
         PictureBox1.TabStop = False
         ' 
-        ' FlowLayoutPanel1
-        ' 
-        FlowLayoutPanel1.Location = New Point(119, 238)
-        FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        FlowLayoutPanel1.Size = New Size(730, 290)
-        FlowLayoutPanel1.TabIndex = 9
-        ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(119, 197)
+        Label2.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label2.Location = New Point(38, 101)
         Label2.Name = "Label2"
-        Label2.Size = New Size(125, 18)
+        Label2.Size = New Size(111, 16)
         Label2.TabIndex = 8
         Label2.Text = "Borrowed Books"
         ' 
         ' TextBox1
         ' 
-        TextBox1.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TextBox1.Location = New Point(148, 95)
+        TextBox1.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        TextBox1.Location = New Point(685, 73)
         TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(701, 26)
+        TextBox1.Size = New Size(250, 22)
         TextBox1.TabIndex = 6
         TextBox1.Text = "Search"
         ' 
-        ' Button3
+        ' DataGridView1
         ' 
-        Button3.BackgroundImage = My.Resources.Resources.search
-        Button3.BackgroundImageLayout = ImageLayout.Zoom
-        Button3.FlatAppearance.BorderSize = 0
-        Button3.FlatStyle = FlatStyle.Flat
-        Button3.Location = New Point(119, 95)
-        Button3.Name = "Button3"
-        Button3.Size = New Size(23, 26)
-        Button3.TabIndex = 10
-        Button3.UseVisualStyleBackColor = True
+        DataGridView1.BackgroundColor = SystemColors.ButtonHighlight
+        DataGridView1.BorderStyle = BorderStyle.None
+        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridView1.GridColor = Color.White
+        DataGridView1.Location = New Point(38, 137)
+        DataGridView1.Name = "DataGridView1"
+        DataGridView1.Size = New Size(897, 391)
+        DataGridView1.TabIndex = 11
         ' 
         ' Form3
         ' 
@@ -135,8 +127,7 @@ Partial Class Form3
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(984, 561)
-        Controls.Add(Button3)
-        Controls.Add(FlowLayoutPanel1)
+        Controls.Add(DataGridView1)
         Controls.Add(Label2)
         Controls.Add(TextBox1)
         Controls.Add(Panel1)
@@ -146,6 +137,7 @@ Partial Class Form3
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -153,11 +145,10 @@ Partial Class Form3
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label1 As Label
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
     Friend WithEvents Label2 As Label
     Friend WithEvents TextBox1 As TextBox
 
     Friend WithEvents Button2 As Button
     Friend WithEvents Button1 As Button
-    Friend WithEvents Button3 As Button
+    Friend WithEvents DataGridView1 As DataGridView
 End Class

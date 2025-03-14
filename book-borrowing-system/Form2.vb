@@ -13,12 +13,12 @@ Public Class Form2
         LoadBooks(TextBox1.Text)
     End Sub
 
-    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(ByVal sender As Object, ByVal e As EventArgs)
         LoadBooks(TextBox1.Text)
     End Sub
 
     Public Sub LoadBooks(Optional searchQuery As String = "")
-        FlowLayoutPanel1.Controls.Clear()
+        DataGridView1.Controls.Clear()
 
         Using conn As New MySqlConnection(connString)
             Dim query As String = "SELECT * FROM book WHERE Title LIKE @search OR Author LIKE @search"
@@ -93,7 +93,7 @@ Public Class Form2
                         bookPanel.Controls.Add(bookCopies)
                         bookPanel.Controls.Add(btnBorrow)
 
-                        FlowLayoutPanel1.Controls.Add(bookPanel)
+                        DataGridView1.Controls.Add(bookPanel)
                     End While
                     reader.Close()
 
@@ -148,4 +148,5 @@ Public Class Form2
         back.Show()
         Me.Hide()
     End Sub
+
 End Class

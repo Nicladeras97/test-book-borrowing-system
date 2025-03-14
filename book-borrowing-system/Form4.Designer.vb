@@ -23,8 +23,6 @@ Partial Class Form4
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Panel1 = New Panel()
-        PictureBox3 = New PictureBox()
-        PictureBox2 = New PictureBox()
         Label1 = New Label()
         PictureBox1 = New PictureBox()
         Panel2 = New Panel()
@@ -36,9 +34,9 @@ Partial Class Form4
         Panel4 = New Panel()
         PictureBox6 = New PictureBox()
         Label4 = New Label()
+        Button2 = New Button()
+        Button1 = New Button()
         Panel1.SuspendLayout()
-        CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         Panel2.SuspendLayout()
         CType(PictureBox4, ComponentModel.ISupportInitialize).BeginInit()
@@ -51,8 +49,8 @@ Partial Class Form4
         ' Panel1
         ' 
         Panel1.BackColor = Color.LightBlue
-        Panel1.Controls.Add(PictureBox3)
-        Panel1.Controls.Add(PictureBox2)
+        Panel1.Controls.Add(Button2)
+        Panel1.Controls.Add(Button1)
         Panel1.Controls.Add(Label1)
         Panel1.Controls.Add(PictureBox1)
         Panel1.Dock = DockStyle.Top
@@ -60,26 +58,6 @@ Partial Class Form4
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(984, 53)
         Panel1.TabIndex = 3
-        ' 
-        ' PictureBox3
-        ' 
-        PictureBox3.Image = My.Resources.Resources.notification
-        PictureBox3.Location = New Point(950, 17)
-        PictureBox3.Name = "PictureBox3"
-        PictureBox3.Size = New Size(15, 16)
-        PictureBox3.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox3.TabIndex = 3
-        PictureBox3.TabStop = False
-        ' 
-        ' PictureBox2
-        ' 
-        PictureBox2.Image = My.Resources.Resources.home
-        PictureBox2.Location = New Point(916, 17)
-        PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(15, 16)
-        PictureBox2.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox2.TabIndex = 2
-        PictureBox2.TabStop = False
         ' 
         ' Label1
         ' 
@@ -190,6 +168,30 @@ Partial Class Form4
         Label4.TabIndex = 0
         Label4.Text = "Logs"
         ' 
+        ' Button2
+        ' 
+        Button2.BackgroundImage = My.Resources.Resources.notification
+        Button2.BackgroundImageLayout = ImageLayout.Zoom
+        Button2.FlatAppearance.BorderSize = 0
+        Button2.FlatStyle = FlatStyle.Flat
+        Button2.Location = New Point(948, 17)
+        Button2.Name = "Button2"
+        Button2.Size = New Size(15, 15)
+        Button2.TabIndex = 11
+        Button2.UseVisualStyleBackColor = True
+        ' 
+        ' Button1
+        ' 
+        Button1.BackgroundImage = My.Resources.Resources.home
+        Button1.BackgroundImageLayout = ImageLayout.Zoom
+        Button1.FlatAppearance.BorderSize = 0
+        Button1.FlatStyle = FlatStyle.Flat
+        Button1.Location = New Point(920, 17)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(15, 15)
+        Button1.TabIndex = 10
+        Button1.UseVisualStyleBackColor = True
+        ' 
         ' Form4
         ' 
         AutoScaleDimensions = New SizeF(7F, 16F)
@@ -206,8 +208,6 @@ Partial Class Form4
         Text = "Form4"
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
-        CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         Panel2.ResumeLayout(False)
         Panel2.PerformLayout()
@@ -222,8 +222,6 @@ Partial Class Form4
     End Sub
 
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents PictureBox3 As PictureBox
-    Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents Label1 As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Panel2 As Panel
@@ -235,4 +233,6 @@ Partial Class Form4
     Friend WithEvents Panel4 As Panel
     Friend WithEvents PictureBox6 As PictureBox
     Friend WithEvents Label4 As Label
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Button1 As Button
 End Class

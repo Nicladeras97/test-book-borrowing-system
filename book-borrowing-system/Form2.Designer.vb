@@ -29,10 +29,10 @@ Partial Class Form2
         PictureBox1 = New PictureBox()
         TextBox1 = New TextBox()
         Label2 = New Label()
-        FlowLayoutPanel1 = New FlowLayoutPanel()
-        Button3 = New Button()
+        DataGridView1 = New DataGridView()
         Panel1.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Panel1
@@ -97,10 +97,10 @@ Partial Class Form2
         ' TextBox1
         ' 
         TextBox1.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TextBox1.Location = New Point(148, 95)
+        TextBox1.Location = New Point(119, 95)
         TextBox1.Margin = New Padding(4, 3, 4, 3)
         TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(701, 26)
+        TextBox1.Size = New Size(730, 26)
         TextBox1.TabIndex = 2
         TextBox1.Text = "Search"
         ' 
@@ -115,25 +115,16 @@ Partial Class Form2
         Label2.TabIndex = 4
         Label2.Text = "Available Books"
         ' 
-        ' FlowLayoutPanel1
+        ' DataGridView1
         ' 
-        FlowLayoutPanel1.Location = New Point(119, 238)
-        FlowLayoutPanel1.Margin = New Padding(1)
-        FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        FlowLayoutPanel1.Size = New Size(730, 290)
-        FlowLayoutPanel1.TabIndex = 5
-        ' 
-        ' Button3
-        ' 
-        Button3.BackgroundImage = My.Resources.Resources.search
-        Button3.BackgroundImageLayout = ImageLayout.Zoom
-        Button3.FlatAppearance.BorderSize = 0
-        Button3.FlatStyle = FlatStyle.Flat
-        Button3.Location = New Point(119, 95)
-        Button3.Name = "Button3"
-        Button3.Size = New Size(22, 26)
-        Button3.TabIndex = 7
-        Button3.UseVisualStyleBackColor = True
+        DataGridView1.BackgroundColor = SystemColors.ButtonHighlight
+        DataGridView1.BorderStyle = BorderStyle.None
+        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridView1.GridColor = Color.White
+        DataGridView1.Location = New Point(119, 238)
+        DataGridView1.Name = "DataGridView1"
+        DataGridView1.Size = New Size(730, 290)
+        DataGridView1.TabIndex = 8
         ' 
         ' Form2
         ' 
@@ -141,8 +132,7 @@ Partial Class Form2
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(984, 561)
-        Controls.Add(Button3)
-        Controls.Add(FlowLayoutPanel1)
+        Controls.Add(DataGridView1)
         Controls.Add(Label2)
         Controls.Add(TextBox1)
         Controls.Add(Panel1)
@@ -153,6 +143,7 @@ Partial Class Form2
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -162,8 +153,7 @@ Partial Class Form2
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
     Friend WithEvents Button2 As Button
     Friend WithEvents Button1 As Button
-    Friend WithEvents Button3 As Button
+    Friend WithEvents DataGridView1 As DataGridView
 End Class

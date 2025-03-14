@@ -3,19 +3,34 @@
 Public Class Form3
     Dim connString As String = "server=localhost; user=root; password=; database=book-borrowing"
     Dim conn As New MySqlConnection(connString)
+
     Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SetupDataGridView()
         LoadBorrowedBooks()
     End Sub
+
     Private Sub TextBox1_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox1.TextChanged
         LoadBorrowedBooks(TextBox1.Text)
     End Sub
 
-    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
-        LoadBorrowedBooks(TextBox1.Text)
+    Private Sub SetupDataGridView()
+        With DataGridView1
+            .Columns.Clear()
+            .Rows.Clear()
+            .ColumnHeadersDefaultCellStyle.Font = New Font("Arial", 10, FontStyle.Bold)
+            .ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray
+            .ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .EnableHeadersVisualStyles = False
+            .DefaultCellStyle.Font = New Font("Arial", 9)
+            .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .RowTemplate.Height = 30
+            .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        End With
     End Sub
 
     Private Sub LoadBorrowedBooks(Optional searchQuery As String = "")
-        FlowLayoutPanel1.Controls.Clear()
+        DataGridView1.Rows.Clear()
+        DataGridView1.Columns.Clear()
 
         Using conn As New MySqlConnection(connString)
             Dim query As String = "SELECT borrow.BorrowID, borrow.BookID, book.Title, book.Author, borrow.StudNo, users.FullName, borrow.BorrowDate, borrow.DueDate " &
@@ -31,66 +46,34 @@ Public Class Form3
                 Try
                     conn.Open()
                     Dim reader As MySqlDataReader = cmd.ExecuteReader()
+
+                    DataGridView1.Columns.Add("BorrowID", "Borrow ID")
+                    DataGridView1.Columns.Add("BookID", "Book ID")
+                    DataGridView1.Columns.Add("Title", "Title")
+                    DataGridView1.Columns.Add("Author", "Author")
+                    DataGridView1.Columns.Add("StudNo", "Student No")
+                    DataGridView1.Columns.Add("FullName", "Borrower Name")
+                    DataGridView1.Columns.Add("BorrowDate", "Borrow Date")
+                    DataGridView1.Columns.Add("DueDate", "Due Date")
+
+                    Dim returnButton As New DataGridViewButtonColumn()
+                    returnButton.Name = "Return"
+                    returnButton.HeaderText = "Action"
+                    returnButton.Text = "Return"
+                    returnButton.UseColumnTextForButtonValue = True
+                    DataGridView1.Columns.Add(returnButton)
+
                     While reader.Read()
-                        Dim borrowID As String = reader("BorrowID").ToString()
-                        Dim bookID As String = reader("BookID").ToString()
-                        Dim studentName As String = reader("FullName").ToString()
-                        Dim borrowDate As String = Convert.ToDateTime(reader("BorrowDate")).ToString("MMM dd, yyyy")
-                        Dim dueDate As String = Convert.ToDateTime(reader("DueDate")).ToString("MMM dd, yyyy")
-
-                        Dim bookPanel As New Panel With {
-                            .Size = New Size(182, 280),
-                            .BackColor = Color.WhiteSmoke,
-                            .BorderStyle = BorderStyle.None
-                        }
-
-                        Dim lblTitle As New Label With {
-                            .Text = reader("Title").ToString(),
-                            .AutoSize = False,
-                            .Location = New Point(10, 10),
-                            .Size = New Size(160, 40),
-                            .TextAlign = ContentAlignment.MiddleCenter,
-                            .Font = New Font("Arial", 10, FontStyle.Bold)
-                        }
-
-                        Dim lblBorrower As New Label With {
-                            .Text = "Borrowed by: " & studentName,
-                            .AutoSize = False,
-                            .Location = New Point(10, 35),
-                            .Size = New Size(200, 20)
-                        }
-
-                        Dim borrowDates As New Label With {
-                            .Text = "Borrowed: " & borrowDate,
-                            .AutoSize = False,
-                            .Location = New Point(10, 60),
-                            .Size = New Size(200, 20)
-                        }
-
-                        Dim dueDates As New Label With {
-                            .Text = "Due: " & dueDate,
-                            .AutoSize = False,
-                            .Location = New Point(10, 80),
-                            .Size = New Size(200, 20)
-                        }
-
-                        Dim btnReturn As New Button With {
-                            .Text = "Return",
-                            .Size = New Size(80, 30),
-                            .Location = New Point(70, 110),
-                            .BackColor = Color.Red,
-                            .ForeColor = Color.White
-                        }
-                        btnReturn.Tag = borrowID
-                        AddHandler btnReturn.Click, AddressOf ReturnBook
-
-                        bookPanel.Controls.Add(lblTitle)
-                        bookPanel.Controls.Add(lblBorrower)
-                        bookPanel.Controls.Add(borrowDates)
-                        bookPanel.Controls.Add(dueDates)
-                        bookPanel.Controls.Add(btnReturn)
-
-                        FlowLayoutPanel1.Controls.Add(bookPanel)
+                        DataGridView1.Rows.Add(
+                            reader("BorrowID").ToString(),
+                            reader("BookID").ToString(),
+                            reader("Title").ToString(),
+                            reader("Author").ToString(),
+                            reader("StudNo").ToString(),
+                            reader("FullName").ToString(),
+                            Convert.ToDateTime(reader("BorrowDate")).ToString("MMM dd, yyyy"),
+                            Convert.ToDateTime(reader("DueDate")).ToString("MMM dd, yyyy")
+                        )
                     End While
                     reader.Close()
                 Catch ex As Exception
@@ -100,30 +83,19 @@ Public Class Form3
         End Using
     End Sub
 
-    Private Sub ReturnBook(sender As Object, e As EventArgs)
-        Dim btn As Button = DirectCast(sender, Button)
-        Dim borrowID As String = btn.Tag.ToString()
+    Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
+        If e.ColumnIndex = DataGridView1.Columns("Return").Index AndAlso e.RowIndex >= 0 Then
+            Dim borrowID As String = DataGridView1.Rows(e.RowIndex).Cells("BorrowID").Value.ToString()
+            Dim bookID As String = DataGridView1.Rows(e.RowIndex).Cells("BookID").Value.ToString()
+            Dim title As String = DataGridView1.Rows(e.RowIndex).Cells("Title").Value.ToString()
+            Dim studentName As String = DataGridView1.Rows(e.RowIndex).Cells("FullName").Value.ToString()
+            Dim studNo As String = DataGridView1.Rows(e.RowIndex).Cells("StudNo").Value.ToString()
 
-        Using conn As New MySqlConnection(connString)
-            Dim query As String = "UPDATE borrow SET StatusName = 'Available', ReturnDate = NOW() WHERE BorrowID = @BorrowID AND StatusName = 'Borrowed'"
-            Using cmd As New MySqlCommand(query, conn)
-                cmd.Parameters.AddWithValue("@BorrowID", borrowID)
+            Dim returnForm As New Form9(borrowID, bookID, title, studentName, studNo)
+            returnForm.Show()
+            Me.Hide()
 
-                Try
-                    conn.Open()
-                    Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
-
-                    If rowsAffected > 0 Then
-                        MessageBox.Show("Book returned successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        LoadBorrowedBooks()
-                    Else
-                        MessageBox.Show("No active borrow record found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    End If
-                Catch ex As Exception
-                    MessageBox.Show("Error: " & ex.Message)
-                End Try
-            End Using
-        End Using
+        End If
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
