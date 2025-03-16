@@ -21,6 +21,7 @@ The Book Borrowing System is a digital solution designed to streamline the borro
 1. Install Microsoft Visual Studio 2022
 2. Install XAMPP and enable MySQL
 3. Download and install MySQL Connector 9.2
+- https://dev.mysql.com/downloads/connector/odbc/
 ```
 
 ### Step 2: Clone the Repository
