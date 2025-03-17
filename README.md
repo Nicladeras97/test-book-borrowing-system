@@ -23,7 +23,9 @@ The Book Borrowing System is a digital solution designed to streamline the borro
 3. Download and install MySQL Connector 9.2
 ```
 
-```sh https://dev.mysql.com/downloads/connector/odbc/ ```
+```sh
+https://dev.mysql.com/downloads/connector/odbc/
+```
 
 ### Step 2: Clone the Repository
 ```sh
