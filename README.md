@@ -67,7 +67,7 @@ git clone https://github.com/Nicladeras97/book-borrowing-system-mysql.git
 ```xml
 <connectionStrings>
   <add name="MySqlConnection" 
-       connectionString="server=localhost; database=book_borrowing_db; user id=root; password=yourpassword;" 
+       connectionString="server=localhost; database=book_borrowing_db; user id=root; password=;" 
        providerName="MySql.Data.MySqlClient" />
 </connectionStrings>
 ```
