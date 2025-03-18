@@ -42,15 +42,25 @@ Public Class Form9
                 Dim transaction As MySqlTransaction = conn.BeginTransaction()
 
                 Try
-                    Dim query As String = "UPDATE borrow SET StatusName = 'Returned' WHERE BorrowID = @BorrowID"
+                    Dim query As String = "UPDATE borrow SET StatusName = 'Available' WHERE BorrowID = @BorrowID"
                     Using cmd As New MySqlCommand(query, conn, transaction)
                         cmd.Parameters.AddWithValue("@BorrowID", BorrowID)
                         cmd.ExecuteNonQuery()
                     End Using
 
-                    Dim updateStockQuery As String = "UPDATE book SET AvailableCopies = AvailableCopies + 1 WHERE BookID = @BookID"
+                    Dim updateStockQuery As String = "UPDATE book SET Copies = Copies + 1 WHERE BookID = @BookID"
                     Using cmd As New MySqlCommand(updateStockQuery, conn, transaction)
                         cmd.Parameters.AddWithValue("@BookID", BookID)
+                        cmd.ExecuteNonQuery()
+                    End Using
+
+                    Dim insertReturnedQuery As String = "INSERT INTO returned (BorrowID, BookID, StudentName, StudNo, ReturnDate) " &
+                                                    "VALUES (@BorrowID, @BookID, @StudentName, @StudNo, NOW())"
+                    Using cmd As New MySqlCommand(insertReturnedQuery, conn, transaction)
+                        cmd.Parameters.AddWithValue("@BorrowID", BorrowID)
+                        cmd.Parameters.AddWithValue("@BookID", BookID)
+                        cmd.Parameters.AddWithValue("@StudentName", StudentName)
+                        cmd.Parameters.AddWithValue("@StudNo", StudNo)
                         cmd.ExecuteNonQuery()
                     End Using
 
@@ -61,6 +71,7 @@ Public Class Form9
                     Dim form3 As New Form3()
                     form3.Show()
                     Me.Close()
+
                 Catch ex As Exception
                     transaction.Rollback()
                     MessageBox.Show("Transaction failed: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -71,6 +82,7 @@ Public Class Form9
             End Try
         End Using
     End Sub
+
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Dim back As New Form3()

@@ -39,7 +39,6 @@ Partial Class Form2
         ' 
         Panel1.BackColor = Color.LightBlue
         Panel1.Controls.Add(Button2)
-        Panel1.Controls.Add(Button1)
         Panel1.Controls.Add(Label1)
         Panel1.Controls.Add(PictureBox1)
         Panel1.Dock = DockStyle.Top
@@ -63,11 +62,11 @@ Partial Class Form2
         ' 
         ' Button1
         ' 
-        Button1.BackgroundImage = My.Resources.Resources.home
+        Button1.BackgroundImage = My.Resources.Resources.back
         Button1.BackgroundImageLayout = ImageLayout.Zoom
         Button1.FlatAppearance.BorderSize = 0
         Button1.FlatStyle = FlatStyle.Flat
-        Button1.Location = New Point(920, 17)
+        Button1.Location = New Point(16, 101)
         Button1.Name = "Button1"
         Button1.Size = New Size(15, 15)
         Button1.TabIndex = 6
@@ -96,22 +95,22 @@ Partial Class Form2
         ' 
         ' TextBox1
         ' 
-        TextBox1.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TextBox1.Location = New Point(119, 95)
+        TextBox1.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        TextBox1.Location = New Point(685, 73)
         TextBox1.Margin = New Padding(4, 3, 4, 3)
         TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(730, 26)
+        TextBox1.Size = New Size(250, 22)
         TextBox1.TabIndex = 2
         TextBox1.Text = "Search"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(119, 197)
+        Label2.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label2.Location = New Point(38, 101)
         Label2.Margin = New Padding(4, 0, 4, 0)
         Label2.Name = "Label2"
-        Label2.Size = New Size(121, 18)
+        Label2.Size = New Size(99, 16)
         Label2.TabIndex = 4
         Label2.Text = "Available Books"
         ' 
@@ -121,10 +120,10 @@ Partial Class Form2
         DataGridView1.BorderStyle = BorderStyle.None
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridView1.GridColor = Color.White
-        DataGridView1.Location = New Point(119, 238)
+        DataGridView1.Location = New Point(38, 137)
         DataGridView1.Name = "DataGridView1"
-        DataGridView1.Size = New Size(730, 290)
-        DataGridView1.TabIndex = 8
+        DataGridView1.Size = New Size(897, 391)
+        DataGridView1.TabIndex = 12
         ' 
         ' Form2
         ' 
@@ -133,6 +132,7 @@ Partial Class Form2
         BackColor = Color.White
         ClientSize = New Size(984, 561)
         Controls.Add(DataGridView1)
+        Controls.Add(Button1)
         Controls.Add(Label2)
         Controls.Add(TextBox1)
         Controls.Add(Panel1)

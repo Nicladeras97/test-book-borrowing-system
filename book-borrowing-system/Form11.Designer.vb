@@ -188,9 +188,9 @@ Partial Class Form11
         Label4.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label4.Location = New Point(55, 57)
         Label4.Name = "Label4"
-        Label4.Size = New Size(89, 16)
+        Label4.Size = New Size(86, 16)
         Label4.TabIndex = 0
-        Label4.Text = "Book Records"
+        Label4.Text = "Book Reports"
         ' 
         ' Form11
         ' 

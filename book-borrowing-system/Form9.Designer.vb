@@ -218,6 +218,7 @@ Partial Class Form9
         ' DateTimePicker1
         ' 
         DateTimePicker1.CalendarFont = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DateTimePicker1.Format = DateTimePickerFormat.Custom
         DateTimePicker1.Location = New Point(274, 441)
         DateTimePicker1.Name = "DateTimePicker1"
         DateTimePicker1.Size = New Size(247, 22)

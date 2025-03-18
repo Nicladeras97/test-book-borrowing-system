@@ -5,95 +5,66 @@ Public Class Form2
     Dim connString As String = "server=localhost; user=root; password=; database=book-borrowing"
     Dim conn As New MySqlConnection(connString)
 
-    Private Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        LoadBooks()
+    Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SetupDataGridView()
+        LoadAvailableBooks()
     End Sub
 
     Private Sub TextBox1_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox1.TextChanged
-        LoadBooks(TextBox1.Text)
+        LoadAvailableBooks(TextBox1.Text)
     End Sub
 
-    Private Sub Button3_Click(ByVal sender As Object, ByVal e As EventArgs)
-        LoadBooks(TextBox1.Text)
+    Private Sub SetupDataGridView()
+        With DataGridView1
+            .Columns.Clear()
+            .Rows.Clear()
+            .ColumnHeadersDefaultCellStyle.Font = New Font("Arial", 10, FontStyle.Bold)
+            .ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray
+            .ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .EnableHeadersVisualStyles = False
+            .DefaultCellStyle.Font = New Font("Arial", 9)
+            .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .RowTemplate.Height = 30
+            .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        End With
     End Sub
 
-    Public Sub LoadBooks(Optional searchQuery As String = "")
-        DataGridView1.Controls.Clear()
+    Private Sub LoadAvailableBooks(Optional searchQuery As String = "")
+        DataGridView1.Rows.Clear()
+        DataGridView1.Columns.Clear()
 
         Using conn As New MySqlConnection(connString)
-            Dim query As String = "SELECT * FROM book WHERE Title LIKE @search OR Author LIKE @search"
+            Dim query As String = "SELECT BookID, Title, Author, Copies, Image FROM book " &
+                              "WHERE Status = 'Available' " &
+                              "AND Copies > 0 " &
+                              "AND (Title LIKE @search OR Author LIKE @search)"
+
             Using cmd As New MySqlCommand(query, conn)
                 cmd.Parameters.AddWithValue("@search", "%" & searchQuery & "%")
 
                 Try
                     conn.Open()
                     Dim reader As MySqlDataReader = cmd.ExecuteReader()
+
+                    DataGridView1.Columns.Add("BookID", "Book ID")
+                    DataGridView1.Columns.Add("Title", "Title")
+                    DataGridView1.Columns.Add("Author", "Author")
+                    DataGridView1.Columns.Add("Copies", "Copies")
+
+                    Dim borrowButton As New DataGridViewButtonColumn()
+                    borrowButton.Name = "Borrow"
+                    borrowButton.HeaderText = "Action"
+                    borrowButton.Text = "Borrow"
+                    borrowButton.UseColumnTextForButtonValue = True
+                    DataGridView1.Columns.Add(borrowButton)
+
                     While reader.Read()
-                        Dim bookID As String = reader("BookID").ToString()
-                        Dim bookPanel As New Panel With {
-                            .Size = New Size(182, 280),
-                            .BackColor = Color.WhiteSmoke,
-                            .BorderStyle = BorderStyle.None
-                        }
-
-                        Dim bookImage As New PictureBox With {
-                            .Size = New Size(100, 137),
-                            .Location = New Point(38, 13),
-                            .SizeMode = PictureBoxSizeMode.StretchImage
-                        }
-
-                        Dim imagePath As String = reader("Image").ToString()
-                        Try
-                            If File.Exists(imagePath) Then
-                                bookImage.Image = Image.FromFile(imagePath)
-                            Else
-                                bookImage.Image = My.Resources.image
-                            End If
-                        Catch ex As Exception
-                            bookImage.Image = My.Resources.image
-                        End Try
-
-                        Dim bookTitle As New Label With {
-                            .Text = reader("Title").ToString(),
-                            .AutoSize = False,
-                            .Location = New Point(10, 160),
-                            .Size = New Size(160, 40),
-                            .TextAlign = ContentAlignment.MiddleCenter,
-                            .Font = New Font("Arial", 10, FontStyle.Bold)
-                        }
-
-                        Dim bookAuthor As New Label With {
-                            .Text = reader("Author").ToString(),
-                            .Location = New Point(10, 200),
-                            .Size = New Size(160, 20),
-                            .TextAlign = ContentAlignment.MiddleCenter
-                        }
-
-                        Dim bookCopies As New Label With {
-                            .Text = "Copies: " & reader("Copies").ToString(),
-                            .Location = New Point(10, 220),
-                            .Size = New Size(160, 20),
-                            .TextAlign = ContentAlignment.MiddleCenter
-                        }
-
-                        Dim btnBorrow As New Button With {
-                            .Text = "Borrow",
-                            .Size = New Size(80, 30),
-                            .Location = New Point(51, 240),
-                            .BackColor = Color.Green,
-                            .ForeColor = Color.White
-                        }
-                        btnBorrow.Tag = bookID
-                        AddHandler btnBorrow.Click, AddressOf BorrowBook
-
-                        bookImage.Tag = bookID
-                        bookPanel.Controls.Add(bookImage)
-                        bookPanel.Controls.Add(bookTitle)
-                        bookPanel.Controls.Add(bookAuthor)
-                        bookPanel.Controls.Add(bookCopies)
-                        bookPanel.Controls.Add(btnBorrow)
-
-                        DataGridView1.Controls.Add(bookPanel)
+                        DataGridView1.Rows.Add(
+                        reader("BookID").ToString(),
+                        reader("Title").ToString(),
+                        reader("Author").ToString(),
+                        reader("Copies").ToString()
+                    )
                     End While
                     reader.Close()
 
@@ -104,49 +75,24 @@ Public Class Form2
         End Using
     End Sub
 
-    Private Sub BorrowBook(sender As Object, e As EventArgs)
-        Dim btn As Button = DirectCast(sender, Button)
-        Dim bookID As String = btn.Tag.ToString()
-        Dim title As String = ""
-        Dim author As String = ""
-        Dim copies As Integer = 0
-        Dim imagePath As String = ""
 
-        Using conn As New MySqlConnection(connString)
-            Dim query As String = "SELECT Title, Author, Copies, Image FROM book WHERE BookID = @bookID"
-            Using cmd As New MySqlCommand(query, conn)
-                cmd.Parameters.AddWithValue("@bookID", bookID)
+    Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
 
-                Try
-                    conn.Open()
-                    Dim reader As MySqlDataReader = cmd.ExecuteReader()
-                    If reader.Read() Then
-                        title = reader("Title").ToString()
-                        author = reader("Author").ToString()
-                        copies = Convert.ToInt32(reader("Copies"))
-                        imagePath = reader("Image").ToString()
-                        reader.Close()
+        If e.ColumnIndex = DataGridView1.Columns("Borrow").Index AndAlso e.RowIndex >= 0 Then
+            Dim bookID As String = DataGridView1.Rows(e.RowIndex).Cells("BookID").Value.ToString()
+            Dim title As String = DataGridView1.Rows(e.RowIndex).Cells("Title").Value.ToString()
+            Dim author As String = DataGridView1.Rows(e.RowIndex).Cells("Author").Value.ToString()
+            Dim copies As String = DataGridView1.Rows(e.RowIndex).Cells("Copies").Value.ToString()
 
-                        Dim borrowForm As New Form8(bookID, title, imagePath, copies)
-                        borrowForm.Show()
-                        Me.Hide()
-
-                    Else
-                        MessageBox.Show("This book is not available!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    End If
-
-                Catch ex As Exception
-                    MessageBox.Show("Error: " & ex.Message)
-                End Try
-            End Using
-        End Using
+            Dim borrowForm As New Form8(bookID, title, author, copies, author)
+            borrowForm.Show()
+            Me.Hide()
+        End If
     End Sub
-
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim back As New Form11()
         back.Show()
         Me.Hide()
     End Sub
-
 End Class

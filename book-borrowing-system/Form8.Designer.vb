@@ -218,6 +218,7 @@ Partial Class Form8
         ' 
         ' DateTimePicker1
         ' 
+        DateTimePicker1.Format = DateTimePickerFormat.Custom
         DateTimePicker1.Location = New Point(274, 417)
         DateTimePicker1.Name = "DateTimePicker1"
         DateTimePicker1.Size = New Size(247, 22)
@@ -225,6 +226,7 @@ Partial Class Form8
         ' 
         ' DateTimePicker2
         ' 
+        DateTimePicker2.Format = DateTimePickerFormat.Custom
         DateTimePicker2.Location = New Point(274, 454)
         DateTimePicker2.Name = "DateTimePicker2"
         DateTimePicker2.Size = New Size(247, 22)

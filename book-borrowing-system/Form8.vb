@@ -7,13 +7,15 @@ Public Class Form8
     Private bookTitle As String
     Private bookImage As String
     Private copies As Integer
+    Private bookAuthor As String
 
-    Public Sub New(selectedBookID As String, title As String, imagePath As String, availableCopies As Integer)
+    Public Sub New(selectedBookID As String, title As String, imagePath As String, availableCopies As Integer, author As String)
         InitializeComponent()
         bookID = selectedBookID
         bookTitle = title
         bookImage = imagePath
         copies = availableCopies
+        bookAuthor = author
 
         Label3.Text = bookID
         Label2.Text = bookTitle
@@ -102,16 +104,19 @@ Public Class Form8
                     End If
                 End Using
 
-                Dim insertQuery As String = "INSERT INTO borrow (StudNo, BookID, BorrowDate, DueDate, StatusName, Title, Image) VALUES (@StudNo, @BookID, @BorrowDate, @DueDate, 'Borrowed', @Title, @Image)"
+                Dim insertQuery As String = "INSERT INTO borrow (StudNo, BookID, BorrowDate, DueDate, StatusName, Title, Author) " &
+                            "VALUES (@StudNo, @BookID, @BorrowDate, @DueDate, 'Borrowed', @Title, @Author)"
+
                 Using cmd As New MySqlCommand(insertQuery, conn)
                     cmd.Parameters.AddWithValue("@StudNo", studentNumber)
                     cmd.Parameters.AddWithValue("@BookID", bookID)
                     cmd.Parameters.AddWithValue("@BorrowDate", borrowDate)
                     cmd.Parameters.AddWithValue("@DueDate", dueDate)
                     cmd.Parameters.AddWithValue("@Title", bookTitle)
-                    cmd.Parameters.AddWithValue("@Image", bookImage)
+                    cmd.Parameters.AddWithValue("@Author", bookAuthor)
                     cmd.ExecuteNonQuery()
                 End Using
+
 
                 Dim updateQuery As String = "UPDATE book 
                     SET Copies = Copies - 1, 

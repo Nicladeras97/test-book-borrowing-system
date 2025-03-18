@@ -39,7 +39,6 @@ Partial Class Form3
         ' 
         Panel1.BackColor = Color.LightBlue
         Panel1.Controls.Add(Button2)
-        Panel1.Controls.Add(Button1)
         Panel1.Controls.Add(Label1)
         Panel1.Controls.Add(PictureBox1)
         Panel1.Dock = DockStyle.Top
@@ -62,11 +61,11 @@ Partial Class Form3
         ' 
         ' Button1
         ' 
-        Button1.BackgroundImage = My.Resources.Resources.home
+        Button1.BackgroundImage = My.Resources.Resources.back
         Button1.BackgroundImageLayout = ImageLayout.Zoom
         Button1.FlatAppearance.BorderSize = 0
         Button1.FlatStyle = FlatStyle.Flat
-        Button1.Location = New Point(920, 17)
+        Button1.Location = New Point(14, 101)
         Button1.Name = "Button1"
         Button1.Size = New Size(15, 15)
         Button1.TabIndex = 8
@@ -128,6 +127,7 @@ Partial Class Form3
         BackColor = Color.White
         ClientSize = New Size(984, 561)
         Controls.Add(DataGridView1)
+        Controls.Add(Button1)
         Controls.Add(Label2)
         Controls.Add(TextBox1)
         Controls.Add(Panel1)
