@@ -63,15 +63,6 @@ git clone https://github.com/Nicladeras97/book-borrowing-system-mysql.git
 5. Click Test to ensure the connection works, then click OK.
 ```
 
-#### Method 3: Configuring in `App.config`
-```xml
-<connectionStrings>
-  <add name="MySqlConnection" 
-       connectionString="server=localhost; database=book_borrowing_db; user id=root; password=;" 
-       providerName="MySql.Data.MySqlClient" />
-</connectionStrings>
-```
-
 ### Step 5: Run the Application
 ```sh
 1. Open the project in Visual Studio
