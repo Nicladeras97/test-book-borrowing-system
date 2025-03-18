@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2025 at 10:26 AM
+-- Generation Time: Mar 18, 2025 at 10:25 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -44,7 +44,8 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`BookID`, `Title`, `Author`, `Year`, `ISBN`, `Category`, `Status`, `Image`, `Copies`) VALUES
-(1, 'The Hunger Games', 'Suzanne Collins', '2018', '978-0-439-02352-8', 'Non-Fiction', 'Available', 'C:\\Users\\PC\\source\\repos\\Nicladeras97\\book-borrowing-system-mysql\\book-borrowing-system\\img\\books\\book1.jpg', 4);
+(1, 'The Hunger Games', 'Suzanne Collins', '2018', '978-0-439-02352-8', 'Non-Fiction', 'Available', 'C:\\Users\\PC\\source\\repos\\Nicladeras97\\book-borrowing-system-mysql\\book-borrowing-system\\img\\books\\book1.jpg', 2),
+(2, 'You Didn\'t Hear This From Me: (Mostly) True Notes on Gossip', 'Kelsey McKinney', '2024', '9780241741191', 'Non-Fiction', 'Available', 'C:\\Users\\PC\\source\\repos\\Nicladeras97\\book-borrowing-system-mysql\\book-borrowing-system\\img\\books\\book2.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -60,18 +61,19 @@ CREATE TABLE `borrow` (
   `DueDate` date DEFAULT NULL,
   `StatusName` varchar(50) DEFAULT NULL,
   `Title` varchar(255) DEFAULT NULL,
-  `Image` varchar(255) DEFAULT NULL
+  `Author` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `borrow`
 --
 
-INSERT INTO `borrow` (`BorrowID`, `StudNo`, `BookID`, `BorrowDate`, `DueDate`, `StatusName`, `Title`, `Image`) VALUES
-(1, '211083', 1, '2025-03-14', '2025-03-15', 'Borrowed', NULL, NULL),
-(2, '211241', 1, '2025-03-14', '2025-03-18', 'Borrowed', NULL, NULL),
-(3, '213425', 1, '2025-03-14', '2025-03-18', 'Borrowed', NULL, NULL),
-(4, '211456', 1, '2025-03-14', '2025-03-21', 'Borrowed', 'The Hunger Games', 'C:\\Users\\PC\\source\\repos\\Nicladeras97\\book-borrowing-system-mysql\\book-borrowing-system\\img\\books\\book1.jpg');
+INSERT INTO `borrow` (`BorrowID`, `StudNo`, `BookID`, `BorrowDate`, `DueDate`, `StatusName`, `Title`, `Author`) VALUES
+(1, '211083', 1, '2025-03-18', '2025-03-19', 'Available', 'The Hunger Games', 'Suzanne Collins'),
+(2, '211098', 1, '2025-03-18', '2025-03-20', 'Available', 'The Hunger Games', 'Suzanne Collins'),
+(3, '211083', 2, '2025-03-18', '2025-03-18', 'Available', 'You Didn\'t Hear This From Me: (Mostly) True Notes on Gossip', 'Kelsey McKinney'),
+(4, '211083', 1, '2025-03-18', '2025-03-19', 'Borrowed', 'The Hunger Games', 'Suzanne Collins'),
+(5, '201107', 1, '2025-03-18', '2025-03-20', 'Borrowed', 'The Hunger Games', 'Suzanne Collins');
 
 -- --------------------------------------------------------
 
@@ -121,19 +123,21 @@ INSERT INTO `login` (`LibraryID`, `Username`, `Password`) VALUES
 
 CREATE TABLE `returned` (
   `ReturnID` int(11) NOT NULL,
-  `StudNo` varchar(50) DEFAULT NULL,
-  `BorrowID` int(11) DEFAULT NULL,
-  `ReturnDate` date DEFAULT NULL,
-  `Conditions` varchar(255) DEFAULT NULL
+  `BorrowID` int(11) NOT NULL,
+  `BookID` int(11) NOT NULL,
+  `StudentName` varchar(100) NOT NULL,
+  `StudNo` varchar(50) NOT NULL,
+  `ReturnDate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `returned`
 --
 
-INSERT INTO `returned` (`ReturnID`, `StudNo`, `BorrowID`, `ReturnDate`, `Conditions`) VALUES
-(1, '211083', 0, '2025-03-14', 'Good Condition'),
-(2, '211083', 1, '2025-03-14', 'Good Condition');
+INSERT INTO `returned` (`ReturnID`, `BorrowID`, `BookID`, `StudentName`, `StudNo`, `ReturnDate`) VALUES
+(1, 1, 1, 'Monica Cano', '211083', '2025-03-18 13:35:38'),
+(2, 2, 1, 'Sky', '211098', '2025-03-18 13:49:01'),
+(3, 3, 2, 'Monica Cano', '211083', '2025-03-18 13:51:06');
 
 -- --------------------------------------------------------
 
@@ -154,11 +158,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`UserID`, `StudNo`, `FullName`, `ContactNumber`) VALUES
 (1, '211083', 'Monica Cano', '09123456789'),
-(2, '', '', ''),
-(3, 'd', 'd', 'dd'),
-(4, '211241', 'Monic', '09123456789'),
-(5, '213425', 'Monique', '09123456789'),
-(6, '211456', 'Monica Cano', '09123456789');
+(2, '211241', 'Monic', '09123456789'),
+(3, '211098', 'Sky', '09123456789'),
+(8, '201107', 'Kimberly Jeresano', '09123456789');
 
 --
 -- Indexes for dumped tables
@@ -196,9 +198,7 @@ ALTER TABLE `login`
 -- Indexes for table `returned`
 --
 ALTER TABLE `returned`
-  ADD PRIMARY KEY (`ReturnID`),
-  ADD KEY `StudNo` (`StudNo`),
-  ADD KEY `BorrowID` (`BorrowID`);
+  ADD PRIMARY KEY (`ReturnID`);
 
 --
 -- Indexes for table `users`
@@ -215,13 +215,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `book`
 --
 ALTER TABLE `book`
-  MODIFY `BookID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `BookID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `borrow`
 --
 ALTER TABLE `borrow`
-  MODIFY `BorrowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `BorrowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `login`
@@ -233,13 +233,13 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `returned`
 --
 ALTER TABLE `returned`
-  MODIFY `ReturnID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ReturnID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
