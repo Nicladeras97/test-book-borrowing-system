@@ -3,9 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD:book-borrowing-system/database/book-borrowing.sql
 -- Generation Time: Mar 19, 2025 at 10:08 AM
+=======
+-- Generation Time: Mar 19, 2025 at 04:54 AM
+>>>>>>> 63091d7 (add changes in databse):database/book-borrowing.sql
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.1.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -44,12 +48,21 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`BookID`, `Title`, `Author`, `Year`, `ISBN`, `Category`, `Status`, `Image`, `Copies`) VALUES
+<<<<<<< HEAD:book-borrowing-system/database/book-borrowing.sql
 (1, 'The Hunger Games', 'Suzanne Collins', '2018', '978-0-439-02352-8', 'Fiction', 'Available', 'C:\\Users\\PC\\source\\repos\\Nicladeras97\\book-borrowing-system-mysql\\book-borrowing-system\\img\\books\\book1.jpg', 4),
 (2, 'You Didn\'t Hear This From Me: (Mostly) True Notes on Gossip', 'Kelsey McKinney', '2024', '9780241741191', 'Non-Fiction', 'Available', 'C:\\Users\\PC\\source\\repos\\Nicladeras97\\book-borrowing-system-mysql\\book-borrowing-system\\img\\books\\book2.jpg', 3),
 (3, 'Introduction to Earth Science - Second Edition', 'Introduction to Earth Science - Second Edition', '2025', '1962841227', 'Textbook', 'Available', 'C:\\Users\\PC\\source\\repos\\Nicladeras97\\book-borrowing-system-mysql\\book-borrowing-system\\img\\books\\book4.png', 3),
 (4, 'RBM: A Journal of Rare Books, Manuscripts, and Cultural Heritage', 'Diane Dias De Fazio', '2024', '1529-6407', 'Journal', 'Available', 'C:\\Users\\PC\\source\\repos\\Nicladeras97\\book-borrowing-system-mysql\\book-borrowing-system\\img\\books\\book3.jpg', 1),
 (5, 'The Wright Brothers', 'David McCullough', '2015', '978-1476728759', 'History', 'Available', 'C:\\Users\\PC\\source\\repos\\Nicladeras97\\book-borrowing-system-mysql\\book-borrowing-system\\img\\books\\book5.jpg', 1),
 (6, 'The Midnight Library', 'Matt Haig', '2020', '978-0525559474', 'Fiction', 'Available', 'C:\\Users\\PC\\source\\repos\\Nicladeras97\\book-borrowing-system-mysql\\book-borrowing-system\\img\\books\\book6.jpg', 1),
+=======
+(1, 'The Hunger Games', 'Suzanne Collins', '2018', '978-0-439-02352-8', 'Fiction', 'Available', 'C:\\Users\\PC\\source\\repos\\Nicladeras97\\book-borrowing-system-mysql\\book-borrowing-system\\img\\books\\book1.jpg', 2),
+(2, 'You Didn\'t Hear This From Me: (Mostly) True Notes on Gossip', 'Kelsey McKinney', '2024', '9780241741191', 'Non-Fiction', 'Available', 'C:\\Users\\PC\\source\\repos\\Nicladeras97\\book-borrowing-system-mysql\\book-borrowing-system\\img\\books\\book2.jpg', 3),
+(3, 'Introduction to Earth Science - Second Edition', 'Introduction to Earth Science - Second Edition', '2025', '1962841227', 'Textbook', 'Available', 'C:\\Users\\PC\\source\\repos\\Nicladeras97\\book-borrowing-system-mysql\\book-borrowing-system\\img\\books\\book4.png', 4),
+(4, 'RBM: A Journal of Rare Books, Manuscripts, and Cultural Heritage', 'Diane Dias De Fazio', '2024', '1529-6407', 'Journal', 'Available', 'C:\\Users\\PC\\source\\repos\\Nicladeras97\\book-borrowing-system-mysql\\book-borrowing-system\\img\\books\\book3.jpg', 1),
+(5, 'The Wright Brothers', 'David McCullough', '2015', '978-1476728759', 'History', 'Available', 'C:\\Users\\PC\\source\\repos\\Nicladeras97\\book-borrowing-system-mysql\\book-borrowing-system\\img\\books\\book5.jpg', 1),
+(6, 'The Midnight Library', 'Matt Haig', '2020', '978-0525559474', 'Fiction', 'Available', 'C:\\Users\\PC\\source\\repos\\Nicladeras97\\book-borrowing-system-mysql\\book-borrowing-system\\img\\books\\book6.jpg', 0),
+>>>>>>> 63091d7 (add changes in databse):database/book-borrowing.sql
 (7, 'The Anthropocene Reviewed', 'John Green', '2021', '978-0525555216', 'Non-Fiction', 'Available', 'C:\\Users\\PC\\source\\repos\\Nicladeras97\\book-borrowing-system-mysql\\book-borrowing-system\\img\\books\\book7.jpg', 0),
 (8, 'Caste: The Origins of Our Discontents', 'Isabel Wilkerson', '2020', '978-0593230251', 'History', 'Available', 'C:\\Users\\PC\\source\\repos\\Nicladeras97\\book-borrowing-system-mysql\\book-borrowing-system\\img\\books\\book8.jpg', 1),
 (9, 'Campbell Biology (12th Edition)', 'Lisa A. Urry et al.', '2020', '978-0135188743', 'Textbook', 'Available', 'C:\\Users\\PC\\source\\repos\\Nicladeras97\\book-borrowing-system-mysql\\book-borrowing-system\\img\\books\\book6.jpg', 1),
@@ -79,6 +92,7 @@ CREATE TABLE `borrow` (
 INSERT INTO `borrow` (`BorrowID`, `StudNo`, `BookID`, `BorrowDate`, `DueDate`, `StatusName`, `Title`, `Author`) VALUES
 (1, '211083', 1, '2025-03-18', '2025-03-19', 'Available', 'The Hunger Games', 'Suzanne Collins'),
 (2, '211098', 1, '2025-03-18', '2025-03-20', 'Available', 'The Hunger Games', 'Suzanne Collins'),
+<<<<<<< HEAD:book-borrowing-system/database/book-borrowing.sql
 (3, '211083', 1, '2025-03-18', '2025-03-19', 'Available', 'The Hunger Games', 'Suzanne Collins'),
 (4, '201107', 1, '2025-03-18', '2025-03-20', 'Available', 'The Hunger Games', 'Suzanne Collins'),
 (5, '213423', 6, '2025-03-19', '2025-03-21', 'Available', 'The Midnight Library', 'Matt Haig'),
@@ -86,6 +100,14 @@ INSERT INTO `borrow` (`BorrowID`, `StudNo`, `BookID`, `BorrowDate`, `DueDate`, `
 (7, '211083', 3, '2025-03-19', '2025-03-22', 'Borrowed', 'Introduction to Earth Science - Second Edition', 'Introduction to Earth Science - Second Edition'),
 (8, '211083', 2, '2025-03-19', '2025-03-19', 'Available', 'You Didn\'t Hear This From Me: (Mostly) True Notes on Gossip', 'Kelsey McKinney'),
 (9, '211241', 3, '2025-03-19', '2025-03-20', 'Borrowed', 'Introduction to Earth Science - Second Edition', 'Introduction to Earth Science - Second Edition');
+=======
+(3, '211083', 2, '2025-03-18', '2025-03-18', 'Available', 'You Didn\'t Hear This From Me: (Mostly) True Notes on Gossip', 'Kelsey McKinney'),
+(4, '211083', 1, '2025-03-18', '2025-03-19', 'Borrowed', 'The Hunger Games', 'Suzanne Collins'),
+(5, '201107', 1, '2025-03-18', '2025-03-20', 'Borrowed', 'The Hunger Games', 'Suzanne Collins'),
+(6, '213423', 6, '2025-03-19', '2025-03-21', 'Borrowed', 'The Midnight Library', 'Matt Haig'),
+(7, '211241', 7, '2025-03-19', '2025-03-20', 'Borrowed', 'The Anthropocene Reviewed', 'John Green'),
+(8, '211083', 3, '2025-03-19', '2025-03-22', 'Borrowed', 'Introduction to Earth Science - Second Edition', 'Introduction to Earth Science - Second Edition');
+>>>>>>> 63091d7 (add changes in databse):database/book-borrowing.sql
 
 -- --------------------------------------------------------
 
@@ -177,7 +199,11 @@ INSERT INTO `users` (`UserID`, `StudNo`, `FullName`, `ContactNumber`) VALUES
 (2, '211241', 'Monic', '09123456789'),
 (3, '211098', 'Sky', '09123456789'),
 (4, '201107', 'Kimberly Jeresano', '09123456789'),
+<<<<<<< HEAD:book-borrowing-system/database/book-borrowing.sql
 (5, '213423', 'John Dave', '09123456789');
+=======
+(9, '213423', 'John Dave', '09123456789');
+>>>>>>> 63091d7 (add changes in databse):database/book-borrowing.sql
 
 --
 -- Indexes for dumped tables
@@ -238,7 +264,11 @@ ALTER TABLE `book`
 -- AUTO_INCREMENT for table `borrow`
 --
 ALTER TABLE `borrow`
+<<<<<<< HEAD:book-borrowing-system/database/book-borrowing.sql
   MODIFY `BorrowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+=======
+  MODIFY `BorrowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+>>>>>>> 63091d7 (add changes in databse):database/book-borrowing.sql
 
 --
 -- AUTO_INCREMENT for table `login`
@@ -256,7 +286,11 @@ ALTER TABLE `returned`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
+<<<<<<< HEAD:book-borrowing-system/database/book-borrowing.sql
   MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+=======
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+>>>>>>> 63091d7 (add changes in databse):database/book-borrowing.sql
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
