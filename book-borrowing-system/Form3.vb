@@ -33,12 +33,13 @@ Public Class Form3
         DataGridView1.Columns.Clear()
 
         Using conn As New MySqlConnection(connString)
-            Dim query As String = "SELECT borrow.BorrowID, borrow.BookID, book.Title, book.Author, borrow.StudNo, users.FullName, borrow.BorrowDate, borrow.DueDate " &
-                                  "FROM borrow " &
-                                  "INNER JOIN book ON borrow.BookID = book.BookID " &
-                                  "INNER JOIN users ON borrow.StudNo = users.StudNo " &
-                                  "WHERE borrow.StatusName = 'Borrowed' " &
-                                  "AND (book.Title LIKE @search OR users.FullName LIKE @search)"
+            Dim query As String = "SELECT borrow.BorrowID, borrow.BookID, book.Title, book.Author, borrow.StudNo, users.FullName, borrow.BorrowDate, borrow.DueDate, book.Image " &
+                      "FROM borrow " &
+                      "INNER JOIN book ON borrow.BookID = book.BookID " &
+                      "INNER JOIN users ON borrow.StudNo = users.StudNo " &
+                      "WHERE borrow.StatusName = 'Borrowed' " &
+                      "AND (book.Title LIKE @search OR users.FullName LIKE @search)"
+
 
             Using cmd As New MySqlCommand(query, conn)
                 cmd.Parameters.AddWithValue("@search", "%" & searchQuery & "%")
@@ -91,11 +92,24 @@ Public Class Form3
             Dim studentName As String = DataGridView1.Rows(e.RowIndex).Cells("FullName").Value.ToString()
             Dim studNo As String = DataGridView1.Rows(e.RowIndex).Cells("StudNo").Value.ToString()
 
-            Dim returnForm As New Form9(borrowID, bookID, title, studentName, studNo)
+            Dim imagePath As String = ""
+            Using conn As New MySqlConnection(connString)
+                conn.Open()
+                Dim imgQuery As String = "SELECT Image FROM book WHERE BookID = @BookID"
+                Using cmd As New MySqlCommand(imgQuery, conn)
+                    cmd.Parameters.AddWithValue("@BookID", bookID)
+                    Dim reader As MySqlDataReader = cmd.ExecuteReader()
+                    If reader.Read() Then
+                        imagePath = reader("Image").ToString()
+                    End If
+                End Using
+            End Using
+
+            Dim returnForm As New Form9(borrowID, bookID, title, studentName, studNo, imagePath)
             returnForm.Show()
             Me.Hide()
-
         End If
+
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
