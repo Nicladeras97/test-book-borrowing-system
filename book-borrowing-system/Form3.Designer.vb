@@ -24,9 +24,9 @@ Partial Class Form3
     Private Sub InitializeComponent()
         Panel1 = New Panel()
         Button2 = New Button()
-        Button1 = New Button()
         Label1 = New Label()
         PictureBox1 = New PictureBox()
+        Button1 = New Button()
         Label2 = New Label()
         TextBox1 = New TextBox()
         DataGridView1 = New DataGridView()
@@ -51,6 +51,7 @@ Partial Class Form3
         ' 
         Button2.BackgroundImage = My.Resources.Resources.notification
         Button2.BackgroundImageLayout = ImageLayout.Zoom
+        Button2.Cursor = Cursors.Hand
         Button2.FlatAppearance.BorderSize = 0
         Button2.FlatStyle = FlatStyle.Flat
         Button2.Location = New Point(948, 17)
@@ -58,18 +59,6 @@ Partial Class Form3
         Button2.Size = New Size(15, 15)
         Button2.TabIndex = 9
         Button2.UseVisualStyleBackColor = True
-        ' 
-        ' Button1
-        ' 
-        Button1.BackgroundImage = My.Resources.Resources.back
-        Button1.BackgroundImageLayout = ImageLayout.Zoom
-        Button1.FlatAppearance.BorderSize = 0
-        Button1.FlatStyle = FlatStyle.Flat
-        Button1.Location = New Point(14, 101)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(15, 15)
-        Button1.TabIndex = 8
-        Button1.UseVisualStyleBackColor = True
         ' 
         ' Label1
         ' 
@@ -90,6 +79,19 @@ Partial Class Form3
         PictureBox1.TabIndex = 0
         PictureBox1.TabStop = False
         ' 
+        ' Button1
+        ' 
+        Button1.BackgroundImage = My.Resources.Resources.back
+        Button1.BackgroundImageLayout = ImageLayout.Zoom
+        Button1.Cursor = Cursors.Hand
+        Button1.FlatAppearance.BorderSize = 0
+        Button1.FlatStyle = FlatStyle.Flat
+        Button1.Location = New Point(14, 101)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(15, 15)
+        Button1.TabIndex = 8
+        Button1.UseVisualStyleBackColor = True
+        ' 
         ' Label2
         ' 
         Label2.AutoSize = True
@@ -102,6 +104,7 @@ Partial Class Form3
         ' 
         ' TextBox1
         ' 
+        TextBox1.Cursor = Cursors.IBeam
         TextBox1.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TextBox1.Location = New Point(685, 73)
         TextBox1.Name = "TextBox1"
@@ -133,7 +136,7 @@ Partial Class Form3
         Controls.Add(Panel1)
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Name = "Form3"
-        Text = "Form3"
+        Text = "Borrowed Books"
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()

@@ -63,6 +63,7 @@ Partial Class Form11
         ' 
         Button2.BackgroundImage = My.Resources.Resources.notification
         Button2.BackgroundImageLayout = ImageLayout.Zoom
+        Button2.Cursor = Cursors.Hand
         Button2.FlatAppearance.BorderSize = 0
         Button2.FlatStyle = FlatStyle.Flat
         Button2.Location = New Point(948, 17)
@@ -75,6 +76,7 @@ Partial Class Form11
         ' 
         Button1.BackgroundImage = My.Resources.Resources.logout
         Button1.BackgroundImageLayout = ImageLayout.Zoom
+        Button1.Cursor = Cursors.Hand
         Button1.FlatAppearance.BorderSize = 0
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Location = New Point(920, 17)
@@ -107,6 +109,7 @@ Partial Class Form11
         Panel2.BackColor = Color.LightBlue
         Panel2.Controls.Add(PictureBox4)
         Panel2.Controls.Add(Label2)
+        Panel2.Cursor = Cursors.Hand
         Panel2.Location = New Point(126, 197)
         Panel2.Name = "Panel2"
         Panel2.Size = New Size(196, 206)
@@ -137,6 +140,7 @@ Partial Class Form11
         Panel3.BackColor = Color.LightBlue
         Panel3.Controls.Add(PictureBox5)
         Panel3.Controls.Add(Label3)
+        Panel3.Cursor = Cursors.Hand
         Panel3.Location = New Point(394, 196)
         Panel3.Name = "Panel3"
         Panel3.Size = New Size(196, 206)
@@ -167,6 +171,7 @@ Partial Class Form11
         Panel4.BackColor = Color.LightBlue
         Panel4.Controls.Add(PictureBox6)
         Panel4.Controls.Add(Label4)
+        Panel4.Cursor = Cursors.Hand
         Panel4.Location = New Point(664, 196)
         Panel4.Name = "Panel4"
         Panel4.Size = New Size(196, 206)
@@ -186,11 +191,11 @@ Partial Class Form11
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label4.Location = New Point(55, 57)
+        Label4.Location = New Point(39, 58)
         Label4.Name = "Label4"
-        Label4.Size = New Size(86, 16)
+        Label4.Size = New Size(116, 16)
         Label4.TabIndex = 0
-        Label4.Text = "Book Reports"
+        Label4.Text = "Book Management"
         ' 
         ' Form11
         ' 
@@ -204,7 +209,7 @@ Partial Class Form11
         Controls.Add(Panel1)
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Name = "Form11"
-        Text = "Menu"
+        Text = "Main Menu"
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()

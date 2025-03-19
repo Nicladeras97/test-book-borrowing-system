@@ -38,11 +38,15 @@ Partial Class Form9
         Label11 = New Label()
         Button2 = New Button()
         Label6 = New Label()
-        ComboBox1 = New ComboBox()
         DateTimePicker1 = New DateTimePicker()
+        CheckBox1 = New CheckBox()
+        CheckBox2 = New CheckBox()
+        CheckBox3 = New CheckBox()
+        GroupBox1 = New GroupBox()
         Panel1.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox5, ComponentModel.ISupportInitialize).BeginInit()
+        GroupBox1.SuspendLayout()
         SuspendLayout()
         ' 
         ' Panel1
@@ -61,6 +65,7 @@ Partial Class Form9
         ' 
         Button3.BackgroundImage = My.Resources.Resources.notification
         Button3.BackgroundImageLayout = ImageLayout.Zoom
+        Button3.Cursor = Cursors.Hand
         Button3.FlatAppearance.BorderSize = 0
         Button3.FlatStyle = FlatStyle.Flat
         Button3.Location = New Point(948, 18)
@@ -91,6 +96,7 @@ Partial Class Form9
         ' Button1
         ' 
         Button1.BackColor = SystemColors.HotTrack
+        Button1.Cursor = Cursors.Hand
         Button1.FlatAppearance.BorderSize = 0
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
@@ -114,6 +120,7 @@ Partial Class Form9
         ' 
         ' TextBox2
         ' 
+        TextBox2.Cursor = Cursors.IBeam
         TextBox2.Location = New Point(274, 356)
         TextBox2.Name = "TextBox2"
         TextBox2.Size = New Size(247, 22)
@@ -131,6 +138,7 @@ Partial Class Form9
         ' 
         ' TextBox1
         ' 
+        TextBox1.Cursor = Cursors.IBeam
         TextBox1.Location = New Point(274, 316)
         TextBox1.Name = "TextBox1"
         TextBox1.Size = New Size(247, 22)
@@ -207,22 +215,56 @@ Partial Class Form9
         Label6.TabIndex = 41
         Label6.Text = "Return Date"
         ' 
-        ' ComboBox1
-        ' 
-        ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(274, 397)
-        ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(247, 24)
-        ComboBox1.TabIndex = 42
-        ' 
         ' DateTimePicker1
         ' 
         DateTimePicker1.CalendarFont = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DateTimePicker1.Cursor = Cursors.Hand
         DateTimePicker1.Format = DateTimePickerFormat.Custom
         DateTimePicker1.Location = New Point(274, 441)
         DateTimePicker1.Name = "DateTimePicker1"
         DateTimePicker1.Size = New Size(247, 22)
         DateTimePicker1.TabIndex = 43
+        ' 
+        ' CheckBox1
+        ' 
+        CheckBox1.AutoSize = True
+        CheckBox1.Location = New Point(15, 14)
+        CheckBox1.Name = "CheckBox1"
+        CheckBox1.Size = New Size(57, 20)
+        CheckBox1.TabIndex = 44
+        CheckBox1.Text = "Good"
+        CheckBox1.UseVisualStyleBackColor = True
+        ' 
+        ' CheckBox2
+        ' 
+        CheckBox2.AutoSize = True
+        CheckBox2.Location = New Point(81, 14)
+        CheckBox2.Name = "CheckBox2"
+        CheckBox2.Size = New Size(81, 20)
+        CheckBox2.TabIndex = 45
+        CheckBox2.Text = "Damaged"
+        CheckBox2.UseVisualStyleBackColor = True
+        ' 
+        ' CheckBox3
+        ' 
+        CheckBox3.AutoSize = True
+        CheckBox3.Location = New Point(177, 14)
+        CheckBox3.Name = "CheckBox3"
+        CheckBox3.Size = New Size(51, 20)
+        CheckBox3.TabIndex = 46
+        CheckBox3.Text = "Lost"
+        CheckBox3.UseVisualStyleBackColor = True
+        ' 
+        ' GroupBox1
+        ' 
+        GroupBox1.Controls.Add(CheckBox3)
+        GroupBox1.Controls.Add(CheckBox1)
+        GroupBox1.Controls.Add(CheckBox2)
+        GroupBox1.Location = New Point(274, 387)
+        GroupBox1.Name = "GroupBox1"
+        GroupBox1.Size = New Size(247, 40)
+        GroupBox1.TabIndex = 47
+        GroupBox1.TabStop = False
         ' 
         ' Form9
         ' 
@@ -230,8 +272,8 @@ Partial Class Form9
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(984, 561)
+        Controls.Add(GroupBox1)
         Controls.Add(DateTimePicker1)
-        Controls.Add(ComboBox1)
         Controls.Add(Label6)
         Controls.Add(Button2)
         Controls.Add(Label11)
@@ -247,11 +289,13 @@ Partial Class Form9
         Controls.Add(Panel1)
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Name = "Form9"
-        Text = "Return Book"
+        Text = "Return Form"
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox5, ComponentModel.ISupportInitialize).EndInit()
+        GroupBox1.ResumeLayout(False)
+        GroupBox1.PerformLayout()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -272,6 +316,9 @@ Partial Class Form9
     Friend WithEvents Button2 As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents Label6 As Label
-    Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents CheckBox2 As CheckBox
+    Friend WithEvents CheckBox3 As CheckBox
+    Friend WithEvents GroupBox1 As GroupBox
 End Class

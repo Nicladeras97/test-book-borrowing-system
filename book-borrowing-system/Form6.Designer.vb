@@ -30,16 +30,20 @@ Partial Class Form6
         GroupBox1 = New GroupBox()
         ComboBox2 = New ComboBox()
         Label5 = New Label()
-        Button2 = New Button()
         Label4 = New Label()
         DateTimePicker2 = New DateTimePicker()
         DateTimePicker1 = New DateTimePicker()
         Label3 = New Label()
-        Button1 = New Button()
         ComboBox1 = New ComboBox()
         Label2 = New Label()
+        Button2 = New Button()
+        Button1 = New Button()
         Button3 = New Button()
         DataGridView1 = New DataGridView()
+        TextBox1 = New TextBox()
+        Button4 = New Button()
+        Button5 = New Button()
+        Button6 = New Button()
         Panel1.SuspendLayout()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -92,16 +96,14 @@ Partial Class Form6
         ' 
         GroupBox1.Controls.Add(ComboBox2)
         GroupBox1.Controls.Add(Label5)
-        GroupBox1.Controls.Add(Button2)
         GroupBox1.Controls.Add(Label4)
         GroupBox1.Controls.Add(DateTimePicker2)
         GroupBox1.Controls.Add(DateTimePicker1)
         GroupBox1.Controls.Add(Label3)
-        GroupBox1.Controls.Add(Button1)
         GroupBox1.Controls.Add(ComboBox1)
         GroupBox1.Controls.Add(Label2)
         GroupBox1.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        GroupBox1.Location = New Point(38, 69)
+        GroupBox1.Location = New Point(38, 107)
         GroupBox1.Name = "GroupBox1"
         GroupBox1.Size = New Size(893, 60)
         GroupBox1.TabIndex = 6
@@ -126,24 +128,11 @@ Partial Class Form6
         Label5.TabIndex = 8
         Label5.Text = "Type"
         ' 
-        ' Button2
-        ' 
-        Button2.BackColor = Color.SkyBlue
-        Button2.Cursor = Cursors.Hand
-        Button2.FlatStyle = FlatStyle.Flat
-        Button2.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Button2.Location = New Point(727, 14)
-        Button2.Name = "Button2"
-        Button2.Size = New Size(69, 33)
-        Button2.TabIndex = 7
-        Button2.Text = "Export"
-        Button2.UseVisualStyleBackColor = False
-        ' 
         ' Label4
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label4.Location = New Point(594, 24)
+        Label4.Location = New Point(752, 24)
         Label4.Name = "Label4"
         Label4.Size = New Size(19, 16)
         Label4.TabIndex = 6
@@ -153,7 +142,7 @@ Partial Class Form6
         ' 
         DateTimePicker2.CustomFormat = ""
         DateTimePicker2.Format = DateTimePickerFormat.Custom
-        DateTimePicker2.Location = New Point(614, 21)
+        DateTimePicker2.Location = New Point(772, 21)
         DateTimePicker2.Name = "DateTimePicker2"
         DateTimePicker2.Size = New Size(104, 22)
         DateTimePicker2.TabIndex = 5
@@ -163,7 +152,7 @@ Partial Class Form6
         ' 
         DateTimePicker1.CustomFormat = ""
         DateTimePicker1.Format = DateTimePickerFormat.Custom
-        DateTimePicker1.Location = New Point(488, 21)
+        DateTimePicker1.Location = New Point(646, 21)
         DateTimePicker1.Name = "DateTimePicker1"
         DateTimePicker1.Size = New Size(104, 22)
         DateTimePicker1.TabIndex = 4
@@ -173,24 +162,11 @@ Partial Class Form6
         ' 
         Label3.AutoSize = True
         Label3.Font = New Font("Arial", 9.75F, FontStyle.Bold)
-        Label3.Location = New Point(405, 24)
+        Label3.Location = New Point(563, 24)
         Label3.Name = "Label3"
         Label3.Size = New Size(81, 16)
         Label3.TabIndex = 3
         Label3.Text = "Date Range"
-        ' 
-        ' Button1
-        ' 
-        Button1.BackColor = Color.SkyBlue
-        Button1.Cursor = Cursors.Hand
-        Button1.FlatStyle = FlatStyle.Flat
-        Button1.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Button1.Location = New Point(802, 14)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(85, 33)
-        Button1.TabIndex = 2
-        Button1.Text = "Generate"
-        Button1.UseVisualStyleBackColor = False
         ' 
         ' ComboBox1
         ' 
@@ -209,6 +185,32 @@ Partial Class Form6
         Label2.Size = New Size(64, 16)
         Label2.TabIndex = 0
         Label2.Text = "Category"
+        ' 
+        ' Button2
+        ' 
+        Button2.BackColor = Color.SkyBlue
+        Button2.Cursor = Cursors.Hand
+        Button2.FlatStyle = FlatStyle.Flat
+        Button2.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Button2.Location = New Point(771, 71)
+        Button2.Name = "Button2"
+        Button2.Size = New Size(69, 33)
+        Button2.TabIndex = 7
+        Button2.Text = "Export"
+        Button2.UseVisualStyleBackColor = False
+        ' 
+        ' Button1
+        ' 
+        Button1.BackColor = Color.SkyBlue
+        Button1.Cursor = Cursors.Hand
+        Button1.FlatStyle = FlatStyle.Flat
+        Button1.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Button1.Location = New Point(846, 71)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(85, 33)
+        Button1.TabIndex = 2
+        Button1.Text = "Generate"
+        Button1.UseVisualStyleBackColor = False
         ' 
         ' Button3
         ' 
@@ -236,10 +238,60 @@ Partial Class Form6
         DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridView1.GridColor = SystemColors.ControlDark
-        DataGridView1.Location = New Point(38, 135)
+        DataGridView1.Location = New Point(38, 173)
         DataGridView1.Name = "DataGridView1"
-        DataGridView1.Size = New Size(893, 392)
+        DataGridView1.Size = New Size(893, 354)
         DataGridView1.TabIndex = 14
+        ' 
+        ' TextBox1
+        ' 
+        TextBox1.Cursor = Cursors.IBeam
+        TextBox1.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        TextBox1.Location = New Point(38, 71)
+        TextBox1.Margin = New Padding(4, 3, 4, 3)
+        TextBox1.Name = "TextBox1"
+        TextBox1.Size = New Size(250, 22)
+        TextBox1.TabIndex = 15
+        TextBox1.Text = "Search"
+        ' 
+        ' Button4
+        ' 
+        Button4.BackColor = Color.SkyBlue
+        Button4.Cursor = Cursors.Hand
+        Button4.FlatStyle = FlatStyle.Flat
+        Button4.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Button4.Location = New Point(846, 71)
+        Button4.Name = "Button4"
+        Button4.Size = New Size(85, 33)
+        Button4.TabIndex = 2
+        Button4.Text = "Generate"
+        Button4.UseVisualStyleBackColor = False
+        ' 
+        ' Button5
+        ' 
+        Button5.BackgroundImage = My.Resources.Resources.back
+        Button5.BackgroundImageLayout = ImageLayout.Zoom
+        Button5.Cursor = Cursors.Hand
+        Button5.FlatAppearance.BorderSize = 0
+        Button5.FlatStyle = FlatStyle.Flat
+        Button5.Location = New Point(14, 78)
+        Button5.Name = "Button5"
+        Button5.Size = New Size(15, 15)
+        Button5.TabIndex = 13
+        Button5.UseVisualStyleBackColor = True
+        ' 
+        ' Button6
+        ' 
+        Button6.BackColor = Color.SkyBlue
+        Button6.Cursor = Cursors.Hand
+        Button6.FlatStyle = FlatStyle.Flat
+        Button6.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Button6.Location = New Point(771, 71)
+        Button6.Name = "Button6"
+        Button6.Size = New Size(69, 33)
+        Button6.TabIndex = 7
+        Button6.Text = "Export"
+        Button6.UseVisualStyleBackColor = False
         ' 
         ' Form6
         ' 
@@ -247,13 +299,19 @@ Partial Class Form6
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(984, 561)
+        Controls.Add(TextBox1)
         Controls.Add(DataGridView1)
+        Controls.Add(Button6)
+        Controls.Add(Button2)
+        Controls.Add(Button5)
         Controls.Add(Button3)
         Controls.Add(GroupBox1)
         Controls.Add(Panel1)
+        Controls.Add(Button4)
+        Controls.Add(Button1)
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Name = "Form6"
-        Text = "Reports"
+        Text = "Book Reports"
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
@@ -262,6 +320,7 @@ Partial Class Form6
         GroupBox1.PerformLayout()
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
+        PerformLayout()
     End Sub
 
     Friend WithEvents Panel1 As Panel
@@ -281,4 +340,8 @@ Partial Class Form6
     Friend WithEvents Button2 As Button
     Friend WithEvents ComboBox2 As ComboBox
     Friend WithEvents Label5 As Label
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Button4 As Button
+    Friend WithEvents Button5 As Button
+    Friend WithEvents Button6 As Button
 End Class

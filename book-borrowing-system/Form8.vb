@@ -11,6 +11,7 @@ Public Class Form8
 
     Public Sub New(selectedBookID As String, title As String, imagePath As String, availableCopies As Integer, author As String)
         InitializeComponent()
+
         bookID = selectedBookID
         bookTitle = title
         bookImage = imagePath
@@ -21,12 +22,13 @@ Public Class Form8
         Label2.Text = bookTitle
         Label10.Text = copies.ToString()
 
-        If File.Exists(bookImage) Then
+        If Not String.IsNullOrEmpty(bookImage) AndAlso File.Exists(bookImage) Then
             PictureBox5.Image = Image.FromFile(bookImage)
         Else
             PictureBox5.Image = My.Resources.image
         End If
     End Sub
+
 
     Private Sub Form8_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Label2.Text = bookTitle

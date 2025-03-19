@@ -133,6 +133,7 @@ Partial Class Form8
         ' 
         ' TextBox1
         ' 
+        TextBox1.Cursor = Cursors.IBeam
         TextBox1.Location = New Point(274, 301)
         TextBox1.Name = "TextBox1"
         TextBox1.Size = New Size(247, 22)
@@ -140,6 +141,7 @@ Partial Class Form8
         ' 
         ' TextBox2
         ' 
+        TextBox2.Cursor = Cursors.IBeam
         TextBox2.Location = New Point(274, 339)
         TextBox2.Name = "TextBox2"
         TextBox2.Size = New Size(247, 22)
@@ -157,6 +159,7 @@ Partial Class Form8
         ' 
         ' TextBox3
         ' 
+        TextBox3.Cursor = Cursors.IBeam
         TextBox3.Location = New Point(274, 379)
         TextBox3.Name = "TextBox3"
         TextBox3.Size = New Size(247, 22)
@@ -205,6 +208,7 @@ Partial Class Form8
         ' Button1
         ' 
         Button1.BackColor = SystemColors.HotTrack
+        Button1.Cursor = Cursors.Hand
         Button1.FlatAppearance.BorderSize = 0
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
@@ -218,6 +222,7 @@ Partial Class Form8
         ' 
         ' DateTimePicker1
         ' 
+        DateTimePicker1.Cursor = Cursors.Hand
         DateTimePicker1.Format = DateTimePickerFormat.Custom
         DateTimePicker1.Location = New Point(274, 417)
         DateTimePicker1.Name = "DateTimePicker1"
@@ -226,6 +231,7 @@ Partial Class Form8
         ' 
         ' DateTimePicker2
         ' 
+        DateTimePicker2.Cursor = Cursors.Hand
         DateTimePicker2.Format = DateTimePickerFormat.Custom
         DateTimePicker2.Location = New Point(274, 454)
         DateTimePicker2.Name = "DateTimePicker2"
@@ -236,6 +242,7 @@ Partial Class Form8
         ' 
         Button2.BackgroundImage = My.Resources.Resources.back
         Button2.BackgroundImageLayout = ImageLayout.Zoom
+        Button2.Cursor = Cursors.Hand
         Button2.FlatAppearance.BorderSize = 0
         Button2.FlatStyle = FlatStyle.Flat
         Button2.Location = New Point(56, 122)
@@ -291,7 +298,7 @@ Partial Class Form8
         Controls.Add(Panel1)
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Name = "Form8"
-        Text = "Borrow Book"
+        Text = "Borrow Form"
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()

@@ -57,6 +57,7 @@ Partial Class Form4
         ' 
         Button2.BackgroundImage = My.Resources.Resources.notification
         Button2.BackgroundImageLayout = ImageLayout.Zoom
+        Button2.Cursor = Cursors.Hand
         Button2.FlatAppearance.BorderSize = 0
         Button2.FlatStyle = FlatStyle.Flat
         Button2.Location = New Point(948, 17)
@@ -89,6 +90,7 @@ Partial Class Form4
         Panel2.BackColor = Color.LightBlue
         Panel2.Controls.Add(PictureBox4)
         Panel2.Controls.Add(Label2)
+        Panel2.Cursor = Cursors.Hand
         Panel2.Location = New Point(270, 191)
         Panel2.Name = "Panel2"
         Panel2.Size = New Size(196, 206)
@@ -119,6 +121,7 @@ Partial Class Form4
         Panel3.BackColor = Color.LightBlue
         Panel3.Controls.Add(PictureBox5)
         Panel3.Controls.Add(Label3)
+        Panel3.Cursor = Cursors.Hand
         Panel3.Location = New Point(530, 191)
         Panel3.Name = "Panel3"
         Panel3.Size = New Size(196, 206)
@@ -148,6 +151,7 @@ Partial Class Form4
         ' 
         Button3.BackgroundImage = My.Resources.Resources.back
         Button3.BackgroundImageLayout = ImageLayout.Zoom
+        Button3.Cursor = Cursors.Hand
         Button3.FlatAppearance.BorderSize = 0
         Button3.FlatStyle = FlatStyle.Flat
         Button3.Location = New Point(14, 78)
@@ -169,7 +173,7 @@ Partial Class Form4
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ForeColor = SystemColors.ActiveCaptionText
         Name = "Form4"
-        Text = "Form4"
+        Text = "Book Management"
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()

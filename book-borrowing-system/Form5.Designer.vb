@@ -61,6 +61,7 @@ Partial Class Form5
         ' 
         Button2.BackgroundImage = My.Resources.Resources.notification
         Button2.BackgroundImageLayout = ImageLayout.Zoom
+        Button2.Cursor = Cursors.Hand
         Button2.FlatAppearance.BorderSize = 0
         Button2.FlatStyle = FlatStyle.Flat
         Button2.Location = New Point(948, 17)
@@ -173,6 +174,7 @@ Partial Class Form5
         ' 
         Button3.BackgroundImage = My.Resources.Resources.back
         Button3.BackgroundImageLayout = ImageLayout.Zoom
+        Button3.Cursor = Cursors.Hand
         Button3.FlatAppearance.BorderSize = 0
         Button3.FlatStyle = FlatStyle.Flat
         Button3.Location = New Point(14, 78)
@@ -195,6 +197,7 @@ Partial Class Form5
         ' 
         ' TextBox1
         ' 
+        TextBox1.Cursor = Cursors.IBeam
         TextBox1.Location = New Point(38, 75)
         TextBox1.Name = "TextBox1"
         TextBox1.Size = New Size(540, 22)
@@ -215,7 +218,7 @@ Partial Class Form5
         Controls.Add(Panel1)
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Name = "Form5"
-        Text = "Books"
+        Text = "Manage Books"
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()

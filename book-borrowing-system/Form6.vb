@@ -34,91 +34,132 @@ Public Class Form6
         End Try
     End Sub
 
-
     Private Sub LoadReportTypes()
         ComboBox2.Items.Add("All")
         ComboBox2.Items.Add("Frequent Books")
         ComboBox2.Items.Add("Top Borrowers")
         ComboBox2.Items.Add("Overdue Books")
-        ComboBox2.Items.Add("Daily Summary")
         ComboBox2.SelectedIndex = 0
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click, Button4.Click
         Try
-            Dim category As String = ComboBox1.SelectedValue.ToString()
-            Dim reportType As String = ComboBox2.SelectedItem.ToString()
-            Dim fromDate As Date = DateTimePicker1.Value
-            Dim toDate As Date = DateTimePicker2.Value
+            Dim category = ComboBox1.SelectedValue.ToString
+            Dim reportType = ComboBox2.SelectedItem.ToString
+            Dim fromDate = DateTimePicker1.Value
+            Dim toDate = DateTimePicker2.Value
 
             If fromDate > toDate Then
                 MessageBox.Show("Invalid date range. 'From' date must be earlier than 'To' date.")
                 Exit Sub
             End If
 
-            Dim query As String = ""
+            Dim query = ""
 
             Select Case reportType
                 Case "All"
-                    query = "SELECT b.BorrowID, b.StudNo, b.BookID, b.Title, b.Author, b.BorrowDate, b.DueDate, b.StatusName " &
-                            "FROM borrow b " &
-                            "JOIN book bk ON b.BookID = bk.BookID " &
-                            "WHERE (b.BorrowDate BETWEEN @FromDate AND @ToDate) "
+                    query = "
+                        SELECT 
+                            b.BorrowID, 
+                            b.StudNo, 
+                            u.FullName, 
+                            u.ContactNumber, 
+                            b.BookID, 
+                            bk.Title, 
+                            bk.Author, 
+                            bk.Year, 
+                            bk.ISBN, 
+                            bk.Category, 
+                            b.BorrowDate, 
+                            b.DueDate, 
+                            b.StatusName,
+                            COUNT(b.BorrowID) AS TimesBorrowed 
+                        FROM borrow b
+                        JOIN book bk ON b.BookID = bk.BookID
+                        JOIN users u ON b.StudNo = u.StudNo
+                        WHERE (b.BorrowDate BETWEEN @FromDate AND @ToDate)
+                    "
 
                     If category <> "All" Then
-                        query &= "AND bk.Category = @Category "
+                        query &= " AND bk.Category = @Category "
                     End If
 
-                    query &= "ORDER BY b.BorrowDate DESC"
+                    query &= "
+                        GROUP BY b.BorrowID
+                        ORDER BY b.BorrowDate DESC
+                    "
 
                 Case "Frequent Books"
-                    query = "SELECT bk.Title, COUNT(b.BookID) AS TimesBorrowed " &
-                            "FROM borrow b " &
-                            "JOIN book bk ON b.BookID = bk.BookID " &
-                            "WHERE (b.BorrowDate BETWEEN @FromDate AND @ToDate) "
+                    query = "
+                        SELECT 
+                            bk.BookID, 
+                            bk.Title, 
+                            bk.Author, 
+                            bk.Year, 
+                            bk.ISBN, 
+                            bk.Category, 
+                            COUNT(b.BorrowID) AS TimesBorrowed
+                        FROM borrow b
+                        JOIN book bk ON b.BookID = bk.BookID
+                        WHERE (b.BorrowDate BETWEEN @FromDate AND @ToDate)
+                    "
 
                     If category <> "All" Then
-                        query &= "AND bk.Category = @Category "
+                        query &= " AND bk.Category = @Category "
                     End If
 
-                    query &= "GROUP BY bk.Title " &
-                             "ORDER BY TimesBorrowed DESC"
+                    query &= "
+                        GROUP BY bk.BookID
+                        ORDER BY TimesBorrowed DESC
+                    "
 
                 Case "Top Borrowers"
-                    query = "SELECT b.StudNo, COUNT(b.BorrowID) AS BorrowCount " &
-                            "FROM borrow b " &
-                            "WHERE (b.BorrowDate BETWEEN @FromDate AND @ToDate) "
+                    query = "
+                        SELECT 
+                            b.StudNo, 
+                            u.FullName, 
+                            u.ContactNumber, 
+                            COUNT(b.BorrowID) AS BorrowCount
+                        FROM borrow b
+                        JOIN users u ON b.StudNo = u.StudNo
+                        WHERE (b.BorrowDate BETWEEN @FromDate AND @ToDate)
+                    "
 
                     If category <> "All" Then
-                        query &= "AND b.BookID IN (SELECT BookID FROM book WHERE Category = @Category) "
+                        query &= " AND b.BookID IN (SELECT BookID FROM book WHERE Category = @Category) "
                     End If
 
-                    query &= "GROUP BY b.StudNo " &
-                             "ORDER BY BorrowCount DESC"
+                    query &= "
+                        GROUP BY b.StudNo
+                        ORDER BY BorrowCount DESC
+                    "
 
                 Case "Overdue Books"
-                    query = "SELECT b.BorrowID, b.StudNo, b.BookID, b.Title, b.Author, b.DueDate, b.StatusName " &
-                            "FROM borrow b " &
-                            "JOIN book bk ON b.BookID = bk.BookID " &
-                            "WHERE b.DueDate < CURDATE() AND b.StatusName <> 'Returned' "
+                    query = "
+                        SELECT 
+                            b.BorrowID, 
+                            b.StudNo, 
+                            u.FullName, 
+                            u.ContactNumber, 
+                            b.BookID, 
+                            bk.Title, 
+                            bk.Author, 
+                            b.DueDate, 
+                            b.StatusName
+                        FROM borrow b
+                        JOIN book bk ON b.BookID = bk.BookID
+                        JOIN users u ON b.StudNo = u.StudNo
+                        WHERE b.DueDate < CURDATE() AND b.StatusName <> 'Returned'
+                    "
 
                     If category <> "All" Then
-                        query &= "AND bk.Category = @Category "
+                        query &= " AND bk.Category = @Category "
                     End If
 
-                    query &= "ORDER BY b.DueDate ASC"
+                    query &= "
+                        ORDER BY b.DueDate ASC
+                    "
 
-                Case "Daily Summary"
-                    query = "SELECT DATE(b.BorrowDate) AS BorrowDate, COUNT(*) AS TotalBorrowed " &
-                            "FROM borrow b " &
-                            "WHERE (b.BorrowDate BETWEEN @FromDate AND @ToDate) "
-
-                    If category <> "All" Then
-                        query &= "AND b.BookID IN (SELECT BookID FROM book WHERE Category = @Category) "
-                    End If
-
-                    query &= "GROUP BY BorrowDate " &
-                             "ORDER BY BorrowDate ASC"
             End Select
 
             Dim cmd As New MySqlCommand(query, conn)
@@ -130,13 +171,14 @@ Public Class Form6
             End If
 
             Dim adapter As New MySqlDataAdapter(cmd)
-            Dim table As New DataTable()
+            Dim table As New DataTable
 
             conn.Open()
             adapter.Fill(table)
             conn.Close()
 
             DataGridView1.DataSource = table
+            DataGridView1.AutoResizeColumns()
 
             If table.Rows.Count = 0 Then
                 MessageBox.Show("No records found for the selected filter.")
@@ -192,8 +234,14 @@ Public Class Form6
         End Try
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click, Button6.Click
         ExportToExcel()
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click, Button5.Click
+        Dim back As New Form4
+        back.Show()
+        Close()
     End Sub
 
 End Class

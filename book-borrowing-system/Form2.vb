@@ -37,7 +37,7 @@ Public Class Form2
             Dim query As String = "SELECT BookID, Title, Author, Copies, Image FROM book " &
                               "WHERE Status = 'Available' " &
                               "AND Copies > 0 " &
-                              "AND (Title LIKE @search OR Author LIKE @search)"
+                              "AND (Title LIKE @search OR Author LIKE @search OR BookID LIKE @search)"
 
             Using cmd As New MySqlCommand(query, conn)
                 cmd.Parameters.AddWithValue("@search", "%" & searchQuery & "%")
@@ -82,13 +82,35 @@ Public Class Form2
             Dim bookID As String = DataGridView1.Rows(e.RowIndex).Cells("BookID").Value.ToString()
             Dim title As String = DataGridView1.Rows(e.RowIndex).Cells("Title").Value.ToString()
             Dim author As String = DataGridView1.Rows(e.RowIndex).Cells("Author").Value.ToString()
-            Dim copies As String = DataGridView1.Rows(e.RowIndex).Cells("Copies").Value.ToString()
+            Dim copies As Integer = CInt(DataGridView1.Rows(e.RowIndex).Cells("Copies").Value)
 
-            Dim borrowForm As New Form8(bookID, title, author, copies, author)
+            Dim imagePath As String = ""
+
+            Using conn As New MySqlConnection(connString)
+                Dim query As String = "SELECT Image FROM book WHERE BookID = @BookID"
+                Using cmd As New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@BookID", bookID)
+
+                    Try
+                        conn.Open()
+                        Dim reader As MySqlDataReader = cmd.ExecuteReader()
+
+                        If reader.Read() Then
+                            imagePath = reader("Image").ToString()
+                        End If
+
+                    Catch ex As Exception
+                        MessageBox.Show("Error loading image: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End Try
+                End Using
+            End Using
+
+            Dim borrowForm As New Form8(bookID, title, imagePath, copies, author)
             borrowForm.Show()
             Me.Hide()
         End If
     End Sub
+
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim back As New Form11()

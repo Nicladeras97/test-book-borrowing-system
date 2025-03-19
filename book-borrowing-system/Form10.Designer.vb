@@ -24,7 +24,6 @@ Partial Class Form10
     Private Sub InitializeComponent()
         Panel1 = New Panel()
         PictureBox3 = New PictureBox()
-        PictureBox2 = New PictureBox()
         Label1 = New Label()
         PictureBox1 = New PictureBox()
         PictureBox4 = New PictureBox()
@@ -48,7 +47,6 @@ Partial Class Form10
         Button1 = New Button()
         Panel1.SuspendLayout()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox4, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -57,7 +55,6 @@ Partial Class Form10
         ' 
         Panel1.BackColor = Color.LightBlue
         Panel1.Controls.Add(PictureBox3)
-        Panel1.Controls.Add(PictureBox2)
         Panel1.Controls.Add(Label1)
         Panel1.Controls.Add(PictureBox1)
         Panel1.Dock = DockStyle.Top
@@ -68,6 +65,7 @@ Partial Class Form10
         ' 
         ' PictureBox3
         ' 
+        PictureBox3.Cursor = Cursors.Hand
         PictureBox3.Image = My.Resources.Resources.notification
         PictureBox3.Location = New Point(950, 17)
         PictureBox3.Name = "PictureBox3"
@@ -75,16 +73,6 @@ Partial Class Form10
         PictureBox3.SizeMode = PictureBoxSizeMode.Zoom
         PictureBox3.TabIndex = 3
         PictureBox3.TabStop = False
-        ' 
-        ' PictureBox2
-        ' 
-        PictureBox2.Image = My.Resources.Resources.home
-        PictureBox2.Location = New Point(916, 17)
-        PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(15, 16)
-        PictureBox2.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox2.TabIndex = 2
-        PictureBox2.TabStop = False
         ' 
         ' Label1
         ' 
@@ -107,6 +95,7 @@ Partial Class Form10
         ' 
         ' PictureBox4
         ' 
+        PictureBox4.Cursor = Cursors.Hand
         PictureBox4.Image = My.Resources.Resources.back
         PictureBox4.Location = New Point(38, 83)
         PictureBox4.Name = "PictureBox4"
@@ -267,6 +256,7 @@ Partial Class Form10
         ' Button1
         ' 
         Button1.BackColor = SystemColors.HotTrack
+        Button1.Cursor = Cursors.Hand
         Button1.FlatAppearance.BorderSize = 0
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
@@ -310,7 +300,6 @@ Partial Class Form10
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox4, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
@@ -319,7 +308,6 @@ Partial Class Form10
 
     Friend WithEvents Panel1 As Panel
     Friend WithEvents PictureBox3 As PictureBox
-    Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents Label1 As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents PictureBox4 As PictureBox
