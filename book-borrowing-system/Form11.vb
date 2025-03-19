@@ -22,4 +22,8 @@
         Me.Hide()
     End Sub
 
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim notifForm As New Form7()
+        notifForm.ShowDialog()
+    End Sub
 End Class

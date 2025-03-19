@@ -169,7 +169,7 @@ Partial Class Form4
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ForeColor = SystemColors.ActiveCaptionText
         Name = "Form4"
-        Text = "Form4"
+        Text = "Book Management"
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()

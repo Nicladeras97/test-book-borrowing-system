@@ -22,21 +22,21 @@ Partial Class Form6
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Panel1 = New Panel()
         PictureBox3 = New PictureBox()
         Label1 = New Label()
         PictureBox1 = New PictureBox()
         GroupBox1 = New GroupBox()
-        Button3 = New Button()
-        Label2 = New Label()
-        ComboBox1 = New ComboBox()
-        DataGridView1 = New DataGridView()
-        Button1 = New Button()
-        Label3 = New Label()
-        DateTimePicker1 = New DateTimePicker()
-        DateTimePicker2 = New DateTimePicker()
         Label4 = New Label()
+        DateTimePicker2 = New DateTimePicker()
+        DateTimePicker1 = New DateTimePicker()
+        Label3 = New Label()
+        Button1 = New Button()
+        ComboBox1 = New ComboBox()
+        Label2 = New Label()
+        Button3 = New Button()
+        DataGridView1 = New DataGridView()
         Panel1.SuspendLayout()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -102,54 +102,45 @@ Partial Class Form6
         GroupBox1.TabStop = False
         GroupBox1.Text = "Filter Options"
         ' 
-        ' Button3
+        ' Label4
         ' 
-        Button3.BackgroundImage = My.Resources.Resources.back
-        Button3.BackgroundImageLayout = ImageLayout.Zoom
-        Button3.FlatAppearance.BorderSize = 0
-        Button3.FlatStyle = FlatStyle.Flat
-        Button3.Location = New Point(14, 78)
-        Button3.Name = "Button3"
-        Button3.Size = New Size(15, 15)
-        Button3.TabIndex = 13
-        Button3.UseVisualStyleBackColor = True
+        Label4.AutoSize = True
+        Label4.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label4.Location = New Point(458, 24)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(19, 16)
+        Label4.TabIndex = 6
+        Label4.Text = "to"
         ' 
-        ' Label2
+        ' DateTimePicker2
         ' 
-        Label2.AutoSize = True
-        Label2.Font = New Font("Arial", 9.75F, FontStyle.Bold)
-        Label2.Location = New Point(11, 23)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(64, 16)
-        Label2.TabIndex = 0
-        Label2.Text = "Category"
+        DateTimePicker2.CustomFormat = ""
+        DateTimePicker2.Format = DateTimePickerFormat.Custom
+        DateTimePicker2.Location = New Point(478, 21)
+        DateTimePicker2.Name = "DateTimePicker2"
+        DateTimePicker2.Size = New Size(104, 22)
+        DateTimePicker2.TabIndex = 5
+        DateTimePicker2.Value = New Date(2025, 3, 17, 0, 0, 0, 0)
         ' 
-        ' ComboBox1
+        ' DateTimePicker1
         ' 
-        ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(77, 20)
-        ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(171, 24)
-        ComboBox1.TabIndex = 1
+        DateTimePicker1.CustomFormat = ""
+        DateTimePicker1.Format = DateTimePickerFormat.Custom
+        DateTimePicker1.Location = New Point(352, 21)
+        DateTimePicker1.Name = "DateTimePicker1"
+        DateTimePicker1.Size = New Size(104, 22)
+        DateTimePicker1.TabIndex = 4
+        DateTimePicker1.Value = New Date(2025, 3, 17, 0, 0, 0, 0)
         ' 
-        ' DataGridView1
+        ' Label3
         ' 
-        DataGridView1.BackgroundColor = Color.White
-        DataGridView1.BorderStyle = BorderStyle.Fixed3D
-        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = SystemColors.Control
-        DataGridViewCellStyle3.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = Color.LightBlue
-        DataGridViewCellStyle3.SelectionForeColor = SystemColors.ControlText
-        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
-        DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
-        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.GridColor = SystemColors.ControlDark
-        DataGridView1.Location = New Point(38, 139)
-        DataGridView1.Name = "DataGridView1"
-        DataGridView1.Size = New Size(893, 388)
-        DataGridView1.TabIndex = 14
+        Label3.AutoSize = True
+        Label3.Font = New Font("Arial", 9.75F, FontStyle.Bold)
+        Label3.Location = New Point(269, 24)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(81, 16)
+        Label3.TabIndex = 3
+        Label3.Text = "Date Range"
         ' 
         ' Button1
         ' 
@@ -163,45 +154,54 @@ Partial Class Form6
         Button1.Text = "Generate Report"
         Button1.UseVisualStyleBackColor = False
         ' 
-        ' Label3
+        ' ComboBox1
         ' 
-        Label3.AutoSize = True
-        Label3.Font = New Font("Arial", 9.75F, FontStyle.Bold)
-        Label3.Location = New Point(269, 24)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(81, 16)
-        Label3.TabIndex = 3
-        Label3.Text = "Date Range"
+        ComboBox1.FormattingEnabled = True
+        ComboBox1.Location = New Point(77, 20)
+        ComboBox1.Name = "ComboBox1"
+        ComboBox1.Size = New Size(171, 24)
+        ComboBox1.TabIndex = 1
         ' 
-        ' DateTimePicker1
+        ' Label2
         ' 
-        DateTimePicker1.CustomFormat = ""
-        DateTimePicker1.Format = DateTimePickerFormat.Custom
-        DateTimePicker1.Location = New Point(352, 21)
-        DateTimePicker1.Name = "DateTimePicker1"
-        DateTimePicker1.Size = New Size(104, 22)
-        DateTimePicker1.TabIndex = 4
-        DateTimePicker1.Value = New Date(2025, 3, 17, 0, 0, 0, 0)
+        Label2.AutoSize = True
+        Label2.Font = New Font("Arial", 9.75F, FontStyle.Bold)
+        Label2.Location = New Point(11, 23)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(64, 16)
+        Label2.TabIndex = 0
+        Label2.Text = "Category"
         ' 
-        ' DateTimePicker2
+        ' Button3
         ' 
-        DateTimePicker2.CustomFormat = ""
-        DateTimePicker2.Format = DateTimePickerFormat.Custom
-        DateTimePicker2.Location = New Point(478, 21)
-        DateTimePicker2.Name = "DateTimePicker2"
-        DateTimePicker2.Size = New Size(104, 22)
-        DateTimePicker2.TabIndex = 5
-        DateTimePicker2.Value = New Date(2025, 3, 17, 0, 0, 0, 0)
+        Button3.BackgroundImage = My.Resources.Resources.back
+        Button3.BackgroundImageLayout = ImageLayout.Zoom
+        Button3.FlatAppearance.BorderSize = 0
+        Button3.FlatStyle = FlatStyle.Flat
+        Button3.Location = New Point(14, 78)
+        Button3.Name = "Button3"
+        Button3.Size = New Size(15, 15)
+        Button3.TabIndex = 13
+        Button3.UseVisualStyleBackColor = True
         ' 
-        ' Label4
+        ' DataGridView1
         ' 
-        Label4.AutoSize = True
-        Label4.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label4.Location = New Point(458, 24)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(19, 16)
-        Label4.TabIndex = 6
-        Label4.Text = "to"
+        DataGridView1.BackgroundColor = Color.White
+        DataGridView1.BorderStyle = BorderStyle.Fixed3D
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = SystemColors.Control
+        DataGridViewCellStyle1.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle1.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = Color.LightBlue
+        DataGridViewCellStyle1.SelectionForeColor = SystemColors.ControlText
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
+        DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridView1.GridColor = SystemColors.ControlDark
+        DataGridView1.Location = New Point(38, 139)
+        DataGridView1.Name = "DataGridView1"
+        DataGridView1.Size = New Size(893, 388)
+        DataGridView1.TabIndex = 14
         ' 
         ' Form6
         ' 
@@ -215,7 +215,7 @@ Partial Class Form6
         Controls.Add(Panel1)
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Name = "Form6"
-        Text = "Reports"
+        Text = "Book Reports"
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()

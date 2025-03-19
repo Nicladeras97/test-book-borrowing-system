@@ -6,7 +6,12 @@
     <RootNamespace>book_borrowing_system</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <MyType>WindowsForms</MyType>
+    <ApplicationIcon>img\logo.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="img\logo.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <Import Include="System.Data" />

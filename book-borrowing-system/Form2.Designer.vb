@@ -139,7 +139,7 @@ Partial Class Form2
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Margin = New Padding(4, 3, 4, 3)
         Name = "Form2"
-        Text = "Form2"
+        Text = "Available Books"
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()

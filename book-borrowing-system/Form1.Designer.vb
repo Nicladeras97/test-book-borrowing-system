@@ -41,6 +41,7 @@ Partial Class Form1
         Label3 = New Label()
         Label1 = New Label()
         Label2 = New Label()
+        Button1 = New Button()
         CType(LogoPictureBox, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -78,22 +79,27 @@ Partial Class Form1
         ' 
         ' UsernameTextBox
         ' 
-        UsernameTextBox.Location = New Point(125, 172)
+        UsernameTextBox.Cursor = Cursors.IBeam
+        UsernameTextBox.Font = New Font("Arial", 12F)
+        UsernameTextBox.Location = New Point(125, 170)
         UsernameTextBox.Name = "UsernameTextBox"
-        UsernameTextBox.Size = New Size(138, 23)
+        UsernameTextBox.Size = New Size(138, 26)
         UsernameTextBox.TabIndex = 1
         ' 
         ' PasswordTextBox
         ' 
-        PasswordTextBox.Location = New Point(125, 228)
+        PasswordTextBox.Cursor = Cursors.IBeam
+        PasswordTextBox.Font = New Font("Arial", 12F)
+        PasswordTextBox.Location = New Point(125, 226)
         PasswordTextBox.Name = "PasswordTextBox"
         PasswordTextBox.PasswordChar = "*"c
-        PasswordTextBox.Size = New Size(138, 23)
+        PasswordTextBox.Size = New Size(138, 26)
         PasswordTextBox.TabIndex = 3
         ' 
         ' OK
         ' 
         OK.BackColor = SystemColors.HotTrack
+        OK.Cursor = Cursors.Hand
         OK.FlatAppearance.BorderSize = 0
         OK.FlatStyle = FlatStyle.Flat
         OK.Font = New Font("Arial", 9.75F)
@@ -175,13 +181,28 @@ Partial Class Form1
         Label2.TabIndex = 6
         Label2.Text = "System"
         ' 
-        ' LoginForm1
+        ' Button1
+        ' 
+        Button1.BackColor = Color.LightCoral
+        Button1.Cursor = Cursors.Hand
+        Button1.FlatAppearance.BorderSize = 0
+        Button1.FlatStyle = FlatStyle.Flat
+        Button1.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Button1.Location = New Point(862, 499)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(59, 27)
+        Button1.TabIndex = 7
+        Button1.Text = "Exit"
+        Button1.UseVisualStyleBackColor = False
+        ' 
+        ' Form1
         ' 
         AcceptButton = OK
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(984, 561)
+        Controls.Add(Button1)
         Controls.Add(Label2)
         Controls.Add(Label1)
         Controls.Add(Panel1)
@@ -189,10 +210,10 @@ Partial Class Form1
         FormBorderStyle = FormBorderStyle.FixedDialog
         MaximizeBox = False
         MinimizeBox = False
-        Name = "LoginForm1"
+        Name = "Form1"
         SizeGripStyle = SizeGripStyle.Hide
         StartPosition = FormStartPosition.CenterParent
-        Text = "LoginForm1"
+        Text = "Book Borrowing System"
         CType(LogoPictureBox, ComponentModel.ISupportInitialize).EndInit()
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
@@ -208,5 +229,6 @@ Partial Class Form1
     Friend WithEvents Label3 As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label4 As Label
+    Friend WithEvents Button1 As Button
 
 End Class
