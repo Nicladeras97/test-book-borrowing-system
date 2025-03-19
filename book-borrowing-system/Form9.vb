@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports MySql.Data.MySqlClient
+Imports System.IO
 
 Public Class Form9
     Dim connString As String = "server=localhost; user=root; password=; database=book-borrowing"
@@ -22,6 +23,7 @@ Public Class Form9
         Me.ImagePath = imagePath
     End Sub
 
+
     Private Sub Form9_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Label2.Text = BookTitle
         Label3.Text = BookID
@@ -35,12 +37,39 @@ Public Class Form9
         End If
     End Sub
 
+
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim result As DialogResult = MessageBox.Show("Are you sure you want to return this book?", "Confirm Return", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         If result = DialogResult.Yes Then
             ReturnBook()
         End If
+    End Sub
+
+    Private Sub LoadBookImage(bookID As String)
+        Try
+            Using conn As New MySqlConnection(connString)
+                conn.Open()
+                Dim query As String = "SELECT Image FROM book WHERE BookID = @BookID"
+
+                Using cmd As New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@BookID", bookID)
+                    Dim reader As MySqlDataReader = cmd.ExecuteReader()
+
+                    If reader.Read() Then
+                        Dim imagePath As String = reader("Image").ToString()
+
+                        If File.Exists(imagePath) Then
+                            PictureBox1.Image = Image.FromFile(imagePath)
+                        Else
+                            PictureBox1.Image = My.Resources.image
+                        End If
+                    End If
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Failed to load image: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     ' ✅ Keep this ReturnBook() method
@@ -60,45 +89,46 @@ Public Class Form9
                             cmd.ExecuteNonQuery()
                         End Using
 
-                        ' Update book stock
                         Dim updateStockQuery As String = "UPDATE book SET Copies = Copies + 1 WHERE BookID = @BookID"
                         Using cmd As New MySqlCommand(updateStockQuery, conn, transaction)
                             cmd.Parameters.AddWithValue("@BookID", BookID)
                             cmd.ExecuteNonQuery()
                         End Using
-
-                        ' Insert into returned table
-                        Dim insertReturnedQuery As String = "INSERT INTO returned (BorrowID, BookID, StudentName, StudNo, ReturnDate) " &
-                                                            "VALUES (@BorrowID, @BookID, @StudentName, @StudNo, NOW())"
-                        Using cmd As New MySqlCommand(insertReturnedQuery, conn, transaction)
-                            cmd.Parameters.AddWithValue("@BorrowID", BorrowID)
-                            cmd.Parameters.AddWithValue("@BookID", BookID)
-                            cmd.Parameters.AddWithValue("@StudentName", StudentName)
-                            cmd.Parameters.AddWithValue("@StudNo", StudNo)
-                            cmd.ExecuteNonQuery()
                         End Using
 
-                        transaction.Commit()
+            ' Insert into returned table
+            Dim insertReturnedQuery As String = "INSERT INTO returned (BorrowID, BookID, StudentName, StudNo, ReturnDate) " &
+                                                "VALUES (@BorrowID, @BookID, @StudentName, @StudNo, NOW())"
+            Using cmd As New MySqlCommand(insertReturnedQuery, conn, transaction)
+                cmd.Parameters.AddWithValue("@BookID", BookID)
+                cmd.Parameters.AddWithValue("@StudentName", StudentName)
+                cmd.Parameters.AddWithValue("@StudNo", StudNo)
+                cmd.ExecuteNonQuery()
+            End Using
+            End Using
 
-                        MessageBox.Show("Book returned successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            transaction.Commit()
 
-                        Dim form3 As New Form3()
-                        form3.Show()
-                        Me.Close()
+            MessageBox.Show("Book returned successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                    Catch ex As Exception
-                        transaction.Rollback()
-                        MessageBox.Show("Transaction failed: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    End Try
+            Dim form3 As New Form3()
+            form3.Show()
+            Me.Close()
 
-                Catch ex As Exception
-                    MessageBox.Show("Error: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                End Try
+            Catch ex As Exception
+            transaction.Rollback()
+            MessageBox.Show("Transaction failed: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+
+            Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
             End Using
         Else
             MessageBox.Show("The book must be in 'Good' condition to be returned.", "Return Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
     End Sub
+
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Dim back As New Form3()
