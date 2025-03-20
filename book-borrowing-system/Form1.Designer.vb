@@ -1,10 +1,10 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-<Global.System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726")> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+<Global.System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726")>
 Partial Class Form1
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -27,7 +27,7 @@ Partial Class Form1
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         LogoPictureBox = New PictureBox()
         UsernameLabel = New Label()
@@ -161,7 +161,7 @@ Partial Class Form1
         ' 
         Label1.AutoSize = True
         Label1.FlatStyle = FlatStyle.Flat
-        Label1.Font = New Font("Arial", 48F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.Font = New Font("Arial", 48.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label1.Location = New Point(64, 55)
         Label1.Name = "Label1"
         Label1.Size = New Size(531, 75)
@@ -181,15 +181,13 @@ Partial Class Form1
         ' 
         ' Button1
         ' 
-        Button1.BackColor = Color.IndianRed
-        Button1.Cursor = Cursors.Hand
+        Button1.BackColor = Color.LightCoral
         Button1.FlatAppearance.BorderSize = 0
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Button1.ForeColor = SystemColors.ButtonHighlight
-        Button1.Location = New Point(925, 525)
+        Button1.Location = New Point(868, 498)
         Button1.Name = "Button1"
-        Button1.Size = New Size(47, 24)
+        Button1.Size = New Size(53, 23)
         Button1.TabIndex = 7
         Button1.Text = "Exit"
         Button1.UseVisualStyleBackColor = False
@@ -197,7 +195,7 @@ Partial Class Form1
         ' Form1
         ' 
         AcceptButton = OK
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(984, 561)
