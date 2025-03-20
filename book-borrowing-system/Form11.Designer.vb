@@ -23,6 +23,7 @@ Partial Class Form11
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Panel1 = New Panel()
+        Label5 = New Label()
         Button2 = New Button()
         Button1 = New Button()
         Label1 = New Label()
@@ -49,6 +50,7 @@ Partial Class Form11
         ' Panel1
         ' 
         Panel1.BackColor = Color.LightBlue
+        Panel1.Controls.Add(Label5)
         Panel1.Controls.Add(Button2)
         Panel1.Controls.Add(Button1)
         Panel1.Controls.Add(Label1)
@@ -59,6 +61,19 @@ Partial Class Form11
         Panel1.Size = New Size(984, 53)
         Panel1.TabIndex = 0
         ' 
+        ' Label5
+        ' 
+        Label5.BackColor = Color.Gray
+        Label5.FlatStyle = FlatStyle.Flat
+        Label5.Font = New Font("Arial Narrow", 8.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label5.ForeColor = Color.White
+        Label5.Location = New Point(958, 13)
+        Label5.Name = "Label5"
+        Label5.RightToLeft = RightToLeft.No
+        Label5.Size = New Size(10, 10)
+        Label5.TabIndex = 4
+        Label5.Visible = False
+        ' 
         ' Button2
         ' 
         Button2.BackgroundImage = My.Resources.Resources.notification
@@ -66,7 +81,7 @@ Partial Class Form11
         Button2.Cursor = Cursors.Hand
         Button2.FlatAppearance.BorderSize = 0
         Button2.FlatStyle = FlatStyle.Flat
-        Button2.Location = New Point(948, 17)
+        Button2.Location = New Point(950, 17)
         Button2.Name = "Button2"
         Button2.Size = New Size(15, 15)
         Button2.TabIndex = 9
@@ -239,5 +254,6 @@ Partial Class Form11
     Friend WithEvents Label4 As Label
     Friend WithEvents Button2 As Button
     Friend WithEvents Button1 As Button
+    Friend WithEvents Label5 As Label
 
 End Class
