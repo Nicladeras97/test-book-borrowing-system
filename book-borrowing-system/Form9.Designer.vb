@@ -68,7 +68,7 @@ Partial Class Form9
         Button3.Cursor = Cursors.Hand
         Button3.FlatAppearance.BorderSize = 0
         Button3.FlatStyle = FlatStyle.Flat
-        Button3.Location = New Point(948, 18)
+        Button3.Location = New Point(950, 17)
         Button3.Name = "Button3"
         Button3.Size = New Size(15, 16)
         Button3.TabIndex = 10
