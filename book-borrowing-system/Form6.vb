@@ -1,5 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
-Imports ClosedXML.Excel
+﻿Imports ClosedXML.Excel
+Imports MySql.Data.MySqlClient
 
 Public Class Form6
     Private conn As New MySqlConnection("server=localhost;user id=root;password=;database=book-borrowing;")

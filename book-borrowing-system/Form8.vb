@@ -1,5 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
-Imports System.IO
+﻿Imports System.IO
+Imports MySql.Data.MySqlClient
 
 Public Class Form8
     Dim connString As String = "server=localhost; user=root; password=; database=book-borrowing;"
