@@ -23,8 +23,6 @@ Partial Class Form11
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Panel1 = New Panel()
-        Label5 = New Label()
-        Button2 = New Button()
         Button1 = New Button()
         Label1 = New Label()
         PictureBox1 = New PictureBox()
@@ -50,42 +48,14 @@ Partial Class Form11
         ' Panel1
         ' 
         Panel1.BackColor = Color.LightBlue
-        Panel1.Controls.Add(Label5)
-        Panel1.Controls.Add(Button2)
         Panel1.Controls.Add(Button1)
         Panel1.Controls.Add(Label1)
         Panel1.Controls.Add(PictureBox1)
         Panel1.Dock = DockStyle.Top
         Panel1.Location = New Point(0, 0)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(984, 53)
+        Panel1.Size = New Size(982, 53)
         Panel1.TabIndex = 0
-        ' 
-        ' Label5
-        ' 
-        Label5.BackColor = Color.Gray
-        Label5.FlatStyle = FlatStyle.Flat
-        Label5.Font = New Font("Arial Narrow", 8.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label5.ForeColor = Color.White
-        Label5.Location = New Point(958, 13)
-        Label5.Name = "Label5"
-        Label5.RightToLeft = RightToLeft.No
-        Label5.Size = New Size(10, 10)
-        Label5.TabIndex = 4
-        Label5.Visible = False
-        ' 
-        ' Button2
-        ' 
-        Button2.BackgroundImage = My.Resources.Resources.notification
-        Button2.BackgroundImageLayout = ImageLayout.Zoom
-        Button2.Cursor = Cursors.Hand
-        Button2.FlatAppearance.BorderSize = 0
-        Button2.FlatStyle = FlatStyle.Flat
-        Button2.Location = New Point(950, 17)
-        Button2.Name = "Button2"
-        Button2.Size = New Size(15, 15)
-        Button2.TabIndex = 9
-        Button2.UseVisualStyleBackColor = True
         ' 
         ' Button1
         ' 
@@ -94,7 +64,7 @@ Partial Class Form11
         Button1.Cursor = Cursors.Hand
         Button1.FlatAppearance.BorderSize = 0
         Button1.FlatStyle = FlatStyle.Flat
-        Button1.Location = New Point(920, 17)
+        Button1.Location = New Point(945, 17)
         Button1.Name = "Button1"
         Button1.Size = New Size(15, 15)
         Button1.TabIndex = 8
@@ -105,7 +75,7 @@ Partial Class Form11
         Label1.AutoSize = True
         Label1.Location = New Point(38, 18)
         Label1.Name = "Label1"
-        Label1.Size = New Size(147, 16)
+        Label1.Size = New Size(184, 19)
         Label1.TabIndex = 1
         Label1.Text = "Book Borrowing System"
         ' 
@@ -133,7 +103,7 @@ Partial Class Form11
         ' PictureBox4
         ' 
         PictureBox4.Image = My.Resources.Resources.Group_43
-        PictureBox4.Location = New Point(70, 94)
+        PictureBox4.Location = New Point(63, 93)
         PictureBox4.Name = "PictureBox4"
         PictureBox4.Size = New Size(50, 53)
         PictureBox4.SizeMode = PictureBoxSizeMode.Zoom
@@ -144,9 +114,9 @@ Partial Class Form11
         ' 
         Label2.AutoSize = True
         Label2.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(55, 57)
+        Label2.Location = New Point(40, 57)
         Label2.Name = "Label2"
-        Label2.Size = New Size(81, 16)
+        Label2.Size = New Size(103, 19)
         Label2.TabIndex = 0
         Label2.Text = "Borrow Book"
         ' 
@@ -164,7 +134,7 @@ Partial Class Form11
         ' PictureBox5
         ' 
         PictureBox5.Image = My.Resources.Resources.Group_45
-        PictureBox5.Location = New Point(70, 94)
+        PictureBox5.Location = New Point(73, 94)
         PictureBox5.Name = "PictureBox5"
         PictureBox5.Size = New Size(50, 53)
         PictureBox5.SizeMode = PictureBoxSizeMode.Zoom
@@ -175,9 +145,9 @@ Partial Class Form11
         ' 
         Label3.AutoSize = True
         Label3.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label3.Location = New Point(55, 57)
+        Label3.Location = New Point(47, 58)
         Label3.Name = "Label3"
-        Label3.Size = New Size(79, 16)
+        Label3.Size = New Size(99, 19)
         Label3.TabIndex = 0
         Label3.Text = "Return Book"
         ' 
@@ -195,7 +165,7 @@ Partial Class Form11
         ' PictureBox6
         ' 
         PictureBox6.Image = My.Resources.Resources.Group
-        PictureBox6.Location = New Point(70, 94)
+        PictureBox6.Location = New Point(71, 94)
         PictureBox6.Name = "PictureBox6"
         PictureBox6.Size = New Size(50, 53)
         PictureBox6.SizeMode = PictureBoxSizeMode.Zoom
@@ -206,18 +176,19 @@ Partial Class Form11
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label4.Location = New Point(39, 58)
+        Label4.Location = New Point(30, 58)
         Label4.Name = "Label4"
-        Label4.Size = New Size(116, 16)
+        Label4.Size = New Size(144, 19)
         Label4.TabIndex = 0
         Label4.Text = "Book Management"
         ' 
         ' Form11
         ' 
-        AutoScaleDimensions = New SizeF(7F, 16F)
+        AutoScaleDimensions = New SizeF(9F, 18F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
-        ClientSize = New Size(984, 561)
+        ClientSize = New Size(982, 553)
+        ControlBox = False
         Controls.Add(Panel4)
         Controls.Add(Panel3)
         Controls.Add(Panel2)
@@ -252,8 +223,6 @@ Partial Class Form11
     Friend WithEvents Panel4 As Panel
     Friend WithEvents PictureBox6 As PictureBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents Button2 As Button
     Friend WithEvents Button1 As Button
-    Friend WithEvents Label5 As Label
 
 End Class

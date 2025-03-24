@@ -42,7 +42,7 @@ Public Class Form6
         ComboBox2.SelectedIndex = 0
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click, Button4.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Try
             Dim category = ComboBox1.SelectedValue.ToString
             Dim reportType = ComboBox2.SelectedItem.ToString
@@ -234,11 +234,11 @@ Public Class Form6
         End Try
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click, Button6.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         ExportToExcel()
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click, Button5.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Dim back As New Form4
         back.Show()
         Close()

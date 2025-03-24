@@ -23,7 +23,6 @@ Partial Class Form8
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Panel1 = New Panel()
-        Button3 = New Button()
         Label1 = New Label()
         PictureBox1 = New PictureBox()
         Label2 = New Label()
@@ -52,33 +51,20 @@ Partial Class Form8
         ' Panel1
         ' 
         Panel1.BackColor = Color.LightBlue
-        Panel1.Controls.Add(Button3)
         Panel1.Controls.Add(Label1)
         Panel1.Controls.Add(PictureBox1)
         Panel1.Dock = DockStyle.Top
         Panel1.Location = New Point(0, 0)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(984, 53)
+        Panel1.Size = New Size(982, 53)
         Panel1.TabIndex = 3
-        ' 
-        ' Button3
-        ' 
-        Button3.BackgroundImage = My.Resources.Resources.notification
-        Button3.BackgroundImageLayout = ImageLayout.Zoom
-        Button3.FlatAppearance.BorderSize = 0
-        Button3.FlatStyle = FlatStyle.Flat
-        Button3.Location = New Point(948, 17)
-        Button3.Name = "Button3"
-        Button3.Size = New Size(15, 15)
-        Button3.TabIndex = 9
-        Button3.UseVisualStyleBackColor = True
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
         Label1.Location = New Point(38, 18)
         Label1.Name = "Label1"
-        Label1.Size = New Size(147, 16)
+        Label1.Size = New Size(184, 19)
         Label1.TabIndex = 1
         Label1.Text = "Book Borrowing System"
         ' 
@@ -95,7 +81,7 @@ Partial Class Form8
         ' Label2
         ' 
         Label2.Font = New Font("Arial", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(80, 118)
+        Label2.Location = New Point(80, 120)
         Label2.Name = "Label2"
         Label2.Size = New Size(441, 98)
         Label2.TabIndex = 4
@@ -106,7 +92,7 @@ Partial Class Form8
         PictureBox5.Image = My.Resources.Resources.image
         PictureBox5.Location = New Point(589, 121)
         PictureBox5.Name = "PictureBox5"
-        PictureBox5.Size = New Size(317, 299)
+        PictureBox5.Size = New Size(317, 319)
         PictureBox5.SizeMode = PictureBoxSizeMode.CenterImage
         PictureBox5.TabIndex = 6
         PictureBox5.TabStop = False
@@ -117,7 +103,7 @@ Partial Class Form8
         Label3.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label3.Location = New Point(274, 232)
         Label3.Name = "Label3"
-        Label3.Size = New Size(62, 18)
+        Label3.Size = New Size(76, 23)
         Label3.TabIndex = 7
         Label3.Text = "000000"
         ' 
@@ -127,7 +113,7 @@ Partial Class Form8
         Label4.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label4.Location = New Point(76, 301)
         Label4.Name = "Label4"
-        Label4.Size = New Size(120, 18)
+        Label4.Size = New Size(151, 23)
         Label4.TabIndex = 8
         Label4.Text = "Student Number"
         ' 
@@ -136,7 +122,7 @@ Partial Class Form8
         TextBox1.Cursor = Cursors.IBeam
         TextBox1.Location = New Point(274, 301)
         TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(247, 22)
+        TextBox1.Size = New Size(279, 26)
         TextBox1.TabIndex = 9
         ' 
         ' TextBox2
@@ -144,7 +130,7 @@ Partial Class Form8
         TextBox2.Cursor = Cursors.IBeam
         TextBox2.Location = New Point(274, 339)
         TextBox2.Name = "TextBox2"
-        TextBox2.Size = New Size(247, 22)
+        TextBox2.Size = New Size(279, 26)
         TextBox2.TabIndex = 11
         ' 
         ' Label5
@@ -153,7 +139,7 @@ Partial Class Form8
         Label5.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label5.Location = New Point(76, 339)
         Label5.Name = "Label5"
-        Label5.Size = New Size(135, 18)
+        Label5.Size = New Size(172, 23)
         Label5.TabIndex = 10
         Label5.Text = "Name of Borrower"
         ' 
@@ -162,7 +148,7 @@ Partial Class Form8
         TextBox3.Cursor = Cursors.IBeam
         TextBox3.Location = New Point(274, 379)
         TextBox3.Name = "TextBox3"
-        TextBox3.Size = New Size(247, 22)
+        TextBox3.Size = New Size(279, 26)
         TextBox3.TabIndex = 13
         ' 
         ' Label6
@@ -171,7 +157,7 @@ Partial Class Form8
         Label6.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label6.Location = New Point(76, 379)
         Label6.Name = "Label6"
-        Label6.Size = New Size(121, 18)
+        Label6.Size = New Size(152, 23)
         Label6.TabIndex = 12
         Label6.Text = "Contact Number"
         ' 
@@ -181,7 +167,7 @@ Partial Class Form8
         Label7.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label7.Location = New Point(76, 420)
         Label7.Name = "Label7"
-        Label7.Size = New Size(96, 18)
+        Label7.Size = New Size(122, 23)
         Label7.TabIndex = 14
         Label7.Text = "Borrow Date"
         ' 
@@ -191,7 +177,7 @@ Partial Class Form8
         Label8.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label8.Location = New Point(76, 457)
         Label8.Name = "Label8"
-        Label8.Size = New Size(75, 18)
+        Label8.Size = New Size(93, 23)
         Label8.TabIndex = 16
         Label8.Text = "Due Date"
         ' 
@@ -201,7 +187,7 @@ Partial Class Form8
         Label9.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label9.Location = New Point(76, 263)
         Label9.Name = "Label9"
-        Label9.Size = New Size(104, 18)
+        Label9.Size = New Size(130, 23)
         Label9.TabIndex = 18
         Label9.Text = "No. of Copies"
         ' 
@@ -213,7 +199,7 @@ Partial Class Form8
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button1.ForeColor = SystemColors.ButtonHighlight
-        Button1.Location = New Point(589, 438)
+        Button1.Location = New Point(589, 473)
         Button1.Name = "Button1"
         Button1.Size = New Size(317, 41)
         Button1.TabIndex = 20
@@ -226,7 +212,7 @@ Partial Class Form8
         DateTimePicker1.Format = DateTimePickerFormat.Custom
         DateTimePicker1.Location = New Point(274, 417)
         DateTimePicker1.Name = "DateTimePicker1"
-        DateTimePicker1.Size = New Size(247, 22)
+        DateTimePicker1.Size = New Size(279, 26)
         DateTimePicker1.TabIndex = 21
         ' 
         ' DateTimePicker2
@@ -235,7 +221,7 @@ Partial Class Form8
         DateTimePicker2.Format = DateTimePickerFormat.Custom
         DateTimePicker2.Location = New Point(274, 454)
         DateTimePicker2.Name = "DateTimePicker2"
-        DateTimePicker2.Size = New Size(247, 22)
+        DateTimePicker2.Size = New Size(279, 26)
         DateTimePicker2.TabIndex = 22
         ' 
         ' Button2
@@ -245,7 +231,7 @@ Partial Class Form8
         Button2.Cursor = Cursors.Hand
         Button2.FlatAppearance.BorderSize = 0
         Button2.FlatStyle = FlatStyle.Flat
-        Button2.Location = New Point(56, 122)
+        Button2.Location = New Point(14, 78)
         Button2.Name = "Button2"
         Button2.Size = New Size(15, 15)
         Button2.TabIndex = 23
@@ -257,7 +243,7 @@ Partial Class Form8
         Label10.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label10.Location = New Point(274, 263)
         Label10.Name = "Label10"
-        Label10.Size = New Size(26, 18)
+        Label10.Size = New Size(32, 23)
         Label10.TabIndex = 24
         Label10.Text = "00"
         ' 
@@ -267,16 +253,17 @@ Partial Class Form8
         Label11.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label11.Location = New Point(76, 232)
         Label11.Name = "Label11"
-        Label11.Size = New Size(64, 18)
+        Label11.Size = New Size(81, 23)
         Label11.TabIndex = 25
         Label11.Text = "Book ID"
         ' 
         ' Form8
         ' 
-        AutoScaleDimensions = New SizeF(7F, 16F)
+        AutoScaleDimensions = New SizeF(9F, 18F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
-        ClientSize = New Size(984, 561)
+        ClientSize = New Size(982, 553)
+        ControlBox = False
         Controls.Add(Label11)
         Controls.Add(Label10)
         Controls.Add(Button2)
@@ -327,7 +314,6 @@ Partial Class Form8
     Friend WithEvents DateTimePicker1 As DateTimePicker
     Friend WithEvents DateTimePicker2 As DateTimePicker
     Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
     Friend WithEvents Label10 As Label
     Friend WithEvents Label11 As Label
 End Class

@@ -12,29 +12,28 @@ Public Class Form7
         Try
             conn.Open()
 
-            Dim deleteExpiredQuery As String = "DELETE FROM notification WHERE NotifDate < DATE_SUB(NOW(), INTERVAL 1 MONTH)"
-            Dim deleteCmd As New MySqlCommand(deleteExpiredQuery, conn)
-            deleteCmd.ExecuteNonQuery()
+            Dim query As String = "SELECT NotifID, NotifType AS 'Type', Message, DATE_FORMAT(NotifDate, '%Y-%m-%d %H:%i:%s') AS 'Datenow', IsRead FROM notification WHERE NotifDate >= DATE_SUB(NOW(), INTERVAL 1 MONTH)"
+            Dim adapter As New MySqlDataAdapter(query, conn)
+            Dim table As New DataTable()
 
-            Dim query As String = "SELECT * FROM notification WHERE NotifDate >= DATE_SUB(NOW(), INTERVAL 1 MONTH) ORDER BY NotifDate DESC"
-            Dim cmd As New MySqlCommand(query, conn)
-            Dim reader As MySqlDataReader = cmd.ExecuteReader()
+            adapter.Fill(table)
 
-            ListView1.Items.Clear()
+            DataGridView1.DataSource = table
 
-            While reader.Read()
-                Dim message As String = reader("Message").ToString()
-                Dim notifType As String = reader("NotifType").ToString()
-                Dim notifDate As DateTime = Convert.ToDateTime(reader("NotifDate"))
+            DataGridView1.ColumnHeadersVisible = False
 
-                Dim item As New ListViewItem(message)
-                item.SubItems.Add(notifType)
-                item.SubItems.Add(notifDate.ToString("MM-dd-yyyy HH:mm"))
+            DataGridView1.Columns("NotifID").Visible = False
+            DataGridView1.Columns("IsRead").Visible = False
+            DataGridView1.Columns("Type").Width = 80
+            DataGridView1.Columns("Message").Width = 250
+            DataGridView1.Columns("Datenow").Width = 100
 
-                ListView1.Items.Add(item)
-            End While
-
-            reader.Close()
+            For Each row As DataGridViewRow In DataGridView1.Rows
+                Dim isRead As Boolean = Convert.ToBoolean(row.Cells("IsRead").Value)
+                If Not isRead Then
+                    row.DefaultCellStyle.BackColor = Color.LightYellow
+                End If
+            Next
 
         Catch ex As Exception
             MessageBox.Show("Error: " & ex.Message)
@@ -45,6 +44,31 @@ Public Class Form7
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Me.Close()
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim conn As New MySqlConnection("server=localhost;user id=root;password=;database=book-borrowing")
+
+        Try
+            conn.Open()
+
+            For Each row As DataGridViewRow In DataGridView1.SelectedRows
+                Dim notifID As Integer = Convert.ToInt32(row.Cells("NotifID").Value)
+
+                Dim query As String = "UPDATE notification SET IsRead = 1 WHERE NotifID = @NotifID"
+                Dim cmd As New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@NotifID", notifID)
+
+                cmd.ExecuteNonQuery()
+            Next
+
+            LoadNotifications()
+
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message)
+        Finally
+            conn.Close()
+        End Try
     End Sub
 
 End Class

@@ -23,63 +23,44 @@ Partial Class Form9
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Panel1 = New Panel()
-        Button3 = New Button()
         Label1 = New Label()
         PictureBox1 = New PictureBox()
         Button1 = New Button()
-        Label7 = New Label()
-        TextBox2 = New TextBox()
         Label5 = New Label()
-        TextBox1 = New TextBox()
         Label4 = New Label()
         Label3 = New Label()
         PictureBox5 = New PictureBox()
         Label2 = New Label()
         Label11 = New Label()
-        Button2 = New Button()
+        Back = New Button()
         Label6 = New Label()
         DateTimePicker1 = New DateTimePicker()
-        CheckBox1 = New CheckBox()
-        CheckBox2 = New CheckBox()
-        CheckBox3 = New CheckBox()
-        GroupBox1 = New GroupBox()
+        Button2 = New Button()
+        Button3 = New Button()
+        Label7 = New Label()
+        Label8 = New Label()
         Panel1.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox5, ComponentModel.ISupportInitialize).BeginInit()
-        GroupBox1.SuspendLayout()
         SuspendLayout()
         ' 
         ' Panel1
         ' 
         Panel1.BackColor = Color.LightBlue
-        Panel1.Controls.Add(Button3)
         Panel1.Controls.Add(Label1)
         Panel1.Controls.Add(PictureBox1)
         Panel1.Dock = DockStyle.Top
         Panel1.Location = New Point(0, 0)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(984, 57)
+        Panel1.Size = New Size(982, 57)
         Panel1.TabIndex = 4
-        ' 
-        ' Button3
-        ' 
-        Button3.BackgroundImage = My.Resources.Resources.notification
-        Button3.BackgroundImageLayout = ImageLayout.Zoom
-        Button3.Cursor = Cursors.Hand
-        Button3.FlatAppearance.BorderSize = 0
-        Button3.FlatStyle = FlatStyle.Flat
-        Button3.Location = New Point(950, 17)
-        Button3.Name = "Button3"
-        Button3.Size = New Size(15, 16)
-        Button3.TabIndex = 10
-        Button3.UseVisualStyleBackColor = True
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
         Label1.Location = New Point(38, 19)
         Label1.Name = "Label1"
-        Label1.Size = New Size(147, 16)
+        Label1.Size = New Size(184, 19)
         Label1.TabIndex = 1
         Label1.Text = "Book Borrowing System"
         ' 
@@ -101,85 +82,59 @@ Partial Class Form9
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button1.ForeColor = SystemColors.ButtonHighlight
-        Button1.Location = New Point(589, 473)
+        Button1.Location = New Point(81, 466)
         Button1.Name = "Button1"
-        Button1.Size = New Size(317, 44)
+        Button1.Size = New Size(124, 44)
         Button1.TabIndex = 37
-        Button1.Text = "RETURN"
+        Button1.Text = "Return"
         Button1.UseVisualStyleBackColor = False
-        ' 
-        ' Label7
-        ' 
-        Label7.AutoSize = True
-        Label7.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label7.Location = New Point(80, 403)
-        Label7.Name = "Label7"
-        Label7.Size = New Size(129, 18)
-        Label7.TabIndex = 31
-        Label7.Text = "Conditon of Book"
-        ' 
-        ' TextBox2
-        ' 
-        TextBox2.Cursor = Cursors.IBeam
-        TextBox2.Location = New Point(274, 356)
-        TextBox2.Name = "TextBox2"
-        TextBox2.Size = New Size(247, 22)
-        TextBox2.TabIndex = 28
         ' 
         ' Label5
         ' 
         Label5.AutoSize = True
         Label5.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label5.Location = New Point(80, 360)
+        Label5.Location = New Point(80, 359)
         Label5.Name = "Label5"
-        Label5.Size = New Size(98, 18)
+        Label5.Size = New Size(125, 23)
         Label5.TabIndex = 27
         Label5.Text = "Borrowed By"
-        ' 
-        ' TextBox1
-        ' 
-        TextBox1.Cursor = Cursors.IBeam
-        TextBox1.Location = New Point(274, 316)
-        TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(247, 22)
-        TextBox1.TabIndex = 26
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label4.Location = New Point(80, 320)
+        Label4.Location = New Point(80, 319)
         Label4.Name = "Label4"
-        Label4.Size = New Size(120, 18)
+        Label4.Size = New Size(151, 23)
         Label4.TabIndex = 25
         Label4.Text = "Student Number"
         ' 
         ' Label3
         ' 
-        Label3.AutoSize = True
+        Label3.BackColor = SystemColors.ButtonFace
         Label3.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label3.Location = New Point(274, 272)
+        Label3.Location = New Point(274, 281)
         Label3.Name = "Label3"
-        Label3.Size = New Size(62, 18)
+        Label3.Size = New Size(273, 23)
         Label3.TabIndex = 24
-        Label3.Text = "000000"
         ' 
         ' PictureBox5
         ' 
         PictureBox5.Image = My.Resources.Resources.image
-        PictureBox5.Location = New Point(589, 129)
+        PictureBox5.Location = New Point(589, 120)
         PictureBox5.Name = "PictureBox5"
-        PictureBox5.Size = New Size(317, 319)
+        PictureBox5.Size = New Size(317, 390)
         PictureBox5.SizeMode = PictureBoxSizeMode.CenterImage
         PictureBox5.TabIndex = 23
         PictureBox5.TabStop = False
         ' 
         ' Label2
         ' 
+        Label2.BackColor = Color.Transparent
         Label2.Font = New Font("Arial", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(80, 126)
+        Label2.Location = New Point(80, 120)
         Label2.Name = "Label2"
-        Label2.Size = New Size(441, 105)
+        Label2.Size = New Size(467, 105)
         Label2.TabIndex = 21
         Label2.Text = "Book Title"
         ' 
@@ -187,31 +142,32 @@ Partial Class Form9
         ' 
         Label11.AutoSize = True
         Label11.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label11.Location = New Point(80, 272)
+        Label11.Location = New Point(80, 281)
         Label11.Name = "Label11"
-        Label11.Size = New Size(64, 18)
+        Label11.Size = New Size(81, 23)
         Label11.TabIndex = 39
         Label11.Text = "Book ID"
         ' 
-        ' Button2
+        ' Back
         ' 
-        Button2.BackgroundImage = My.Resources.Resources.back
-        Button2.BackgroundImageLayout = ImageLayout.Zoom
-        Button2.FlatAppearance.BorderSize = 0
-        Button2.FlatStyle = FlatStyle.Flat
-        Button2.Location = New Point(59, 129)
-        Button2.Name = "Button2"
-        Button2.Size = New Size(15, 16)
-        Button2.TabIndex = 40
-        Button2.UseVisualStyleBackColor = True
+        Back.BackgroundImage = My.Resources.Resources.back
+        Back.BackgroundImageLayout = ImageLayout.Zoom
+        Back.Cursor = Cursors.Hand
+        Back.FlatAppearance.BorderSize = 0
+        Back.FlatStyle = FlatStyle.Flat
+        Back.Location = New Point(14, 78)
+        Back.Name = "Back"
+        Back.Size = New Size(15, 16)
+        Back.TabIndex = 40
+        Back.UseVisualStyleBackColor = True
         ' 
         ' Label6
         ' 
         Label6.AutoSize = True
         Label6.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label6.Location = New Point(80, 444)
+        Label6.Location = New Point(81, 401)
         Label6.Name = "Label6"
-        Label6.Size = New Size(91, 18)
+        Label6.Size = New Size(116, 23)
         Label6.TabIndex = 41
         Label6.Text = "Return Date"
         ' 
@@ -220,68 +176,76 @@ Partial Class Form9
         DateTimePicker1.CalendarFont = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         DateTimePicker1.Cursor = Cursors.Hand
         DateTimePicker1.Format = DateTimePickerFormat.Custom
-        DateTimePicker1.Location = New Point(274, 441)
+        DateTimePicker1.Location = New Point(274, 399)
         DateTimePicker1.Name = "DateTimePicker1"
-        DateTimePicker1.Size = New Size(247, 22)
+        DateTimePicker1.Size = New Size(273, 26)
         DateTimePicker1.TabIndex = 43
         ' 
-        ' CheckBox1
+        ' Button2
         ' 
-        CheckBox1.AutoSize = True
-        CheckBox1.Location = New Point(15, 14)
-        CheckBox1.Name = "CheckBox1"
-        CheckBox1.Size = New Size(57, 20)
-        CheckBox1.TabIndex = 44
-        CheckBox1.Text = "Good"
-        CheckBox1.UseVisualStyleBackColor = True
+        Button2.BackColor = SystemColors.HotTrack
+        Button2.Cursor = Cursors.Hand
+        Button2.FlatAppearance.BorderSize = 0
+        Button2.FlatStyle = FlatStyle.Flat
+        Button2.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Button2.ForeColor = SystemColors.ButtonHighlight
+        Button2.Location = New Point(211, 466)
+        Button2.Name = "Button2"
+        Button2.Size = New Size(183, 44)
+        Button2.TabIndex = 44
+        Button2.Text = "Damaged"
+        Button2.UseVisualStyleBackColor = False
         ' 
-        ' CheckBox2
+        ' Button3
         ' 
-        CheckBox2.AutoSize = True
-        CheckBox2.Location = New Point(81, 14)
-        CheckBox2.Name = "CheckBox2"
-        CheckBox2.Size = New Size(81, 20)
-        CheckBox2.TabIndex = 45
-        CheckBox2.Text = "Damaged"
-        CheckBox2.UseVisualStyleBackColor = True
+        Button3.BackColor = SystemColors.HotTrack
+        Button3.Cursor = Cursors.Hand
+        Button3.FlatAppearance.BorderSize = 0
+        Button3.FlatStyle = FlatStyle.Flat
+        Button3.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Button3.ForeColor = SystemColors.ButtonHighlight
+        Button3.Location = New Point(400, 466)
+        Button3.Name = "Button3"
+        Button3.Size = New Size(147, 44)
+        Button3.TabIndex = 45
+        Button3.Text = "Lost"
+        Button3.UseVisualStyleBackColor = False
         ' 
-        ' CheckBox3
+        ' Label7
         ' 
-        CheckBox3.AutoSize = True
-        CheckBox3.Location = New Point(177, 14)
-        CheckBox3.Name = "CheckBox3"
-        CheckBox3.Size = New Size(51, 20)
-        CheckBox3.TabIndex = 46
-        CheckBox3.Text = "Lost"
-        CheckBox3.UseVisualStyleBackColor = True
+        Label7.BackColor = SystemColors.ButtonFace
+        Label7.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label7.Location = New Point(274, 359)
+        Label7.Name = "Label7"
+        Label7.Size = New Size(273, 23)
+        Label7.TabIndex = 46
         ' 
-        ' GroupBox1
+        ' Label8
         ' 
-        GroupBox1.Controls.Add(CheckBox3)
-        GroupBox1.Controls.Add(CheckBox1)
-        GroupBox1.Controls.Add(CheckBox2)
-        GroupBox1.Location = New Point(274, 387)
-        GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(247, 40)
-        GroupBox1.TabIndex = 47
-        GroupBox1.TabStop = False
+        Label8.BackColor = SystemColors.ButtonFace
+        Label8.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label8.Location = New Point(274, 319)
+        Label8.Name = "Label8"
+        Label8.Size = New Size(273, 23)
+        Label8.TabIndex = 47
         ' 
         ' Form9
         ' 
-        AutoScaleDimensions = New SizeF(7F, 16F)
+        AutoScaleDimensions = New SizeF(9F, 18F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
-        ClientSize = New Size(984, 561)
-        Controls.Add(GroupBox1)
+        ClientSize = New Size(982, 553)
+        ControlBox = False
+        Controls.Add(Label8)
+        Controls.Add(Label7)
+        Controls.Add(Button3)
+        Controls.Add(Button2)
         Controls.Add(DateTimePicker1)
         Controls.Add(Label6)
-        Controls.Add(Button2)
+        Controls.Add(Back)
         Controls.Add(Label11)
         Controls.Add(Button1)
-        Controls.Add(Label7)
-        Controls.Add(TextBox2)
         Controls.Add(Label5)
-        Controls.Add(TextBox1)
         Controls.Add(Label4)
         Controls.Add(Label3)
         Controls.Add(PictureBox5)
@@ -294,8 +258,6 @@ Partial Class Form9
         Panel1.PerformLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox5, ComponentModel.ISupportInitialize).EndInit()
-        GroupBox1.ResumeLayout(False)
-        GroupBox1.PerformLayout()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -304,21 +266,17 @@ Partial Class Form9
     Friend WithEvents Label1 As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Button1 As Button
-    Friend WithEvents Label7 As Label
-    Friend WithEvents TextBox2 As TextBox
     Friend WithEvents Label5 As Label
-    Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents PictureBox5 As PictureBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label11 As Label
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
+    Friend WithEvents Back As Button
     Friend WithEvents Label6 As Label
     Friend WithEvents DateTimePicker1 As DateTimePicker
-    Friend WithEvents CheckBox1 As CheckBox
-    Friend WithEvents CheckBox2 As CheckBox
-    Friend WithEvents CheckBox3 As CheckBox
-    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Button3 As Button
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label8 As Label
 End Class
