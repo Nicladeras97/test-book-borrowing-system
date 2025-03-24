@@ -43,6 +43,11 @@ Partial Class Form8
         Button2 = New Button()
         Label10 = New Label()
         Label11 = New Label()
+        TextBox4 = New TextBox()
+        Label12 = New Label()
+        Button3 = New Button()
+        Label13 = New Label()
+        Label14 = New Label()
         Panel1.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox5, ComponentModel.ISupportInitialize).BeginInit()
@@ -81,7 +86,7 @@ Partial Class Form8
         ' Label2
         ' 
         Label2.Font = New Font("Arial", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(80, 120)
+        Label2.Location = New Point(76, 78)
         Label2.Name = "Label2"
         Label2.Size = New Size(441, 98)
         Label2.TabIndex = 4
@@ -90,9 +95,9 @@ Partial Class Form8
         ' PictureBox5
         ' 
         PictureBox5.Image = My.Resources.Resources.image
-        PictureBox5.Location = New Point(589, 121)
+        PictureBox5.Location = New Point(589, 78)
         PictureBox5.Name = "PictureBox5"
-        PictureBox5.Size = New Size(317, 319)
+        PictureBox5.Size = New Size(317, 362)
         PictureBox5.SizeMode = PictureBoxSizeMode.CenterImage
         PictureBox5.TabIndex = 6
         PictureBox5.TabStop = False
@@ -100,10 +105,13 @@ Partial Class Form8
         ' Label3
         ' 
         Label3.AutoSize = True
+        Label3.BackColor = Color.White
+        Label3.BorderStyle = BorderStyle.Fixed3D
+        Label3.FlatStyle = FlatStyle.Flat
         Label3.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label3.Location = New Point(274, 232)
+        Label3.Location = New Point(172, 197)
         Label3.Name = "Label3"
-        Label3.Size = New Size(76, 23)
+        Label3.Size = New Size(78, 25)
         Label3.TabIndex = 7
         Label3.Text = "000000"
         ' 
@@ -111,7 +119,7 @@ Partial Class Form8
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label4.Location = New Point(76, 301)
+        Label4.Location = New Point(76, 272)
         Label4.Name = "Label4"
         Label4.Size = New Size(151, 23)
         Label4.TabIndex = 8
@@ -120,15 +128,15 @@ Partial Class Form8
         ' TextBox1
         ' 
         TextBox1.Cursor = Cursors.IBeam
-        TextBox1.Location = New Point(274, 301)
+        TextBox1.Location = New Point(274, 272)
         TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(279, 26)
+        TextBox1.Size = New Size(198, 26)
         TextBox1.TabIndex = 9
         ' 
         ' TextBox2
         ' 
         TextBox2.Cursor = Cursors.IBeam
-        TextBox2.Location = New Point(274, 339)
+        TextBox2.Location = New Point(274, 310)
         TextBox2.Name = "TextBox2"
         TextBox2.Size = New Size(279, 26)
         TextBox2.TabIndex = 11
@@ -137,7 +145,7 @@ Partial Class Form8
         ' 
         Label5.AutoSize = True
         Label5.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label5.Location = New Point(76, 339)
+        Label5.Location = New Point(76, 310)
         Label5.Name = "Label5"
         Label5.Size = New Size(172, 23)
         Label5.TabIndex = 10
@@ -146,7 +154,7 @@ Partial Class Form8
         ' TextBox3
         ' 
         TextBox3.Cursor = Cursors.IBeam
-        TextBox3.Location = New Point(274, 379)
+        TextBox3.Location = New Point(274, 350)
         TextBox3.Name = "TextBox3"
         TextBox3.Size = New Size(279, 26)
         TextBox3.TabIndex = 13
@@ -155,7 +163,7 @@ Partial Class Form8
         ' 
         Label6.AutoSize = True
         Label6.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label6.Location = New Point(76, 379)
+        Label6.Location = New Point(76, 350)
         Label6.Name = "Label6"
         Label6.Size = New Size(152, 23)
         Label6.TabIndex = 12
@@ -165,7 +173,7 @@ Partial Class Form8
         ' 
         Label7.AutoSize = True
         Label7.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label7.Location = New Point(76, 420)
+        Label7.Location = New Point(76, 431)
         Label7.Name = "Label7"
         Label7.Size = New Size(122, 23)
         Label7.TabIndex = 14
@@ -175,7 +183,7 @@ Partial Class Form8
         ' 
         Label8.AutoSize = True
         Label8.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label8.Location = New Point(76, 457)
+        Label8.Location = New Point(76, 468)
         Label8.Name = "Label8"
         Label8.Size = New Size(93, 23)
         Label8.TabIndex = 16
@@ -185,11 +193,11 @@ Partial Class Form8
         ' 
         Label9.AutoSize = True
         Label9.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label9.Location = New Point(76, 263)
+        Label9.Location = New Point(274, 197)
         Label9.Name = "Label9"
-        Label9.Size = New Size(130, 23)
+        Label9.Size = New Size(82, 23)
         Label9.TabIndex = 18
-        Label9.Text = "No. of Copies"
+        Label9.Text = "Copy ID"
         ' 
         ' Button1
         ' 
@@ -210,7 +218,7 @@ Partial Class Form8
         ' 
         DateTimePicker1.Cursor = Cursors.Hand
         DateTimePicker1.Format = DateTimePickerFormat.Custom
-        DateTimePicker1.Location = New Point(274, 417)
+        DateTimePicker1.Location = New Point(274, 428)
         DateTimePicker1.Name = "DateTimePicker1"
         DateTimePicker1.Size = New Size(279, 26)
         DateTimePicker1.TabIndex = 21
@@ -219,7 +227,7 @@ Partial Class Form8
         ' 
         DateTimePicker2.Cursor = Cursors.Hand
         DateTimePicker2.Format = DateTimePickerFormat.Custom
-        DateTimePicker2.Location = New Point(274, 454)
+        DateTimePicker2.Location = New Point(274, 465)
         DateTimePicker2.Name = "DateTimePicker2"
         DateTimePicker2.Size = New Size(279, 26)
         DateTimePicker2.TabIndex = 22
@@ -239,23 +247,78 @@ Partial Class Form8
         ' 
         ' Label10
         ' 
-        Label10.AutoSize = True
+        Label10.BackColor = Color.White
+        Label10.BorderStyle = BorderStyle.Fixed3D
+        Label10.FlatStyle = FlatStyle.Flat
         Label10.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label10.Location = New Point(274, 263)
+        Label10.Location = New Point(397, 197)
         Label10.Name = "Label10"
-        Label10.Size = New Size(32, 23)
+        Label10.Size = New Size(156, 23)
         Label10.TabIndex = 24
-        Label10.Text = "00"
+        Label10.Text = "000000"
         ' 
         ' Label11
         ' 
         Label11.AutoSize = True
         Label11.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label11.Location = New Point(76, 232)
+        Label11.Location = New Point(76, 197)
         Label11.Name = "Label11"
         Label11.Size = New Size(81, 23)
         Label11.TabIndex = 25
         Label11.Text = "Book ID"
+        ' 
+        ' TextBox4
+        ' 
+        TextBox4.Cursor = Cursors.IBeam
+        TextBox4.Location = New Point(274, 390)
+        TextBox4.Name = "TextBox4"
+        TextBox4.Size = New Size(279, 26)
+        TextBox4.TabIndex = 27
+        ' 
+        ' Label12
+        ' 
+        Label12.AutoSize = True
+        Label12.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label12.Location = New Point(76, 390)
+        Label12.Name = "Label12"
+        Label12.Size = New Size(58, 23)
+        Label12.TabIndex = 26
+        Label12.Text = "Email"
+        ' 
+        ' Button3
+        ' 
+        Button3.BackColor = Color.DarkGreen
+        Button3.FlatAppearance.BorderSize = 0
+        Button3.FlatStyle = FlatStyle.Flat
+        Button3.ForeColor = SystemColors.ButtonHighlight
+        Button3.Location = New Point(478, 272)
+        Button3.Name = "Button3"
+        Button3.Size = New Size(75, 26)
+        Button3.TabIndex = 28
+        Button3.Text = "Check"
+        Button3.UseVisualStyleBackColor = False
+        ' 
+        ' Label13
+        ' 
+        Label13.AutoSize = True
+        Label13.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label13.Location = New Point(76, 234)
+        Label13.Name = "Label13"
+        Label13.Size = New Size(117, 23)
+        Label13.TabIndex = 29
+        Label13.Text = "Call Number"
+        ' 
+        ' Label14
+        ' 
+        Label14.BackColor = Color.White
+        Label14.BorderStyle = BorderStyle.Fixed3D
+        Label14.FlatStyle = FlatStyle.Flat
+        Label14.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label14.Location = New Point(274, 234)
+        Label14.Name = "Label14"
+        Label14.Size = New Size(279, 23)
+        Label14.TabIndex = 30
+        Label14.Text = "000000"
         ' 
         ' Form8
         ' 
@@ -264,6 +327,11 @@ Partial Class Form8
         BackColor = Color.White
         ClientSize = New Size(982, 553)
         ControlBox = False
+        Controls.Add(Label14)
+        Controls.Add(Label13)
+        Controls.Add(Button3)
+        Controls.Add(TextBox4)
+        Controls.Add(Label12)
         Controls.Add(Label11)
         Controls.Add(Label10)
         Controls.Add(Button2)
@@ -316,4 +384,9 @@ Partial Class Form8
     Friend WithEvents Button2 As Button
     Friend WithEvents Label10 As Label
     Friend WithEvents Label11 As Label
+    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents Label12 As Label
+    Friend WithEvents Button3 As Button
+    Friend WithEvents Label13 As Label
+    Friend WithEvents Label14 As Label
 End Class

@@ -35,6 +35,7 @@ Partial Class Form11
         Panel4 = New Panel()
         PictureBox6 = New PictureBox()
         Label4 = New Label()
+        Button2 = New Button()
         Panel1.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         Panel2.SuspendLayout()
@@ -182,6 +183,17 @@ Partial Class Form11
         Label4.TabIndex = 0
         Label4.Text = "Book Management"
         ' 
+        ' Button2
+        ' 
+        Button2.BackColor = Color.LightBlue
+        Button2.FlatStyle = FlatStyle.Flat
+        Button2.Location = New Point(394, 441)
+        Button2.Name = "Button2"
+        Button2.Size = New Size(196, 63)
+        Button2.TabIndex = 4
+        Button2.Text = "Book Shelves"
+        Button2.UseVisualStyleBackColor = False
+        ' 
         ' Form11
         ' 
         AutoScaleDimensions = New SizeF(9F, 18F)
@@ -189,6 +201,7 @@ Partial Class Form11
         BackColor = Color.White
         ClientSize = New Size(982, 553)
         ControlBox = False
+        Controls.Add(Button2)
         Controls.Add(Panel4)
         Controls.Add(Panel3)
         Controls.Add(Panel2)
@@ -224,5 +237,6 @@ Partial Class Form11
     Friend WithEvents PictureBox6 As PictureBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
 
 End Class

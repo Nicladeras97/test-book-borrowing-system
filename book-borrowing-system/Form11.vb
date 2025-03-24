@@ -24,4 +24,9 @@ Public Class Form11
         Me.Hide()
     End Sub
 
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim shelves As New Form12
+        shelves.Show()
+        Me.Hide()
+    End Sub
 End Class

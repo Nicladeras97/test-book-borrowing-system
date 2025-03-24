@@ -82,9 +82,9 @@ Partial Class Form9
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button1.ForeColor = SystemColors.ButtonHighlight
-        Button1.Location = New Point(81, 466)
+        Button1.Location = New Point(589, 462)
         Button1.Name = "Button1"
-        Button1.Size = New Size(124, 44)
+        Button1.Size = New Size(95, 44)
         Button1.TabIndex = 37
         Button1.Text = "Return"
         Button1.UseVisualStyleBackColor = False
@@ -121,9 +121,9 @@ Partial Class Form9
         ' PictureBox5
         ' 
         PictureBox5.Image = My.Resources.Resources.image
-        PictureBox5.Location = New Point(589, 120)
+        PictureBox5.Location = New Point(589, 78)
         PictureBox5.Name = "PictureBox5"
-        PictureBox5.Size = New Size(317, 390)
+        PictureBox5.Size = New Size(317, 362)
         PictureBox5.SizeMode = PictureBoxSizeMode.CenterImage
         PictureBox5.TabIndex = 23
         PictureBox5.TabStop = False
@@ -132,7 +132,7 @@ Partial Class Form9
         ' 
         Label2.BackColor = Color.Transparent
         Label2.Font = New Font("Arial", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(80, 120)
+        Label2.Location = New Point(80, 78)
         Label2.Name = "Label2"
         Label2.Size = New Size(467, 105)
         Label2.TabIndex = 21
@@ -189,9 +189,9 @@ Partial Class Form9
         Button2.FlatStyle = FlatStyle.Flat
         Button2.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button2.ForeColor = SystemColors.ButtonHighlight
-        Button2.Location = New Point(211, 466)
+        Button2.Location = New Point(691, 462)
         Button2.Name = "Button2"
-        Button2.Size = New Size(183, 44)
+        Button2.Size = New Size(134, 44)
         Button2.TabIndex = 44
         Button2.Text = "Damaged"
         Button2.UseVisualStyleBackColor = False
@@ -204,9 +204,9 @@ Partial Class Form9
         Button3.FlatStyle = FlatStyle.Flat
         Button3.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button3.ForeColor = SystemColors.ButtonHighlight
-        Button3.Location = New Point(400, 466)
+        Button3.Location = New Point(831, 462)
         Button3.Name = "Button3"
-        Button3.Size = New Size(147, 44)
+        Button3.Size = New Size(75, 44)
         Button3.TabIndex = 45
         Button3.Text = "Lost"
         Button3.UseVisualStyleBackColor = False

@@ -78,7 +78,7 @@ Public Class Form9
                 VALUES (@BorrowID, @BookID, @StudNo, NOW(), @DamageDescription, @FineAmount);
 
                 UPDATE book
-                SET Status = 'Pending' 
+                SET Status = 'Damaged' 
                 WHERE BookID = @BookID;
 
                 UPDATE borrow
