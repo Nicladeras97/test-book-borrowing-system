@@ -1,143 +1,160 @@
-﻿Imports System.IO
-Imports MySql.Data.MySqlClient
+﻿Imports MySql.Data.MySqlClient
 
 Public Class Form8
-    Dim connString As String = "server=localhost; user=root; password=; database=book-borrowing;"
-    Private bookID As String
-    Private bookTitle As String
-    Private bookImage As String
+    Dim conn As New MySqlConnection("server=localhost;user id=root;password=;database=book-borrowing")
+
+    Private isbn As String
+    Private title As String
+    Private author As String
+    Private year As String
+    Private category As String
+    Private imagePath As String
     Private copies As Integer
-    Private bookAuthor As String
+    Private callNumber As String
+    Private rackNumber As String
 
-    Public Sub New(selectedBookID As String, title As String, imagePath As String, availableCopies As Integer, author As String)
+    Public Sub New(isbn As String, title As String, author As String, year As String, category As String, imagePath As String, copies As Integer, callNumber As String, rackNumber As String)
         InitializeComponent()
-
-        bookID = selectedBookID
-        bookTitle = title
-        bookImage = imagePath
-        copies = availableCopies
-        bookAuthor = author
-
-        Label3.Text = bookID
-        Label2.Text = bookTitle
-        Label10.Text = copies.ToString()
-
-        If Not String.IsNullOrEmpty(bookImage) AndAlso File.Exists(bookImage) Then
-            PictureBox5.Image = Image.FromFile(bookImage)
-        Else
-            PictureBox5.Image = My.Resources.image
-        End If
+        Me.isbn = isbn
+        Me.title = title
+        Me.author = author
+        Me.year = year
+        Me.category = category
+        Me.imagePath = imagePath
+        Me.copies = copies
+        Me.callNumber = callNumber
+        Me.rackNumber = rackNumber
     End Sub
 
     Private Sub Form8_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Label2.Text = bookTitle
-        Label3.Text = bookID
+        Label3.Text = isbn
+        Label2.Text = title
+        Label18.Text = author
+        Label20.Text = year
+        Label22.Text = category
+        Label10.Text = copies.ToString()
+        Label14.Text = callNumber
+        Label15.Text = rackNumber
+
+        If Not String.IsNullOrEmpty(imagePath) AndAlso IO.File.Exists(imagePath) Then
+            PictureBox1.Image = Image.FromFile(imagePath)
+        Else
+            PictureBox1.Image = My.Resources.image
+        End If
     End Sub
 
-    Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
-        DateTimePicker1.Format = DateTimePickerFormat.Custom
-        DateTimePicker1.CustomFormat = "MMMM dd, yyyy"
-    End Sub
 
-    Private Sub DateTimePicker2_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker2.ValueChanged
-        DateTimePicker2.Format = DateTimePickerFormat.Custom
-        DateTimePicker2.CustomFormat = "MMMM dd, yyyy"
-    End Sub
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim studNo As String = TextBox1.Text.Trim()
+        If String.IsNullOrEmpty(studNo) Then
+            MessageBox.Show("Please enter a Student Number.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Me.Close()
-        Form2.Show()
+        Dim query As String = "SELECT FullName, ContactNumber, Email FROM users WHERE StudNo = @StudNo"
+        Dim cmd As New MySqlCommand(query, conn)
+        cmd.Parameters.AddWithValue("@StudNo", studNo)
+
+        Try
+            conn.Open()
+            Dim reader As MySqlDataReader = cmd.ExecuteReader()
+
+            If reader.Read() Then
+                TextBox2.Text = reader("FullName").ToString()
+                TextBox3.Text = reader("ContactNumber").ToString()
+                TextBox4.Text = reader("Email").ToString()
+            Else
+                Dim result = MessageBox.Show("Student not found. Enter details?", "New Borrower", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                If result = DialogResult.Yes Then
+                    TextBox2.Clear()
+                    TextBox3.Clear()
+                    TextBox4.Clear()
+                Else
+                    Return
+                End If
+            End If
+            reader.Close()
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message)
+        Finally
+            conn.Close()
+        End Try
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If String.IsNullOrWhiteSpace(TextBox1.Text) OrElse
-           String.IsNullOrWhiteSpace(TextBox2.Text) OrElse
-           String.IsNullOrWhiteSpace(TextBox3.Text) Then
-            MessageBox.Show("Please fill in all fields!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        Dim studNo As String = TextBox1.Text.Trim()
+        Dim name As String = TextBox2.Text.Trim()
+        Dim contact As String = TextBox3.Text.Trim()
+        Dim email As String = TextBox4.Text.Trim()
+        Dim borrowDate As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
+        Dim dueDate As String = DateTimePicker2.Value.ToString("yyyy-MM-dd")
+        Dim isbn As String = Label3.Text.Trim()
+
+        If String.IsNullOrEmpty(studNo) Or String.IsNullOrEmpty(name) Or String.IsNullOrEmpty(contact) Or String.IsNullOrEmpty(email) Or String.IsNullOrEmpty(isbn) Then
+            MessageBox.Show("Please fill all fields.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
 
-        If Not IsNumeric(TextBox3.Text) Then
-            MessageBox.Show("Please enter a valid contact number!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return
-        End If
+        Dim identifier As String = ""
+        Dim identifierType As String = ""
 
-        If copies <= 0 Then
-            MessageBox.Show("No available copies for borrowing!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return
-        End If
+        Try
+            conn.Open()
 
-        Using conn As New MySqlConnection(connString)
-            Try
-                conn.Open()
+            Dim copyQuery As String = "SELECT CopyID FROM copies WHERE ISBN = @ISBN AND Status = 'Available' LIMIT 1"
+            Dim copyCmd As New MySqlCommand(copyQuery, conn)
+            copyCmd.Parameters.AddWithValue("@ISBN", isbn)
 
-                Dim studentNumber As String = TextBox1.Text
-                Dim fullName As String = TextBox2.Text
-                Dim contactNumber As String = TextBox3.Text
-                Dim borrowDate As Date = DateTimePicker1.Value
-                Dim dueDate As Date = DateTimePicker2.Value
+            Dim copyReader As MySqlDataReader = copyCmd.ExecuteReader()
 
-                Dim borrowID As String = Guid.NewGuid().ToString("N").Substring(0, 10)
+            If copyReader.Read() Then
+                identifier = copyReader("CopyID").ToString()
+                identifierType = "CopyID"
+            Else
+                identifier = Label3.Text.Trim()
+                identifierType = "ISBN"
+            End If
+            copyReader.Close()
 
-                Dim checkBorrowQuery As String = "SELECT COUNT(*) FROM borrow WHERE StudNo = @StudNo AND BookID = @BookID AND StatusName = 'Borrowed'"
-                Using checkBorrowCmd As New MySqlCommand(checkBorrowQuery, conn)
-                    checkBorrowCmd.Parameters.AddWithValue("@StudNo", studentNumber)
-                    checkBorrowCmd.Parameters.AddWithValue("@BookID", bookID)
-                    Dim alreadyBorrowed As Integer = Convert.ToInt32(checkBorrowCmd.ExecuteScalar())
+            Dim insertQuery As String = "INSERT INTO borrow (StudNo, ISBN, BorrowDate, DueDate, StatusName, Title) " &
+                            "VALUES (@StudNo, @ISBN, @BorrowDate, @DueDate, 'Borrowed', @Title)"
+            Dim insertCmd As New MySqlCommand(insertQuery, conn)
+            insertCmd.Parameters.AddWithValue("@StudNo", studNo)
+            insertCmd.Parameters.AddWithValue("@ISBN", identifier)
+            insertCmd.Parameters.AddWithValue("@BorrowDate", borrowDate)
+            insertCmd.Parameters.AddWithValue("@DueDate", dueDate)
+            insertCmd.Parameters.AddWithValue("@Title", Label2.Text.Trim())
 
-                    If alreadyBorrowed > 0 Then
-                        MessageBox.Show("You have already borrowed this book!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                        Return
-                    End If
-                End Using
+            insertCmd.ExecuteNonQuery()
 
-                Dim checkUserQuery As String = "SELECT COUNT(*) FROM users WHERE StudNo = @StudNo"
-                Using checkCmd As New MySqlCommand(checkUserQuery, conn)
-                    checkCmd.Parameters.AddWithValue("@StudNo", studentNumber)
-                    Dim userExists As Integer = Convert.ToInt32(checkCmd.ExecuteScalar())
+            Dim updateQuery As String = ""
 
-                    If userExists = 0 Then
-                        Dim insertUserQuery As String = "INSERT INTO users (StudNo, FullName, ContactNumber) VALUES (@StudNo, @FullName, @ContactNumber)"
-                        Using insertUserCmd As New MySqlCommand(insertUserQuery, conn)
-                            insertUserCmd.Parameters.AddWithValue("@StudNo", studentNumber)
-                            insertUserCmd.Parameters.AddWithValue("@FullName", fullName)
-                            insertUserCmd.Parameters.AddWithValue("@ContactNumber", contactNumber)
-                            insertUserCmd.ExecuteNonQuery()
-                        End Using
-                    End If
-                End Using
+            If identifierType = "CopyID" Then
+                updateQuery = "UPDATE copies SET Status = 'Borrowed' WHERE CopyID = @Identifier"
+            Else
+                updateQuery = "UPDATE book SET Status = 'Borrowed' WHERE ISBN = @Identifier"
+            End If
 
-                Dim insertQuery As String = "INSERT INTO borrow (BorrowID, StudNo, BookID, BorrowDate, DueDate, StatusName, Title, Author) " &
-                                            "VALUES (@BorrowID, @StudNo, @BookID, @BorrowDate, @DueDate, 'Borrowed', @Title, @Author)"
-                Using cmd As New MySqlCommand(insertQuery, conn)
-                    cmd.Parameters.AddWithValue("@BorrowID", borrowID)
-                    cmd.Parameters.AddWithValue("@StudNo", studentNumber)
-                    cmd.Parameters.AddWithValue("@BookID", bookID)
-                    cmd.Parameters.AddWithValue("@BorrowDate", borrowDate)
-                    cmd.Parameters.AddWithValue("@DueDate", dueDate)
-                    cmd.Parameters.AddWithValue("@Title", bookTitle)
-                    cmd.Parameters.AddWithValue("@Author", bookAuthor)
-                    cmd.ExecuteNonQuery()
-                End Using
+            Dim updateCmd As New MySqlCommand(updateQuery, conn)
+            updateCmd.Parameters.AddWithValue("@Identifier", identifier)
+            updateCmd.ExecuteNonQuery()
 
-                Dim updateQuery As String = "UPDATE book " &
-                    "SET Copies = Copies - 1, " &
-                    "Status = CASE WHEN Copies - 1 = 0 THEN 'Borrowed' ELSE 'Available' END " &
-                    "WHERE BookID = @BookID"
-                Using cmdUpdate As New MySqlCommand(updateQuery, conn)
-                    cmdUpdate.Parameters.AddWithValue("@BookID", bookID)
-                    cmdUpdate.ExecuteNonQuery()
-                End Using
+            MessageBox.Show("Book borrowed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                MessageBox.Show("Book successfully borrowed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Dim back As New Form12
+            back.Show()
+            Me.Hide()
 
-                Form2.Show()
-                Me.Close()
-
-            Catch ex As Exception
-                MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
-        End Using
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message)
+        Finally
+            conn.Close()
+        End Try
     End Sub
 
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim back As New Form12
+        back.Show()
+        Me.Hide()
+    End Sub
 End Class

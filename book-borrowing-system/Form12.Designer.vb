@@ -33,6 +33,7 @@ Partial Class Form12
         Back = New Button()
         Button3 = New Button()
         DataGridView1 = New DataGridView()
+        Label3 = New Label()
         Panel1.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
@@ -42,7 +43,7 @@ Partial Class Form12
         ' 
         TextBox1.Cursor = Cursors.IBeam
         TextBox1.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TextBox1.Location = New Point(71, 74)
+        TextBox1.Location = New Point(139, 74)
         TextBox1.Name = "TextBox1"
         TextBox1.Size = New Size(307, 26)
         TextBox1.TabIndex = 7
@@ -79,6 +80,7 @@ Partial Class Form12
         ' 
         ' ComboBox1
         ' 
+        ComboBox1.Cursor = Cursors.Hand
         ComboBox1.FormattingEnabled = True
         ComboBox1.Location = New Point(1040, 74)
         ComboBox1.Name = "ComboBox1"
@@ -87,6 +89,7 @@ Partial Class Form12
         ' 
         ' Button1
         ' 
+        Button1.Cursor = Cursors.Hand
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Location = New Point(627, 698)
         Button1.Name = "Button1"
@@ -106,6 +109,7 @@ Partial Class Form12
         ' 
         ' Button2
         ' 
+        Button2.Cursor = Cursors.Hand
         Button2.FlatStyle = FlatStyle.Flat
         Button2.Location = New Point(774, 697)
         Button2.Name = "Button2"
@@ -130,6 +134,7 @@ Partial Class Form12
         ' Button3
         ' 
         Button3.BackColor = SystemColors.Highlight
+        Button3.Cursor = Cursors.Hand
         Button3.FlatStyle = FlatStyle.Flat
         Button3.Font = New Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Button3.ForeColor = Color.White
@@ -150,6 +155,15 @@ Partial Class Form12
         DataGridView1.Size = New Size(1404, 539)
         DataGridView1.TabIndex = 43
         ' 
+        ' Label3
+        ' 
+        Label3.AutoSize = True
+        Label3.Location = New Point(71, 77)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(62, 19)
+        Label3.TabIndex = 44
+        Label3.Text = "Search"
+        ' 
         ' Form12
         ' 
         AutoScaleDimensions = New SizeF(9F, 19F)
@@ -157,6 +171,7 @@ Partial Class Form12
         BackColor = Color.White
         ClientSize = New Size(1482, 753)
         ControlBox = False
+        Controls.Add(Label3)
         Controls.Add(DataGridView1)
         Controls.Add(Button3)
         Controls.Add(Back)
@@ -188,4 +203,5 @@ Partial Class Form12
     Friend WithEvents Back As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents Label3 As Label
 End Class

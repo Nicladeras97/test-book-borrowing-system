@@ -35,6 +35,7 @@ Partial Class Form5
         Button6 = New Button()
         Label2 = New Label()
         Button7 = New Button()
+        Label3 = New Label()
         Panel1.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
@@ -114,11 +115,10 @@ Partial Class Form5
         ' TextBox1
         ' 
         TextBox1.Cursor = Cursors.IBeam
-        TextBox1.Location = New Point(68, 75)
+        TextBox1.Location = New Point(136, 75)
         TextBox1.Name = "TextBox1"
         TextBox1.Size = New Size(307, 26)
         TextBox1.TabIndex = 14
-        TextBox1.Text = "Search"
         ' 
         ' Button5
         ' 
@@ -153,14 +153,15 @@ Partial Class Form5
         DataGridView1.BackgroundColor = Color.WhiteSmoke
         DataGridView1.BorderStyle = BorderStyle.None
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(37, 117)
+        DataGridView1.Location = New Point(37, 127)
         DataGridView1.Name = "DataGridView1"
         DataGridView1.RowHeadersWidth = 51
-        DataGridView1.Size = New Size(1410, 572)
+        DataGridView1.Size = New Size(1410, 562)
         DataGridView1.TabIndex = 17
         ' 
         ' Button6
         ' 
+        Button6.Cursor = Cursors.Hand
         Button6.FlatStyle = FlatStyle.Flat
         Button6.Location = New Point(775, 711)
         Button6.Name = "Button6"
@@ -180,6 +181,7 @@ Partial Class Form5
         ' 
         ' Button7
         ' 
+        Button7.Cursor = Cursors.Hand
         Button7.FlatStyle = FlatStyle.Flat
         Button7.Location = New Point(628, 711)
         Button7.Name = "Button7"
@@ -188,6 +190,15 @@ Partial Class Form5
         Button7.Text = "Back"
         Button7.UseVisualStyleBackColor = True
         ' 
+        ' Label3
+        ' 
+        Label3.AutoSize = True
+        Label3.Location = New Point(68, 78)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(62, 19)
+        Label3.TabIndex = 21
+        Label3.Text = "Search"
+        ' 
         ' Form5
         ' 
         AutoScaleDimensions = New SizeF(9F, 18F)
@@ -195,6 +206,8 @@ Partial Class Form5
         BackColor = Color.White
         ClientSize = New Size(1482, 753)
         ControlBox = False
+        Controls.Add(Button3)
+        Controls.Add(Label3)
         Controls.Add(Button6)
         Controls.Add(Label2)
         Controls.Add(Button7)
@@ -203,7 +216,6 @@ Partial Class Form5
         Controls.Add(Button5)
         Controls.Add(TextBox1)
         Controls.Add(Button4)
-        Controls.Add(Button3)
         Controls.Add(Button1)
         Controls.Add(Panel1)
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
@@ -230,4 +242,5 @@ Partial Class Form5
     Friend WithEvents Button6 As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents Button7 As Button
+    Friend WithEvents Label3 As Label
 End Class

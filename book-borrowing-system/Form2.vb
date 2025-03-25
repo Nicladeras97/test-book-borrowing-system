@@ -104,9 +104,9 @@ Public Class Form2
                 End Using
             End Using
 
-            Dim borrowForm As New Form8(bookID, title, imagePath, copies, author)
-            borrowForm.Show()
-            Me.Hide()
+            'Dim borrowForm As New Form8(bookID, title, imagePath, copies, author)
+            'borrowForm.Show()
+            'Me.Hide()
         End If
     End Sub
 
