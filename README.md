@@ -6,6 +6,7 @@ The Book Borrowing System is a digital solution designed to streamline the borro
 ## Features
 - Book search by title, author, or category
 - Borrowing and returning process tracking
+- Book Reports for lost, damaged and overdue books.
 
 ## Requirements
 ```sh
