@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2025 at 06:06 AM
+-- Generation Time: Mar 26, 2025 at 07:19 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -42,6 +42,19 @@ CREATE TABLE `book` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `book`
+--
+
+INSERT INTO `book` (`Title`, `Author`, `Year`, `ISBN`, `Category`, `Status`, `Image`, `Copies`, `AddedDate`, `CallNumber`, `RackNumber`) VALUES
+('Harry Potter and the Order of the Phoenix (Harry Potter  #5)', 'J.K. Rowling/Mary GrandPré', 2024, '9.780439358E+12', 'Fiction', 'Available', NULL, 3, '2025-03-26', 'FIC RG 2024', 2),
+('Harry Potter and the Chamber of Secrets (Harry Potter  #2)', 'J.K. Rowling', 2025, '9.780439555E+12', 'Fiction', 'Available', NULL, 3, '2025-03-26', 'FIC ROW 2025', 3),
+('Harry Potter and the Prisoner of Azkaban (Harry Potter  #3)', 'J.K. Rowling/Mary GrandPré', 2026, '9.780439655E+12', 'Fiction', 'Available', NULL, 4, '2025-03-26', 'FIC RG 2026', 4),
+('Harry Potter Boxed Set  Books 1-5 (Harry Potter  #1-5)', 'J.K. Rowling/Mary GrandPré', 2027, '9.780439683E+12', 'Fiction', 'Available', NULL, 5, '2025-03-26', 'FIC RG 2027', 5),
+('Harry Potter and the Half-Blood Prince (Harry Potter  #6)', 'J.K. Rowling/Mary GrandPré', 2023, '9.780439786E+12', 'Fiction', 'Available', NULL, 1, '2025-03-26', 'FIC RG 2023', 1),
+('Harry Potter Collection (Harry Potter  #1-6)', 'J.K. Rowling', 2029, '9.780439828E+12', 'Fiction', 'Available', NULL, 7, '2025-03-26', 'FIC ROW 2029', 7),
+('Unauthorized Harry Potter Book Seven News: \"Half-Blood Prince\" Analysis and Speculation', 'W. Frederick Zimmerman', 2028, '9.780976541E+12', 'Fiction', 'Available', NULL, 6, '2025-03-26', 'FIC ZIM 2028', 6);
+
+--
 -- Triggers `book`
 --
 DELIMITER $$
@@ -75,6 +88,13 @@ CREATE TABLE `borrow` (
   `StatusName` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `borrow`
+--
+
+INSERT INTO `borrow` (`BorrowID`, `StudNo`, `ISBN`, `Title`, `CopyID`, `BorrowDate`, `DueDate`, `StatusName`) VALUES
+(1, '211241', '9.780439358E+12', 'Harry Potter and the Order of the Phoenix (Harry Potter  #5)', 0, '2025-03-26', '2025-03-26', 'Returned');
+
 -- --------------------------------------------------------
 
 --
@@ -83,7 +103,7 @@ CREATE TABLE `borrow` (
 
 CREATE TABLE `copies` (
   `CopyID` varchar(10) NOT NULL,
-  `ISBN` varchar(20) DEFAULT NULL,
+  `ISBN` varchar(50) NOT NULL,
   `Status` enum('Available','Borrowed','Damaged','Lost') DEFAULT 'Available'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -136,6 +156,13 @@ CREATE TABLE `return_good` (
   `StudNo` varchar(15) NOT NULL,
   `ReturnDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `return_good`
+--
+
+INSERT INTO `return_good` (`ReturnID`, `BorrowID`, `ISBN`, `CopyID`, `StudNo`, `ReturnDate`) VALUES
+(1, 1, '9.780439358E+12', NULL, '211241', '2025-03-26');
 
 -- --------------------------------------------------------
 
@@ -204,8 +231,7 @@ ALTER TABLE `borrow`
 --
 ALTER TABLE `copies`
   ADD PRIMARY KEY (`CopyID`),
-  ADD KEY `fk_copies_book` (`ISBN`),
-  ADD KEY `idx_status` (`Status`);
+  ADD KEY `fk_copies_book` (`ISBN`);
 
 --
 -- Indexes for table `login`
@@ -256,7 +282,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `borrow`
 --
 ALTER TABLE `borrow`
-  MODIFY `BorrowID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `BorrowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `login`
@@ -274,7 +300,7 @@ ALTER TABLE `return_damaged`
 -- AUTO_INCREMENT for table `return_good`
 --
 ALTER TABLE `return_good`
-  MODIFY `ReturnID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ReturnID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `return_lost`
@@ -297,6 +323,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `borrow`
   ADD CONSTRAINT `fk_borrow_user_new` FOREIGN KEY (`StudNo`) REFERENCES `users` (`StudNo`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `copies`
+--
+ALTER TABLE `copies`
+  ADD CONSTRAINT `fk_copies_book` FOREIGN KEY (`ISBN`) REFERENCES `book` (`ISBN`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `return_damaged`
