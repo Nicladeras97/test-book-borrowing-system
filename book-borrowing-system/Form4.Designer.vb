@@ -48,7 +48,7 @@ Partial Class Form4
         Panel1.Dock = DockStyle.Top
         Panel1.Location = New Point(0, 0)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(982, 53)
+        Panel1.Size = New Size(1482, 53)
         Panel1.TabIndex = 3
         ' 
         ' Label1
@@ -56,9 +56,9 @@ Partial Class Form4
         Label1.AutoSize = True
         Label1.Location = New Point(38, 18)
         Label1.Name = "Label1"
-        Label1.Size = New Size(184, 19)
+        Label1.Size = New Size(203, 19)
         Label1.TabIndex = 1
-        Label1.Text = "Book Borrowing System"
+        Label1.Text = "Book Management System"
         ' 
         ' PictureBox1
         ' 
@@ -76,7 +76,7 @@ Partial Class Form4
         Panel2.Controls.Add(PictureBox4)
         Panel2.Controls.Add(Label2)
         Panel2.Cursor = Cursors.Hand
-        Panel2.Location = New Point(270, 191)
+        Panel2.Location = New Point(493, 268)
         Panel2.Name = "Panel2"
         Panel2.Size = New Size(196, 206)
         Panel2.TabIndex = 4
@@ -107,7 +107,7 @@ Partial Class Form4
         Panel3.Controls.Add(PictureBox5)
         Panel3.Controls.Add(Label3)
         Panel3.Cursor = Cursors.Hand
-        Panel3.Location = New Point(530, 191)
+        Panel3.Location = New Point(753, 268)
         Panel3.Name = "Panel3"
         Panel3.Size = New Size(196, 206)
         Panel3.TabIndex = 5
@@ -150,7 +150,7 @@ Partial Class Form4
         AutoScaleDimensions = New SizeF(9F, 18F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
-        ClientSize = New Size(982, 553)
+        ClientSize = New Size(1482, 753)
         ControlBox = False
         Controls.Add(Button3)
         Controls.Add(Panel3)
@@ -159,7 +159,7 @@ Partial Class Form4
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ForeColor = SystemColors.ActiveCaptionText
         Name = "Form4"
-        Text = "Book Management"
+        Text = "     "
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()

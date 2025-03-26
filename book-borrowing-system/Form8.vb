@@ -45,24 +45,24 @@ Public Class Form8
 
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Dim studNo As String = TextBox1.Text.Trim()
+        Dim studNo = TextBox1.Text.Trim
         If String.IsNullOrEmpty(studNo) Then
             MessageBox.Show("Please enter a Student Number.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
 
-        Dim query As String = "SELECT FullName, ContactNumber, Email FROM users WHERE StudNo = @StudNo"
+        Dim query = "SELECT FullName, ContactNumber, Email FROM users WHERE StudNo = @StudNo"
         Dim cmd As New MySqlCommand(query, conn)
         cmd.Parameters.AddWithValue("@StudNo", studNo)
 
         Try
             conn.Open()
-            Dim reader As MySqlDataReader = cmd.ExecuteReader()
+            Dim reader = cmd.ExecuteReader
 
-            If reader.Read() Then
-                TextBox2.Text = reader("FullName").ToString()
-                TextBox3.Text = reader("ContactNumber").ToString()
-                TextBox4.Text = reader("Email").ToString()
+            If reader.Read Then
+                TextBox2.Text = reader("FullName").ToString
+                TextBox3.Text = reader("ContactNumber").ToString
+                TextBox4.Text = reader("Email").ToString
             Else
                 Dim result = MessageBox.Show("Student not found. Enter details?", "New Borrower", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                 If result = DialogResult.Yes Then
@@ -157,4 +157,5 @@ Public Class Form8
         back.Show()
         Me.Hide()
     End Sub
+
 End Class

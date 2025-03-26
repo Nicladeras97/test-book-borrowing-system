@@ -58,7 +58,7 @@ Partial Class Form6
         GroupBox1.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         GroupBox1.Location = New Point(38, 107)
         GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(893, 60)
+        GroupBox1.Size = New Size(1397, 60)
         GroupBox1.TabIndex = 6
         GroupBox1.TabStop = False
         GroupBox1.Text = "Filter Options"
@@ -86,7 +86,7 @@ Partial Class Form6
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label4.Location = New Point(743, 24)
+        Label4.Location = New Point(1242, 24)
         Label4.Name = "Label4"
         Label4.Size = New Size(25, 19)
         Label4.TabIndex = 6
@@ -97,7 +97,7 @@ Partial Class Form6
         DateTimePicker2.Cursor = Cursors.Hand
         DateTimePicker2.CustomFormat = ""
         DateTimePicker2.Format = DateTimePickerFormat.Custom
-        DateTimePicker2.Location = New Point(772, 21)
+        DateTimePicker2.Location = New Point(1271, 21)
         DateTimePicker2.Name = "DateTimePicker2"
         DateTimePicker2.Size = New Size(104, 26)
         DateTimePicker2.TabIndex = 5
@@ -108,7 +108,7 @@ Partial Class Form6
         DateTimePicker1.Cursor = Cursors.Hand
         DateTimePicker1.CustomFormat = ""
         DateTimePicker1.Format = DateTimePickerFormat.Custom
-        DateTimePicker1.Location = New Point(635, 21)
+        DateTimePicker1.Location = New Point(1134, 21)
         DateTimePicker1.Name = "DateTimePicker1"
         DateTimePicker1.Size = New Size(104, 26)
         DateTimePicker1.TabIndex = 4
@@ -118,7 +118,7 @@ Partial Class Form6
         ' 
         Label3.AutoSize = True
         Label3.Font = New Font("Arial", 9.75F, FontStyle.Bold)
-        Label3.Location = New Point(529, 25)
+        Label3.Location = New Point(1028, 25)
         Label3.Name = "Label3"
         Label3.Size = New Size(100, 19)
         Label3.TabIndex = 3
@@ -150,7 +150,7 @@ Partial Class Form6
         Button2.FlatStyle = FlatStyle.Flat
         Button2.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button2.ForeColor = Color.White
-        Button2.Location = New Point(732, 71)
+        Button2.Location = New Point(1236, 78)
         Button2.Name = "Button2"
         Button2.Size = New Size(89, 33)
         Button2.TabIndex = 7
@@ -188,7 +188,7 @@ Partial Class Form6
         DataGridView1.Location = New Point(38, 173)
         DataGridView1.Name = "DataGridView1"
         DataGridView1.RowHeadersWidth = 51
-        DataGridView1.Size = New Size(893, 354)
+        DataGridView1.Size = New Size(1397, 519)
         DataGridView1.TabIndex = 14
         ' 
         ' PictureBox1
@@ -218,7 +218,7 @@ Partial Class Form6
         Panel1.Dock = DockStyle.Top
         Panel1.Location = New Point(0, 0)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(982, 53)
+        Panel1.Size = New Size(1482, 53)
         Panel1.TabIndex = 5
         ' 
         ' Button1
@@ -228,7 +228,7 @@ Partial Class Form6
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button1.ForeColor = Color.White
-        Button1.Location = New Point(827, 71)
+        Button1.Location = New Point(1331, 78)
         Button1.Name = "Button1"
         Button1.Size = New Size(104, 33)
         Button1.TabIndex = 2
@@ -240,7 +240,7 @@ Partial Class Form6
         AutoScaleDimensions = New SizeF(9F, 18F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
-        ClientSize = New Size(982, 553)
+        ClientSize = New Size(1482, 753)
         ControlBox = False
         Controls.Add(DataGridView1)
         Controls.Add(Button2)

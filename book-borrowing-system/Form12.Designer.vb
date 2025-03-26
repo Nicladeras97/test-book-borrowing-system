@@ -183,7 +183,7 @@ Partial Class Form12
         Controls.Add(TextBox1)
         Font = New Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Name = "Form12"
-        Text = "Form12"
+        Text = "     "
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()

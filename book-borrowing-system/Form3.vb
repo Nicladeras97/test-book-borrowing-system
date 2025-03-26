@@ -105,9 +105,9 @@ Public Class Form3
                 End Using
             End Using
 
-            Dim returnForm As New Form9(borrowID, bookID, title, studentName, studNo, imagePath)
-            returnForm.Show()
-            Me.Hide()
+            'Dim returnForm As New Form9(borrowID, bookID, title, studentName, studNo, imagePath)
+            'returnForm.Show()
+            'Me.Hide()
         End If
 
     End Sub

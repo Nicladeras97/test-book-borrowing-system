@@ -50,10 +50,10 @@ Partial Class Form1
         ' LogoPictureBox
         ' 
         LogoPictureBox.Image = My.Resources.Resources.book
-        LogoPictureBox.Location = New Point(151, 253)
+        LogoPictureBox.Location = New Point(267, 269)
         LogoPictureBox.Margin = New Padding(3, 4, 3, 4)
         LogoPictureBox.Name = "LogoPictureBox"
-        LogoPictureBox.Size = New Size(244, 220)
+        LogoPictureBox.Size = New Size(334, 307)
         LogoPictureBox.SizeMode = PictureBoxSizeMode.Zoom
         LogoPictureBox.TabIndex = 0
         LogoPictureBox.TabStop = False
@@ -126,7 +126,7 @@ Partial Class Form1
         Panel1.Controls.Add(UsernameLabel)
         Panel1.Controls.Add(PasswordTextBox)
         Panel1.Controls.Add(UsernameTextBox)
-        Panel1.Location = New Point(566, 54)
+        Panel1.Location = New Point(939, 122)
         Panel1.Margin = New Padding(3, 4, 3, 4)
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(363, 454)
@@ -185,21 +185,21 @@ Partial Class Form1
         ' 
         Label1.AutoSize = True
         Label1.FlatStyle = FlatStyle.Flat
-        Label1.Font = New Font("Arial", 36F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label1.Location = New Point(42, 65)
+        Label1.Font = New Font("Arial", 48F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.Location = New Point(60, 65)
         Label1.Name = "Label1"
-        Label1.Size = New Size(500, 70)
+        Label1.Size = New Size(750, 93)
         Label1.TabIndex = 5
-        Label1.Text = "Book Borrowing"
+        Label1.Text = "Book Management"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
         Label2.FlatStyle = FlatStyle.Flat
-        Label2.Font = New Font("Arial", 28.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(42, 144)
+        Label2.Font = New Font("Arial", 36F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label2.Location = New Point(77, 163)
         Label2.Name = "Label2"
-        Label2.Size = New Size(178, 53)
+        Label2.Size = New Size(227, 67)
         Label2.TabIndex = 6
         Label2.Text = "System"
         ' 
@@ -209,7 +209,7 @@ Partial Class Form1
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
-        ClientSize = New Size(982, 553)
+        ClientSize = New Size(1482, 753)
         ControlBox = False
         Controls.Add(Label2)
         Controls.Add(Label1)

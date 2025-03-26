@@ -1,21 +1,21 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Public Class Form11
-    Private Sub Panel2_Click(sender As Object, e As EventArgs) Handles Panel2.Click, Label2.Click, PictureBox4.Click
+    Private Sub Panel2_Click(sender As Object, e As EventArgs)
         Dim borrow As New Form2
-        borrow.Show()
-        Me.Hide()
+        borrow.Show
+        Hide
     End Sub
 
-    Private Sub Panel3_Click(sender As Object, e As EventArgs) Handles Panel3.Click, Label3.Click, PictureBox5.Click
+    Private Sub Panel3_Click(sender As Object, e As EventArgs)
         Dim returned As New Form3
-        returned.Show()
-        Me.Hide()
+        returned.Show
+        Hide
     End Sub
-    Private Sub Panel4_Click(sender As Object, e As EventArgs) Handles Panel4.Click, Label4.Click, PictureBox6.Click
+    Private Sub Panel4_Click(sender As Object, e As EventArgs) Handles Panel4.Click, Label4.Click
         Dim records As New Form4
-        records.Show()
-        Me.Hide()
+        records.Show
+        Hide
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
