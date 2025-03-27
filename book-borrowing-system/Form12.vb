@@ -50,11 +50,7 @@ Public Class Form12
 
     Private Sub LoadFilterOptions()
         ComboBox1.Items.Clear()
-        ComboBox1.Items.Add("All")
-        ComboBox1.Items.Add("Available")
-        ComboBox1.Items.Add("Borrowed")
-        ComboBox1.Items.Add("Damaged")
-        ComboBox1.Items.Add("Lost")
+        ComboBox1.Items.AddRange({"All", "Available", "Borrowed", "Damaged", "Lost"})
         ComboBox1.SelectedIndex = 0
     End Sub
 
@@ -66,29 +62,29 @@ Public Class Form12
 
             Dim filter As String = If(currentFilter <> "", currentFilter, "")
             Dim searchQuery As String = ""
-
-            Dim excludeLost As String = "AND Status != 'Removed'"
+            Dim excludeRemoved As String = "AND Status != 'Removed'"
 
             If Not String.IsNullOrWhiteSpace(TextBox1.Text) Then
-                searchQuery = "AND (ISBN LIKE @Search OR Title LIKE @Search OR Author LIKE @Search OR Year LIKE @Search OR Category LIKE @Search OR Status LIKE @Search OR CallNumber LIKE @Search)"
+                searchQuery = "AND (Accno LIKE @Search OR Title LIKE @Search OR Author LIKE @Search OR Year LIKE @Search OR Section LIKE @Search OR Status LIKE @Search OR CallNumber LIKE @Search)"
             End If
 
-            Dim countQuery As String = $"SELECT COUNT(*) FROM book WHERE 1=1 {filter} {searchQuery} {excludeLost}"
+            Dim countQuery As String = $"SELECT COUNT(*) FROM book WHERE 1=1 {filter} {searchQuery} {excludeRemoved}"
             Using cmd As New MySqlCommand(countQuery, conn)
                 If searchQuery <> "" Then cmd.Parameters.AddWithValue("@Search", $"%{TextBox1.Text.Trim()}%")
                 totalRecords = Convert.ToInt32(cmd.ExecuteScalar())
             End Using
 
             Dim offset As Integer = (currentPage - 1) * pageSize
-            Dim query As String = $"SELECT ISBN, Title, Author, Year, Category, Status, Image, Copies, AddedDate, CallNumber, RackNumber 
-                               FROM book 
-                               WHERE 1=1 {filter} {searchQuery} {excludeLost} 
-                               LIMIT @Offset, @PageSize"
+            Dim query As String = $"SELECT Accno, Title, Author, Year, Section, Status, Copies, AddedDate, CallNumber, Rack, Publisher 
+                                   FROM book 
+                                   WHERE 1=1 {filter} {searchQuery} {excludeRemoved} 
+                                   LIMIT @Offset, @PageSize"
 
             Using cmd As New MySqlCommand(query, conn)
                 cmd.Parameters.AddWithValue("@Offset", offset)
                 cmd.Parameters.AddWithValue("@PageSize", pageSize)
                 If searchQuery <> "" Then cmd.Parameters.AddWithValue("@Search", $"%{TextBox1.Text.Trim()}%")
+
                 Dim adapter As New MySqlDataAdapter(cmd)
                 Dim table As New DataTable()
                 adapter.Fill(table)
@@ -107,7 +103,6 @@ Public Class Form12
             conn.Close()
         End Try
     End Sub
-
 
     Private Sub AddOrUpdateButtonColumn()
         If DataGridView1.Columns.Contains("Action") Then
@@ -137,28 +132,16 @@ Public Class Form12
         If e.RowIndex >= 0 AndAlso e.ColumnIndex = DataGridView1.Columns("Action").Index Then
             Try
                 Dim row = DataGridView1.Rows(e.RowIndex)
-                Dim isbn As String = row.Cells("ISBN").Value.ToString()
+                Dim accno As String = row.Cells("Accno").Value.ToString()
                 Dim title As String = row.Cells("Title").Value.ToString()
                 Dim author As String = row.Cells("Author").Value.ToString()
                 Dim year As String = row.Cells("Year").Value.ToString()
-                Dim category As String = row.Cells("Category").Value.ToString()
+                Dim publisher As String = row.Cells("Publisher").Value.ToString()
+                Dim section As String = row.Cells("Section").Value.ToString()
                 Dim status As String = row.Cells("Status").Value.ToString()
                 Dim copies As Integer = CInt(row.Cells("Copies").Value)
                 Dim callNumber As String = row.Cells("CallNumber").Value.ToString()
-                Dim rackNumber As String = row.Cells("RackNumber").Value.ToString()
-
-                Dim imagePath As String = ""
-                Using conn As New MySqlConnection("server=localhost; user=root; password=; database=book-borrowing;")
-                    conn.Open()
-                    Dim query As String = "SELECT Image FROM book WHERE ISBN = @ISBN"
-                    Using cmd As New MySqlCommand(query, conn)
-                        cmd.Parameters.AddWithValue("@ISBN", isbn)
-                        Dim reader As MySqlDataReader = cmd.ExecuteReader()
-                        If reader.Read() Then
-                            imagePath = reader("Image").ToString()
-                        End If
-                    End Using
-                End Using
+                Dim rack As String = row.Cells("Rack").Value.ToString()
 
                 Dim borrowID As String = ""
                 Dim studNo As String = "N/A"
@@ -166,9 +149,9 @@ Public Class Form12
                 If status = "Borrowed" Then
                     Using conn As New MySqlConnection("server=localhost; user=root; password=; database=book-borrowing;")
                         conn.Open()
-                        Dim query As String = "SELECT BorrowID, StudNo FROM borrow WHERE ISBN = @ISBN AND StatusName = 'Borrowed' LIMIT 1"
+                        Dim query As String = "SELECT BorrowID, StudNo FROM borrow WHERE Accno = @Accno AND StatusName = 'Borrowed' LIMIT 1"
                         Using cmd As New MySqlCommand(query, conn)
-                            cmd.Parameters.AddWithValue("@ISBN", isbn)
+                            cmd.Parameters.AddWithValue("@Accno", accno)
                             Dim reader As MySqlDataReader = cmd.ExecuteReader()
                             If reader.Read() Then
                                 borrowID = reader("BorrowID").ToString()
@@ -180,77 +163,13 @@ Public Class Form12
 
                 Select Case status
                     Case "Available"
-                        Dim borrowForm As New Form8(isbn, title, author, year, category, imagePath, copies, callNumber, rackNumber)
+                        Dim borrowForm As New Form8(accno, title, author, year, section, publisher, copies, callNumber, rack)
                         borrowForm.Show()
 
                     Case "Borrowed"
-                        Dim returnForm As New Form9(borrowID, studNo, isbn, title, author, year, category, imagePath, copies, callNumber, rackNumber)
+                        Dim returnForm As New Form9(borrowID, studNo, accno, title, author, year, section, copies, callNumber, rack, publisher)
                         returnForm.Show()
 
-                    Case "Damaged"
-                        Dim result As DialogResult = MessageBox.Show(
-                        "Has the book been repaired and has the student paid the fine?",
-                        "Confirm Repair",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question)
-
-                        If result = DialogResult.Yes Then
-                            Using conn As New MySqlConnection("server=localhost; user=root; password=; database=book-borrowing;")
-                                conn.Open()
-                                Dim query As String = "UPDATE book SET Status = 'Available' WHERE ISBN = @ISBN"
-                                Using cmd As New MySqlCommand(query, conn)
-                                    cmd.Parameters.AddWithValue("@ISBN", isbn)
-                                    cmd.ExecuteNonQuery()
-                                End Using
-                            End Using
-                            MessageBox.Show("Book is now available.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                            LoadData()
-                        End If
-                        Dim form12 As New Form12()
-                        form12.Show()
-                        Me.Close()
-                    Case "Lost"
-                        Dim lostResult As DialogResult = MessageBox.Show(
-                        "Has the book been returned?",
-                        "Lost Book Confirmation",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question)
-
-                        If lostResult = DialogResult.Yes Then
-                            Using conn As New MySqlConnection("server=localhost; user=root; password=; database=book-borrowing;")
-                                conn.Open()
-                                Dim query As String = "UPDATE book SET Status = 'Available' WHERE ISBN = @ISBN"
-                                Using cmd As New MySqlCommand(query, conn)
-                                    cmd.Parameters.AddWithValue("@ISBN", isbn)
-                                    cmd.ExecuteNonQuery()
-                                End Using
-                            End Using
-                            MessageBox.Show("Book status updated to available.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                            LoadData()
-
-                        Else
-                            Dim fineResult As DialogResult = MessageBox.Show(
-                            "Has the student paid the fine?",
-                            "Fine Confirmation",
-                            MessageBoxButtons.YesNo,
-                            MessageBoxIcon.Question)
-
-                            If fineResult = DialogResult.Yes Then
-                                Using conn As New MySqlConnection("server=localhost; user=root; password=; database=book-borrowing;")
-                                    conn.Open()
-                                    Dim query As String = "UPDATE book SET Status = 'Removed' WHERE ISBN = @ISBN"
-                                    Using cmd As New MySqlCommand(query, conn)
-                                        cmd.Parameters.AddWithValue("@ISBN", isbn)
-                                        cmd.ExecuteNonQuery()
-                                    End Using
-                                End Using
-                                MessageBox.Show("Book removed from display but kept in return_lost.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                                LoadData()
-                            End If
-                        End If
-                        Dim form12 As New Form12()
-                        form12.Show()
-                        Me.Close()
                     Case Else
                         MessageBox.Show("Invalid action.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Select
@@ -262,6 +181,4 @@ Public Class Form12
             End Try
         End If
     End Sub
-
-
 End Class
