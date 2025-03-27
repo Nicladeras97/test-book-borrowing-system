@@ -57,9 +57,9 @@ Partial Class Form5
         Label1.AutoSize = True
         Label1.Location = New Point(43, 17)
         Label1.Name = "Label1"
-        Label1.Size = New Size(107, 19)
+        Label1.Size = New Size(54, 19)
         Label1.TabIndex = 1
-        Label1.Text = "Book Reports"
+        Label1.Text = "Books"
         ' 
         ' PictureBox1
         ' 
