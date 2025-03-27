@@ -26,12 +26,10 @@ Partial Class Form11
         Button1 = New Button()
         Label1 = New Label()
         PictureBox1 = New PictureBox()
-        Panel4 = New Panel()
-        Label4 = New Label()
         Button2 = New Button()
+        Button3 = New Button()
         Panel1.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
-        Panel4.SuspendLayout()
         SuspendLayout()
         ' 
         ' Panel1
@@ -80,36 +78,27 @@ Partial Class Form11
         PictureBox1.TabIndex = 0
         PictureBox1.TabStop = False
         ' 
-        ' Panel4
-        ' 
-        Panel4.BackColor = Color.LightBlue
-        Panel4.Controls.Add(Label4)
-        Panel4.Cursor = Cursors.Hand
-        Panel4.Location = New Point(766, 221)
-        Panel4.Name = "Panel4"
-        Panel4.Size = New Size(243, 228)
-        Panel4.TabIndex = 3
-        ' 
-        ' Label4
-        ' 
-        Label4.AutoSize = True
-        Label4.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label4.Location = New Point(49, 105)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(144, 19)
-        Label4.TabIndex = 0
-        Label4.Text = "Book Management"
-        ' 
         ' Button2
         ' 
         Button2.BackColor = Color.LightBlue
         Button2.FlatStyle = FlatStyle.Flat
-        Button2.Location = New Point(441, 221)
+        Button2.Location = New Point(447, 261)
         Button2.Name = "Button2"
         Button2.Size = New Size(239, 228)
         Button2.TabIndex = 4
         Button2.Text = "Book Shelves"
         Button2.UseVisualStyleBackColor = False
+        ' 
+        ' Button3
+        ' 
+        Button3.BackColor = Color.LightBlue
+        Button3.FlatStyle = FlatStyle.Flat
+        Button3.Location = New Point(780, 261)
+        Button3.Name = "Button3"
+        Button3.Size = New Size(239, 228)
+        Button3.TabIndex = 5
+        Button3.Text = "Book Management"
+        Button3.UseVisualStyleBackColor = False
         ' 
         ' Form11
         ' 
@@ -118,8 +107,8 @@ Partial Class Form11
         BackColor = Color.White
         ClientSize = New Size(1482, 753)
         ControlBox = False
+        Controls.Add(Button3)
         Controls.Add(Button2)
-        Controls.Add(Panel4)
         Controls.Add(Panel1)
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ForeColor = SystemColors.ActiveCaptionText
@@ -128,17 +117,14 @@ Partial Class Form11
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
-        Panel4.ResumeLayout(False)
-        Panel4.PerformLayout()
         ResumeLayout(False)
     End Sub
 
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label1 As Label
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents Panel4 As Panel
-    Friend WithEvents Label4 As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
+    Friend WithEvents Button3 As Button
 
 End Class

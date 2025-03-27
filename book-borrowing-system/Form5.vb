@@ -5,203 +5,9 @@ Public Class Form5
 
     Private currentPage As Integer = 1
     Private totalPages As Integer = 1
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim add As New Form10
-        add.Show()
-        Hide()
-    End Sub
-
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Dim back As New Form4
-        back.Show()
-        Me.Hide()
-    End Sub
-
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
-        LoadBookData(TextBox1.Text.Trim())
-    End Sub
 
     Private Sub Form5_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadBookData()
-    End Sub
-
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Using saveFileDialog As New SaveFileDialog
-            saveFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx"
-            saveFileDialog.Title = "Save Template File"
-            saveFileDialog.FileName = "Book_Import_Template.xlsx"
-
-            If saveFileDialog.ShowDialog = DialogResult.OK Then
-                GenerateExcelTemplate(saveFileDialog.FileName)
-                MessageBox.Show("Template downloaded successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            End If
-        End Using
-    End Sub
-
-    Private Sub GenerateExcelTemplate(filePath As String)
-        ExcelPackage.LicenseContext = LicenseContext.NonCommercial
-
-        Using package As New ExcelPackage()
-            Dim worksheet As ExcelWorksheet = package.Workbook.Worksheets.Add("Books Template")
-
-            worksheet.Cells(1, 1).Value = "ISBN"
-            worksheet.Cells(1, 2).Value = "Title"
-            worksheet.Cells(1, 3).Value = "Author"
-            worksheet.Cells(1, 4).Value = "Year"
-            worksheet.Cells(1, 5).Value = "Category"
-            worksheet.Cells(1, 6).Value = "Status"
-            worksheet.Cells(1, 7).Value = "Copies"
-            worksheet.Cells(1, 8).Value = "CallNumber"
-            worksheet.Cells(1, 9).Value = "RackNumber"
-
-            worksheet.Cells(2, 1).Value = "978-0-06-279715-5"
-            worksheet.Cells(2, 2).Value = "Sample Book Title"
-            worksheet.Cells(2, 3).Value = "John Doe"
-            worksheet.Cells(2, 4).Value = "2023"
-            worksheet.Cells(2, 5).Value = "Fiction"
-            worksheet.Cells(2, 6).Value = "Available"
-            worksheet.Cells(2, 7).Value = "1"
-            worksheet.Cells(2, 8).Value = "FIC DOE 2023"
-            worksheet.Cells(2, 9).Value = "1"
-
-            Using headerRange = worksheet.Cells("A1:I1")
-                headerRange.Style.Font.Bold = True
-                headerRange.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
-                headerRange.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightGray)
-            End Using
-
-            worksheet.Cells.AutoFitColumns()
-
-            Dim fileInfo As New FileInfo(filePath)
-            package.SaveAs(fileInfo)
-        End Using
-    End Sub
-
-    Public Sub ImportExcelToDatabase(filePath As String)
-        Dim connectionString As String = "server=localhost; user=root; password=; database=book-borrowing;"
-
-        ExcelPackage.LicenseContext = LicenseContext.NonCommercial
-
-        Dim importedCount As Integer = 0
-        Dim skippedCount As Integer = 0
-
-        Using package As New ExcelPackage(New FileInfo(filePath))
-            Dim worksheet As ExcelWorksheet = package.Workbook.Worksheets(0)
-            Dim rowCount As Integer = worksheet.Dimension.Rows
-
-            Using connection As New MySqlConnection(connectionString)
-                connection.Open()
-
-                For i As Integer = 2 To rowCount
-                    Dim isbn As String = worksheet.Cells(i, 1).Text.Trim()
-                    Dim title As String = worksheet.Cells(i, 2).Text.Trim()
-                    Dim author As String = worksheet.Cells(i, 3).Text.Trim()
-                    Dim year As String = worksheet.Cells(i, 4).Text.Trim()
-                    Dim category As String = worksheet.Cells(i, 5).Text.Trim()
-                    Dim status As String = worksheet.Cells(i, 6).Text.Trim()
-                    Dim copiesText As String = worksheet.Cells(i, 7).Text.Trim()
-                    Dim callNumber As String = worksheet.Cells(i, 8).Text.Trim()
-                    Dim rackNumber As String = worksheet.Cells(i, 9).Text.Trim()
-
-                    Dim copies As Integer
-                    If Not Integer.TryParse(copiesText, copies) OrElse copies <= 0 Then
-                        copies = 1
-                    End If
-
-                    Dim checkQuery As String = "SELECT COUNT(*) FROM book WHERE ISBN = @isbn"
-                    Using checkCmd As New MySqlCommand(checkQuery, connection)
-                        checkCmd.Parameters.AddWithValue("@isbn", isbn)
-                        Dim existingCount As Integer = Convert.ToInt32(checkCmd.ExecuteScalar())
-
-                        If existingCount > 0 Then
-                            skippedCount += 1
-                            Continue For
-                        End If
-                    End Using
-
-                    Dim query As String = "INSERT INTO book (Title, Author, Year, ISBN, Category, Status, Copies, CallNumber, RackNumber, AddedDate) 
-                                       VALUES (@title, @author, 
-                                       @year, @isbn, @category, @status, @copies, @callNumber, @rackNumber, NOW())"
-
-                    Using cmd As New MySqlCommand(query, connection)
-                        cmd.Parameters.AddWithValue("@title", title)
-                        cmd.Parameters.AddWithValue("@author", author)
-                        cmd.Parameters.AddWithValue("@year", year)
-                        cmd.Parameters.AddWithValue("@isbn", isbn)
-                        cmd.Parameters.AddWithValue("@category", category)
-                        cmd.Parameters.AddWithValue("@status", status)
-                        cmd.Parameters.AddWithValue("@copies", copies)
-                        cmd.Parameters.AddWithValue("@callNumber", callNumber)
-                        cmd.Parameters.AddWithValue("@rackNumber", rackNumber)
-
-                        cmd.ExecuteNonQuery()
-                        importedCount += 1
-                    End Using
-                Next
-            End Using
-        End Using
-
-        MessageBox.Show($"✅ Imported: {importedCount}{vbCrLf}🚫 Skipped (Duplicate): {skippedCount}", "Import Summary", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    End Sub
-
-
-
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Dim result As DialogResult = MessageBox.Show("Choose an option:" & vbCrLf &
-                                                 "Yes = Import File" & vbCrLf &
-                                                 "No = Import Image",
-                                                 "Import Options",
-                                                 MessageBoxButtons.YesNoCancel,
-                                                 MessageBoxIcon.Question)
-
-        If result = DialogResult.Yes Then
-            Using openFileDialog As New OpenFileDialog
-                openFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx"
-                openFileDialog.Title = "Select an Excel File"
-
-                If openFileDialog.ShowDialog = DialogResult.OK Then
-                    ImportExcelToDatabase(openFileDialog.FileName)
-                    LoadBookData()
-                End If
-            End Using
-        ElseIf result = DialogResult.No Then
-            Using openFileDialog As New OpenFileDialog()
-                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp"
-                openFileDialog.Title = "Select a Book Image"
-
-                If openFileDialog.ShowDialog() = DialogResult.OK Then
-                    Dim sourcePath As String = openFileDialog.FileName
-                    Dim fileName As String = Path.GetFileName(sourcePath)
-                    Dim destPath As String = Path.Combine(Application.StartupPath, "img\books", fileName)
-
-                    File.Copy(sourcePath, destPath, True)
-
-                    Dim imagePath As String = "Resources" & fileName
-
-                    Dim isbnInput As String = InputBox("Enter the ISBN to associate this image:", "ISBN", "")
-                    If Not String.IsNullOrEmpty(isbnInput) Then
-                        Dim isbn As String = isbnInput
-
-                        Dim connectionString As String = "server=localhost; user=root; password=; database=book-borrowing;"
-                        Using conn As New MySqlConnection(connectionString)
-                            conn.Open()
-                            Dim query As String = "UPDATE book SET Image = @ImagePath WHERE ISBN = @ISBN"
-                            Using cmd As New MySqlCommand(query, conn)
-                                cmd.Parameters.AddWithValue("@ImagePath", imagePath)
-                                cmd.Parameters.AddWithValue("@ISBN", isbn)
-                                cmd.ExecuteNonQuery()
-                            End Using
-                        End Using
-
-                        MessageBox.Show("Image uploaded successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        LoadBookData()
-                    Else
-                        MessageBox.Show("Invalid ISBN. Image upload canceled.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    End If
-                End If
-            End Using
-        End If
     End Sub
 
     Private Sub LoadBookData(Optional searchQuery As String = "")
@@ -212,7 +18,7 @@ Public Class Form5
 
             Dim filter As String = ""
             If Not String.IsNullOrEmpty(searchQuery) Then
-                filter = "WHERE Title LIKE @Search OR Author LIKE @Search OR Category LIKE @Search OR ISBN LIKE @Search OR CallNumber LIKE @Search OR RackNumber LIKE @Search"
+                filter = "WHERE Title LIKE @Search OR Author LIKE @Search OR Section LIKE @Search OR Publisher LIKE @Search OR CallNumber LIKE @Search OR Rack LIKE @Search"
             End If
 
             Dim countQuery As String = $"SELECT COUNT(*) FROM book {filter}"
@@ -227,17 +33,13 @@ Public Class Form5
             Dim pageSize As Integer = 20
             totalPages = Math.Ceiling(totalRecords / pageSize)
 
-            If currentPage < 1 Then
-                currentPage = 1
-            ElseIf currentPage > totalPages Then
-                currentPage = totalPages
-            End If
+            If currentPage < 1 Then currentPage = 1
+            If currentPage > totalPages Then currentPage = totalPages
 
             Dim offset As Integer = (currentPage - 1) * pageSize
             offset = Math.Max(0, offset)
 
-            Dim query As String = $"SELECT ISBN, Title, Author, Year, Category, Status, Image, Copies, AddedDate, CallNumber, RackNumber FROM book {filter} LIMIT {offset}, {pageSize}"
-
+            Dim query As String = $"SELECT BookID, ISBN, Title, Author, Year, Publisher, Section, Status, Image, Copies, AddedDate, CallNumber, Rack FROM book {filter} LIMIT {offset}, {pageSize}"
             Dim dt As New DataTable()
 
             Using cmd As New MySqlCommand(query, conn)
@@ -303,55 +105,53 @@ Public Class Form5
         If e.RowIndex < 0 Then Exit Sub
 
         If e.ColumnIndex = DataGridView1.Columns("Delete").Index Then
-            Dim confirmDelete As DialogResult = MessageBox.Show("Are you sure you want to delete this book?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            Dim confirmDelete As DialogResult = MessageBox.Show("Are you sure you want to delete this book?", "Delete Confirmation",
+                                                                MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If confirmDelete = DialogResult.Yes Then
-                Dim ISBN As String = DataGridView1.Rows(e.RowIndex).Cells("ISBN").Value.ToString()
-                DeleteBook(ISBN)
+                Dim BookID As String = DataGridView1.Rows(e.RowIndex).Cells("BookID").Value.ToString()
+                DeleteBook(BookID)
             End If
         End If
 
-        If e.RowIndex >= 0 AndAlso e.ColumnIndex >= 0 Then
-            Dim selectedISBN As String = DataGridView1.Rows(e.RowIndex).Cells("ISBN").Value.ToString()
+        If e.ColumnIndex = DataGridView1.Columns("Edit").Index Then
+            Dim selectedBookID As String = DataGridView1.Rows(e.RowIndex).Cells("BookID").Value.ToString()
 
-            If DataGridView1.Columns(e.ColumnIndex).Name = "Edit" Then
-                Dim editForm As New Form13
-                editForm.ISBN = selectedISBN
+            Dim editForm As New Form13
+            editForm.BookID = selectedBookID
 
-                If editForm.ShowDialog() = DialogResult.OK Then
-                    LoadBookData()
-                End If
+            If editForm.ShowDialog() = DialogResult.OK Then
+                LoadBookData()
             End If
         End If
-
     End Sub
 
 
-    Private Sub DeleteBook(ISBN As String)
+    Private Sub DeleteBook(BookID As String)
         Dim conn As New MySqlConnection("server=localhost; user=root; password=; database=book-borrowing;")
+
         Try
             conn.Open()
 
             Using transaction As MySqlTransaction = conn.BeginTransaction()
                 Try
-                    Dim deleteCopiesQuery As String = "DELETE FROM copies WHERE ISBN = @ISBN"
+                    Dim deleteCopiesQuery As String = "DELETE FROM copies WHERE BookID = @BookID"
                     Using cmd As New MySqlCommand(deleteCopiesQuery, conn)
-                        cmd.Parameters.AddWithValue("@ISBN", ISBN)
+                        cmd.Parameters.AddWithValue("@BookID", BookID)
                         cmd.Transaction = transaction
                         cmd.ExecuteNonQuery()
                     End Using
 
-                    Dim deleteBookQuery As String = "DELETE FROM book WHERE ISBN = @ISBN"
+                    Dim deleteBookQuery As String = "DELETE FROM book WHERE BookID = @BookID"
                     Using cmd As New MySqlCommand(deleteBookQuery, conn)
-                        cmd.Parameters.AddWithValue("@ISBN", ISBN)
+                        cmd.Parameters.AddWithValue("@BookID", BookID)
                         cmd.Transaction = transaction
                         cmd.ExecuteNonQuery()
                     End Using
 
                     transaction.Commit()
-
                     LoadBookData()
-
                     MessageBox.Show("Book and its copies deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
                 Catch ex As Exception
                     transaction.Rollback()
                     MessageBox.Show("Error deleting book and copies: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -365,4 +165,195 @@ Public Class Form5
         End Try
     End Sub
 
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Try
+            Dim saveFileDialog As New SaveFileDialog()
+            saveFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx"
+            saveFileDialog.FileName = "Book_Import_Template.xlsx"
+
+            If saveFileDialog.ShowDialog() = DialogResult.OK Then
+                Dim filePath As String = saveFileDialog.FileName
+
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial
+                Using package As New ExcelPackage()
+                    Dim worksheet As ExcelWorksheet = package.Workbook.Worksheets.Add("Template")
+
+                    worksheet.Cells(1, 1).Value = "ISBN"
+                    worksheet.Cells(1, 2).Value = "Title"
+                    worksheet.Cells(1, 3).Value = "Author"
+                    worksheet.Cells(1, 4).Value = "Year"
+                    worksheet.Cells(1, 5).Value = "Publisher"
+                    worksheet.Cells(1, 6).Value = "Section"
+                    worksheet.Cells(1, 7).Value = "Copies"
+                    worksheet.Cells(1, 8).Value = "CallNumber"
+                    worksheet.Cells(1, 9).Value = "Rack"
+
+                    Using headerRange = worksheet.Cells("A1:H1")
+                        headerRange.Style.Font.Bold = True
+                        headerRange.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
+                        headerRange.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightGray)
+                    End Using
+
+                    worksheet.Cells(2, 1).Value = "978-0000000000"
+                    worksheet.Cells(2, 2).Value = "The Great Gatsby"
+                    worksheet.Cells(2, 3).Value = "F. Scott Fitzgerald"
+                    worksheet.Cells(2, 4).Value = "1925"
+                    worksheet.Cells(2, 5).Value = "Scribner"
+                    worksheet.Cells(2, 6).Value = "Fiction"
+                    worksheet.Cells(2, 7).Value = "3"
+                    worksheet.Cells(2, 8).Value = "PS3511.F45 G7"
+                    worksheet.Cells(2, 9).Value = "R2"
+
+                    Dim file = New FileInfo(filePath)
+                    package.SaveAs(file)
+                End Using
+
+                MessageBox.Show("Template downloaded successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error downloading template: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim addBookForm As New Form10()
+        addBookForm.BookID = ""
+        If addBookForm.ShowDialog() = DialogResult.OK Then
+            LoadBookData()
+        End If
+    End Sub
+
+    Private Function GenerateNextBookID(conn As MySqlConnection, section As String, year As String) As String
+        Dim prefix As String = section.Substring(0, Math.Min(3, section.Length)).ToUpper() & year
+
+        Dim query As String = $"SELECT MAX(BookID) FROM book WHERE BookID LIKE '{prefix}%'"
+        Using cmd As New MySqlCommand(query, conn)
+            Dim lastID As Object = cmd.ExecuteScalar()
+
+            Dim nextNumber As Integer = 1
+            If lastID IsNot DBNull.Value AndAlso lastID IsNot Nothing Then
+                Dim lastNumber As String = lastID.ToString().Substring(7, 4)
+                nextNumber = Integer.Parse(lastNumber) + 1
+            End If
+
+            Return $"{prefix}{nextNumber:0000}"
+        End Using
+    End Function
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Dim openFileDialog As New OpenFileDialog()
+        openFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx"
+        openFileDialog.Title = "Select Excel File to Import"
+
+        If openFileDialog.ShowDialog() = DialogResult.OK Then
+            Dim filePath As String = openFileDialog.FileName
+
+            Try
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial
+
+                Using package As New ExcelPackage(New FileInfo(filePath))
+                    Dim worksheet As ExcelWorksheet = package.Workbook.Worksheets(0)
+
+                    Dim conn As New MySqlConnection("server=localhost; user=root; password=; database=book-borrowing;")
+                    conn.Open()
+
+                    Using transaction As MySqlTransaction = conn.BeginTransaction()
+                        Try
+                            For row As Integer = 2 To worksheet.Dimension.End.Row
+
+                                Dim isbn As String = worksheet.Cells(row, 1).Text
+                                Dim title As String = worksheet.Cells(row, 2).Text
+                                Dim author As String = worksheet.Cells(row, 3).Text
+                                Dim year As String = worksheet.Cells(row, 4).Text
+                                Dim publisher As String = worksheet.Cells(row, 5).Text
+                                Dim section As String = worksheet.Cells(row, 6).Text
+                                Dim copiesText As String = worksheet.Cells(row, 7).Text
+                                Dim callNumber As String = worksheet.Cells(row, 8).Text
+                                Dim rack As String = worksheet.Cells(row, 9).Text
+
+                                title = title.Substring(0, Math.Min(title.Length, 255))
+                                author = author.Substring(0, Math.Min(author.Length, 255))
+                                publisher = publisher.Substring(0, Math.Min(publisher.Length, 100))
+                                section = section.Substring(0, Math.Min(section.Length, 100))
+                                callNumber = callNumber.Substring(0, Math.Min(callNumber.Length, 50))
+                                rack = rack.Substring(0, Math.Min(rack.Length, 10))
+                                isbn = isbn.Substring(0, Math.Min(isbn.Length, 50))
+
+                                Dim yearInt As Integer
+                                If Not Integer.TryParse(year, yearInt) OrElse yearInt < 1800 OrElse yearInt > DateTime.Now.Year Then
+                                    MessageBox.Show($"Invalid year at row {row}. Skipping...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                                    Continue For
+                                End If
+
+                                Dim copies As Integer
+                                If Not Integer.TryParse(copiesText, copies) OrElse copies < 1 Then
+                                    MessageBox.Show($"Invalid copies value at row {row}. Skipping...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                                    Continue For
+                                End If
+
+                                Dim baseBookID As String = GenerateNextBookID(conn, section, year)
+
+                                For i As Integer = 1 To copies
+                                    Dim bookID As String = baseBookID
+
+                                    Dim copyID As String = $"{bookID}-{i:00}"
+
+                                    If i = 1 Then
+                                        Dim query As String = "
+                                        INSERT INTO book (BookID, ISBN, Title, Author, Year, Publisher, Section, Status, Copies, AddedDate, CallNumber, Rack)
+                                        VALUES (@BookID, @ISBN, @Title, @Author, @Year, @Publisher, @Section, 'Available', @Copies, @AddedDate, @CallNumber, @Rack)"
+
+                                        Using cmd As New MySqlCommand(query, conn, transaction)
+                                            cmd.Parameters.AddWithValue("@BookID", bookID)
+                                            cmd.Parameters.AddWithValue("@ISBN", isbn)
+                                            cmd.Parameters.AddWithValue("@Title", title)
+                                            cmd.Parameters.AddWithValue("@Author", author)
+                                            cmd.Parameters.AddWithValue("@Year", yearInt)
+                                            cmd.Parameters.AddWithValue("@Publisher", publisher)
+                                            cmd.Parameters.AddWithValue("@Section", section)
+                                            cmd.Parameters.AddWithValue("@Copies", copies)
+                                            cmd.Parameters.AddWithValue("@AddedDate", DateTime.Now)
+                                            cmd.Parameters.AddWithValue("@CallNumber", callNumber)
+                                            cmd.Parameters.AddWithValue("@Rack", rack)
+                                            cmd.ExecuteNonQuery()
+                                        End Using
+                                    End If
+
+                                    Dim copyQuery As String = "
+                                    INSERT INTO copies (CopyID, ISBN, Status, BookID)
+                                    VALUES (@CopyID, @ISBN, 'Available', @BookID)"
+
+                                    Using copyCmd As New MySqlCommand(copyQuery, conn, transaction)
+                                        copyCmd.Parameters.AddWithValue("@CopyID", copyID)
+                                        copyCmd.Parameters.AddWithValue("@ISBN", isbn)
+                                        copyCmd.Parameters.AddWithValue("@BookID", bookID)
+                                        copyCmd.ExecuteNonQuery()
+                                    End Using
+                                Next
+                            Next
+
+                            transaction.Commit()
+                            MessageBox.Show("Books imported successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                            LoadBookData()
+
+                        Catch ex As Exception
+                            transaction.Rollback()
+                            MessageBox.Show("Error importing data: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        End Try
+                    End Using
+                    conn.Close()
+                End Using
+
+            Catch ex As Exception
+                MessageBox.Show("Error reading Excel file: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End If
+    End Sub
+
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim back As New Form4
+        back.Show()
+        Me.Hide()
+    End Sub
 End Class
