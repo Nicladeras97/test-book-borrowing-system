@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2025 at 07:19 AM
+-- Generation Time: Mar 27, 2025 at 04:32 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -34,25 +34,23 @@ CREATE TABLE `book` (
   `ISBN` varchar(50) NOT NULL,
   `Category` varchar(100) DEFAULT NULL,
   `Status` varchar(50) DEFAULT NULL,
-  `Image` varchar(255) DEFAULT NULL,
   `Copies` int(11) DEFAULT NULL,
   `AddedDate` date DEFAULT NULL,
   `CallNumber` varchar(100) DEFAULT NULL,
-  `RackNumber` int(11) DEFAULT NULL
+  `Rack` varchar(11) DEFAULT NULL,
+  `Accno` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `book`
 --
 
-INSERT INTO `book` (`Title`, `Author`, `Year`, `ISBN`, `Category`, `Status`, `Image`, `Copies`, `AddedDate`, `CallNumber`, `RackNumber`) VALUES
-('Harry Potter and the Order of the Phoenix (Harry Potter  #5)', 'J.K. Rowling/Mary GrandPré', 2024, '9.780439358E+12', 'Fiction', 'Available', NULL, 3, '2025-03-26', 'FIC RG 2024', 2),
-('Harry Potter and the Chamber of Secrets (Harry Potter  #2)', 'J.K. Rowling', 2025, '9.780439555E+12', 'Fiction', 'Available', NULL, 3, '2025-03-26', 'FIC ROW 2025', 3),
-('Harry Potter and the Prisoner of Azkaban (Harry Potter  #3)', 'J.K. Rowling/Mary GrandPré', 2026, '9.780439655E+12', 'Fiction', 'Available', NULL, 4, '2025-03-26', 'FIC RG 2026', 4),
-('Harry Potter Boxed Set  Books 1-5 (Harry Potter  #1-5)', 'J.K. Rowling/Mary GrandPré', 2027, '9.780439683E+12', 'Fiction', 'Available', NULL, 5, '2025-03-26', 'FIC RG 2027', 5),
-('Harry Potter and the Half-Blood Prince (Harry Potter  #6)', 'J.K. Rowling/Mary GrandPré', 2023, '9.780439786E+12', 'Fiction', 'Available', NULL, 1, '2025-03-26', 'FIC RG 2023', 1),
-('Harry Potter Collection (Harry Potter  #1-6)', 'J.K. Rowling', 2029, '9.780439828E+12', 'Fiction', 'Available', NULL, 7, '2025-03-26', 'FIC ROW 2029', 7),
-('Unauthorized Harry Potter Book Seven News: \"Half-Blood Prince\" Analysis and Speculation', 'W. Frederick Zimmerman', 2028, '9.780976541E+12', 'Fiction', 'Available', NULL, 6, '2025-03-26', 'FIC ZIM 2028', 6);
+INSERT INTO `book` (`Title`, `Author`, `Year`, `ISBN`, `Category`, `Status`, `Copies`, `AddedDate`, `CallNumber`, `Rack`, `Accno`) VALUES
+('Harry Potter and the Order of the Phoenix (Harry Potter  #5)', 'J.K. Rowling/Mary GrandPré', 2024, '9.780439358E+12', 'Fiction', 'Available', 1, '2025-03-26', 'FIC RG 2024', 'A', 'Fic20241001'),
+('Harry Potter and the Chamber of Secrets (Harry Potter  #2)', 'J.K. Rowling', 2025, '9.780439555E+12', 'Fiction', 'Removed', 1, '2025-03-26', 'FIC ROW 2025', 'A', 'Fic20251002'),
+('Harry Potter and the Prisoner of Azkaban (Harry Potter  #3)', 'J.K. Rowling/Mary GrandPré', 2026, '9.780439655E+12', 'Fiction', 'Borrowed', 1, '2025-03-26', 'FIC RG 2026', 'A', 'Fic20261003'),
+('Harry Potter and the Half-Blood Prince (Harry Potter  #6)', 'J.K. Rowling/Mary GrandPré', 2023, '9.780439786E+12', 'Fiction', 'Available', 1, '2025-03-26', 'FIC RG 2023', 'A', 'Fic20231004'),
+('Unauthorized Harry Potter Book Seven News: \"Half-Blood Prince\" Analysis and Speculation', 'W. Frederick Zimmerman', 2028, '9.780976541E+12', 'Fiction', 'Available', 6, '2025-03-26', 'FIC ZIM 2028', 'A', 'Fic20281005');
 
 --
 -- Triggers `book`
@@ -80,7 +78,7 @@ DELIMITER ;
 CREATE TABLE `borrow` (
   `BorrowID` int(11) NOT NULL,
   `StudNo` varchar(50) DEFAULT NULL,
-  `ISBN` varchar(20) DEFAULT NULL,
+  `Accno` varchar(50) NOT NULL,
   `Title` varchar(255) DEFAULT NULL,
   `CopyID` int(11) NOT NULL,
   `BorrowDate` date DEFAULT NULL,
@@ -92,8 +90,13 @@ CREATE TABLE `borrow` (
 -- Dumping data for table `borrow`
 --
 
-INSERT INTO `borrow` (`BorrowID`, `StudNo`, `ISBN`, `Title`, `CopyID`, `BorrowDate`, `DueDate`, `StatusName`) VALUES
-(1, '211241', '9.780439358E+12', 'Harry Potter and the Order of the Phoenix (Harry Potter  #5)', 0, '2025-03-26', '2025-03-26', 'Returned');
+INSERT INTO `borrow` (`BorrowID`, `StudNo`, `Accno`, `Title`, `CopyID`, `BorrowDate`, `DueDate`, `StatusName`) VALUES
+(1, '211241', 'Fic20241001', 'Harry Potter and the Order of the Phoenix (Harry Potter  #5)', 0, '2025-03-26', '2025-03-26', 'Returned'),
+(2, '211083', 'Fic20251002', 'Harry Potter and the Chamber of Secrets (Harry Potter  #2)', 0, '2025-03-27', '2025-03-27', 'Returned'),
+(5, '211083', 'Fic20251002', 'Harry Potter and the Chamber of Secrets (Harry Potter  #2)', 0, '2025-03-27', '2025-03-27', 'Returned'),
+(6, '211083', 'Fic20241001', 'Harry Potter and the Order of the Phoenix (Harry Potter  #5)', 0, '2025-03-27', '2025-03-27', 'Returned (Damaged)'),
+(7, '211241', 'Fic20251002', 'Harry Potter and the Chamber of Secrets (Harry Potter  #2)', 0, '2025-03-27', '2025-03-27', 'Returned (Lost)'),
+(8, '211083', 'Fic20261003', 'Harry Potter and the Prisoner of Azkaban (Harry Potter  #3)', 0, '2025-03-27', '2025-03-27', 'Borrowed');
 
 -- --------------------------------------------------------
 
@@ -135,12 +138,19 @@ INSERT INTO `login` (`LibraryID`, `Username`, `Password`) VALUES
 CREATE TABLE `return_damaged` (
   `ReturnDamagedID` int(11) NOT NULL,
   `BorrowID` int(11) DEFAULT NULL,
-  `ISBN` varchar(20) DEFAULT NULL,
   `StudNo` varchar(50) DEFAULT NULL,
   `ReturnDate` date DEFAULT NULL,
   `DamageDescription` text DEFAULT NULL,
-  `FineAmount` decimal(10,2) DEFAULT 0.00
+  `FineAmount` decimal(10,2) DEFAULT 0.00,
+  `Accno` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `return_damaged`
+--
+
+INSERT INTO `return_damaged` (`ReturnDamagedID`, `BorrowID`, `StudNo`, `ReturnDate`, `DamageDescription`, `FineAmount`, `Accno`) VALUES
+(2, 6, '211083', '2025-03-27', 'page torn ', 100.00, 'Fic20241001');
 
 -- --------------------------------------------------------
 
@@ -151,18 +161,19 @@ CREATE TABLE `return_damaged` (
 CREATE TABLE `return_good` (
   `ReturnID` int(11) NOT NULL,
   `BorrowID` int(11) DEFAULT NULL,
-  `ISBN` varchar(20) DEFAULT NULL,
-  `CopyID` varchar(10) DEFAULT NULL,
   `StudNo` varchar(15) NOT NULL,
-  `ReturnDate` date NOT NULL
+  `ReturnDate` date NOT NULL,
+  `Accno` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `return_good`
 --
 
-INSERT INTO `return_good` (`ReturnID`, `BorrowID`, `ISBN`, `CopyID`, `StudNo`, `ReturnDate`) VALUES
-(1, 1, '9.780439358E+12', NULL, '211241', '2025-03-26');
+INSERT INTO `return_good` (`ReturnID`, `BorrowID`, `StudNo`, `ReturnDate`, `Accno`) VALUES
+(1, 1, '211241', '2025-03-26', 'Fic20241001'),
+(2, 2, '211083', '2025-03-27', 'Fic20251002'),
+(3, 5, '211083', '2025-03-27', 'Fic20251002');
 
 -- --------------------------------------------------------
 
@@ -173,12 +184,19 @@ INSERT INTO `return_good` (`ReturnID`, `BorrowID`, `ISBN`, `CopyID`, `StudNo`, `
 CREATE TABLE `return_lost` (
   `ReturnLostID` int(11) NOT NULL,
   `BorrowID` int(11) DEFAULT NULL,
-  `ISBN` varchar(20) DEFAULT NULL,
   `StudNo` varchar(50) DEFAULT NULL,
   `ReportDate` date DEFAULT NULL,
   `GracePeriod` date DEFAULT NULL,
-  `FineAmount` decimal(10,2) DEFAULT NULL
+  `FineAmount` decimal(10,2) DEFAULT NULL,
+  `Accno` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `return_lost`
+--
+
+INSERT INTO `return_lost` (`ReturnLostID`, `BorrowID`, `StudNo`, `ReportDate`, `GracePeriod`, `FineAmount`, `Accno`) VALUES
+(2, 7, '211241', '2025-03-27', '2025-04-01', 1000.00, 'Fic20251002');
 
 -- --------------------------------------------------------
 
@@ -215,6 +233,7 @@ INSERT INTO `users` (`UserID`, `StudNo`, `FullName`, `ContactNumber`, `Email`) V
 --
 ALTER TABLE `book`
   ADD PRIMARY KEY (`ISBN`),
+  ADD UNIQUE KEY `Accno` (`Accno`),
   ADD KEY `idx_book_title` (`Title`),
   ADD KEY `idx_book_author` (`Author`);
 
@@ -224,7 +243,8 @@ ALTER TABLE `book`
 ALTER TABLE `borrow`
   ADD PRIMARY KEY (`BorrowID`),
   ADD KEY `fk_borrow_user_new` (`StudNo`),
-  ADD KEY `fk_borrow_copy` (`CopyID`);
+  ADD KEY `fk_borrow_copy` (`CopyID`),
+  ADD KEY `fk_borrow_accno` (`Accno`);
 
 --
 -- Indexes for table `copies`
@@ -245,27 +265,26 @@ ALTER TABLE `login`
 --
 ALTER TABLE `return_damaged`
   ADD PRIMARY KEY (`ReturnDamagedID`),
-  ADD KEY `BookID` (`ISBN`),
   ADD KEY `StudNo` (`StudNo`),
-  ADD KEY `return_damaged_ibfk_1` (`BorrowID`);
+  ADD KEY `return_damaged_ibfk_1` (`BorrowID`),
+  ADD KEY `fk_return_damaged_accno` (`Accno`);
 
 --
 -- Indexes for table `return_good`
 --
 ALTER TABLE `return_good`
   ADD PRIMARY KEY (`ReturnID`),
-  ADD KEY `fk_return_good_book` (`ISBN`),
-  ADD KEY `fk_return_good_copy` (`CopyID`),
-  ADD KEY `return_good_ibfk_1` (`BorrowID`);
+  ADD KEY `return_good_ibfk_1` (`BorrowID`),
+  ADD KEY `fk_return_good_accno` (`Accno`);
 
 --
 -- Indexes for table `return_lost`
 --
 ALTER TABLE `return_lost`
   ADD PRIMARY KEY (`ReturnLostID`),
-  ADD KEY `BookID` (`ISBN`),
   ADD KEY `StudNo` (`StudNo`),
-  ADD KEY `return_lost_ibfk_1` (`BorrowID`);
+  ADD KEY `return_lost_ibfk_1` (`BorrowID`),
+  ADD KEY `fk_return_lost_accno` (`Accno`);
 
 --
 -- Indexes for table `users`
@@ -282,7 +301,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `borrow`
 --
 ALTER TABLE `borrow`
-  MODIFY `BorrowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `BorrowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `login`
@@ -294,19 +313,19 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `return_damaged`
 --
 ALTER TABLE `return_damaged`
-  MODIFY `ReturnDamagedID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ReturnDamagedID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `return_good`
 --
 ALTER TABLE `return_good`
-  MODIFY `ReturnID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ReturnID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `return_lost`
 --
 ALTER TABLE `return_lost`
-  MODIFY `ReturnLostID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ReturnLostID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -322,6 +341,7 @@ ALTER TABLE `users`
 -- Constraints for table `borrow`
 --
 ALTER TABLE `borrow`
+  ADD CONSTRAINT `fk_borrow_accno` FOREIGN KEY (`Accno`) REFERENCES `book` (`Accno`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_borrow_user_new` FOREIGN KEY (`StudNo`) REFERENCES `users` (`StudNo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -334,6 +354,7 @@ ALTER TABLE `copies`
 -- Constraints for table `return_damaged`
 --
 ALTER TABLE `return_damaged`
+  ADD CONSTRAINT `fk_return_damaged_accno` FOREIGN KEY (`Accno`) REFERENCES `book` (`Accno`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `return_damaged_ibfk_1` FOREIGN KEY (`BorrowID`) REFERENCES `borrow` (`BorrowID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `return_damaged_ibfk_3` FOREIGN KEY (`StudNo`) REFERENCES `users` (`StudNo`) ON DELETE CASCADE;
 
@@ -341,13 +362,14 @@ ALTER TABLE `return_damaged`
 -- Constraints for table `return_good`
 --
 ALTER TABLE `return_good`
-  ADD CONSTRAINT `fk_return_good_copy` FOREIGN KEY (`CopyID`) REFERENCES `copies` (`CopyID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_return_good_accno` FOREIGN KEY (`Accno`) REFERENCES `book` (`Accno`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `return_good_ibfk_1` FOREIGN KEY (`BorrowID`) REFERENCES `borrow` (`BorrowID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `return_lost`
 --
 ALTER TABLE `return_lost`
+  ADD CONSTRAINT `fk_return_lost_accno` FOREIGN KEY (`Accno`) REFERENCES `book` (`Accno`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `return_lost_ibfk_1` FOREIGN KEY (`BorrowID`) REFERENCES `borrow` (`BorrowID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `return_lost_ibfk_3` FOREIGN KEY (`StudNo`) REFERENCES `users` (`StudNo`) ON DELETE CASCADE;
 COMMIT;
