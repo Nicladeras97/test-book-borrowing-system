@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2025 at 07:19 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Mar 27, 2025 at 06:50 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -110,21 +110,22 @@ CREATE TABLE `copies` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `login`
+-- Table structure for table `librarians`
 --
 
-CREATE TABLE `login` (
+CREATE TABLE `librarians` (
   `LibraryID` int(11) NOT NULL,
+  `FullName` varchar(255) NOT NULL,
   `Username` varchar(100) NOT NULL,
   `Password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `login`
+-- Dumping data for table `librarians`
 --
 
-INSERT INTO `login` (`LibraryID`, `Username`, `Password`) VALUES
-(1, 'user', 'user');
+INSERT INTO `librarians` (`LibraryID`, `FullName`, `Username`, `Password`) VALUES
+(3, 'Dale Wood', 'dalehoods', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f');
 
 -- --------------------------------------------------------
 
@@ -234,9 +235,9 @@ ALTER TABLE `copies`
   ADD KEY `fk_copies_book` (`ISBN`);
 
 --
--- Indexes for table `login`
+-- Indexes for table `librarians`
 --
-ALTER TABLE `login`
+ALTER TABLE `librarians`
   ADD PRIMARY KEY (`LibraryID`),
   ADD UNIQUE KEY `Username` (`Username`);
 
@@ -285,10 +286,10 @@ ALTER TABLE `borrow`
   MODIFY `BorrowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `login`
+-- AUTO_INCREMENT for table `librarians`
 --
-ALTER TABLE `login`
-  MODIFY `LibraryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `librarians`
+  MODIFY `LibraryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `return_damaged`

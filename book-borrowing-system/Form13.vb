@@ -1,7 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Public Class Form13
-    Public Property ISBN As String
+    Public Property BookID As String
 
     Private Sub Form13_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadBookData()
@@ -12,19 +12,21 @@ Public Class Form13
 
         Try
             conn.Open()
-            Dim query As String = "SELECT ISBN, Title, Author, Year, Category, RackNumber, CallNumber FROM book WHERE ISBN = @ISBN"
+            Dim query As String = "SELECT BookID, ISBN, Title, Author, Year, Publisher, Section, Rack, CallNumber FROM book WHERE BookID = @BookID"
 
             Using cmd As New MySqlCommand(query, conn)
-                cmd.Parameters.AddWithValue("@ISBN", ISBN)
+                cmd.Parameters.AddWithValue("@BookID", BookID)
                 Dim reader As MySqlDataReader = cmd.ExecuteReader()
 
                 If reader.Read() Then
-                    TextBox1.Text = reader("ISBN").ToString()
+                    Label9.Text = reader("BookID").ToString()
+                    TextBox8.Text = reader("ISBN").ToString()
                     TextBox2.Text = reader("Title").ToString()
                     TextBox3.Text = reader("Author").ToString()
                     TextBox4.Text = reader("Year").ToString()
-                    TextBox5.Text = reader("Category").ToString()
-                    TextBox6.Text = reader("RackNumber").ToString()
+                    TextBox1.Text = reader("Publisher").ToString()
+                    TextBox5.Text = reader("Section").ToString()
+                    TextBox6.Text = reader("Rack").ToString()
                     TextBox7.Text = reader("CallNumber").ToString()
                 End If
 
@@ -43,25 +45,26 @@ Public Class Form13
 
         Try
             conn.Open()
-            Dim query As String = "UPDATE book SET Title = @Title, Author = @Author, Year = @Year, 
-                                  Category = @Category, RackNumber = @RackNumber, 
-                                  CallNumber = @CallNumber WHERE ISBN = @ISBN"
+            Dim query As String = "UPDATE book SET ISBN = @ISBN, Title = @Title, Author = @Author, Year = @Year, 
+                                  Section = @Section, Rack = @Rack, 
+                                  CallNumber = @CallNumber WHERE BookID = @BookID"
 
             Using cmd As New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@ISBN", TextBox8.Text.Trim())
                 cmd.Parameters.AddWithValue("@Title", TextBox2.Text.Trim())
                 cmd.Parameters.AddWithValue("@Author", TextBox3.Text.Trim())
                 cmd.Parameters.AddWithValue("@Year", TextBox4.Text.Trim())
-                cmd.Parameters.AddWithValue("@Category", TextBox5.Text.Trim())
-                cmd.Parameters.AddWithValue("@RackNumber", TextBox6.Text.Trim())
+                cmd.Parameters.AddWithValue("@Section", TextBox5.Text.Trim())
+                cmd.Parameters.AddWithValue("@Rack", TextBox6.Text.Trim())
                 cmd.Parameters.AddWithValue("@CallNumber", TextBox7.Text.Trim())
-                cmd.Parameters.AddWithValue("@ISBN", TextBox1.Text.Trim())
+                cmd.Parameters.AddWithValue("@BookID", Label9.Text)
 
                 cmd.ExecuteNonQuery()
                 MessageBox.Show("Book updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End Using
 
             DialogResult = DialogResult.OK
-            Me.Close()
+            Me.Hide()
 
         Catch ex As Exception
             MessageBox.Show("Error updating book: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -71,6 +74,8 @@ Public Class Form13
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Me.Close()
+        Dim back As New Form5
+        back.Show()
+        Me.Hide()
     End Sub
 End Class
