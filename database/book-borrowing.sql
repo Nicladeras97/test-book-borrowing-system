@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2025 at 07:19 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Mar 28, 2025 at 11:16 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,161 +24,131 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `book`
+-- Table structure for table `books`
 --
 
-CREATE TABLE `book` (
+CREATE TABLE `books` (
   `Title` varchar(255) DEFAULT NULL,
   `Author` varchar(255) DEFAULT NULL,
   `Year` int(11) DEFAULT NULL,
   `ISBN` varchar(50) NOT NULL,
   `Category` varchar(100) DEFAULT NULL,
-  `Status` varchar(50) DEFAULT NULL,
-  `Image` varchar(255) DEFAULT NULL,
   `Copies` int(11) DEFAULT NULL,
   `AddedDate` date DEFAULT NULL,
   `CallNumber` varchar(100) DEFAULT NULL,
-  `RackNumber` int(11) DEFAULT NULL
+  `Rack` varchar(11) DEFAULT NULL,
+  `Accno` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `book`
+-- Dumping data for table `books`
 --
 
-INSERT INTO `book` (`Title`, `Author`, `Year`, `ISBN`, `Category`, `Status`, `Image`, `Copies`, `AddedDate`, `CallNumber`, `RackNumber`) VALUES
-('Harry Potter and the Order of the Phoenix (Harry Potter  #5)', 'J.K. Rowling/Mary GrandPré', 2024, '9.780439358E+12', 'Fiction', 'Available', NULL, 3, '2025-03-26', 'FIC RG 2024', 2),
-('Harry Potter and the Chamber of Secrets (Harry Potter  #2)', 'J.K. Rowling', 2025, '9.780439555E+12', 'Fiction', 'Available', NULL, 3, '2025-03-26', 'FIC ROW 2025', 3),
-('Harry Potter and the Prisoner of Azkaban (Harry Potter  #3)', 'J.K. Rowling/Mary GrandPré', 2026, '9.780439655E+12', 'Fiction', 'Available', NULL, 4, '2025-03-26', 'FIC RG 2026', 4),
-('Harry Potter Boxed Set  Books 1-5 (Harry Potter  #1-5)', 'J.K. Rowling/Mary GrandPré', 2027, '9.780439683E+12', 'Fiction', 'Available', NULL, 5, '2025-03-26', 'FIC RG 2027', 5),
-('Harry Potter and the Half-Blood Prince (Harry Potter  #6)', 'J.K. Rowling/Mary GrandPré', 2023, '9.780439786E+12', 'Fiction', 'Available', NULL, 1, '2025-03-26', 'FIC RG 2023', 1),
-('Harry Potter Collection (Harry Potter  #1-6)', 'J.K. Rowling', 2029, '9.780439828E+12', 'Fiction', 'Available', NULL, 7, '2025-03-26', 'FIC ROW 2029', 7),
-('Unauthorized Harry Potter Book Seven News: \"Half-Blood Prince\" Analysis and Speculation', 'W. Frederick Zimmerman', 2028, '9.780976541E+12', 'Fiction', 'Available', NULL, 6, '2025-03-26', 'FIC ZIM 2028', 6);
-
---
--- Triggers `book`
---
-DELIMITER $$
-CREATE TRIGGER `generate_copies` AFTER INSERT ON `book` FOR EACH ROW BEGIN
-    DECLARE i INT DEFAULT 1;
-
-    -- Add logic to generate copies or any other operations
-    WHILE i <= NEW.Copies DO
-        -- Use NEW.BookID here to reference the auto-generated BookID
-        -- Perform necessary operations, such as inserting into another table or something else
-        SET i = i + 1;
-    END WHILE;
-END
-$$
-DELIMITER ;
+INSERT INTO `books` (`Title`, `Author`, `Year`, `ISBN`, `Category`, `Copies`, `AddedDate`, `CallNumber`, `Rack`, `Accno`) VALUES
+('Harry Potter and the Order of the Phoenix (Harry Potter  #5)', 'J.K. Rowling/Mary GrandPré', 2024, '9.780439358E+12', 'Fiction', 1, '2025-03-26', 'FIC RG 2024', 'A', 'Fic20241001'),
+('Harry Potter and the Chamber of Secrets (Harry Potter  #2)', 'J.K. Rowling', 2025, '9.780439555E+12', 'Fiction', 1, '2025-03-26', 'FIC ROW 2025', 'A', 'Fic20251002'),
+('Harry Potter and the Prisoner of Azkaban (Harry Potter  #3)', 'J.K. Rowling/Mary GrandPré', 2026, '9.780439655E+12', 'Fiction', 1, '2025-03-26', 'FIC RG 2026', 'A', 'Fic20261003'),
+('Harry Potter and the Half-Blood Prince (Harry Potter  #6)', 'J.K. Rowling/Mary GrandPré', 2023, '9.780439786E+12', 'Fiction', 1, '2025-03-26', 'FIC RG 2023', 'A', 'Fic20231004'),
+('Unauthorized Harry Potter Book Seven News: \"Half-Blood Prince\" Analysis and Speculation', 'W. Frederick Zimmerman', 2028, '9.780976541E+12', 'Fiction', 6, '2025-03-26', 'FIC ZIM 2028', 'A', 'Fic20281005');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `borrow`
+-- Table structure for table `books_borrowed`
 --
 
-CREATE TABLE `borrow` (
-  `BorrowID` int(11) NOT NULL,
-  `StudNo` varchar(50) DEFAULT NULL,
-  `ISBN` varchar(20) DEFAULT NULL,
-  `Title` varchar(255) DEFAULT NULL,
-  `CopyID` int(11) NOT NULL,
-  `BorrowDate` date DEFAULT NULL,
-  `DueDate` date DEFAULT NULL,
-  `StatusName` varchar(50) DEFAULT NULL
+CREATE TABLE `books_borrowed` (
+  `borrow_id` int(11) NOT NULL,
+  `borrower_id` varchar(50) NOT NULL,
+  `book_id` varchar(50) NOT NULL,
+  `condition_id` int(11) NOT NULL,
+  `date_borrowed` date NOT NULL,
+  `due_date` date NOT NULL,
+  `time` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `borrow`
+-- Dumping data for table `books_borrowed`
 --
 
-INSERT INTO `borrow` (`BorrowID`, `StudNo`, `ISBN`, `Title`, `CopyID`, `BorrowDate`, `DueDate`, `StatusName`) VALUES
-(1, '211241', '9.780439358E+12', 'Harry Potter and the Order of the Phoenix (Harry Potter  #5)', 0, '2025-03-26', '2025-03-26', 'Returned');
+INSERT INTO `books_borrowed` (`borrow_id`, `borrower_id`, `book_id`, `condition_id`, `date_borrowed`, `due_date`, `time`) VALUES
+(1, '201107', 'Fic20251002', 1, '2025-03-28', '2025-03-29', '15:50:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `copies`
+-- Table structure for table `book_condition`
 --
 
-CREATE TABLE `copies` (
-  `CopyID` varchar(10) NOT NULL,
-  `ISBN` varchar(50) NOT NULL,
-  `Status` enum('Available','Borrowed','Damaged','Lost') DEFAULT 'Available'
+CREATE TABLE `book_condition` (
+  `condition_id` int(11) NOT NULL,
+  `condition_status` char(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `book_condition`
+--
+
+INSERT INTO `book_condition` (`condition_id`, `condition_status`) VALUES
+(1, 'New'),
+(2, 'used but in good condition'),
+(3, 'Damaged');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `deadline_status`
+--
+
+CREATE TABLE `deadline_status` (
+  `borrowerID` int(11) NOT NULL,
+  `deadline_status` char(20) NOT NULL,
+  `email_messageID` int(11) NOT NULL,
+  `email_status` char(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `login`
+-- Table structure for table `email_message`
 --
 
-CREATE TABLE `login` (
+CREATE TABLE `email_message` (
+  `message_id` int(11) NOT NULL,
+  `subject` char(255) NOT NULL,
+  `deadline` char(20) NOT NULL,
+  `message_content` char(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `email_message`
+--
+
+INSERT INTO `email_message` (`message_id`, `subject`, `deadline`, `message_content`) VALUES
+(1, 'Reminder of almost due borrowed book', 'Almost Due', 'Dear Borrower,\r\n\r\nI hope this message finds you well. This is a friendly reminder that the book you borrowed is almost due.\r\n\r\nPlease ensure that you return the book by this date to avoid any late fees or penalties. \r\n\r\nThank you for your cooperation and'),
+(2, 'Reminder of Overdue borrowed book', 'Overdue', 'Dear Borrower,\r\n\r\nI hope this message finds you well. I wanted to let you know that the book you borrowed is currently overdue.\r\n\r\nWe kindly ask that you return it to avoid any penalties. \r\n\r\nThank you for your prompt attention to this matter.\r\n'),
+(3, 'Reminder of borrowed book due today', 'Due', 'Dear Borrower,\r\n\r\nI hope this message finds you well. This is a friendly reminder that the book you borrowed is due today.\r\n\r\nPlease ensure that you return the book before this day ends to avoid any late fees or penalties.\r\n\r\nThank you for your cooperatio');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `librarians`
+--
+
+CREATE TABLE `librarians` (
   `LibraryID` int(11) NOT NULL,
+  `FullName` varchar(255) NOT NULL,
   `Username` varchar(100) NOT NULL,
   `Password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `login`
+-- Dumping data for table `librarians`
 --
 
-INSERT INTO `login` (`LibraryID`, `Username`, `Password`) VALUES
-(1, 'user', 'user');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `return_damaged`
---
-
-CREATE TABLE `return_damaged` (
-  `ReturnDamagedID` int(11) NOT NULL,
-  `BorrowID` int(11) DEFAULT NULL,
-  `ISBN` varchar(20) DEFAULT NULL,
-  `StudNo` varchar(50) DEFAULT NULL,
-  `ReturnDate` date DEFAULT NULL,
-  `DamageDescription` text DEFAULT NULL,
-  `FineAmount` decimal(10,2) DEFAULT 0.00
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `return_good`
---
-
-CREATE TABLE `return_good` (
-  `ReturnID` int(11) NOT NULL,
-  `BorrowID` int(11) DEFAULT NULL,
-  `ISBN` varchar(20) DEFAULT NULL,
-  `CopyID` varchar(10) DEFAULT NULL,
-  `StudNo` varchar(15) NOT NULL,
-  `ReturnDate` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `return_good`
---
-
-INSERT INTO `return_good` (`ReturnID`, `BorrowID`, `ISBN`, `CopyID`, `StudNo`, `ReturnDate`) VALUES
-(1, 1, '9.780439358E+12', NULL, '211241', '2025-03-26');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `return_lost`
---
-
-CREATE TABLE `return_lost` (
-  `ReturnLostID` int(11) NOT NULL,
-  `BorrowID` int(11) DEFAULT NULL,
-  `ISBN` varchar(20) DEFAULT NULL,
-  `StudNo` varchar(50) DEFAULT NULL,
-  `ReportDate` date DEFAULT NULL,
-  `GracePeriod` date DEFAULT NULL,
-  `FineAmount` decimal(10,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `librarians` (`LibraryID`, `FullName`, `Username`, `Password`) VALUES
+(3, 'Dale Wood', 'dalehoods', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
+(4, 'user', 'user', 'user');
 
 -- --------------------------------------------------------
 
@@ -211,61 +181,41 @@ INSERT INTO `users` (`UserID`, `StudNo`, `FullName`, `ContactNumber`, `Email`) V
 --
 
 --
--- Indexes for table `book`
+-- Indexes for table `books`
 --
-ALTER TABLE `book`
+ALTER TABLE `books`
   ADD PRIMARY KEY (`ISBN`),
+  ADD UNIQUE KEY `Accno` (`Accno`),
   ADD KEY `idx_book_title` (`Title`),
   ADD KEY `idx_book_author` (`Author`);
 
 --
--- Indexes for table `borrow`
+-- Indexes for table `books_borrowed`
 --
-ALTER TABLE `borrow`
-  ADD PRIMARY KEY (`BorrowID`),
-  ADD KEY `fk_borrow_user_new` (`StudNo`),
-  ADD KEY `fk_borrow_copy` (`CopyID`);
+ALTER TABLE `books_borrowed`
+  ADD PRIMARY KEY (`borrow_id`),
+  ADD KEY `borrower_id` (`borrower_id`),
+  ADD KEY `Book_id` (`book_id`),
+  ADD KEY `condition_id` (`condition_id`);
 
 --
--- Indexes for table `copies`
+-- Indexes for table `book_condition`
 --
-ALTER TABLE `copies`
-  ADD PRIMARY KEY (`CopyID`),
-  ADD KEY `fk_copies_book` (`ISBN`);
+ALTER TABLE `book_condition`
+  ADD PRIMARY KEY (`condition_id`);
 
 --
--- Indexes for table `login`
+-- Indexes for table `email_message`
 --
-ALTER TABLE `login`
+ALTER TABLE `email_message`
+  ADD PRIMARY KEY (`message_id`);
+
+--
+-- Indexes for table `librarians`
+--
+ALTER TABLE `librarians`
   ADD PRIMARY KEY (`LibraryID`),
   ADD UNIQUE KEY `Username` (`Username`);
-
---
--- Indexes for table `return_damaged`
---
-ALTER TABLE `return_damaged`
-  ADD PRIMARY KEY (`ReturnDamagedID`),
-  ADD KEY `BookID` (`ISBN`),
-  ADD KEY `StudNo` (`StudNo`),
-  ADD KEY `return_damaged_ibfk_1` (`BorrowID`);
-
---
--- Indexes for table `return_good`
---
-ALTER TABLE `return_good`
-  ADD PRIMARY KEY (`ReturnID`),
-  ADD KEY `fk_return_good_book` (`ISBN`),
-  ADD KEY `fk_return_good_copy` (`CopyID`),
-  ADD KEY `return_good_ibfk_1` (`BorrowID`);
-
---
--- Indexes for table `return_lost`
---
-ALTER TABLE `return_lost`
-  ADD PRIMARY KEY (`ReturnLostID`),
-  ADD KEY `BookID` (`ISBN`),
-  ADD KEY `StudNo` (`StudNo`),
-  ADD KEY `return_lost_ibfk_1` (`BorrowID`);
 
 --
 -- Indexes for table `users`
@@ -279,34 +229,28 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `borrow`
+-- AUTO_INCREMENT for table `books_borrowed`
 --
-ALTER TABLE `borrow`
-  MODIFY `BorrowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `books_borrowed`
+  MODIFY `borrow_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `login`
+-- AUTO_INCREMENT for table `book_condition`
 --
-ALTER TABLE `login`
-  MODIFY `LibraryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `book_condition`
+  MODIFY `condition_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `return_damaged`
+-- AUTO_INCREMENT for table `email_message`
 --
-ALTER TABLE `return_damaged`
-  MODIFY `ReturnDamagedID` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `email_message`
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `return_good`
+-- AUTO_INCREMENT for table `librarians`
 --
-ALTER TABLE `return_good`
-  MODIFY `ReturnID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `return_lost`
---
-ALTER TABLE `return_lost`
-  MODIFY `ReturnLostID` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `librarians`
+  MODIFY `LibraryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -319,37 +263,12 @@ ALTER TABLE `users`
 --
 
 --
--- Constraints for table `borrow`
+-- Constraints for table `books_borrowed`
 --
-ALTER TABLE `borrow`
-  ADD CONSTRAINT `fk_borrow_user_new` FOREIGN KEY (`StudNo`) REFERENCES `users` (`StudNo`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `copies`
---
-ALTER TABLE `copies`
-  ADD CONSTRAINT `fk_copies_book` FOREIGN KEY (`ISBN`) REFERENCES `book` (`ISBN`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `return_damaged`
---
-ALTER TABLE `return_damaged`
-  ADD CONSTRAINT `return_damaged_ibfk_1` FOREIGN KEY (`BorrowID`) REFERENCES `borrow` (`BorrowID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `return_damaged_ibfk_3` FOREIGN KEY (`StudNo`) REFERENCES `users` (`StudNo`) ON DELETE CASCADE;
-
---
--- Constraints for table `return_good`
---
-ALTER TABLE `return_good`
-  ADD CONSTRAINT `fk_return_good_copy` FOREIGN KEY (`CopyID`) REFERENCES `copies` (`CopyID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `return_good_ibfk_1` FOREIGN KEY (`BorrowID`) REFERENCES `borrow` (`BorrowID`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `return_lost`
---
-ALTER TABLE `return_lost`
-  ADD CONSTRAINT `return_lost_ibfk_1` FOREIGN KEY (`BorrowID`) REFERENCES `borrow` (`BorrowID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `return_lost_ibfk_3` FOREIGN KEY (`StudNo`) REFERENCES `users` (`StudNo`) ON DELETE CASCADE;
+ALTER TABLE `books_borrowed`
+  ADD CONSTRAINT `Book_id` FOREIGN KEY (`book_id`) REFERENCES `books` (`Accno`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `borrower_id` FOREIGN KEY (`borrower_id`) REFERENCES `users` (`StudNo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `condition_id` FOREIGN KEY (`condition_id`) REFERENCES `book_condition` (`condition_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
