@@ -1,4 +1,5 @@
 ﻿Public Class Form14
+    Inherits Form
     Private Sub btnBack_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles btnBack.LinkClicked
         Dim login As New Form1
         login.Show()
