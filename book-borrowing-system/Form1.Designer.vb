@@ -36,13 +36,13 @@ Partial Class Form1
         PasswordTextBox = New TextBox()
         OK = New Button()
         Panel1 = New Panel()
-        Button1 = New Button()
         PictureBox1 = New PictureBox()
         Label4 = New Label()
         Label3 = New Label()
+        Button1 = New Button()
         Label1 = New Label()
         Label2 = New Label()
-        Button2 = New Button()
+        LinkLabel1 = New LinkLabel()
         CType(LogoPictureBox, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -118,7 +118,7 @@ Partial Class Form1
         ' Panel1
         ' 
         Panel1.BackColor = Color.LightBlue
-        Panel1.Controls.Add(Button2)
+        Panel1.Controls.Add(LinkLabel1)
         Panel1.Controls.Add(PictureBox1)
         Panel1.Controls.Add(Label4)
         Panel1.Controls.Add(Label3)
@@ -132,22 +132,6 @@ Partial Class Form1
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(363, 454)
         Panel1.TabIndex = 5
-        ' 
-        ' Button1
-        ' 
-        Button1.BackColor = Color.Red
-        Button1.Cursor = Cursors.Hand
-        Button1.FlatAppearance.BorderSize = 0
-        Button1.FlatStyle = FlatStyle.Flat
-        Button1.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Button1.ForeColor = Color.White
-        Button1.Location = New Point(1377, 30)
-        Button1.Margin = New Padding(3, 4, 3, 4)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(73, 39)
-        Button1.TabIndex = 7
-        Button1.Text = "EXIT"
-        Button1.UseVisualStyleBackColor = False
         ' 
         ' PictureBox1
         ' 
@@ -182,6 +166,22 @@ Partial Class Form1
         Label3.TabIndex = 5
         Label3.Text = "Welcome Back!"
         ' 
+        ' Button1
+        ' 
+        Button1.BackColor = Color.Red
+        Button1.Cursor = Cursors.Hand
+        Button1.FlatAppearance.BorderSize = 0
+        Button1.FlatStyle = FlatStyle.Flat
+        Button1.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Button1.ForeColor = Color.White
+        Button1.Location = New Point(1377, 30)
+        Button1.Margin = New Padding(3, 4, 3, 4)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(73, 39)
+        Button1.TabIndex = 7
+        Button1.Text = "EXIT"
+        Button1.UseVisualStyleBackColor = False
+        ' 
         ' Label1
         ' 
         Label1.AutoSize = True
@@ -198,22 +198,21 @@ Partial Class Form1
         Label2.AutoSize = True
         Label2.FlatStyle = FlatStyle.Flat
         Label2.Font = New Font("Arial", 36F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(77, 163)
+        Label2.Location = New Point(60, 158)
         Label2.Name = "Label2"
         Label2.Size = New Size(227, 67)
         Label2.TabIndex = 6
         Label2.Text = "System"
         ' 
-        ' Button2
+        ' LinkLabel1
         ' 
-        Button2.FlatAppearance.BorderSize = 0
-        Button2.FlatStyle = FlatStyle.Flat
-        Button2.Location = New Point(213, 396)
-        Button2.Name = "Button2"
-        Button2.Size = New Size(120, 28)
-        Button2.TabIndex = 8
-        Button2.Text = "Create Account"
-        Button2.UseVisualStyleBackColor = True
+        LinkLabel1.AutoSize = True
+        LinkLabel1.Location = New Point(126, 394)
+        LinkLabel1.Name = "LinkLabel1"
+        LinkLabel1.Size = New Size(110, 20)
+        LinkLabel1.TabIndex = 8
+        LinkLabel1.TabStop = True
+        LinkLabel1.Text = "Create Account"
         ' 
         ' Form1
         ' 
@@ -252,6 +251,6 @@ Partial Class Form1
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
+    Friend WithEvents LinkLabel1 As LinkLabel
 
 End Class

@@ -50,8 +50,10 @@ Public Class Form1
         Application.Exit()
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-
+    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+        Dim create As New Form14
+        create.Show()
+        Me.Hide()
     End Sub
 End Class
 
