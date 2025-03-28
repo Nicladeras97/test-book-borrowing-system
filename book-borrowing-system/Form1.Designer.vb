@@ -42,6 +42,7 @@ Partial Class Form1
         Label3 = New Label()
         Label1 = New Label()
         Label2 = New Label()
+        Button2 = New Button()
         CType(LogoPictureBox, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -117,7 +118,7 @@ Partial Class Form1
         ' Panel1
         ' 
         Panel1.BackColor = Color.LightBlue
-        Panel1.Controls.Add(Button1)
+        Panel1.Controls.Add(Button2)
         Panel1.Controls.Add(PictureBox1)
         Panel1.Controls.Add(Label4)
         Panel1.Controls.Add(Label3)
@@ -140,10 +141,10 @@ Partial Class Form1
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button1.ForeColor = Color.White
-        Button1.Location = New Point(23, 375)
+        Button1.Location = New Point(1377, 30)
         Button1.Margin = New Padding(3, 4, 3, 4)
         Button1.Name = "Button1"
-        Button1.Size = New Size(310, 39)
+        Button1.Size = New Size(73, 39)
         Button1.TabIndex = 7
         Button1.Text = "EXIT"
         Button1.UseVisualStyleBackColor = False
@@ -203,6 +204,17 @@ Partial Class Form1
         Label2.TabIndex = 6
         Label2.Text = "System"
         ' 
+        ' Button2
+        ' 
+        Button2.FlatAppearance.BorderSize = 0
+        Button2.FlatStyle = FlatStyle.Flat
+        Button2.Location = New Point(213, 396)
+        Button2.Name = "Button2"
+        Button2.Size = New Size(120, 28)
+        Button2.TabIndex = 8
+        Button2.Text = "Create Account"
+        Button2.UseVisualStyleBackColor = True
+        ' 
         ' Form1
         ' 
         AcceptButton = OK
@@ -211,6 +223,7 @@ Partial Class Form1
         BackColor = Color.White
         ClientSize = New Size(1482, 753)
         ControlBox = False
+        Controls.Add(Button1)
         Controls.Add(Label2)
         Controls.Add(Label1)
         Controls.Add(Panel1)
@@ -239,5 +252,6 @@ Partial Class Form1
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
 
 End Class
