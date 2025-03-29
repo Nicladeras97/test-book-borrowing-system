@@ -48,7 +48,7 @@ Partial Class Form4
         Panel1.Dock = DockStyle.Top
         Panel1.Location = New Point(0, 0)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(1482, 53)
+        Panel1.Size = New Size(1370, 53)
         Panel1.TabIndex = 3
         ' 
         ' Label1
@@ -56,7 +56,7 @@ Partial Class Form4
         Label1.AutoSize = True
         Label1.Location = New Point(38, 18)
         Label1.Name = "Label1"
-        Label1.Size = New Size(203, 19)
+        Label1.Size = New Size(165, 16)
         Label1.TabIndex = 1
         Label1.Text = "Book Management System"
         ' 
@@ -97,7 +97,7 @@ Partial Class Form4
         Label2.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label2.Location = New Point(41, 57)
         Label2.Name = "Label2"
-        Label2.Size = New Size(117, 19)
+        Label2.Size = New Size(94, 16)
         Label2.TabIndex = 0
         Label2.Text = "Manage Books"
         ' 
@@ -128,7 +128,7 @@ Partial Class Form4
         Label3.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label3.Location = New Point(50, 57)
         Label3.Name = "Label3"
-        Label3.Size = New Size(99, 19)
+        Label3.Size = New Size(79, 16)
         Label3.TabIndex = 0
         Label3.Text = "Book Report"
         ' 
@@ -147,10 +147,10 @@ Partial Class Form4
         ' 
         ' Form4
         ' 
-        AutoScaleDimensions = New SizeF(9F, 18F)
+        AutoScaleDimensions = New SizeF(7F, 16F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
-        ClientSize = New Size(1482, 753)
+        ClientSize = New Size(1370, 749)
         ControlBox = False
         Controls.Add(Button3)
         Controls.Add(Panel3)

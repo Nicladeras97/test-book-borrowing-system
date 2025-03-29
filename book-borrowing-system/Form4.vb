@@ -10,7 +10,7 @@
         Me.Hide()
     End Sub
     Private Sub Panel3_Click(sender As Object, e As EventArgs) Handles Panel3.Click, Label3.Click, PictureBox5.Click
-        Dim bookReport As New Form6
+        Dim bookReport As New Report
         bookReport.Show()
         Me.Hide()
     End Sub
@@ -20,4 +20,7 @@
         Me.Hide()
     End Sub
 
+    Private Sub Panel3_Paint(sender As Object, e As PaintEventArgs) Handles Panel3.Paint
+
+    End Sub
 End Class
