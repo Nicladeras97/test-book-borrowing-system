@@ -10,7 +10,7 @@ Public Class Form1
 
         Try
             conn.Open()
-            Dim query As String = "SELECT * FROM login WHERE Username=@Username AND Password=@Password"
+            Dim query As String = "SELECT * FROM librarians WHERE Username=@Username AND Password=@Password"
             cmd = New MySqlCommand(query, conn)
             cmd.Parameters.AddWithValue("@Username", UsernameTextBox.Text)
             cmd.Parameters.AddWithValue("@Password", PasswordTextBox.Text)
