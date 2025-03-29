@@ -39,6 +39,8 @@ Partial Class Form10
         TextBox2 = New TextBox()
         Label3 = New Label()
         Label2 = New Label()
+        TextBox9 = New TextBox()
+        Label4 = New Label()
         SuspendLayout()
         ' 
         ' lblBookTitle
@@ -75,7 +77,7 @@ Partial Class Form10
         ' 
         lblCopies.AutoSize = True
         lblCopies.Font = New Font("Arial", 12F)
-        lblCopies.Location = New Point(80, 464)
+        lblCopies.Location = New Point(80, 513)
         lblCopies.Name = "lblCopies"
         lblCopies.Size = New Size(71, 23)
         lblCopies.TabIndex = 28
@@ -85,11 +87,11 @@ Partial Class Form10
         ' 
         lblCategory.AutoSize = True
         lblCategory.Font = New Font("Arial", 12F)
-        lblCategory.Location = New Point(80, 413)
+        lblCategory.Location = New Point(80, 462)
         lblCategory.Name = "lblCategory"
-        lblCategory.Size = New Size(162, 23)
+        lblCategory.Size = New Size(75, 23)
         lblCategory.TabIndex = 29
-        lblCategory.Text = "Category Section"
+        lblCategory.Text = "Section"
         ' 
         ' lblYear
         ' 
@@ -128,7 +130,7 @@ Partial Class Form10
         ' TextBox6
         ' 
         TextBox6.Font = New Font("Arial", 12F)
-        TextBox6.Location = New Point(258, 464)
+        TextBox6.Location = New Point(258, 513)
         TextBox6.Name = "TextBox6"
         TextBox6.Size = New Size(480, 30)
         TextBox6.TabIndex = 36
@@ -136,7 +138,7 @@ Partial Class Form10
         ' TextBox7
         ' 
         TextBox7.Font = New Font("Arial", 12F)
-        TextBox7.Location = New Point(258, 413)
+        TextBox7.Location = New Point(258, 462)
         TextBox7.Name = "TextBox7"
         TextBox7.Size = New Size(480, 30)
         TextBox7.TabIndex = 37
@@ -226,6 +228,24 @@ Partial Class Form10
         Label2.Text = "Add Book"
         Label2.TextAlign = ContentAlignment.MiddleCenter
         ' 
+        ' TextBox9
+        ' 
+        TextBox9.Font = New Font("Arial", 12F)
+        TextBox9.Location = New Point(258, 415)
+        TextBox9.Name = "TextBox9"
+        TextBox9.Size = New Size(480, 30)
+        TextBox9.TabIndex = 56
+        ' 
+        ' Label4
+        ' 
+        Label4.AutoSize = True
+        Label4.Font = New Font("Arial", 12F)
+        Label4.Location = New Point(80, 415)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(90, 23)
+        Label4.TabIndex = 55
+        Label4.Text = "Publisher"
+        ' 
         ' Form10
         ' 
         AutoScaleDimensions = New SizeF(9F, 18F)
@@ -233,6 +253,8 @@ Partial Class Form10
         BackColor = Color.White
         ClientSize = New Size(847, 697)
         ControlBox = False
+        Controls.Add(TextBox9)
+        Controls.Add(Label4)
         Controls.Add(Label2)
         Controls.Add(TextBox2)
         Controls.Add(Label3)
@@ -254,7 +276,6 @@ Partial Class Form10
         Controls.Add(lblBookTitle)
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Name = "Form10"
-        Text = "Add Books"
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -277,4 +298,6 @@ Partial Class Form10
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
+    Friend WithEvents TextBox9 As TextBox
+    Friend WithEvents Label4 As Label
 End Class

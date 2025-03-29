@@ -29,13 +29,12 @@ Partial Class Form5
         Button3 = New Button()
         Button4 = New Button()
         TextBox1 = New TextBox()
-        Button5 = New Button()
         Button2 = New Button()
-        DataGridView1 = New DataGridView()
         Button6 = New Button()
         Label2 = New Label()
         Button7 = New Button()
         Label3 = New Label()
+        DataGridView1 = New DataGridView()
         Panel1.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
@@ -57,9 +56,9 @@ Partial Class Form5
         Label1.AutoSize = True
         Label1.Location = New Point(43, 17)
         Label1.Name = "Label1"
-        Label1.Size = New Size(107, 19)
+        Label1.Size = New Size(54, 19)
         Label1.TabIndex = 1
-        Label1.Text = "Book Reports"
+        Label1.Text = "Books"
         ' 
         ' PictureBox1
         ' 
@@ -78,7 +77,7 @@ Partial Class Form5
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Font = New Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button1.ForeColor = Color.White
-        Button1.Location = New Point(1168, 70)
+        Button1.Location = New Point(1252, 70)
         Button1.Name = "Button1"
         Button1.Size = New Size(103, 30)
         Button1.TabIndex = 11
@@ -100,7 +99,7 @@ Partial Class Form5
         ' 
         ' Button4
         ' 
-        Button4.BackColor = SystemColors.HotTrack
+        Button4.BackColor = SystemColors.ControlDark
         Button4.Cursor = Cursors.Hand
         Button4.FlatStyle = FlatStyle.Flat
         Button4.Font = New Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
@@ -120,20 +119,6 @@ Partial Class Form5
         TextBox1.Size = New Size(307, 26)
         TextBox1.TabIndex = 14
         ' 
-        ' Button5
-        ' 
-        Button5.BackColor = Color.Red
-        Button5.Cursor = Cursors.Hand
-        Button5.FlatStyle = FlatStyle.Flat
-        Button5.Font = New Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Button5.ForeColor = Color.White
-        Button5.Location = New Point(1280, 70)
-        Button5.Name = "Button5"
-        Button5.Size = New Size(75, 30)
-        Button5.TabIndex = 15
-        Button5.Text = "Delete"
-        Button5.UseVisualStyleBackColor = False
-        ' 
         ' Button2
         ' 
         Button2.BackColor = Color.Green
@@ -141,29 +126,18 @@ Partial Class Form5
         Button2.FlatStyle = FlatStyle.Flat
         Button2.Font = New Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button2.ForeColor = Color.White
-        Button2.Location = New Point(986, 70)
+        Button2.Location = New Point(1070, 70)
         Button2.Name = "Button2"
         Button2.Size = New Size(173, 30)
         Button2.TabIndex = 16
         Button2.Text = "Download Template"
         Button2.UseVisualStyleBackColor = False
         ' 
-        ' DataGridView1
-        ' 
-        DataGridView1.BackgroundColor = Color.WhiteSmoke
-        DataGridView1.BorderStyle = BorderStyle.None
-        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(37, 127)
-        DataGridView1.Name = "DataGridView1"
-        DataGridView1.RowHeadersWidth = 51
-        DataGridView1.Size = New Size(1410, 562)
-        DataGridView1.TabIndex = 17
-        ' 
         ' Button6
         ' 
         Button6.Cursor = Cursors.Hand
         Button6.FlatStyle = FlatStyle.Flat
-        Button6.Location = New Point(775, 711)
+        Button6.Location = New Point(777, 698)
         Button6.Name = "Button6"
         Button6.Size = New Size(66, 28)
         Button6.TabIndex = 20
@@ -172,7 +146,7 @@ Partial Class Form5
         ' 
         ' Label2
         ' 
-        Label2.Location = New Point(701, 713)
+        Label2.Location = New Point(703, 700)
         Label2.Name = "Label2"
         Label2.Size = New Size(68, 24)
         Label2.TabIndex = 19
@@ -183,7 +157,7 @@ Partial Class Form5
         ' 
         Button7.Cursor = Cursors.Hand
         Button7.FlatStyle = FlatStyle.Flat
-        Button7.Location = New Point(628, 711)
+        Button7.Location = New Point(630, 698)
         Button7.Name = "Button7"
         Button7.Size = New Size(66, 28)
         Button7.TabIndex = 18
@@ -199,6 +173,16 @@ Partial Class Form5
         Label3.TabIndex = 21
         Label3.Text = "Search"
         ' 
+        ' DataGridView1
+        ' 
+        DataGridView1.BackgroundColor = Color.WhiteSmoke
+        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridView1.Location = New Point(43, 136)
+        DataGridView1.Name = "DataGridView1"
+        DataGridView1.RowHeadersWidth = 51
+        DataGridView1.Size = New Size(1404, 539)
+        DataGridView1.TabIndex = 44
+        ' 
         ' Form5
         ' 
         AutoScaleDimensions = New SizeF(9F, 18F)
@@ -206,14 +190,13 @@ Partial Class Form5
         BackColor = Color.White
         ClientSize = New Size(1482, 753)
         ControlBox = False
+        Controls.Add(DataGridView1)
         Controls.Add(Button3)
         Controls.Add(Label3)
         Controls.Add(Button6)
         Controls.Add(Label2)
         Controls.Add(Button7)
-        Controls.Add(DataGridView1)
         Controls.Add(Button2)
-        Controls.Add(Button5)
         Controls.Add(TextBox1)
         Controls.Add(Button4)
         Controls.Add(Button1)
@@ -236,11 +219,10 @@ Partial Class Form5
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
     Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Button5 As Button
     Friend WithEvents Button2 As Button
-    Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents Button6 As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents Button7 As Button
     Friend WithEvents Label3 As Label
+    Friend WithEvents DataGridView1 As DataGridView
 End Class

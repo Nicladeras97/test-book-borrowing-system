@@ -22,7 +22,6 @@ Partial Class Form13
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        TextBox1 = New TextBox()
         Label1 = New Label()
         Label2 = New Label()
         Label3 = New Label()
@@ -41,15 +40,10 @@ Partial Class Form13
         TextBox7 = New TextBox()
         Label9 = New Label()
         TextBox8 = New TextBox()
+        Label10 = New Label()
+        TextBox1 = New TextBox()
+        Label11 = New Label()
         SuspendLayout()
-        ' 
-        ' TextBox1
-        ' 
-        TextBox1.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TextBox1.Location = New Point(260, 127)
-        TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(474, 30)
-        TextBox1.TabIndex = 0
         ' 
         ' Label1
         ' 
@@ -93,11 +87,11 @@ Partial Class Form13
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label4.Location = New Point(66, 358)
+        Label4.Location = New Point(66, 413)
         Label4.Name = "Label4"
-        Label4.Size = New Size(168, 23)
+        Label4.Size = New Size(81, 23)
         Label4.TabIndex = 7
-        Label4.Text = "Category Section "
+        Label4.Text = "Section "
         ' 
         ' TextBox3
         ' 
@@ -129,7 +123,7 @@ Partial Class Form13
         ' 
         Label6.AutoSize = True
         Label6.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label6.Location = New Point(66, 408)
+        Label6.Location = New Point(66, 463)
         Label6.Name = "Label6"
         Label6.Size = New Size(55, 23)
         Label6.TabIndex = 11
@@ -138,7 +132,7 @@ Partial Class Form13
         ' TextBox5
         ' 
         TextBox5.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TextBox5.Location = New Point(260, 358)
+        TextBox5.Location = New Point(260, 413)
         TextBox5.Name = "TextBox5"
         TextBox5.Size = New Size(474, 30)
         TextBox5.TabIndex = 10
@@ -147,7 +141,7 @@ Partial Class Form13
         ' 
         Label7.AutoSize = True
         Label7.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label7.Location = New Point(66, 453)
+        Label7.Location = New Point(66, 508)
         Label7.Name = "Label7"
         Label7.Size = New Size(110, 23)
         Label7.TabIndex = 13
@@ -156,7 +150,7 @@ Partial Class Form13
         ' TextBox6
         ' 
         TextBox6.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TextBox6.Location = New Point(260, 408)
+        TextBox6.Location = New Point(260, 463)
         TextBox6.Name = "TextBox6"
         TextBox6.Size = New Size(474, 30)
         TextBox6.TabIndex = 12
@@ -168,7 +162,7 @@ Partial Class Form13
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Font = New Font("Arial", 12F)
         Button1.ForeColor = Color.White
-        Button1.Location = New Point(277, 535)
+        Button1.Location = New Point(277, 562)
         Button1.Name = "Button1"
         Button1.Size = New Size(94, 32)
         Button1.TabIndex = 14
@@ -182,7 +176,7 @@ Partial Class Form13
         Button2.FlatStyle = FlatStyle.Flat
         Button2.Font = New Font("Arial", 12F)
         Button2.ForeColor = Color.White
-        Button2.Location = New Point(398, 535)
+        Button2.Location = New Point(398, 562)
         Button2.Name = "Button2"
         Button2.Size = New Size(94, 32)
         Button2.TabIndex = 15
@@ -202,7 +196,7 @@ Partial Class Form13
         ' TextBox7
         ' 
         TextBox7.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TextBox7.Location = New Point(260, 453)
+        TextBox7.Location = New Point(260, 508)
         TextBox7.Name = "TextBox7"
         TextBox7.Size = New Size(474, 30)
         TextBox7.TabIndex = 16
@@ -225,6 +219,32 @@ Partial Class Form13
         TextBox8.Size = New Size(474, 30)
         TextBox8.TabIndex = 18
         ' 
+        ' Label10
+        ' 
+        Label10.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label10.Location = New Point(260, 127)
+        Label10.Name = "Label10"
+        Label10.Size = New Size(474, 23)
+        Label10.TabIndex = 20
+        ' 
+        ' TextBox1
+        ' 
+        TextBox1.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        TextBox1.Location = New Point(260, 364)
+        TextBox1.Name = "TextBox1"
+        TextBox1.Size = New Size(474, 30)
+        TextBox1.TabIndex = 22
+        ' 
+        ' Label11
+        ' 
+        Label11.AutoSize = True
+        Label11.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label11.Location = New Point(66, 364)
+        Label11.Name = "Label11"
+        Label11.Size = New Size(90, 23)
+        Label11.TabIndex = 21
+        Label11.Text = "Publisher"
+        ' 
         ' Form13
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
@@ -232,6 +252,9 @@ Partial Class Form13
         BackColor = Color.White
         ClientSize = New Size(800, 618)
         ControlBox = False
+        Controls.Add(TextBox1)
+        Controls.Add(Label11)
+        Controls.Add(Label10)
         Controls.Add(Label9)
         Controls.Add(TextBox8)
         Controls.Add(Label8)
@@ -250,13 +273,10 @@ Partial Class Form13
         Controls.Add(TextBox2)
         Controls.Add(Label2)
         Controls.Add(Label1)
-        Controls.Add(TextBox1)
         Name = "Form13"
         ResumeLayout(False)
         PerformLayout()
     End Sub
-
-    Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
@@ -275,4 +295,7 @@ Partial Class Form13
     Friend WithEvents TextBox7 As TextBox
     Friend WithEvents Label9 As Label
     Friend WithEvents TextBox8 As TextBox
+    Friend WithEvents Label10 As Label
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Label11 As Label
 End Class

@@ -99,7 +99,7 @@ Partial Class Form11
         Button3.Name = "Button3"
         Button3.Size = New Size(239, 228)
         Button3.TabIndex = 5
-        Button3.Text = "Book Management"
+        Button3.Text = "Manage Books"
         Button3.UseVisualStyleBackColor = False
         ' 
         ' Form11

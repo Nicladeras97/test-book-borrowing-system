@@ -26,12 +26,10 @@ Partial Class Form12
         Panel1 = New Panel()
         Label1 = New Label()
         PictureBox1 = New PictureBox()
-        ComboBox1 = New ComboBox()
         Button1 = New Button()
         Label2 = New Label()
         Button2 = New Button()
         Back = New Button()
-        Button3 = New Button()
         DataGridView1 = New DataGridView()
         Label3 = New Label()
         Panel1.SuspendLayout()
@@ -43,7 +41,7 @@ Partial Class Form12
         ' 
         TextBox1.Cursor = Cursors.IBeam
         TextBox1.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TextBox1.Location = New Point(139, 74)
+        TextBox1.Location = New Point(151, 77)
         TextBox1.Name = "TextBox1"
         TextBox1.Size = New Size(307, 26)
         TextBox1.TabIndex = 7
@@ -77,15 +75,6 @@ Partial Class Form12
         PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
         PictureBox1.TabIndex = 0
         PictureBox1.TabStop = False
-        ' 
-        ' ComboBox1
-        ' 
-        ComboBox1.Cursor = Cursors.Hand
-        ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(1040, 74)
-        ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(311, 27)
-        ComboBox1.TabIndex = 9
         ' 
         ' Button1
         ' 
@@ -125,25 +114,11 @@ Partial Class Form12
         Back.Cursor = Cursors.Hand
         Back.FlatAppearance.BorderSize = 0
         Back.FlatStyle = FlatStyle.Flat
-        Back.Location = New Point(37, 79)
+        Back.Location = New Point(43, 79)
         Back.Name = "Back"
-        Back.Size = New Size(17, 15)
+        Back.Size = New Size(28, 21)
         Back.TabIndex = 41
         Back.UseVisualStyleBackColor = True
-        ' 
-        ' Button3
-        ' 
-        Button3.BackColor = SystemColors.Highlight
-        Button3.Cursor = Cursors.Hand
-        Button3.FlatStyle = FlatStyle.Flat
-        Button3.Font = New Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Button3.ForeColor = Color.White
-        Button3.Location = New Point(1358, 73)
-        Button3.Name = "Button3"
-        Button3.Size = New Size(89, 27)
-        Button3.TabIndex = 42
-        Button3.Text = "Filter"
-        Button3.UseVisualStyleBackColor = False
         ' 
         ' DataGridView1
         ' 
@@ -158,7 +133,7 @@ Partial Class Form12
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(71, 77)
+        Label3.Location = New Point(83, 80)
         Label3.Name = "Label3"
         Label3.Size = New Size(62, 19)
         Label3.TabIndex = 44
@@ -173,12 +148,10 @@ Partial Class Form12
         ControlBox = False
         Controls.Add(Label3)
         Controls.Add(DataGridView1)
-        Controls.Add(Button3)
         Controls.Add(Back)
         Controls.Add(Button2)
         Controls.Add(Label2)
         Controls.Add(Button1)
-        Controls.Add(ComboBox1)
         Controls.Add(Panel1)
         Controls.Add(TextBox1)
         Font = New Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
@@ -196,12 +169,10 @@ Partial Class Form12
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label1 As Label
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Button1 As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents Button2 As Button
     Friend WithEvents Back As Button
-    Friend WithEvents Button3 As Button
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents Label3 As Label
 End Class
