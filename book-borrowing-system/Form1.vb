@@ -19,7 +19,7 @@ Public Class Form1
             If reader.HasRows Then
                 'MsgBox("Login Successful!", MsgBoxStyle.Information)
 
-                Form11.Show()
+                Form4.Show()
                 Me.Hide()
             Else
                 MsgBox("Invalid Username or Password!", MsgBoxStyle.Critical)

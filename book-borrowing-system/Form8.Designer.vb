@@ -39,7 +39,6 @@ Partial Class Form8
         Button3 = New Button()
         Label14 = New Label()
         Label15 = New Label()
-        Label18 = New Label()
         Label20 = New Label()
         Label22 = New Label()
         Label10 = New Label()
@@ -58,30 +57,16 @@ Partial Class Form8
         Label26 = New Label()
         Label27 = New Label()
         ComboBox1 = New ComboBox()
-        MenuStrip1 = New MenuStrip()
-        LendABookToolStripMenuItem = New ToolStripMenuItem()
-        ToolStripSeparator1 = New ToolStripSeparator()
-        ReceivedABookToolStripMenuItem = New ToolStripMenuItem()
-        BookShelvesToolStripMenuItem = New ToolStripMenuItem()
-        FictionToolStripMenuItem = New ToolStripMenuItem()
-        NonFictionToolStripMenuItem = New ToolStripMenuItem()
-        FilipinianaToolStripMenuItem = New ToolStripMenuItem()
-        ReferenceToolStripMenuItem = New ToolStripMenuItem()
-        SHSToolStripMenuItem = New ToolStripMenuItem()
-        SettingsToolStripMenuItem = New ToolStripMenuItem()
-        OverToolStripMenuItem = New ToolStripMenuItem()
-        BorrowedBooksToolStripMenuItem = New ToolStripMenuItem()
-        LostBooksToolStripMenuItem = New ToolStripMenuItem()
-        DamagedBooksToolStripMenuItem = New ToolStripMenuItem()
-        MenuStrip1.SuspendLayout()
+        ComboBox2 = New ComboBox()
+        Button4 = New Button()
         SuspendLayout()
         ' 
         ' Label2
         ' 
         Label2.Font = New Font("Arial", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(76, 78)
+        Label2.Location = New Point(76, 21)
         Label2.Name = "Label2"
-        Label2.Size = New Size(1330, 107)
+        Label2.Size = New Size(1330, 164)
         Label2.TabIndex = 4
         Label2.Text = "Book Title"
         ' 
@@ -191,7 +176,7 @@ Partial Class Form8
         Button2.Cursor = Cursors.Hand
         Button2.FlatAppearance.BorderSize = 0
         Button2.FlatStyle = FlatStyle.Flat
-        Button2.Location = New Point(38, 78)
+        Button2.Location = New Point(28, 26)
         Button2.Name = "Button2"
         Button2.Size = New Size(30, 40)
         Button2.TabIndex = 23
@@ -249,17 +234,6 @@ Partial Class Form8
         Label15.Name = "Label15"
         Label15.Size = New Size(448, 23)
         Label15.TabIndex = 32
-        ' 
-        ' Label18
-        ' 
-        Label18.BackColor = SystemColors.ButtonFace
-        Label18.BorderStyle = BorderStyle.Fixed3D
-        Label18.FlatStyle = FlatStyle.Flat
-        Label18.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label18.Location = New Point(238, 206)
-        Label18.Name = "Label18"
-        Label18.Size = New Size(448, 25)
-        Label18.TabIndex = 33
         ' 
         ' Label20
         ' 
@@ -443,103 +417,26 @@ Partial Class Form8
         ComboBox1.Size = New Size(448, 26)
         ComboBox1.TabIndex = 89
         ' 
-        ' MenuStrip1
+        ' ComboBox2
         ' 
-        MenuStrip1.Font = New Font("Arial", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        MenuStrip1.ImageScalingSize = New Size(20, 20)
-        MenuStrip1.Items.AddRange(New ToolStripItem() {LendABookToolStripMenuItem, ReceivedABookToolStripMenuItem, BookShelvesToolStripMenuItem, SettingsToolStripMenuItem})
-        MenuStrip1.Location = New Point(0, 0)
-        MenuStrip1.Name = "MenuStrip1"
-        MenuStrip1.RenderMode = ToolStripRenderMode.System
-        MenuStrip1.Size = New Size(1482, 41)
-        MenuStrip1.TabIndex = 90
-        MenuStrip1.Text = "MenuStrip1"
+        ComboBox2.FormattingEnabled = True
+        ComboBox2.Location = New Point(238, 205)
+        ComboBox2.Name = "ComboBox2"
+        ComboBox2.Size = New Size(367, 26)
+        ComboBox2.TabIndex = 94
         ' 
-        ' LendABookToolStripMenuItem
+        ' Button4
         ' 
-        LendABookToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {ToolStripSeparator1})
-        LendABookToolStripMenuItem.Name = "LendABookToolStripMenuItem"
-        LendABookToolStripMenuItem.Size = New Size(197, 37)
-        LendABookToolStripMenuItem.Text = "Lend a Book"
-        ' 
-        ' ToolStripSeparator1
-        ' 
-        ToolStripSeparator1.Name = "ToolStripSeparator1"
-        ToolStripSeparator1.Size = New Size(71, 6)
-        ' 
-        ' ReceivedABookToolStripMenuItem
-        ' 
-        ReceivedABookToolStripMenuItem.Name = "ReceivedABookToolStripMenuItem"
-        ReceivedABookToolStripMenuItem.Size = New Size(254, 37)
-        ReceivedABookToolStripMenuItem.Text = "Received a Book"
-        ' 
-        ' BookShelvesToolStripMenuItem
-        ' 
-        BookShelvesToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {FictionToolStripMenuItem, NonFictionToolStripMenuItem, FilipinianaToolStripMenuItem, ReferenceToolStripMenuItem, SHSToolStripMenuItem})
-        BookShelvesToolStripMenuItem.Name = "BookShelvesToolStripMenuItem"
-        BookShelvesToolStripMenuItem.Size = New Size(212, 37)
-        BookShelvesToolStripMenuItem.Text = "Book Shelves"
-        ' 
-        ' FictionToolStripMenuItem
-        ' 
-        FictionToolStripMenuItem.Name = "FictionToolStripMenuItem"
-        FictionToolStripMenuItem.Size = New Size(251, 38)
-        FictionToolStripMenuItem.Text = "Fiction"
-        ' 
-        ' NonFictionToolStripMenuItem
-        ' 
-        NonFictionToolStripMenuItem.Name = "NonFictionToolStripMenuItem"
-        NonFictionToolStripMenuItem.Size = New Size(251, 38)
-        NonFictionToolStripMenuItem.Text = "Circulation"
-        ' 
-        ' FilipinianaToolStripMenuItem
-        ' 
-        FilipinianaToolStripMenuItem.Name = "FilipinianaToolStripMenuItem"
-        FilipinianaToolStripMenuItem.Size = New Size(251, 38)
-        FilipinianaToolStripMenuItem.Text = "Filipiniana"
-        ' 
-        ' ReferenceToolStripMenuItem
-        ' 
-        ReferenceToolStripMenuItem.Name = "ReferenceToolStripMenuItem"
-        ReferenceToolStripMenuItem.Size = New Size(251, 38)
-        ReferenceToolStripMenuItem.Text = "Reference"
-        ' 
-        ' SHSToolStripMenuItem
-        ' 
-        SHSToolStripMenuItem.Name = "SHSToolStripMenuItem"
-        SHSToolStripMenuItem.Size = New Size(251, 38)
-        SHSToolStripMenuItem.Text = "SHS"
-        ' 
-        ' SettingsToolStripMenuItem
-        ' 
-        SettingsToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {OverToolStripMenuItem, BorrowedBooksToolStripMenuItem, LostBooksToolStripMenuItem, DamagedBooksToolStripMenuItem})
-        SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        SettingsToolStripMenuItem.Size = New Size(139, 37)
-        SettingsToolStripMenuItem.Text = "Settings"
-        ' 
-        ' OverToolStripMenuItem
-        ' 
-        OverToolStripMenuItem.Name = "OverToolStripMenuItem"
-        OverToolStripMenuItem.Size = New Size(327, 38)
-        OverToolStripMenuItem.Text = "Overdue Books"
-        ' 
-        ' BorrowedBooksToolStripMenuItem
-        ' 
-        BorrowedBooksToolStripMenuItem.Name = "BorrowedBooksToolStripMenuItem"
-        BorrowedBooksToolStripMenuItem.Size = New Size(327, 38)
-        BorrowedBooksToolStripMenuItem.Text = "Borrowed Books"
-        ' 
-        ' LostBooksToolStripMenuItem
-        ' 
-        LostBooksToolStripMenuItem.Name = "LostBooksToolStripMenuItem"
-        LostBooksToolStripMenuItem.Size = New Size(327, 38)
-        LostBooksToolStripMenuItem.Text = "Lost Books"
-        ' 
-        ' DamagedBooksToolStripMenuItem
-        ' 
-        DamagedBooksToolStripMenuItem.Name = "DamagedBooksToolStripMenuItem"
-        DamagedBooksToolStripMenuItem.Size = New Size(327, 38)
-        DamagedBooksToolStripMenuItem.Text = "Damaged Books"
+        Button4.BackColor = Color.DarkGreen
+        Button4.FlatAppearance.BorderSize = 0
+        Button4.FlatStyle = FlatStyle.Flat
+        Button4.ForeColor = SystemColors.ButtonHighlight
+        Button4.Location = New Point(611, 205)
+        Button4.Name = "Button4"
+        Button4.Size = New Size(75, 26)
+        Button4.TabIndex = 93
+        Button4.Text = "Check"
+        Button4.UseVisualStyleBackColor = False
         ' 
         ' Form8
         ' 
@@ -548,7 +445,8 @@ Partial Class Form8
         BackColor = Color.White
         ClientSize = New Size(1482, 753)
         ControlBox = False
-        Controls.Add(MenuStrip1)
+        Controls.Add(ComboBox2)
+        Controls.Add(Button4)
         Controls.Add(ComboBox1)
         Controls.Add(Label27)
         Controls.Add(Label25)
@@ -567,7 +465,6 @@ Partial Class Form8
         Controls.Add(Label10)
         Controls.Add(Label22)
         Controls.Add(Label20)
-        Controls.Add(Label18)
         Controls.Add(Label15)
         Controls.Add(Label14)
         Controls.Add(Button3)
@@ -587,9 +484,7 @@ Partial Class Form8
         Controls.Add(Label2)
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Name = "Form8"
-        Text = "    "
-        MenuStrip1.ResumeLayout(False)
-        MenuStrip1.PerformLayout()
+        Text = "Lending Book"
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -611,7 +506,6 @@ Partial Class Form8
     Friend WithEvents Button3 As Button
     Friend WithEvents Label14 As Label
     Friend WithEvents Label15 As Label
-    Friend WithEvents Label18 As Label
     Friend WithEvents Label20 As Label
     Friend WithEvents Label22 As Label
     Friend WithEvents Label10 As Label
@@ -629,19 +523,6 @@ Partial Class Form8
     Friend WithEvents Label26 As Label
     Friend WithEvents Label27 As Label
     Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents MenuStrip1 As MenuStrip
-    Friend WithEvents LendABookToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
-    Friend WithEvents ReceivedABookToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents BookShelvesToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents FictionToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents NonFictionToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents FilipinianaToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ReferenceToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents SHSToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents SettingsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents OverToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents BorrowedBooksToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents LostBooksToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents DamagedBooksToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents Button4 As Button
 End Class

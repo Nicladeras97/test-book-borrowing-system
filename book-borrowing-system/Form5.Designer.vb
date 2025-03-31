@@ -28,16 +28,11 @@ Partial Class Form5
         Button1 = New Button()
         Button3 = New Button()
         Button4 = New Button()
-        TextBox1 = New TextBox()
         Button2 = New Button()
-        Button6 = New Button()
-        Label2 = New Label()
-        Button7 = New Button()
-        Label3 = New Label()
-        DataGridView1 = New DataGridView()
+        Button8 = New Button()
+        Button5 = New Button()
         Panel1.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Panel1
@@ -77,9 +72,9 @@ Partial Class Form5
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Font = New Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button1.ForeColor = Color.White
-        Button1.Location = New Point(1252, 70)
+        Button1.Location = New Point(252, 215)
         Button1.Name = "Button1"
-        Button1.Size = New Size(103, 30)
+        Button1.Size = New Size(425, 76)
         Button1.TabIndex = 11
         Button1.Text = "Add Book"
         Button1.UseVisualStyleBackColor = False
@@ -99,89 +94,59 @@ Partial Class Form5
         ' 
         ' Button4
         ' 
-        Button4.BackColor = SystemColors.ControlDark
+        Button4.BackColor = Color.DarkGoldenrod
         Button4.Cursor = Cursors.Hand
         Button4.FlatStyle = FlatStyle.Flat
         Button4.Font = New Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button4.ForeColor = Color.White
-        Button4.Location = New Point(1361, 70)
+        Button4.Location = New Point(252, 307)
         Button4.Name = "Button4"
-        Button4.Size = New Size(86, 30)
+        Button4.Size = New Size(425, 76)
         Button4.TabIndex = 13
         Button4.Text = "Import"
         Button4.UseVisualStyleBackColor = False
         ' 
-        ' TextBox1
-        ' 
-        TextBox1.Cursor = Cursors.IBeam
-        TextBox1.Location = New Point(136, 75)
-        TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(307, 26)
-        TextBox1.TabIndex = 14
-        ' 
         ' Button2
         ' 
-        Button2.BackColor = Color.Green
+        Button2.BackColor = SystemColors.ActiveCaption
         Button2.Cursor = Cursors.Hand
         Button2.FlatStyle = FlatStyle.Flat
         Button2.Font = New Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button2.ForeColor = Color.White
-        Button2.Location = New Point(1070, 70)
+        Button2.Location = New Point(479, 412)
         Button2.Name = "Button2"
-        Button2.Size = New Size(173, 30)
+        Button2.Size = New Size(425, 76)
         Button2.TabIndex = 16
         Button2.Text = "Download Template"
         Button2.UseVisualStyleBackColor = False
         ' 
-        ' Button6
+        ' Button8
         ' 
-        Button6.Cursor = Cursors.Hand
-        Button6.FlatStyle = FlatStyle.Flat
-        Button6.Location = New Point(777, 698)
-        Button6.Name = "Button6"
-        Button6.Size = New Size(66, 28)
-        Button6.TabIndex = 20
-        Button6.Text = "Next"
-        Button6.UseVisualStyleBackColor = True
+        Button8.BackColor = Color.Red
+        Button8.Cursor = Cursors.Hand
+        Button8.FlatStyle = FlatStyle.Flat
+        Button8.Font = New Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Button8.ForeColor = Color.White
+        Button8.Location = New Point(703, 307)
+        Button8.Name = "Button8"
+        Button8.Size = New Size(425, 76)
+        Button8.TabIndex = 22
+        Button8.Text = "Delete Book"
+        Button8.UseVisualStyleBackColor = False
         ' 
-        ' Label2
+        ' Button5
         ' 
-        Label2.Location = New Point(703, 700)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(68, 24)
-        Label2.TabIndex = 19
-        Label2.Text = "01/10"
-        Label2.TextAlign = ContentAlignment.MiddleCenter
-        ' 
-        ' Button7
-        ' 
-        Button7.Cursor = Cursors.Hand
-        Button7.FlatStyle = FlatStyle.Flat
-        Button7.Location = New Point(630, 698)
-        Button7.Name = "Button7"
-        Button7.Size = New Size(66, 28)
-        Button7.TabIndex = 18
-        Button7.Text = "Back"
-        Button7.UseVisualStyleBackColor = True
-        ' 
-        ' Label3
-        ' 
-        Label3.AutoSize = True
-        Label3.Location = New Point(68, 78)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(62, 19)
-        Label3.TabIndex = 21
-        Label3.Text = "Search"
-        ' 
-        ' DataGridView1
-        ' 
-        DataGridView1.BackgroundColor = Color.WhiteSmoke
-        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(43, 136)
-        DataGridView1.Name = "DataGridView1"
-        DataGridView1.RowHeadersWidth = 51
-        DataGridView1.Size = New Size(1404, 539)
-        DataGridView1.TabIndex = 44
+        Button5.BackColor = Color.Green
+        Button5.Cursor = Cursors.Hand
+        Button5.FlatStyle = FlatStyle.Flat
+        Button5.Font = New Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Button5.ForeColor = Color.White
+        Button5.Location = New Point(703, 215)
+        Button5.Name = "Button5"
+        Button5.Size = New Size(425, 76)
+        Button5.TabIndex = 23
+        Button5.Text = "Edit Book"
+        Button5.UseVisualStyleBackColor = False
         ' 
         ' Form5
         ' 
@@ -190,14 +155,10 @@ Partial Class Form5
         BackColor = Color.White
         ClientSize = New Size(1482, 753)
         ControlBox = False
-        Controls.Add(DataGridView1)
+        Controls.Add(Button5)
+        Controls.Add(Button8)
         Controls.Add(Button3)
-        Controls.Add(Label3)
-        Controls.Add(Button6)
-        Controls.Add(Label2)
-        Controls.Add(Button7)
         Controls.Add(Button2)
-        Controls.Add(TextBox1)
         Controls.Add(Button4)
         Controls.Add(Button1)
         Controls.Add(Panel1)
@@ -207,9 +168,7 @@ Partial Class Form5
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
-        PerformLayout()
     End Sub
 
     Friend WithEvents Panel1 As Panel
@@ -218,11 +177,7 @@ Partial Class Form5
     Friend WithEvents Button1 As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
-    Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Button2 As Button
-    Friend WithEvents Button6 As Button
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Button7 As Button
-    Friend WithEvents Label3 As Label
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents Button8 As Button
+    Friend WithEvents Button5 As Button
 End Class

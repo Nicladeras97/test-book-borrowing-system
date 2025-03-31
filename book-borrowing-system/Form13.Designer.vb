@@ -40,9 +40,10 @@ Partial Class Form13
         TextBox7 = New TextBox()
         Label9 = New Label()
         TextBox8 = New TextBox()
-        Label10 = New Label()
         TextBox1 = New TextBox()
         Label11 = New Label()
+        ComboBox1 = New ComboBox()
+        Button4 = New Button()
         SuspendLayout()
         ' 
         ' Label1
@@ -219,14 +220,6 @@ Partial Class Form13
         TextBox8.Size = New Size(474, 30)
         TextBox8.TabIndex = 18
         ' 
-        ' Label10
-        ' 
-        Label10.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label10.Location = New Point(260, 127)
-        Label10.Name = "Label10"
-        Label10.Size = New Size(474, 23)
-        Label10.TabIndex = 20
-        ' 
         ' TextBox1
         ' 
         TextBox1.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
@@ -245,6 +238,27 @@ Partial Class Form13
         Label11.TabIndex = 21
         Label11.Text = "Publisher"
         ' 
+        ' ComboBox1
+        ' 
+        ComboBox1.FormattingEnabled = True
+        ComboBox1.Location = New Point(260, 122)
+        ComboBox1.Name = "ComboBox1"
+        ComboBox1.Size = New Size(393, 28)
+        ComboBox1.TabIndex = 96
+        ' 
+        ' Button4
+        ' 
+        Button4.BackColor = Color.DarkGreen
+        Button4.FlatAppearance.BorderSize = 0
+        Button4.FlatStyle = FlatStyle.Flat
+        Button4.ForeColor = SystemColors.ButtonHighlight
+        Button4.Location = New Point(659, 122)
+        Button4.Name = "Button4"
+        Button4.Size = New Size(75, 26)
+        Button4.TabIndex = 95
+        Button4.Text = "Check"
+        Button4.UseVisualStyleBackColor = False
+        ' 
         ' Form13
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
@@ -252,9 +266,10 @@ Partial Class Form13
         BackColor = Color.White
         ClientSize = New Size(800, 618)
         ControlBox = False
+        Controls.Add(ComboBox1)
+        Controls.Add(Button4)
         Controls.Add(TextBox1)
         Controls.Add(Label11)
-        Controls.Add(Label10)
         Controls.Add(Label9)
         Controls.Add(TextBox8)
         Controls.Add(Label8)
@@ -295,7 +310,8 @@ Partial Class Form13
     Friend WithEvents TextBox7 As TextBox
     Friend WithEvents Label9 As Label
     Friend WithEvents TextBox8 As TextBox
-    Friend WithEvents Label10 As Label
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label11 As Label
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents Button4 As Button
 End Class

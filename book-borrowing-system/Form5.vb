@@ -3,62 +3,14 @@ Imports OfficeOpenXml
 Imports MySql.Data.MySqlClient
 
 Public Class Form5
-    Private pageSize As Integer = 20
-    Private currentPage As Integer = 1
-    Private totalRecords As Integer = 0
-
-    Private Sub Form5_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        LoadData()
-
-        If Not DataGridView1.Columns.Contains("Delete") Then
-            Dim deleteButton As New DataGridViewButtonColumn()
-            deleteButton.HeaderText = "Action"
-            deleteButton.Text = "Delete"
-            deleteButton.Name = "Delete"
-            deleteButton.UseColumnTextForButtonValue = True
-            DataGridView1.Columns.Add(deleteButton)
-        End If
-
-        If Not DataGridView1.Columns.Contains("Edit") Then
-            Dim editButton As New DataGridViewButtonColumn()
-            editButton.HeaderText = "Action"
-            editButton.Text = "Edit"
-            editButton.Name = "Edit"
-            editButton.UseColumnTextForButtonValue = True
-            DataGridView1.Columns.Add(editButton)
-        End If
-
-        DataGridView1.Columns("Edit").DisplayIndex = DataGridView1.Columns.Count - 1
-        DataGridView1.Columns("Delete").DisplayIndex = DataGridView1.Columns.Count - 1
-    End Sub
-
-
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
-        currentPage = 1
-        LoadData()
-    End Sub
-
-    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
-        If currentPage > 1 Then
-            currentPage -= 1
-            LoadData()
-        End If
-    End Sub
-
-    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-        Dim totalPages As Integer = Math.Ceiling(totalRecords / pageSize)
-        If currentPage < totalPages Then
-            currentPage += 1
-            LoadData()
-        End If
-    End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim addBook As New Form10()
+        Dim addBook As New Form10
         addBook.Show()
-        Me.Hide()
+        Hide()
     End Sub
 
+    'Book Template
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Try
             Dim saveFileDialog As New SaveFileDialog()
@@ -109,14 +61,15 @@ Public Class Form5
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Dim openFileDialog As New OpenFileDialog()
+        Dim openFileDialog As New OpenFileDialog
         openFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx"
 
-        If openFileDialog.ShowDialog() = DialogResult.OK Then
+        If openFileDialog.ShowDialog = DialogResult.OK Then
             ImportExcelToDatabase(openFileDialog.FileName)
         End If
     End Sub
 
+    'Import
     Private Sub ImportExcelToDatabase(filePath As String)
         Dim connectionString As String = "server=localhost; user=root; password=; database=book-borrowing;"
         'ExcelPackage.LicenseContext = LicenseContext.NonCommercial
@@ -182,7 +135,6 @@ Public Class Form5
 
         MessageBox.Show($"Imported: {importedCount} new books, {addedCopies} copies added to existing books.", "Import Summary", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-        LoadData()
     End Sub
 
     Private Function GetLastAccno(connection As MySqlConnection, section As String, year As String) As String
@@ -240,153 +192,15 @@ Public Class Form5
         Return "0000"
     End Function
 
-
-
-    Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
-        If e.RowIndex >= 0 Then
-            Try
-                Dim accNo As String = DataGridView1.Rows(e.RowIndex).Cells("Acc. No.").Value.ToString()
-
-                If e.ColumnIndex = DataGridView1.Columns("Delete").Index Then
-                    Dim result As DialogResult = MessageBox.Show($"Are you sure you want to delete book with Accession No: {accNo}?",
-                                                             "Confirm Delete",
-                                                             MessageBoxButtons.YesNo,
-                                                             MessageBoxIcon.Warning)
-                    If result = DialogResult.Yes Then
-                        DeleteBook(accNo)
-                    End If
-                End If
-
-                If e.ColumnIndex = DataGridView1.Columns("Edit").Index Then
-                    Dim title As String = DataGridView1.Rows(e.RowIndex).Cells("Title").Value.ToString()
-                    Dim author As String = DataGridView1.Rows(e.RowIndex).Cells("Author").Value.ToString()
-                    Dim year As String = DataGridView1.Rows(e.RowIndex).Cells("Year").Value.ToString()
-                    Dim publisher As String = DataGridView1.Rows(e.RowIndex).Cells("Publisher").Value.ToString()
-                    Dim isbn As String = DataGridView1.Rows(e.RowIndex).Cells("ISBN").Value.ToString()
-                    Dim section As String = DataGridView1.Rows(e.RowIndex).Cells("Section").Value.ToString()
-                    Dim callNumber As String = DataGridView1.Rows(e.RowIndex).Cells("CallNumber").Value.ToString()
-                    Dim rack As String = DataGridView1.Rows(e.RowIndex).Cells("Rack").Value.ToString()
-
-                    Dim editForm As New Form13()
-                    editForm.SetBookDetails(accNo, title, author, year, publisher, isbn, section, callNumber, rack)
-                    editForm.ShowDialog()
-
-                    LoadData()
-                End If
-
-            Catch ex As Exception
-                MessageBox.Show($"Error: {ex.Message}")
-            End Try
-        End If
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Dim edit As New Form13
+        edit.Show()
+        Me.Hide()
     End Sub
 
-    Private Sub DeleteBook(accNo As String)
-        Dim conn As New MySqlConnection("server=localhost; user=root; password=; database=book-borrowing;")
-
-        Try
-            conn.Open()
-
-            Dim checkBorrowedQuery As String = "SELECT COUNT(*) FROM books_borrowed WHERE book_id = @Accno"
-            Using cmd As New MySqlCommand(checkBorrowedQuery, conn)
-                cmd.Parameters.AddWithValue("@Accno", accNo)
-                Dim isBorrowed As Integer = Convert.ToInt32(cmd.ExecuteScalar())
-
-                If isBorrowed > 0 Then
-                    MessageBox.Show("This book is still borrowed and cannot be deleted!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-                End If
-            End Using
-
-            Dim checkReturnedQuery As String = "SELECT COUNT(*) FROM returned_books WHERE book_id = @Accno"
-            Using cmd As New MySqlCommand(checkReturnedQuery, conn)
-                cmd.Parameters.AddWithValue("@Accno", accNo)
-                Dim isReturned As Integer = Convert.ToInt32(cmd.ExecuteScalar())
-
-                If isReturned = 0 Then
-                    MessageBox.Show("This book has never been returned and cannot be deleted!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-                End If
-            End Using
-
-            Dim deleteBookQuery As String = "DELETE FROM books WHERE Accno = @Accno"
-            Using cmd As New MySqlCommand(deleteBookQuery, conn)
-                cmd.Parameters.AddWithValue("@Accno", accNo)
-                Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
-
-                If rowsAffected > 0 Then
-                    MessageBox.Show("Book deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    LoadData()
-                Else
-                    MessageBox.Show("Failed to delete the book.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                End If
-            End Using
-
-        Catch ex As Exception
-            MessageBox.Show($"Error: {ex.Message}")
-        Finally
-            conn.Close()
-        End Try
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        Dim deletebook As New Form2
+        deletebook.Show()
+        Me.Hide()
     End Sub
-
-    Private Sub LoadData()
-        Dim conn As New MySqlConnection("server=localhost; user=root; password=; database=book-borrowing;")
-
-        Try
-            conn.Open()
-
-            Dim searchQuery As String = ""
-            If Not String.IsNullOrWhiteSpace(TextBox1.Text) Then
-                searchQuery = "WHERE (b.Title LIKE @Search OR b.Author LIKE @Search OR b.Accno LIKE @Search OR b.Section LIKE @Search)"
-            End If
-
-            Dim countQuery As String = $"SELECT COUNT(*) FROM books b {searchQuery}"
-
-            Using cmd As New MySqlCommand(countQuery, conn)
-                If searchQuery <> "" Then
-                    cmd.Parameters.AddWithValue("@Search", $"%{TextBox1.Text.Trim()}%")
-                End If
-                totalRecords = Convert.ToInt32(cmd.ExecuteScalar())
-            End Using
-
-            Dim offset As Integer = (currentPage - 1) * pageSize
-            Dim query As String = $"
-            SELECT 
-                b.Accno AS `Acc. No.`,
-                b.Title AS `Title`,
-                b.Author AS `Author`,
-                b.Year AS `Year`,
-                b.Section AS `Section`,
-                b.CallNumber AS `CallNumber`,
-                b.Rack AS `Rack`,
-                b.Publisher AS `Publisher`,
-                b.ISBN AS `ISBN`
-            FROM books b
-            {searchQuery}
-            LIMIT @Offset, @PageSize"
-
-            Using cmd As New MySqlCommand(query, conn)
-                cmd.Parameters.AddWithValue("@Offset", offset)
-                cmd.Parameters.AddWithValue("@PageSize", pageSize)
-                If searchQuery <> "" Then
-                    cmd.Parameters.AddWithValue("@Search", $"%{TextBox1.Text.Trim()}%")
-                End If
-
-                Dim adapter As New MySqlDataAdapter(cmd)
-                Dim table As New DataTable()
-                adapter.Fill(table)
-                DataGridView1.DataSource = table
-            End Using
-
-            Dim totalPages As Integer = Math.Ceiling(totalRecords / pageSize)
-            Label2.Text = $"{currentPage}/{totalPages}"
-            Button7.Enabled = (currentPage > 1)
-            Button6.Enabled = (currentPage < totalPages)
-
-        Catch ex As Exception
-            MessageBox.Show($"Error: {ex.Message}")
-        Finally
-            conn.Close()
-        End Try
-    End Sub
-
 End Class

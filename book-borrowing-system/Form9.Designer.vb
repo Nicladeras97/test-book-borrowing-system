@@ -65,9 +65,9 @@ Partial Class Form9
         ' 
         Label2.BackColor = Color.Transparent
         Label2.Font = New Font("Arial", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(80, 78)
+        Label2.Location = New Point(80, 26)
         Label2.Name = "Label2"
-        Label2.Size = New Size(1336, 105)
+        Label2.Size = New Size(1336, 157)
         Label2.TabIndex = 21
         Label2.Text = "Book Title"
         ' 
@@ -78,7 +78,7 @@ Partial Class Form9
         Back.Cursor = Cursors.Hand
         Back.FlatAppearance.BorderSize = 0
         Back.FlatStyle = FlatStyle.Flat
-        Back.Location = New Point(29, 78)
+        Back.Location = New Point(31, 26)
         Back.Name = "Back"
         Back.Size = New Size(30, 40)
         Back.TabIndex = 40
@@ -506,7 +506,7 @@ Partial Class Form9
         Controls.Add(Label2)
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Name = "Form9"
-        Text = "    "
+        Text = "Receiving Book"
         ResumeLayout(False)
         PerformLayout()
     End Sub

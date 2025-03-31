@@ -175,6 +175,33 @@ Public Class Form9
 
             Dim borrowerID As Integer = 0
             Dim dueDate As Date
+            Dim bookData As New Dictionary(Of String, String)
+
+            ' Get book details
+            Dim getBookQuery As String = "SELECT * FROM books WHERE Accno = @Accno"
+            Dim bookCmd As New MySqlCommand(getBookQuery, conn, transaction)
+            bookCmd.Parameters.AddWithValue("@Accno", accNo)
+            Dim bookReader As MySqlDataReader = bookCmd.ExecuteReader()
+
+            If bookReader.Read() Then
+                bookData("Title") = bookReader("Title").ToString()
+                bookData("Author") = bookReader("Author").ToString()
+                bookData("Year") = bookReader("Year").ToString()
+                bookData("Publisher") = bookReader("Publisher").ToString()
+                bookData("ISBN") = bookReader("ISBN").ToString()
+                bookData("Section") = bookReader("Section").ToString()
+                bookData("CallNumber") = bookReader("CallNumber").ToString()
+                bookData("Rack") = bookReader("Rack").ToString()
+            Else
+                MessageBox.Show("Error: Book record not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                bookReader.Close()
+                transaction.Rollback()
+                conn.Close()
+                Exit Sub
+            End If
+            bookReader.Close()
+
+            ' Get borrower details
             Dim getBorrowerQuery As String = "SELECT borrower_id, due_date FROM books_borrowed WHERE book_id = @Accno"
             Dim borrowerCmd As New MySqlCommand(getBorrowerQuery, conn, transaction)
             borrowerCmd.Parameters.AddWithValue("@Accno", accNo)
@@ -192,6 +219,7 @@ Public Class Form9
             End If
             borrowerReader.Close()
 
+            ' Get penalty fee
             Dim lostPenaltyInput As String = InputBox("Enter penalty amount for the lost book:", "Lost Book Penalty")
             Dim lostPenaltyAmount As Double
             If Not Double.TryParse(lostPenaltyInput, lostPenaltyAmount) Then
@@ -201,18 +229,36 @@ Public Class Form9
                 Exit Sub
             End If
 
-            Dim insertLostBookQuery As String = "INSERT INTO lost_books (bookID, BorrowerID, Penalty_fee) VALUES (@BookID, @BorrowerID, @PenaltyFee)"
+            ' Insert into returned_books
+            Dim insertLostBookQuery As String = "INSERT INTO returned_books (BorrowerID, BookID, ConditionID, `Return Date`, `Penalty Fee`) VALUES (@BorrowerID, @BookID, 4, @ReturnDate, @PenaltyFee)"
             Dim insertLostCmd As New MySqlCommand(insertLostBookQuery, conn, transaction)
-            insertLostCmd.Parameters.AddWithValue("@BookID", accNo)
             insertLostCmd.Parameters.AddWithValue("@BorrowerID", borrowerID)
+            insertLostCmd.Parameters.AddWithValue("@BookID", accNo)
+            insertLostCmd.Parameters.AddWithValue("@ReturnDate", Date.Now.ToString("yyyy-MM-dd"))
             insertLostCmd.Parameters.AddWithValue("@PenaltyFee", lostPenaltyAmount)
             insertLostCmd.ExecuteNonQuery()
 
+            ' Insert into books_deleted
+            Dim insertDeletedQuery As String = "INSERT INTO books_deleted (Accno, Title, Author, Year, Publisher, ISBN, Section, CallNumber, Rack, ConditionID) VALUES (@Accno, @Title, @Author, @Year, @Publisher, @ISBN, @Section, @CallNumber, @Rack, 4)"
+            Dim insertDeletedCmd As New MySqlCommand(insertDeletedQuery, conn, transaction)
+            insertDeletedCmd.Parameters.AddWithValue("@Accno", accNo)
+            insertDeletedCmd.Parameters.AddWithValue("@Title", bookData("Title"))
+            insertDeletedCmd.Parameters.AddWithValue("@Author", bookData("Author"))
+            insertDeletedCmd.Parameters.AddWithValue("@Year", bookData("Year"))
+            insertDeletedCmd.Parameters.AddWithValue("@Publisher", bookData("Publisher"))
+            insertDeletedCmd.Parameters.AddWithValue("@ISBN", bookData("ISBN"))
+            insertDeletedCmd.Parameters.AddWithValue("@Section", bookData("Section"))
+            insertDeletedCmd.Parameters.AddWithValue("@CallNumber", bookData("CallNumber"))
+            insertDeletedCmd.Parameters.AddWithValue("@Rack", bookData("Rack"))
+            insertDeletedCmd.ExecuteNonQuery()
+
+            ' Remove from books_borrowed
             Dim deleteBorrowedQuery As String = "DELETE FROM books_borrowed WHERE book_id = @Accno"
             Dim deleteBorrowedCmd As New MySqlCommand(deleteBorrowedQuery, conn, transaction)
             deleteBorrowedCmd.Parameters.AddWithValue("@Accno", accNo)
             deleteBorrowedCmd.ExecuteNonQuery()
 
+            ' Delete from books
             Dim deleteBookQuery As String = "DELETE FROM books WHERE Accno = @Accno"
             Dim deleteBookCmd As New MySqlCommand(deleteBookQuery, conn, transaction)
             deleteBookCmd.Parameters.AddWithValue("@Accno", accNo)
@@ -220,7 +266,7 @@ Public Class Form9
 
             transaction.Commit()
 
-            MessageBox.Show("Book marked as lost and recorded in lost books table.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Book marked as lost and moved to books_deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Dim form4 As New Form4
             form4.Show()
             Hide()
@@ -229,8 +275,8 @@ Public Class Form9
         Finally
             conn.Close()
         End Try
-
     End Sub
+
 
     Private Sub Back_Click(sender As Object, e As EventArgs) Handles Back.Click
         Dim back As New Form4

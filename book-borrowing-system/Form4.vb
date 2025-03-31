@@ -4,16 +4,11 @@
         manageBooks.Show()
         Me.Hide()
     End Sub
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Dim back As New Form11
-        back.Show()
-        Me.Hide()
-    End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         Dim manageUsers As New Form9
         manageUsers.Show()
-        Me.Hide()
+        Hide()
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -25,6 +20,18 @@
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         Dim messages As New Report
         messages.Show()
+        Hide()
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        Dim borrow As New Form8
+        borrow.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        Dim logout As New Form1
+        logout.Show()
         Me.Hide()
     End Sub
 End Class
