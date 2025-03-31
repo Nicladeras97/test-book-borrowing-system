@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Report
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Report
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Label2 = New Label()
         DataGridView1 = New DataGridView()
@@ -31,20 +31,14 @@ Partial Class Report
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(472, 35)
         Label2.Name = "Label2"
-        Label2.Size = New Size(130, 20)
         Label2.TabIndex = 2
         Label2.Text = "Borrower's Record"
         ' 
         ' DataGridView1
         ' 
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(32, 108)
-        DataGridView1.Margin = New Padding(3, 4, 3, 4)
         DataGridView1.Name = "DataGridView1"
-        DataGridView1.RowHeadersWidth = 51
-        DataGridView1.Size = New Size(1008, 329)
         DataGridView1.TabIndex = 9
         ' 
         ' Button3
@@ -62,10 +56,7 @@ Partial Class Report
         ' 
         ' Report
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1203, 600)
-        Controls.Add(Button3)
         Controls.Add(DataGridView1)
         Controls.Add(Label2)
         Margin = New Padding(3, 4, 3, 4)

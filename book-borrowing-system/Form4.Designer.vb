@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form4
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Form4
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Panel1 = New Panel()
         Label1 = New Label()
@@ -41,7 +41,7 @@ Partial Class Form4
         Panel1.Dock = DockStyle.Top
         Panel1.Location = New Point(0, 0)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(1482, 53)
+        Panel1.Size = New Size(1370, 53)
         Panel1.TabIndex = 3
         ' 
         ' Label1
@@ -49,7 +49,7 @@ Partial Class Form4
         Label1.AutoSize = True
         Label1.Location = New Point(38, 18)
         Label1.Name = "Label1"
-        Label1.Size = New Size(203, 19)
+        Label1.Size = New Size(165, 16)
         Label1.TabIndex = 1
         Label1.Text = "Book Management System"
         ' 
@@ -62,6 +62,68 @@ Partial Class Form4
         PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
         PictureBox1.TabIndex = 0
         PictureBox1.TabStop = False
+        ' 
+        ' Panel2
+        ' 
+        Panel2.BackColor = Color.LightBlue
+        Panel2.Controls.Add(PictureBox4)
+        Panel2.Controls.Add(Label2)
+        Panel2.Cursor = Cursors.Hand
+        Panel2.Location = New Point(493, 268)
+        Panel2.Name = "Panel2"
+        Panel2.Size = New Size(196, 206)
+        Panel2.TabIndex = 4
+        ' 
+        ' PictureBox4
+        ' 
+        PictureBox4.Image = My.Resources.Resources.logo
+        PictureBox4.Location = New Point(75, 94)
+        PictureBox4.Name = "PictureBox4"
+        PictureBox4.Size = New Size(50, 53)
+        PictureBox4.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox4.TabIndex = 1
+        PictureBox4.TabStop = False
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label2.Location = New Point(41, 57)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(117, 19)
+        Label2.TabIndex = 0
+        Label2.Text = "Manage Books"
+        ' 
+        ' Panel3
+        ' 
+        Panel3.BackColor = Color.LightBlue
+        Panel3.Controls.Add(PictureBox5)
+        Panel3.Controls.Add(Label3)
+        Panel3.Cursor = Cursors.Hand
+        Panel3.Location = New Point(753, 268)
+        Panel3.Name = "Panel3"
+        Panel3.Size = New Size(196, 206)
+        Panel3.TabIndex = 5
+        ' 
+        ' PictureBox5
+        ' 
+        PictureBox5.Image = My.Resources.Resources.list
+        PictureBox5.Location = New Point(78, 94)
+        PictureBox5.Name = "PictureBox5"
+        PictureBox5.Size = New Size(50, 53)
+        PictureBox5.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox5.TabIndex = 1
+        PictureBox5.TabStop = False
+        ' 
+        ' Label3
+        ' 
+        Label3.AutoSize = True
+        Label3.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label3.Location = New Point(50, 57)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(99, 19)
+        Label3.TabIndex = 0
+        Label3.Text = "Book Report"
         ' 
         ' Button3
         ' 
@@ -114,10 +176,10 @@ Partial Class Form4
         ' 
         ' Form4
         ' 
-        AutoScaleDimensions = New SizeF(9F, 18F)
+        AutoScaleDimensions = New SizeF(7.0F, 16.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
-        ClientSize = New Size(1482, 753)
+        ClientSize = New Size(1370, 749)
         ControlBox = False
         Controls.Add(Button4)
         Controls.Add(Button1)
