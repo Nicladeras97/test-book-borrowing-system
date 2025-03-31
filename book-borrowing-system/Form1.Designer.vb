@@ -36,13 +36,13 @@ Partial Class Form1
         PasswordTextBox = New TextBox()
         OK = New Button()
         Panel1 = New Panel()
+        LinkLabel1 = New LinkLabel()
         PictureBox1 = New PictureBox()
         Label4 = New Label()
         Label3 = New Label()
         Button1 = New Button()
         Label1 = New Label()
         Label2 = New Label()
-        LinkLabel1 = New LinkLabel()
         CType(LogoPictureBox, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -133,6 +133,16 @@ Partial Class Form1
         Panel1.Size = New Size(363, 454)
         Panel1.TabIndex = 5
         ' 
+        ' LinkLabel1
+        ' 
+        LinkLabel1.AutoSize = True
+        LinkLabel1.Location = New Point(126, 394)
+        LinkLabel1.Name = "LinkLabel1"
+        LinkLabel1.Size = New Size(110, 20)
+        LinkLabel1.TabIndex = 8
+        LinkLabel1.TabStop = True
+        LinkLabel1.Text = "Create Account"
+        ' 
         ' PictureBox1
         ' 
         PictureBox1.Image = My.Resources.Resources.book
@@ -203,16 +213,6 @@ Partial Class Form1
         Label2.Size = New Size(227, 67)
         Label2.TabIndex = 6
         Label2.Text = "System"
-        ' 
-        ' LinkLabel1
-        ' 
-        LinkLabel1.AutoSize = True
-        LinkLabel1.Location = New Point(126, 394)
-        LinkLabel1.Name = "LinkLabel1"
-        LinkLabel1.Size = New Size(110, 20)
-        LinkLabel1.TabIndex = 8
-        LinkLabel1.TabStop = True
-        LinkLabel1.Text = "Create Account"
         ' 
         ' Form1
         ' 

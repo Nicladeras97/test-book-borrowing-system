@@ -68,7 +68,7 @@ Public Class Form5
             If saveFileDialog.ShowDialog() = DialogResult.OK Then
                 Dim filePath As String = saveFileDialog.FileName
 
-                ExcelPackage.LicenseContext = LicenseContext.NonCommercial
+                'ExcelPackage.LicenseContext = LicenseContext.NonCommercial
                 Using package As New ExcelPackage()
                     Dim worksheet As ExcelWorksheet = package.Workbook.Worksheets.Add("Template")
 
@@ -119,7 +119,7 @@ Public Class Form5
 
     Private Sub ImportExcelToDatabase(filePath As String)
         Dim connectionString As String = "server=localhost; user=root; password=; database=book-borrowing;"
-        ExcelPackage.LicenseContext = LicenseContext.NonCommercial
+        'ExcelPackage.LicenseContext = LicenseContext.NonCommercial
 
         Dim importedCount As Integer = 0
         Dim addedCopies As Integer = 0
@@ -148,9 +148,16 @@ Public Class Form5
                     End If
 
                     Dim lastAccno As String = GetLastAccnoByISBN(connection, isbn, section, year)
+                    If String.IsNullOrEmpty(lastAccno) Then lastAccno = $"{section}{year}0000-00"
+
 
                     For copyIndex As Integer = 1 To copies
                         Dim newAccno As String = GenerateAccno(section, year, lastAccno, copyIndex)
+                        If String.IsNullOrEmpty(newAccno) Then
+                            MessageBox.Show("Error generating Accno.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            Exit Sub
+                        End If
+
 
                         Dim query As String = "INSERT INTO books (Accno, Title, Author, Year, Publisher, Section, CallNumber, Rack, ISBN) " &
                                              "VALUES (@Accno, @Title, @Author, @Year, @Publisher, @Section, @CallNumber, @Rack, @ISBN)"

@@ -59,7 +59,7 @@ Public Class Form10
                 Next
 
                 MessageBox.Show("Book(s) added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Me.Close()
+                Me.Hide()
 
             Catch ex As Exception
                 MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)

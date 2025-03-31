@@ -22,9 +22,6 @@ Partial Class Form9
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Panel1 = New Panel()
-        Label1 = New Label()
-        PictureBox1 = New PictureBox()
         Label2 = New Label()
         Back = New Button()
         Button3 = New Button()
@@ -62,39 +59,7 @@ Partial Class Form9
         Label27 = New Label()
         ComboBox2 = New ComboBox()
         Button1 = New Button()
-        Panel1.SuspendLayout()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
-        ' 
-        ' Panel1
-        ' 
-        Panel1.BackColor = Color.LightBlue
-        Panel1.Controls.Add(Label1)
-        Panel1.Controls.Add(PictureBox1)
-        Panel1.Dock = DockStyle.Top
-        Panel1.Location = New Point(0, 0)
-        Panel1.Name = "Panel1"
-        Panel1.Size = New Size(1482, 57)
-        Panel1.TabIndex = 4
-        ' 
-        ' Label1
-        ' 
-        Label1.AutoSize = True
-        Label1.Location = New Point(38, 19)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(100, 19)
-        Label1.TabIndex = 1
-        Label1.Text = "Return Form"
-        ' 
-        ' PictureBox1
-        ' 
-        PictureBox1.Image = My.Resources.Resources.logo
-        PictureBox1.Location = New Point(12, 16)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(20, 22)
-        PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox1.TabIndex = 0
-        PictureBox1.TabStop = False
         ' 
         ' Label2
         ' 
@@ -356,6 +321,7 @@ Partial Class Form9
         Label26.Name = "Label26"
         Label26.Size = New Size(482, 25)
         Label26.TabIndex = 73
+        Label26.TextAlign = ContentAlignment.MiddleLeft
         ' 
         ' Label8
         ' 
@@ -378,6 +344,7 @@ Partial Class Form9
         Label28.Name = "Label28"
         Label28.Size = New Size(482, 25)
         Label28.TabIndex = 80
+        Label28.TextAlign = ContentAlignment.MiddleLeft
         ' 
         ' Label29
         ' 
@@ -537,20 +504,12 @@ Partial Class Form9
         Controls.Add(Button3)
         Controls.Add(Back)
         Controls.Add(Label2)
-        Controls.Add(Panel1)
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Name = "Form9"
         Text = "    "
-        Panel1.ResumeLayout(False)
-        Panel1.PerformLayout()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
-
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents Label1 As Label
-    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Back As Button
     Friend WithEvents Button3 As Button

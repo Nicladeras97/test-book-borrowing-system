@@ -100,7 +100,6 @@ Public Class Form12
                     b.Author AS `Author`,
                     b.Year AS `Year`,
                     b.Section AS `Section`,
-                    b.AddedDate AS `Date Added`,
                     b.CallNumber AS `CallNumber`,
                     b.Rack AS `Rack`,
                     b.Publisher AS `Publisher`,
