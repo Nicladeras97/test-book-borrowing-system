@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2025 at 01:35 PM
+-- Generation Time: Mar 31, 2025 at 01:54 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -90,6 +90,33 @@ CREATE TABLE `books_borrowed` (
 
 INSERT INTO `books_borrowed` (`borrow_id`, `borrower_id`, `book_id`, `condition_id`, `date_borrowed`, `due_date`, `time`, `notify_id`) VALUES
 (34, 1, 'FIC19250001-01', 1, '2025-03-31', '2025-04-04', '18:02:23', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `books_deleted`
+--
+
+CREATE TABLE `books_deleted` (
+  `Accno` varchar(50) NOT NULL,
+  `Title` varchar(255) DEFAULT NULL,
+  `Author` varchar(255) DEFAULT NULL,
+  `Year` int(11) DEFAULT NULL,
+  `Publisher` varchar(255) DEFAULT NULL,
+  `ISBN` varchar(50) DEFAULT NULL,
+  `Section` varchar(50) DEFAULT NULL,
+  `CallNumber` varchar(50) DEFAULT NULL,
+  `Rack` varchar(50) DEFAULT NULL,
+  `ConditionID` int(11) DEFAULT NULL,
+  `DeletedDate` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `books_deleted`
+--
+
+INSERT INTO `books_deleted` (`Accno`, `Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, `CallNumber`, `Rack`, `ConditionID`, `DeletedDate`) VALUES
+('FIC19250003-01', 'The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Scribner', '', 'Fiction', 'PS3511.F45 G7', 'R2', 4, '2025-03-31 09:42:45');
 
 -- --------------------------------------------------------
 
@@ -243,6 +270,13 @@ ALTER TABLE `books_borrowed`
   ADD KEY `BORROWER` (`borrower_id`);
 
 --
+-- Indexes for table `books_deleted`
+--
+ALTER TABLE `books_deleted`
+  ADD PRIMARY KEY (`Accno`),
+  ADD KEY `ConditionID` (`ConditionID`);
+
+--
 -- Indexes for table `book_condition`
 --
 ALTER TABLE `book_condition`
@@ -328,6 +362,12 @@ ALTER TABLE `books_borrowed`
   ADD CONSTRAINT `BORROWER` FOREIGN KEY (`borrower_id`) REFERENCES `users` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `Book_id` FOREIGN KEY (`book_id`) REFERENCES `books` (`Accno`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `condition_id` FOREIGN KEY (`condition_id`) REFERENCES `book_condition` (`condition_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `books_deleted`
+--
+ALTER TABLE `books_deleted`
+  ADD CONSTRAINT `books_deleted_ibfk_1` FOREIGN KEY (`ConditionID`) REFERENCES `book_condition` (`condition_id`) ON DELETE SET NULL;
 
 --
 -- Constraints for table `returned_books`
