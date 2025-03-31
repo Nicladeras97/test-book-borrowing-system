@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2025 at 09:31 AM
+-- Generation Time: Mar 31, 2025 at 11:12 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -185,7 +185,8 @@ CREATE TABLE `returned_books` (
 
 INSERT INTO `returned_books` (`return_id`, `BorrowerID`, `BookID`, `ConditionID`, `Return Date`, `Penalty Fee`) VALUES
 (11, 1, 'Fic20241006', 1, '2025-03-29', 100),
-(12, 1, 'Fic20241006', 3, '2025-03-29', 3);
+(12, 1, 'Fic20241006', 3, '2025-03-29', 3),
+(13, 1, 'FIC19250002-01', 1, '2025-03-31', 1);
 
 -- --------------------------------------------------------
 
@@ -279,7 +280,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `books_borrowed`
 --
 ALTER TABLE `books_borrowed`
-  MODIFY `borrow_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `borrow_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `book_condition`
@@ -303,7 +304,7 @@ ALTER TABLE `librarians`
 -- AUTO_INCREMENT for table `returned_books`
 --
 ALTER TABLE `returned_books`
-  MODIFY `return_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `return_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `users`
