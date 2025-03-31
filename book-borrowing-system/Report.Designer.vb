@@ -25,20 +25,26 @@ Partial Class Report
         Label2 = New Label()
         DataGridView1 = New DataGridView()
         Button3 = New Button()
+        Button1 = New Button()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
+        Label2.Location = New Point(462, 46)
         Label2.Name = "Label2"
+        Label2.Size = New Size(130, 20)
         Label2.TabIndex = 2
         Label2.Text = "Borrower's Record"
         ' 
         ' DataGridView1
         ' 
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridView1.Location = New Point(67, 101)
         DataGridView1.Name = "DataGridView1"
+        DataGridView1.RowHeadersWidth = 51
+        DataGridView1.Size = New Size(898, 511)
         DataGridView1.TabIndex = 9
         ' 
         ' Button3
@@ -54,9 +60,25 @@ Partial Class Report
         Button3.TabIndex = 14
         Button3.UseVisualStyleBackColor = True
         ' 
+        ' Button1
+        ' 
+        Button1.BackgroundImage = My.Resources.Resources.back
+        Button1.BackgroundImageLayout = ImageLayout.Zoom
+        Button1.Cursor = Cursors.Hand
+        Button1.FlatAppearance.BorderSize = 0
+        Button1.FlatStyle = FlatStyle.Flat
+        Button1.Location = New Point(67, 36)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(30, 40)
+        Button1.TabIndex = 14
+        Button1.UseVisualStyleBackColor = True
+        ' 
         ' Report
         ' 
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
+        ClientSize = New Size(1034, 660)
+        Controls.Add(Button1)
         Controls.Add(DataGridView1)
         Controls.Add(Label2)
         Margin = New Padding(3, 4, 3, 4)
@@ -69,4 +91,5 @@ Partial Class Report
     Friend WithEvents Label2 As Label
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents Button3 As Button
+    Friend WithEvents Button1 As Button
 End Class
