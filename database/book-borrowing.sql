@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2025 at 11:12 AM
+-- Generation Time: Mar 31, 2025 at 01:35 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -51,7 +51,6 @@ INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, 
 ('The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Scribner', '', 'Fiction', NULL, 'PS3511.F45 G7', 'R2', 'FIC19250002-01'),
 ('The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Scribner', '', 'Fiction', NULL, 'PS3511.F45 G7', 'R2', 'FIC19250002-02'),
 ('The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Scribner', '', 'Fiction', NULL, 'PS3511.F45 G7', 'R2', 'FIC19250002-03'),
-('The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Scribner', '', 'Fiction', NULL, 'PS3511.F45 G7', 'R2', 'FIC19250003-01'),
 ('The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Scribner', '', 'Fiction', NULL, 'PS3511.F45 G7', 'R2', 'FIC19250003-02'),
 ('The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Scribner', '', 'Fiction', NULL, 'PS3511.F45 G7', 'R2', 'FIC19250003-03'),
 ('The Untouchable', 'John Banville', 1998, 'Publisher', '', 'Fiction', NULL, 'PR6052.A57', 'P', 'FIC19980001-01'),
@@ -60,12 +59,11 @@ INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, 
 ('The Untouchable', 'John Banville', 1998, 'Publisher', '', 'Fiction', NULL, 'PR6052.A57', 'P', 'FIC19980002-02'),
 ('The Untouchable', 'John Banville', 1998, 'Publisher', '', 'Fiction', NULL, 'PR6052.A57', 'P', 'FIC19980003-01'),
 ('The Untouchable', 'John Banville', 1998, 'Publisher', '', 'Fiction', NULL, 'PR6052.A57', 'P', 'FIC19980003-02'),
-('Harry Potter and the Prisoner of Azkaban', 'J.K. Rowling', 1999, 'Bloomsbury', '9780439136365', 'Fiction', NULL, 'FIC HP 1999', 'A', 'Fic20241003'),
 ('Harry Potter and the Half-Blood Prince', 'J.K. Rowling', 2005, 'Bloomsbury', '9780439785969', 'Fiction', NULL, 'FIC HP 2005', 'A', 'Fic20241006'),
 ('Harry Potter and the Deathly Hallows', 'J.K. Rowling', 2007, 'Bloomsbury', '9780545139700', 'Fiction', NULL, 'FIC HP 2007', 'A', 'Fic20241007'),
 ('The Tales of Beedle the Bard', 'J.K. Rowling', 2008, 'Bloomsbury', '9780545162074', 'Fiction', NULL, 'FIC HP 2008', 'A', 'Fic20241008'),
 ('Atomic Habits', 'James Clear', 2004, '978-1-5635-708-3', 'Little, Brown and Company', 'Filipiniana', '2025-03-29', 'B550', 'FIL B 369 C', 'FIL2004-01'),
-('A Short History  of Nearly Everything', 'Bill Bryson', 2003, 'Publisher', '', 'Reference', NULL, 'Q162 .B88 2003', 'Q', 'REF20030001-01'),
+('A Short History  of Nearly Everything', 'Bill Bryson', 2003, 'Publisher', '978-0-76-790818-4', 'Reference', NULL, 'Q162 .B88 2003', 'Q', 'REF20030001-01'),
 ('A Short History  of Nearly Everything', 'Bill Bryson', 2003, 'Publisher', '', 'Reference', NULL, 'Q162 .B88 2003', 'Q', 'REF20030002-01'),
 ('A Short History  of Nearly Everything', 'Bill Bryson', 2003, 'Publisher', '', 'Reference', NULL, 'Q162 .B88 2003', 'Q', 'REF20030003-01');
 
@@ -85,6 +83,13 @@ CREATE TABLE `books_borrowed` (
   `time` time NOT NULL,
   `notify_id` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `books_borrowed`
+--
+
+INSERT INTO `books_borrowed` (`borrow_id`, `borrower_id`, `book_id`, `condition_id`, `date_borrowed`, `due_date`, `time`, `notify_id`) VALUES
+(34, 1, 'FIC19250001-01', 1, '2025-03-31', '2025-04-04', '18:02:23', 2);
 
 -- --------------------------------------------------------
 
@@ -280,7 +285,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `books_borrowed`
 --
 ALTER TABLE `books_borrowed`
-  MODIFY `borrow_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `borrow_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `book_condition`
@@ -304,7 +309,7 @@ ALTER TABLE `librarians`
 -- AUTO_INCREMENT for table `returned_books`
 --
 ALTER TABLE `returned_books`
-  MODIFY `return_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `return_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`
