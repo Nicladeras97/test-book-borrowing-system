@@ -34,6 +34,7 @@ Partial Class Form4
         ' 
         Button2.BackColor = Color.LightBlue
         Button2.BackgroundImageLayout = ImageLayout.Center
+        Button2.FlatAppearance.BorderSize = 0
         Button2.FlatStyle = FlatStyle.Flat
         Button2.Location = New Point(355, 313)
         Button2.Name = "Button2"
@@ -46,6 +47,7 @@ Partial Class Form4
         ' 
         Button1.BackColor = Color.LightBlue
         Button1.BackgroundImageLayout = ImageLayout.Center
+        Button1.FlatAppearance.BorderSize = 0
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Location = New Point(691, 313)
         Button1.Name = "Button1"
@@ -58,6 +60,7 @@ Partial Class Form4
         ' 
         Button4.BackColor = Color.LightBlue
         Button4.BackgroundImageLayout = ImageLayout.Center
+        Button4.FlatAppearance.BorderSize = 0
         Button4.FlatStyle = FlatStyle.Flat
         Button4.Location = New Point(691, 225)
         Button4.Name = "Button4"
@@ -70,6 +73,7 @@ Partial Class Form4
         ' 
         Button5.BackColor = Color.LightBlue
         Button5.BackgroundImageLayout = ImageLayout.Center
+        Button5.FlatAppearance.BorderSize = 0
         Button5.FlatStyle = FlatStyle.Flat
         Button5.Location = New Point(517, 401)
         Button5.Name = "Button5"
@@ -82,6 +86,7 @@ Partial Class Form4
         ' 
         Button6.BackColor = Color.LightBlue
         Button6.BackgroundImageLayout = ImageLayout.Center
+        Button6.FlatAppearance.BorderSize = 0
         Button6.FlatStyle = FlatStyle.Flat
         Button6.Location = New Point(355, 225)
         Button6.Name = "Button6"

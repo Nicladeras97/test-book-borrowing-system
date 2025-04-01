@@ -67,11 +67,12 @@ Partial Class Form5
         ' 
         ' Button1
         ' 
-        Button1.BackColor = SystemColors.HotTrack
+        Button1.BackColor = Color.LightBlue
         Button1.Cursor = Cursors.Hand
+        Button1.FlatAppearance.BorderSize = 0
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Font = New Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Button1.ForeColor = Color.White
+        Button1.ForeColor = Color.Black
         Button1.Location = New Point(252, 215)
         Button1.Name = "Button1"
         Button1.Size = New Size(425, 76)
@@ -94,11 +95,12 @@ Partial Class Form5
         ' 
         ' Button4
         ' 
-        Button4.BackColor = Color.DarkGoldenrod
+        Button4.BackColor = Color.LightBlue
         Button4.Cursor = Cursors.Hand
+        Button4.FlatAppearance.BorderSize = 0
         Button4.FlatStyle = FlatStyle.Flat
         Button4.Font = New Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Button4.ForeColor = Color.White
+        Button4.ForeColor = Color.Black
         Button4.Location = New Point(252, 307)
         Button4.Name = "Button4"
         Button4.Size = New Size(425, 76)
@@ -108,11 +110,12 @@ Partial Class Form5
         ' 
         ' Button2
         ' 
-        Button2.BackColor = SystemColors.ActiveCaption
+        Button2.BackColor = Color.LightBlue
         Button2.Cursor = Cursors.Hand
+        Button2.FlatAppearance.BorderSize = 0
         Button2.FlatStyle = FlatStyle.Flat
         Button2.Font = New Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Button2.ForeColor = Color.White
+        Button2.ForeColor = Color.Black
         Button2.Location = New Point(479, 412)
         Button2.Name = "Button2"
         Button2.Size = New Size(425, 76)
@@ -122,11 +125,12 @@ Partial Class Form5
         ' 
         ' Button8
         ' 
-        Button8.BackColor = Color.Red
+        Button8.BackColor = Color.LightBlue
         Button8.Cursor = Cursors.Hand
+        Button8.FlatAppearance.BorderSize = 0
         Button8.FlatStyle = FlatStyle.Flat
         Button8.Font = New Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Button8.ForeColor = Color.White
+        Button8.ForeColor = Color.Black
         Button8.Location = New Point(703, 307)
         Button8.Name = "Button8"
         Button8.Size = New Size(425, 76)
@@ -136,11 +140,12 @@ Partial Class Form5
         ' 
         ' Button5
         ' 
-        Button5.BackColor = Color.Green
+        Button5.BackColor = Color.LightBlue
         Button5.Cursor = Cursors.Hand
+        Button5.FlatAppearance.BorderSize = 0
         Button5.FlatStyle = FlatStyle.Flat
         Button5.Font = New Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Button5.ForeColor = Color.White
+        Button5.ForeColor = Color.Black
         Button5.Location = New Point(703, 215)
         Button5.Name = "Button5"
         Button5.Size = New Size(425, 76)
