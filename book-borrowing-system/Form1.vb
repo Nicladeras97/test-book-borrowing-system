@@ -17,8 +17,6 @@ Public Class Form1
 
             reader = cmd.ExecuteReader()
             If reader.HasRows Then
-                'MsgBox("Login Successful!", MsgBoxStyle.Information)
-
                 Form4.Show()
                 Me.Hide()
             Else
