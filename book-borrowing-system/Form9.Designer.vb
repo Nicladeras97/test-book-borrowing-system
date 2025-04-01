@@ -59,6 +59,7 @@ Partial Class Form9
         Label27 = New Label()
         ComboBox2 = New ComboBox()
         Button1 = New Button()
+        Button2 = New Button()
         SuspendLayout()
         ' 
         ' Label2
@@ -92,7 +93,7 @@ Partial Class Form9
         Button3.FlatStyle = FlatStyle.Flat
         Button3.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button3.ForeColor = SystemColors.ButtonHighlight
-        Button3.Location = New Point(1126, 662)
+        Button3.Location = New Point(999, 662)
         Button3.Name = "Button3"
         Button3.Size = New Size(135, 35)
         Button3.TabIndex = 45
@@ -460,6 +461,21 @@ Partial Class Form9
         Button1.Text = "Lost"
         Button1.UseVisualStyleBackColor = False
         ' 
+        ' Button2
+        ' 
+        Button2.BackColor = Color.Green
+        Button2.Cursor = Cursors.Hand
+        Button2.FlatAppearance.BorderSize = 0
+        Button2.FlatStyle = FlatStyle.Flat
+        Button2.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Button2.ForeColor = SystemColors.ButtonHighlight
+        Button2.Location = New Point(1140, 662)
+        Button2.Name = "Button2"
+        Button2.Size = New Size(135, 35)
+        Button2.TabIndex = 94
+        Button2.Text = "Damaged"
+        Button2.UseVisualStyleBackColor = False
+        ' 
         ' Form9
         ' 
         AutoScaleDimensions = New SizeF(9F, 18F)
@@ -467,6 +483,7 @@ Partial Class Form9
         BackColor = Color.White
         ClientSize = New Size(1482, 753)
         ControlBox = False
+        Controls.Add(Button2)
         Controls.Add(Button1)
         Controls.Add(ComboBox2)
         Controls.Add(ComboBox1)
@@ -547,4 +564,5 @@ Partial Class Form9
     Friend WithEvents Label27 As Label
     Friend WithEvents ComboBox2 As ComboBox
     Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
 End Class

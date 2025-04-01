@@ -178,6 +178,10 @@ Public Class Form8
                     MessageBox.Show("Book successfully borrowed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End Using
 
+                Dim back As New Form4
+                back.Show()
+                Me.Hide()
+
             Catch ex As Exception
                 MessageBox.Show("Error: " & ex.Message)
             End Try
