@@ -43,6 +43,7 @@ Partial Class Form1
         Button1 = New Button()
         Label1 = New Label()
         Label2 = New Label()
+        Button2 = New Button()
         CType(LogoPictureBox, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -214,6 +215,19 @@ Partial Class Form1
         Label2.TabIndex = 6
         Label2.Text = "System"
         ' 
+        ' Button2
+        ' 
+        Button2.BackColor = Color.IndianRed
+        Button2.FlatStyle = FlatStyle.Flat
+        Button2.Font = New Font("Arial", 12F)
+        Button2.ForeColor = SystemColors.ControlLightLight
+        Button2.Location = New Point(1180, 50)
+        Button2.Name = "Button2"
+        Button2.Size = New Size(122, 45)
+        Button2.TabIndex = 8
+        Button2.Text = "Barcode"
+        Button2.UseVisualStyleBackColor = False
+        ' 
         ' Form1
         ' 
         AcceptButton = OK
@@ -222,6 +236,7 @@ Partial Class Form1
         BackColor = Color.White
         ClientSize = New Size(1482, 753)
         ControlBox = False
+        Controls.Add(Button2)
         Controls.Add(Button1)
         Controls.Add(Label2)
         Controls.Add(Label1)
@@ -252,5 +267,6 @@ Partial Class Form1
     Friend WithEvents Label4 As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents LinkLabel1 As LinkLabel
+    Friend WithEvents Button2 As Button
 
 End Class
