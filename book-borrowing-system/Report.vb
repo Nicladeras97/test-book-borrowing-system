@@ -206,3 +206,6 @@ Public Class Report
         Me.Hide()
     End Sub
 End Class
+
+
+'Credits to Allysa Pacunio for this code.

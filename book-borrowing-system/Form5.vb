@@ -9,7 +9,6 @@ Public Class Form5
         Hide()
     End Sub
 
-    ' Download Book Import Template
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Try
             ExcelPackage.License.SetNonCommercialPersonal("book-borrowing-system")
@@ -24,13 +23,11 @@ Public Class Form5
                 Using package As New ExcelPackage()
                     Dim worksheet As ExcelWorksheet = package.Workbook.Worksheets.Add("Template")
 
-                    ' Add headers with Copies column
                     Dim headers As String() = {"Title", "Author", "Year", "Publisher", "Section", "CallNumber", "Rack", "ISBN", "Copies"}
                     For col As Integer = 0 To headers.Length - 1
                         worksheet.Cells(1, col + 1).Value = headers(col)
                     Next
 
-                    ' Sample Data
                     worksheet.Cells(2, 1).Value = "The Great Gatsby"
                     worksheet.Cells(2, 2).Value = "F. Scott Fitzgerald"
                     worksheet.Cells(2, 3).Value = "1925"
@@ -39,8 +36,7 @@ Public Class Form5
                     worksheet.Cells(2, 6).Value = "REF E 222 CE74 2001"
                     worksheet.Cells(2, 7).Value = "R2"
                     worksheet.Cells(2, 8).Value = "123456789"
-                    worksheet.Cells(2, 9).Value = "3"  ' Number of copies
-
+                    worksheet.Cells(2, 9).Value = "3"
                     worksheet.Cells.AutoFitColumns()
                     package.SaveAs(New FileInfo(filePath))
 
@@ -52,7 +48,6 @@ Public Class Form5
         End Try
     End Sub
 
-    ' Generate the next Accno in YYYY000000-XX format
     Private Function GenerateNextAccno(conn As MySqlConnection, copyIndex As Integer) As String
         Dim year As String = DateTime.Now.Year.ToString()
         Dim query As String = $"SELECT MAX(Accno) FROM books WHERE Accno LIKE '{year}%'"
@@ -70,7 +65,6 @@ Public Class Form5
         End Using
     End Function
 
-    ' Import Excel into Database with multiple copies support
     Private Sub ImportExcelToDatabase(filePath As String)
         Try
             ExcelPackage.License.SetNonCommercialPersonal("book-borrowing-system")
@@ -94,14 +88,12 @@ Public Class Form5
                             Dim isbn As String = worksheet.Cells(row, 8).Text
                             Dim copies As Integer = If(Integer.TryParse(worksheet.Cells(row, 9).Text, Nothing), Convert.ToInt32(worksheet.Cells(row, 9).Text), 1)
 
-                            ' Validate Year
                             Dim yearInt As Integer
                             If Not Integer.TryParse(year, yearInt) OrElse yearInt < 1800 OrElse yearInt > DateTime.Now.Year Then
                                 MessageBox.Show($"Invalid year at row {row}. Skipping...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                                 Continue For
                             End If
 
-                            ' Insert multiple copies
                             For copyIndex As Integer = 0 To copies - 1
                                 Dim newAccno As String = GenerateNextAccno(conn, copyIndex)
 

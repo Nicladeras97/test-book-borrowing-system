@@ -27,7 +27,6 @@ Public Class Form8
         End Using
     End Sub
 
-    ' Load book conditions from book_condition table, excluding "Lost" (condition_id = 4)
     Private Sub LoadBookConditions()
         Using conn As New MySqlConnection(connString)
             Try
@@ -50,8 +49,6 @@ Public Class Form8
         ComboBox1.ValueMember = "Value"
     End Sub
 
-
-    ' Fetch book details when selecting an Accno and clicking Button4
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         If ComboBox2.SelectedItem Is Nothing Then
             MessageBox.Show("Please select a book.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -87,7 +84,6 @@ Public Class Form8
         End Using
     End Sub
 
-    ' Fetch borrower details using StudNo when clicking Button3
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Using conn As New MySqlConnection(connString)
             Try
@@ -118,7 +114,6 @@ Public Class Form8
         End Using
     End Sub
 
-    ' Borrow a book when clicking Button1
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If String.IsNullOrWhiteSpace(ComboBox2.Text) OrElse
            String.IsNullOrWhiteSpace(TextBox2.Text) OrElse

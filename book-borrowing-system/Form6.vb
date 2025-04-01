@@ -9,7 +9,6 @@ Public Class Form6
     Dim conn As New MySqlConnection("server=localhost; user=root; password=; database=book-borrowing;")
     Dim printDoc As New PrintDocument()
 
-    ' Load Report Options
     Private Sub Form6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ComboBox1.Items.AddRange(New String() {"Books Inventory", "Book Activity Summary", "Borrowed Books", "Overdue Books", "Lost Books", "Damaged Books", "Books with Multiple Copies", "Borrowers"})
         ComboBox1.SelectedIndex = 0
@@ -22,7 +21,6 @@ Public Class Form6
         AddHandler printDoc.PrintPage, AddressOf Me.PrintDocument_PrintPage
     End Sub
 
-    ' Load Selected Report
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
         LoadReport()
     End Sub
@@ -32,7 +30,6 @@ Public Class Form6
         Dim startDate As String = DateTimePicker1.Value.ToString("MMMM dd, yyyy")
         Dim endDate As String = DateTimePicker2.Value.ToString("MMMM dd, yyyy")
 
-        ' Generate query based on selected report type and date filter
         Select Case ComboBox1.SelectedItem.ToString()
             Case "Books Inventory"
                 query = "SELECT Accno AS 'Accession Number', Title, Author, CallNumber FROM books"
@@ -81,7 +78,6 @@ Public Class Form6
 
         End Select
 
-        ' Fill the data into DataGridView
         Dim adapter As New MySqlDataAdapter(query, conn)
         Dim table As New DataTable()
         adapter.Fill(table)
@@ -90,13 +86,11 @@ Public Class Form6
         UpdatePagination()
     End Sub
 
-    ' Load Report with Pagination
     Private Sub LoadReport()
         Dim query As String = ""
         Dim offset As Integer = (currentPage - 1) * pageSize
         Dim limit As Integer = pageSize
 
-        ' Generate query based on selected report type with pagination
         Select Case ComboBox1.SelectedItem.ToString()
             Case "Books Inventory"
                 query = "SELECT Accno AS 'Accession Number', Title, Author, CallNumber FROM books LIMIT " & limit & " OFFSET " & offset
@@ -143,7 +137,6 @@ Public Class Form6
                         "FROM users u LIMIT " & limit & " OFFSET " & offset
         End Select
 
-        ' Load data into DataGridView
         Dim adapter As New MySqlDataAdapter(query, conn)
         Dim table As New DataTable()
         adapter.Fill(table)
@@ -152,7 +145,6 @@ Public Class Form6
         UpdatePagination()
     End Sub
 
-    ' Get Total Records
     Private Function GetTotalRecords() As Integer
         Dim countQuery As String = ""
 
@@ -195,8 +187,6 @@ Public Class Form6
         Label5.Text = currentPage.ToString() & "/" & totalPages.ToString() & " out of " & totalRecords.ToString()
     End Sub
 
-
-    ' Previous Page Button
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
         If currentPage > 1 Then
             currentPage -= 1
@@ -204,7 +194,6 @@ Public Class Form6
         End If
     End Sub
 
-    ' Next Page Button
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
         Dim totalPages As Integer = Math.Ceiling(totalRecords / pageSize)
         If currentPage < totalPages Then
@@ -215,13 +204,11 @@ Public Class Form6
 
     Private Sub ExportToExcel()
         Try
-            ' Check if there is any data to export
             If DataGridView1.Rows.Count = 0 Then
                 MessageBox.Show("No data to export.", "Export", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Exit Sub
             End If
 
-            ' Dialog to save the Excel file
             Dim saveFileDialog As New SaveFileDialog()
             saveFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx"
             saveFileDialog.Title = "Save Excel File"
@@ -229,33 +216,27 @@ Public Class Form6
 
             If saveFileDialog.ShowDialog() <> DialogResult.OK Then Exit Sub
 
-            ' Create the Excel workbook and worksheet
             Dim workbook As New XLWorkbook()
             Dim worksheet As IXLWorksheet = workbook.Worksheets.Add("Report")
 
-            ' Add headers
             For col As Integer = 0 To DataGridView1.Columns.Count - 1
                 worksheet.Cell(1, col + 1).Value = DataGridView1.Columns(col).HeaderText
                 worksheet.Cell(1, col + 1).Style.Font.Bold = True
                 worksheet.Cell(1, col + 1).Style.Fill.BackgroundColor = XLColor.LightGray
             Next
 
-            ' Iterate through all rows in DataGridView (including non-visible rows)
             For row As Integer = 0 To DataGridView1.Rows.Count - 1
-                If Not DataGridView1.Rows(row).IsNewRow Then ' Skip the new row, if any
+                If Not DataGridView1.Rows(row).IsNewRow Then
                     For col As Integer = 0 To DataGridView1.Columns.Count - 1
                         worksheet.Cell(row + 2, col + 1).Value = DataGridView1.Rows(row).Cells(col).Value?.ToString()
                     Next
                 End If
             Next
 
-            ' Adjust columns to fit the content
             worksheet.Columns().AdjustToContents()
 
-            ' Save the Excel file
             workbook.SaveAs(saveFileDialog.FileName)
 
-            ' Notify user of success
             MessageBox.Show("Exported successfully!", "Export", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         Catch ex As Exception
@@ -264,10 +245,9 @@ Public Class Form6
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        ' Start the print process
         Try
             If DataGridView1.Rows.Count > 0 Then
-                printDoc.Print() ' This will trigger the PrintPage event
+                printDoc.Print()
             Else
                 MessageBox.Show("No data to print.", "Print", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If
@@ -284,32 +264,29 @@ Public Class Form6
         Dim font As New Font("Arial", 10)
         Dim brush As New SolidBrush(Color.Black)
 
-        ' Print Header
         For col As Integer = 0 To columnCount - 1
             e.Graphics.DrawString(DataGridView1.Columns(col).HeaderText, font, brush, xPos, yPos)
-            xPos += 150 ' Adjust for the column width
+            xPos += 150
         Next
         yPos += lineHeight
 
-        ' Print All Data Rows (loop through all rows, not just current page)
         For Each row As DataGridViewRow In DataGridView1.Rows
-            xPos = 50 ' reset to the starting X position for each row
+            xPos = 50
             If row.IsNewRow Then Continue For
 
             For col As Integer = 0 To columnCount - 1
                 e.Graphics.DrawString(row.Cells(col).Value.ToString(), font, brush, xPos, yPos)
-                xPos += 150 ' Adjust for the column width
+                xPos += 150
             Next
             yPos += lineHeight
 
-            ' Check if we've reached the end of the page and need to print the next page
             If yPos > e.MarginBounds.Bottom Then
                 e.HasMorePages = True
-                Return ' Exit and trigger another print page
+                Return
             End If
         Next
 
-        e.HasMorePages = False ' No more pages to print
+        e.HasMorePages = False
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click

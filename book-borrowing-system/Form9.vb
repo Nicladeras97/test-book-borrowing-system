@@ -79,7 +79,7 @@ Public Class Form9
             conn.Close()
         End Try
     End Sub
-    ' Button 3 - Return Book (Only if condition is unchanged)
+
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Dim accNo = ComboBox2.SelectedItem?.ToString
 
@@ -91,7 +91,6 @@ Public Class Form9
         Try
             conn.Open()
 
-            ' Get borrower details and original condition
             Dim borrowerID As Integer = 0
             Dim dueDate As Date
             Dim originalConditionID As Integer
@@ -113,7 +112,6 @@ Public Class Form9
             End If
             borrowerReader.Close()
 
-            ' Get selected condition ID
             Dim selectedCondition = ComboBox1.SelectedItem.ToString
             Dim selectedConditionID As Integer
             Dim conditionQuery = "SELECT condition_id FROM book_condition WHERE condition_status = @ConditionStatus"
@@ -131,14 +129,12 @@ Public Class Form9
             End If
             conditionReader.Close()
 
-            ' Ensure the condition hasn't changed
             If selectedConditionID <> originalConditionID Then
                 MessageBox.Show("Book condition has changed! Use the 'Damaged' return option instead.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 conn.Close()
                 Exit Sub
             End If
 
-            ' Calculate overdue penalty if applicable
             Dim penaltyAmount As Double = 0
             If Date.Now > dueDate Then
                 Dim overdueDays = (Date.Now - dueDate).Days
@@ -150,7 +146,6 @@ Public Class Form9
                 End If
             End If
 
-            ' Insert into returned_books
             Dim returnQuery = "INSERT INTO returned_books (BorrowerID, BookID, ConditionID, `Return Date`, `Penalty Fee`) VALUES (@BorrowerID, @BookID, @ConditionID, @ReturnDate, @PenaltyFee)"
             Dim returnCmd As New MySqlCommand(returnQuery, conn)
             returnCmd.Parameters.AddWithValue("@BorrowerID", borrowerID)
@@ -160,7 +155,6 @@ Public Class Form9
             returnCmd.Parameters.AddWithValue("@PenaltyFee", penaltyAmount)
             returnCmd.ExecuteNonQuery()
 
-            ' Remove from books_borrowed
             Dim deleteQuery = "DELETE FROM books_borrowed WHERE book_id = @Accno"
             Dim deleteCmd As New MySqlCommand(deleteQuery, conn)
             deleteCmd.Parameters.AddWithValue("@Accno", accNo)
@@ -177,7 +171,6 @@ Public Class Form9
         End Try
     End Sub
 
-    ' Button 2 - Damaged Book (Condition must have changed)
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Dim accNo = ComboBox2.SelectedItem?.ToString()
 
@@ -189,7 +182,6 @@ Public Class Form9
         Try
             conn.Open()
 
-            ' Get original condition
             Dim originalConditionID As Integer
             Dim borrowerID As Integer
 
@@ -209,7 +201,6 @@ Public Class Form9
             End If
             borrowerReader.Close()
 
-            ' Ensure condition has changed
             Dim selectedCondition = ComboBox1.SelectedItem.ToString()
             If selectedCondition = "Good" Or selectedCondition = "New" Then
                 MessageBox.Show("Book condition is still good. Cannot mark as damaged.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -217,7 +208,6 @@ Public Class Form9
                 Exit Sub
             End If
 
-            ' Get damage penalty
             Dim damagePenaltyInput = InputBox("Enter penalty amount for the damaged book:", "Damage Penalty")
             Dim damagePenaltyAmount As Double
             If Not Double.TryParse(damagePenaltyInput, damagePenaltyAmount) Then
@@ -226,7 +216,6 @@ Public Class Form9
                 Exit Sub
             End If
 
-            ' Insert into returned_books
             Dim damageQuery = "INSERT INTO returned_books (BorrowerID, BookID, ConditionID, `Return Date`, `Penalty Fee`) VALUES (@BorrowerID, @BookID, 3, @ReturnDate, @PenaltyFee)"
             Dim damageCmd As New MySqlCommand(damageQuery, conn)
             damageCmd.Parameters.AddWithValue("@BorrowerID", borrowerID)
@@ -246,8 +235,6 @@ Public Class Form9
         End Try
     End Sub
 
-
-    'For Lost Books
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim accNo = ComboBox2.SelectedItem?.ToString()
 
@@ -264,7 +251,6 @@ Public Class Form9
             Dim dueDate As Date
             Dim bookData As New Dictionary(Of String, String)
 
-            ' Get book details
             Dim getBookQuery As String = "SELECT * FROM books WHERE Accno = @Accno"
             Dim bookCmd As New MySqlCommand(getBookQuery, conn, transaction)
             bookCmd.Parameters.AddWithValue("@Accno", accNo)
@@ -288,7 +274,6 @@ Public Class Form9
             End If
             bookReader.Close()
 
-            ' Get borrower details
             Dim getBorrowerQuery As String = "SELECT borrower_id, due_date FROM books_borrowed WHERE book_id = @Accno"
             Dim borrowerCmd As New MySqlCommand(getBorrowerQuery, conn, transaction)
             borrowerCmd.Parameters.AddWithValue("@Accno", accNo)
@@ -306,7 +291,6 @@ Public Class Form9
             End If
             borrowerReader.Close()
 
-            ' Get penalty fee
             Dim lostPenaltyInput As String = InputBox("Enter penalty amount for the lost book:", "Lost Book Penalty")
             Dim lostPenaltyAmount As Double
             If Not Double.TryParse(lostPenaltyInput, lostPenaltyAmount) Then
@@ -316,7 +300,6 @@ Public Class Form9
                 Exit Sub
             End If
 
-            ' Insert into returned_books
             Dim insertLostBookQuery As String = "INSERT INTO returned_books (BorrowerID, BookID, ConditionID, `Return Date`, `Penalty Fee`) VALUES (@BorrowerID, @BookID, 4, @ReturnDate, @PenaltyFee)"
             Dim insertLostCmd As New MySqlCommand(insertLostBookQuery, conn, transaction)
             insertLostCmd.Parameters.AddWithValue("@BorrowerID", borrowerID)
@@ -325,7 +308,6 @@ Public Class Form9
             insertLostCmd.Parameters.AddWithValue("@PenaltyFee", lostPenaltyAmount)
             insertLostCmd.ExecuteNonQuery()
 
-            ' Insert into books_deleted
             Dim insertDeletedQuery As String = "INSERT INTO books_deleted (Accno, Title, Author, Year, Publisher, ISBN, Section, CallNumber, Rack, ConditionID, borrower_id) VALUES (@Accno, @Title, @Author, @Year, @Publisher, @ISBN, @Section, @CallNumber, @Rack, 4, @borrower_id)"
             Dim insertDeletedCmd As New MySqlCommand(insertDeletedQuery, conn, transaction)
             insertDeletedCmd.Parameters.AddWithValue("@Accno", accNo)
@@ -340,14 +322,11 @@ Public Class Form9
             insertDeletedCmd.Parameters.AddWithValue("@borrower_id", borrowerID)
             insertDeletedCmd.ExecuteNonQuery()
 
-
-            ' Remove from books_borrowed
             Dim deleteBorrowedQuery As String = "DELETE FROM books_borrowed WHERE book_id = @Accno"
             Dim deleteBorrowedCmd As New MySqlCommand(deleteBorrowedQuery, conn, transaction)
             deleteBorrowedCmd.Parameters.AddWithValue("@Accno", accNo)
             deleteBorrowedCmd.ExecuteNonQuery()
 
-            ' Delete from books
             Dim deleteBookQuery As String = "DELETE FROM books WHERE Accno = @Accno"
             Dim deleteBookCmd As New MySqlCommand(deleteBookQuery, conn, transaction)
             deleteBookCmd.Parameters.AddWithValue("@Accno", accNo)
