@@ -20,7 +20,6 @@ Partial Class Form10
 
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Label2 = New Label()
         lblBookTitle = New Label()
         lblAuthor = New Label()
         lblISBN = New Label()
@@ -39,29 +38,16 @@ Partial Class Form10
         Label1 = New Label()
         TextBox2 = New TextBox()
         Label3 = New Label()
-        Label4 = New Label()
-        Button2 = New Button()
+        Label2 = New Label()
         TextBox9 = New TextBox()
-        PictureBox1 = New PictureBox()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        Label4 = New Label()
         SuspendLayout()
-        ' 
-        ' Label2
-        ' 
-        Label2.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        Label2.Font = New Font("Arial", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(506, 50)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(206, 40)
-        Label2.TabIndex = 24
-        Label2.Text = "Add Book"
-        Label2.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' lblBookTitle
         ' 
         lblBookTitle.AutoSize = True
         lblBookTitle.Font = New Font("Arial", 12F)
-        lblBookTitle.Location = New Point(54, 250)
+        lblBookTitle.Location = New Point(80, 267)
         lblBookTitle.Name = "lblBookTitle"
         lblBookTitle.Size = New Size(46, 23)
         lblBookTitle.TabIndex = 25
@@ -71,7 +57,7 @@ Partial Class Form10
         ' 
         lblAuthor.AutoSize = True
         lblAuthor.Font = New Font("Arial", 12F)
-        lblAuthor.Location = New Point(54, 300)
+        lblAuthor.Location = New Point(80, 315)
         lblAuthor.Name = "lblAuthor"
         lblAuthor.Size = New Size(67, 23)
         lblAuthor.TabIndex = 26
@@ -81,7 +67,7 @@ Partial Class Form10
         ' 
         lblISBN.AutoSize = True
         lblISBN.Font = New Font("Arial", 12F)
-        lblISBN.Location = New Point(54, 350)
+        lblISBN.Location = New Point(80, 218)
         lblISBN.Name = "lblISBN"
         lblISBN.Size = New Size(55, 23)
         lblISBN.TabIndex = 27
@@ -91,7 +77,7 @@ Partial Class Form10
         ' 
         lblCopies.AutoSize = True
         lblCopies.Font = New Font("Arial", 12F)
-        lblCopies.Location = New Point(54, 396)
+        lblCopies.Location = New Point(80, 513)
         lblCopies.Name = "lblCopies"
         lblCopies.Size = New Size(71, 23)
         lblCopies.TabIndex = 28
@@ -101,68 +87,68 @@ Partial Class Form10
         ' 
         lblCategory.AutoSize = True
         lblCategory.Font = New Font("Arial", 12F)
-        lblCategory.Location = New Point(54, 450)
+        lblCategory.Location = New Point(80, 462)
         lblCategory.Name = "lblCategory"
-        lblCategory.Size = New Size(91, 23)
+        lblCategory.Size = New Size(75, 23)
         lblCategory.TabIndex = 29
-        lblCategory.Text = "Category"
+        lblCategory.Text = "Section"
         ' 
         ' lblYear
         ' 
         lblYear.AutoSize = True
         lblYear.Font = New Font("Arial", 12F)
-        lblYear.Location = New Point(58, 500)
+        lblYear.Location = New Point(80, 365)
         lblYear.Name = "lblYear"
-        lblYear.Size = New Size(51, 23)
+        lblYear.Size = New Size(141, 23)
         lblYear.TabIndex = 31
-        lblYear.Text = "Year"
+        lblYear.Text = "Year Published"
         ' 
         ' TextBox3
         ' 
         TextBox3.Font = New Font("Arial", 12F)
-        TextBox3.Location = New Point(214, 243)
+        TextBox3.Location = New Point(258, 267)
         TextBox3.Name = "TextBox3"
-        TextBox3.Size = New Size(498, 30)
+        TextBox3.Size = New Size(480, 30)
         TextBox3.TabIndex = 33
         ' 
         ' TextBox4
         ' 
         TextBox4.Font = New Font("Arial", 12F)
-        TextBox4.Location = New Point(214, 293)
+        TextBox4.Location = New Point(258, 315)
         TextBox4.Name = "TextBox4"
-        TextBox4.Size = New Size(498, 30)
+        TextBox4.Size = New Size(480, 30)
         TextBox4.TabIndex = 34
         ' 
         ' TextBox5
         ' 
         TextBox5.Font = New Font("Arial", 12F)
-        TextBox5.Location = New Point(214, 343)
+        TextBox5.Location = New Point(258, 218)
         TextBox5.Name = "TextBox5"
-        TextBox5.Size = New Size(498, 30)
+        TextBox5.Size = New Size(480, 30)
         TextBox5.TabIndex = 35
         ' 
         ' TextBox6
         ' 
         TextBox6.Font = New Font("Arial", 12F)
-        TextBox6.Location = New Point(214, 393)
+        TextBox6.Location = New Point(258, 513)
         TextBox6.Name = "TextBox6"
-        TextBox6.Size = New Size(498, 30)
+        TextBox6.Size = New Size(480, 30)
         TextBox6.TabIndex = 36
         ' 
         ' TextBox7
         ' 
         TextBox7.Font = New Font("Arial", 12F)
-        TextBox7.Location = New Point(214, 443)
+        TextBox7.Location = New Point(258, 462)
         TextBox7.Name = "TextBox7"
-        TextBox7.Size = New Size(498, 30)
+        TextBox7.Size = New Size(480, 30)
         TextBox7.TabIndex = 37
         ' 
         ' TextBox8
         ' 
         TextBox8.Font = New Font("Arial", 12F)
-        TextBox8.Location = New Point(214, 493)
+        TextBox8.Location = New Point(258, 365)
         TextBox8.Name = "TextBox8"
-        TextBox8.Size = New Size(498, 30)
+        TextBox8.Size = New Size(480, 30)
         TextBox8.TabIndex = 38
         ' 
         ' Button3
@@ -173,7 +159,7 @@ Partial Class Form10
         Button3.FlatStyle = FlatStyle.Flat
         Button3.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button3.ForeColor = SystemColors.ButtonHighlight
-        Button3.Location = New Point(629, 610)
+        Button3.Location = New Point(422, 599)
         Button3.Name = "Button3"
         Button3.Size = New Size(83, 33)
         Button3.TabIndex = 41
@@ -188,7 +174,7 @@ Partial Class Form10
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button1.ForeColor = SystemColors.ButtonHighlight
-        Button1.Location = New Point(506, 610)
+        Button1.Location = New Point(312, 599)
         Button1.Name = "Button1"
         Button1.Size = New Size(83, 33)
         Button1.TabIndex = 42
@@ -198,16 +184,16 @@ Partial Class Form10
         ' TextBox1
         ' 
         TextBox1.Font = New Font("Arial", 12F)
-        TextBox1.Location = New Point(214, 143)
+        TextBox1.Location = New Point(258, 121)
         TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(498, 30)
+        TextBox1.Size = New Size(480, 30)
         TextBox1.TabIndex = 44
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
         Label1.Font = New Font("Arial", 12F)
-        Label1.Location = New Point(54, 150)
+        Label1.Location = New Point(80, 170)
         Label1.Name = "Label1"
         Label1.Size = New Size(110, 23)
         Label1.TabIndex = 43
@@ -216,76 +202,60 @@ Partial Class Form10
         ' TextBox2
         ' 
         TextBox2.Font = New Font("Arial", 12F)
-        TextBox2.Location = New Point(214, 193)
+        TextBox2.Location = New Point(258, 170)
         TextBox2.Name = "TextBox2"
-        TextBox2.Size = New Size(498, 30)
+        TextBox2.Size = New Size(480, 30)
         TextBox2.TabIndex = 46
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
         Label3.Font = New Font("Arial", 12F)
-        Label3.Location = New Point(54, 200)
+        Label3.Location = New Point(80, 121)
         Label3.Name = "Label3"
-        Label3.Size = New Size(91, 23)
+        Label3.Size = New Size(55, 23)
         Label3.TabIndex = 45
-        Label3.Text = "Rack No."
+        Label3.Text = "Rack"
+        ' 
+        ' Label2
+        ' 
+        Label2.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        Label2.Font = New Font("Arial", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label2.Location = New Point(258, 53)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(297, 40)
+        Label2.TabIndex = 54
+        Label2.Text = "Add Book"
+        Label2.TextAlign = ContentAlignment.MiddleCenter
+        ' 
+        ' TextBox9
+        ' 
+        TextBox9.Font = New Font("Arial", 12F)
+        TextBox9.Location = New Point(258, 415)
+        TextBox9.Name = "TextBox9"
+        TextBox9.Size = New Size(480, 30)
+        TextBox9.TabIndex = 56
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Arial", 12F)
-        Label4.Location = New Point(785, 501)
+        Label4.Location = New Point(80, 415)
         Label4.Name = "Label4"
-        Label4.Size = New Size(65, 23)
-        Label4.TabIndex = 47
-        Label4.Text = "Image"
-        ' 
-        ' Button2
-        ' 
-        Button2.BackColor = Color.Green
-        Button2.Cursor = Cursors.Hand
-        Button2.FlatAppearance.BorderSize = 0
-        Button2.FlatStyle = FlatStyle.Flat
-        Button2.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Button2.ForeColor = SystemColors.ButtonHighlight
-        Button2.Location = New Point(1058, 494)
-        Button2.Name = "Button2"
-        Button2.Size = New Size(87, 30)
-        Button2.TabIndex = 49
-        Button2.Text = "Upload"
-        Button2.UseVisualStyleBackColor = False
-        ' 
-        ' TextBox9
-        ' 
-        TextBox9.Font = New Font("Arial", 12F)
-        TextBox9.Location = New Point(856, 494)
-        TextBox9.Name = "TextBox9"
-        TextBox9.ReadOnly = True
-        TextBox9.Size = New Size(196, 30)
-        TextBox9.TabIndex = 50
-        ' 
-        ' PictureBox1
-        ' 
-        PictureBox1.BackgroundImageLayout = ImageLayout.Zoom
-        PictureBox1.Location = New Point(785, 134)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(360, 339)
-        PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox1.TabIndex = 51
-        PictureBox1.TabStop = False
+        Label4.Size = New Size(90, 23)
+        Label4.TabIndex = 55
+        Label4.Text = "Publisher"
         ' 
         ' Form10
         ' 
         AutoScaleDimensions = New SizeF(9F, 18F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
-        ClientSize = New Size(1224, 697)
+        ClientSize = New Size(847, 697)
         ControlBox = False
-        Controls.Add(PictureBox1)
         Controls.Add(TextBox9)
-        Controls.Add(Button2)
         Controls.Add(Label4)
+        Controls.Add(Label2)
         Controls.Add(TextBox2)
         Controls.Add(Label3)
         Controls.Add(TextBox1)
@@ -304,15 +274,12 @@ Partial Class Form10
         Controls.Add(lblISBN)
         Controls.Add(lblAuthor)
         Controls.Add(lblBookTitle)
-        Controls.Add(Label2)
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Name = "Form10"
-        Text = "Add Books"
-        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        WindowState = FormWindowState.Maximized
         ResumeLayout(False)
         PerformLayout()
     End Sub
-    Friend WithEvents Label2 As Label
     Friend WithEvents lblBookTitle As Label
     Friend WithEvents lblAuthor As Label
     Friend WithEvents lblISBN As Label
@@ -331,8 +298,7 @@ Partial Class Form10
     Friend WithEvents Label1 As Label
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Button2 As Button
+    Friend WithEvents Label2 As Label
     Friend WithEvents TextBox9 As TextBox
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents Label4 As Label
 End Class

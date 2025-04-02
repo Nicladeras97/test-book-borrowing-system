@@ -1,76 +1,100 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Public Class Form13
-    Public Property ISBN As String
+    Private connString As String = "server=localhost; user=root; password=; database=book-borrowing;"
 
     Private Sub Form13_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        LoadBookData()
+        LoadBookAccnos()
     End Sub
 
-    Private Sub LoadBookData()
-        Dim conn As New MySqlConnection("server=localhost; user=root; password=; database=book-borrowing;")
+    Private Sub LoadBookAccnos()
+        ComboBox1.Items.Clear()
+        Using conn As New MySqlConnection(connString)
+            Try
+                conn.Open()
+                Dim query As String = "SELECT Accno FROM books"
+                Using cmd As New MySqlCommand(query, conn)
+                    Dim reader As MySqlDataReader = cmd.ExecuteReader()
+                    While reader.Read()
+                        ComboBox1.Items.Add(reader("Accno").ToString())
+                    End While
+                End Using
+            Catch ex As Exception
+                MessageBox.Show("Error loading Accno: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End Using
+    End Sub
 
-        Try
-            conn.Open()
-            Dim query As String = "SELECT ISBN, Title, Author, Year, Category, RackNumber, CallNumber FROM book WHERE ISBN = @ISBN"
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        If ComboBox1.SelectedItem Is Nothing Then
+            MessageBox.Show("Please select an Accno.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
 
-            Using cmd As New MySqlCommand(query, conn)
-                cmd.Parameters.AddWithValue("@ISBN", ISBN)
-                Dim reader As MySqlDataReader = cmd.ExecuteReader()
-
-                If reader.Read() Then
-                    TextBox1.Text = reader("ISBN").ToString()
-                    TextBox2.Text = reader("Title").ToString()
-                    TextBox3.Text = reader("Author").ToString()
-                    TextBox4.Text = reader("Year").ToString()
-                    TextBox5.Text = reader("Category").ToString()
-                    TextBox6.Text = reader("RackNumber").ToString()
-                    TextBox7.Text = reader("CallNumber").ToString()
-                End If
-
-                reader.Close()
-            End Using
-
-        Catch ex As Exception
-            MessageBox.Show("Error loading book data: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Finally
-            conn.Close()
-        End Try
+        Dim selectedAccNo As String = ComboBox1.SelectedItem.ToString()
+        Using conn As New MySqlConnection(connString)
+            Try
+                conn.Open()
+                Dim query As String = "SELECT * FROM books WHERE Accno = @Accno"
+                Using cmd As New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@Accno", selectedAccNo)
+                    Dim reader As MySqlDataReader = cmd.ExecuteReader()
+                    If reader.Read() Then
+                        TextBox2.Text = reader("Title").ToString()
+                        TextBox3.Text = reader("Author").ToString()
+                        TextBox4.Text = reader("Year").ToString()
+                        TextBox1.Text = reader("Publisher").ToString()
+                        TextBox8.Text = reader("ISBN").ToString()
+                        TextBox5.Text = reader("Section").ToString()
+                        TextBox7.Text = reader("CallNumber").ToString()
+                        TextBox6.Text = reader("Rack").ToString()
+                    Else
+                        MessageBox.Show("Book not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
+                End Using
+            Catch ex As Exception
+                MessageBox.Show("Error retrieving book details: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End Using
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim conn As New MySqlConnection("server=localhost; user=root; password=; database=book-borrowing;")
+        Using conn As New MySqlConnection(connString)
+            Try
+                conn.Open()
+                Dim query As String = "UPDATE books SET Title = @Title, Author = @Author, Year = @Year, 
+                                      Publisher = @Publisher, ISBN = @ISBN, 
+                                      Section = @Section, Rack = @Rack, CallNumber = @CallNumber 
+                                      WHERE Accno = @Accno"
 
-        Try
-            conn.Open()
-            Dim query As String = "UPDATE book SET Title = @Title, Author = @Author, Year = @Year, 
-                                  Category = @Category, RackNumber = @RackNumber, 
-                                  CallNumber = @CallNumber WHERE ISBN = @ISBN"
+                Using cmd As New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@Title", TextBox2.Text.Trim())
+                    cmd.Parameters.AddWithValue("@Author", TextBox3.Text.Trim())
+                    cmd.Parameters.AddWithValue("@Year", TextBox4.Text.Trim())
+                    cmd.Parameters.AddWithValue("@Publisher", TextBox1.Text.Trim())
+                    cmd.Parameters.AddWithValue("@ISBN", TextBox8.Text.Trim())
+                    cmd.Parameters.AddWithValue("@Section", TextBox5.Text.Trim())
+                    cmd.Parameters.AddWithValue("@Rack", TextBox6.Text.Trim())
+                    cmd.Parameters.AddWithValue("@CallNumber", TextBox7.Text.Trim())
+                    cmd.Parameters.AddWithValue("@Accno", ComboBox1.SelectedItem.ToString())
 
-            Using cmd As New MySqlCommand(query, conn)
-                cmd.Parameters.AddWithValue("@Title", TextBox2.Text.Trim())
-                cmd.Parameters.AddWithValue("@Author", TextBox3.Text.Trim())
-                cmd.Parameters.AddWithValue("@Year", TextBox4.Text.Trim())
-                cmd.Parameters.AddWithValue("@Category", TextBox5.Text.Trim())
-                cmd.Parameters.AddWithValue("@RackNumber", TextBox6.Text.Trim())
-                cmd.Parameters.AddWithValue("@CallNumber", TextBox7.Text.Trim())
-                cmd.Parameters.AddWithValue("@ISBN", TextBox1.Text.Trim())
+                    cmd.ExecuteNonQuery()
+                    MessageBox.Show("Book updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End Using
 
-                cmd.ExecuteNonQuery()
-                MessageBox.Show("Book updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            End Using
+                Dim back As New Form5
+                back.Show()
+                Me.Hide()
 
-            DialogResult = DialogResult.OK
-            Me.Close()
-
-        Catch ex As Exception
-            MessageBox.Show("Error updating book: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Finally
-            conn.Close()
-        End Try
+            Catch ex As Exception
+                MessageBox.Show("Error updating book: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End Using
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Me.Close()
+        Dim cancel As New Form5
+        cancel.Show()
+        Me.Hide()
     End Sub
 End Class

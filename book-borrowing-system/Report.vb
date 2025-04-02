@@ -193,4 +193,19 @@ Public Class Report
             MessageBox.Show("An error occurred while sending emails: " & ex.Message)
         End Try
     End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim back As New Form4
+        back.Show()
+        Hide()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim back As New Form4
+        back.Show()
+        Me.Hide()
+    End Sub
 End Class
+
+
+'Credits to Allysa Pacunio for this code.

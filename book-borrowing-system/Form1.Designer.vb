@@ -29,6 +29,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         LogoPictureBox = New PictureBox()
         UsernameLabel = New Label()
         PasswordLabel = New Label()
@@ -36,24 +37,28 @@ Partial Class Form1
         PasswordTextBox = New TextBox()
         OK = New Button()
         Panel1 = New Panel()
+        Label5 = New Label()
+        LinkLabel1 = New LinkLabel()
         Button1 = New Button()
-        PictureBox1 = New PictureBox()
         Label4 = New Label()
         Label3 = New Label()
         Label1 = New Label()
         Label2 = New Label()
+        Button2 = New Button()
+        Panel2 = New Panel()
         CType(LogoPictureBox, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        Panel2.SuspendLayout()
         SuspendLayout()
         ' 
         ' LogoPictureBox
         ' 
-        LogoPictureBox.Image = My.Resources.Resources.book
-        LogoPictureBox.Location = New Point(267, 269)
+        LogoPictureBox.BackColor = Color.Transparent
+        LogoPictureBox.Image = CType(resources.GetObject("LogoPictureBox.Image"), Image)
+        LogoPictureBox.Location = New Point(234, 211)
         LogoPictureBox.Margin = New Padding(3, 4, 3, 4)
         LogoPictureBox.Name = "LogoPictureBox"
-        LogoPictureBox.Size = New Size(334, 307)
+        LogoPictureBox.Size = New Size(412, 416)
         LogoPictureBox.SizeMode = PictureBoxSizeMode.Zoom
         LogoPictureBox.TabIndex = 0
         LogoPictureBox.TabStop = False
@@ -84,7 +89,7 @@ Partial Class Form1
         UsernameTextBox.Location = New Point(130, 202)
         UsernameTextBox.Margin = New Padding(3, 4, 3, 4)
         UsernameTextBox.Name = "UsernameTextBox"
-        UsernameTextBox.Size = New Size(183, 27)
+        UsernameTextBox.Size = New Size(227, 27)
         UsernameTextBox.TabIndex = 1
         ' 
         ' PasswordTextBox
@@ -94,7 +99,7 @@ Partial Class Form1
         PasswordTextBox.Margin = New Padding(3, 4, 3, 4)
         PasswordTextBox.Name = "PasswordTextBox"
         PasswordTextBox.PasswordChar = "*"c
-        PasswordTextBox.Size = New Size(183, 27)
+        PasswordTextBox.Size = New Size(227, 27)
         PasswordTextBox.TabIndex = 3
         ' 
         ' OK
@@ -106,10 +111,10 @@ Partial Class Form1
         OK.FlatStyle = FlatStyle.Flat
         OK.Font = New Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         OK.ForeColor = Color.White
-        OK.Location = New Point(23, 327)
+        OK.Location = New Point(44, 299)
         OK.Margin = New Padding(3, 4, 3, 4)
         OK.Name = "OK"
-        OK.Size = New Size(310, 40)
+        OK.Size = New Size(313, 40)
         OK.TabIndex = 4
         OK.Text = "LOGIN"
         OK.UseVisualStyleBackColor = False
@@ -117,8 +122,9 @@ Partial Class Form1
         ' Panel1
         ' 
         Panel1.BackColor = Color.LightBlue
+        Panel1.Controls.Add(Label5)
+        Panel1.Controls.Add(LinkLabel1)
         Panel1.Controls.Add(Button1)
-        Panel1.Controls.Add(PictureBox1)
         Panel1.Controls.Add(Label4)
         Panel1.Controls.Add(Label3)
         Panel1.Controls.Add(PasswordLabel)
@@ -126,11 +132,34 @@ Partial Class Form1
         Panel1.Controls.Add(UsernameLabel)
         Panel1.Controls.Add(PasswordTextBox)
         Panel1.Controls.Add(UsernameTextBox)
-        Panel1.Location = New Point(939, 122)
+        Panel1.Location = New Point(941, 136)
         Panel1.Margin = New Padding(3, 4, 3, 4)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(363, 454)
+        Panel1.Size = New Size(395, 491)
         Panel1.TabIndex = 5
+        ' 
+        ' Label5
+        ' 
+        Label5.AutoSize = True
+        Label5.BackColor = Color.Transparent
+        Label5.Font = New Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label5.ForeColor = SystemColors.ActiveCaptionText
+        Label5.Location = New Point(44, 403)
+        Label5.Name = "Label5"
+        Label5.Size = New Size(161, 17)
+        Label5.TabIndex = 9
+        Label5.Text = "Don't have an account?"
+        ' 
+        ' LinkLabel1
+        ' 
+        LinkLabel1.AutoSize = True
+        LinkLabel1.BackColor = Color.Transparent
+        LinkLabel1.Location = New Point(211, 400)
+        LinkLabel1.Name = "LinkLabel1"
+        LinkLabel1.Size = New Size(63, 20)
+        LinkLabel1.TabIndex = 8
+        LinkLabel1.TabStop = True
+        LinkLabel1.Text = "Register"
         ' 
         ' Button1
         ' 
@@ -140,31 +169,20 @@ Partial Class Form1
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button1.ForeColor = Color.White
-        Button1.Location = New Point(23, 375)
+        Button1.Location = New Point(44, 347)
         Button1.Margin = New Padding(3, 4, 3, 4)
         Button1.Name = "Button1"
-        Button1.Size = New Size(310, 39)
+        Button1.Size = New Size(313, 39)
         Button1.TabIndex = 7
         Button1.Text = "EXIT"
         Button1.UseVisualStyleBackColor = False
-        ' 
-        ' PictureBox1
-        ' 
-        PictureBox1.Image = My.Resources.Resources.book
-        PictureBox1.Location = New Point(162, 41)
-        PictureBox1.Margin = New Padding(3, 4, 3, 4)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(34, 40)
-        PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox1.TabIndex = 7
-        PictureBox1.TabStop = False
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label4.ForeColor = SystemColors.ActiveCaptionText
-        Label4.Location = New Point(96, 141)
+        Label4.Location = New Point(114, 124)
         Label4.Name = "Label4"
         Label4.Size = New Size(172, 17)
         Label4.TabIndex = 6
@@ -173,9 +191,10 @@ Partial Class Form1
         ' Label3
         ' 
         Label3.AutoSize = True
+        Label3.BackColor = Color.Transparent
         Label3.Font = New Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label3.ForeColor = SystemColors.ActiveCaptionText
-        Label3.Location = New Point(44, 92)
+        Label3.Location = New Point(69, 84)
         Label3.Name = "Label3"
         Label3.Size = New Size(266, 40)
         Label3.TabIndex = 5
@@ -184,9 +203,11 @@ Partial Class Form1
         ' Label1
         ' 
         Label1.AutoSize = True
+        Label1.BackColor = Color.Transparent
         Label1.FlatStyle = FlatStyle.Flat
         Label1.Font = New Font("Arial", 48F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label1.Location = New Point(60, 65)
+        Label1.ForeColor = Color.White
+        Label1.Location = New Point(23, 34)
         Label1.Name = "Label1"
         Label1.Size = New Size(750, 93)
         Label1.TabIndex = 5
@@ -195,13 +216,42 @@ Partial Class Form1
         ' Label2
         ' 
         Label2.AutoSize = True
+        Label2.BackColor = Color.Transparent
         Label2.FlatStyle = FlatStyle.Flat
         Label2.Font = New Font("Arial", 36F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(77, 163)
+        Label2.ForeColor = Color.White
+        Label2.Location = New Point(23, 127)
         Label2.Name = "Label2"
         Label2.Size = New Size(227, 67)
         Label2.TabIndex = 6
         Label2.Text = "System"
+        ' 
+        ' Button2
+        ' 
+        Button2.BackColor = Color.IndianRed
+        Button2.FlatStyle = FlatStyle.Flat
+        Button2.Font = New Font("Arial", 12F)
+        Button2.ForeColor = SystemColors.ControlLightLight
+        Button2.Location = New Point(1204, 49)
+        Button2.Name = "Button2"
+        Button2.Size = New Size(122, 45)
+        Button2.TabIndex = 8
+        Button2.Text = "Barcode"
+        Button2.UseVisualStyleBackColor = False
+        ' 
+        ' Panel2
+        ' 
+        Panel2.BackColor = Color.Transparent
+        Panel2.Controls.Add(Label1)
+        Panel2.Controls.Add(Button2)
+        Panel2.Controls.Add(Label2)
+        Panel2.Controls.Add(Panel1)
+        Panel2.Controls.Add(LogoPictureBox)
+        Panel2.Dock = DockStyle.Fill
+        Panel2.Location = New Point(0, 0)
+        Panel2.Name = "Panel2"
+        Panel2.Size = New Size(1482, 753)
+        Panel2.TabIndex = 9
         ' 
         ' Form1
         ' 
@@ -209,12 +259,11 @@ Partial Class Form1
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
+        BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
+        BackgroundImageLayout = ImageLayout.Stretch
         ClientSize = New Size(1482, 753)
         ControlBox = False
-        Controls.Add(Label2)
-        Controls.Add(Label1)
-        Controls.Add(Panel1)
-        Controls.Add(LogoPictureBox)
+        Controls.Add(Panel2)
         FormBorderStyle = FormBorderStyle.FixedDialog
         Margin = New Padding(3, 4, 3, 4)
         MaximizeBox = False
@@ -222,13 +271,13 @@ Partial Class Form1
         Name = "Form1"
         SizeGripStyle = SizeGripStyle.Hide
         StartPosition = FormStartPosition.CenterParent
-        Text = "Book Borrowing System"
+        WindowState = FormWindowState.Maximized
         CType(LogoPictureBox, ComponentModel.ISupportInitialize).EndInit()
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        Panel2.ResumeLayout(False)
+        Panel2.PerformLayout()
         ResumeLayout(False)
-        PerformLayout()
 
     End Sub
 
@@ -236,8 +285,11 @@ Partial Class Form1
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Button1 As Button
+    Friend WithEvents LinkLabel1 As LinkLabel
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Panel2 As Panel
 
 End Class

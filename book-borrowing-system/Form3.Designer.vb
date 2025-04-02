@@ -22,122 +22,111 @@ Partial Class Form3
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Panel1 = New Panel()
         Label1 = New Label()
-        PictureBox1 = New PictureBox()
         Button1 = New Button()
-        Label2 = New Label()
-        TextBox1 = New TextBox()
-        DataGridView1 = New DataGridView()
-        Panel1.SuspendLayout()
+        PictureBox1 = New PictureBox()
+        Button2 = New Button()
+        Button3 = New Button()
+        ComboBox1 = New ComboBox()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
-        ' 
-        ' Panel1
-        ' 
-        Panel1.BackColor = Color.LightBlue
-        Panel1.Controls.Add(Label1)
-        Panel1.Controls.Add(PictureBox1)
-        Panel1.Dock = DockStyle.Top
-        Panel1.Location = New Point(0, 0)
-        Panel1.Name = "Panel1"
-        Panel1.Size = New Size(982, 53)
-        Panel1.TabIndex = 2
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(38, 18)
+        Label1.Font = New Font("Arial", 20F)
+        Label1.Location = New Point(161, 62)
         Label1.Name = "Label1"
-        Label1.Size = New Size(184, 19)
-        Label1.TabIndex = 1
-        Label1.Text = "Book Borrowing System"
-        ' 
-        ' PictureBox1
-        ' 
-        PictureBox1.Image = My.Resources.Resources.logo
-        PictureBox1.Location = New Point(12, 15)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(20, 21)
-        PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox1.TabIndex = 0
-        PictureBox1.TabStop = False
+        Label1.Size = New Size(286, 39)
+        Label1.TabIndex = 0
+        Label1.Text = "Generate Barcode"
         ' 
         ' Button1
         ' 
-        Button1.BackgroundImage = My.Resources.Resources.back
-        Button1.BackgroundImageLayout = ImageLayout.Zoom
+        Button1.BackColor = Color.LightBlue
         Button1.Cursor = Cursors.Hand
-        Button1.FlatAppearance.BorderSize = 0
         Button1.FlatStyle = FlatStyle.Flat
-        Button1.Location = New Point(14, 78)
+        Button1.Font = New Font("Arial", 12F)
+        Button1.Location = New Point(71, 206)
+        Button1.Margin = New Padding(3, 4, 3, 4)
         Button1.Name = "Button1"
-        Button1.Size = New Size(15, 15)
-        Button1.TabIndex = 8
-        Button1.UseVisualStyleBackColor = True
+        Button1.Size = New Size(156, 43)
+        Button1.TabIndex = 1
+        Button1.Text = "Generate"
+        Button1.UseVisualStyleBackColor = False
         ' 
-        ' Label2
+        ' PictureBox1
         ' 
-        Label2.AutoSize = True
-        Label2.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(38, 99)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(142, 19)
-        Label2.TabIndex = 8
-        Label2.Text = "Borrowed Books"
+        PictureBox1.BackgroundImageLayout = ImageLayout.None
+        PictureBox1.Location = New Point(161, 271)
+        PictureBox1.Margin = New Padding(3, 4, 3, 4)
+        PictureBox1.Name = "PictureBox1"
+        PictureBox1.Size = New Size(286, 174)
+        PictureBox1.SizeMode = PictureBoxSizeMode.CenterImage
+        PictureBox1.TabIndex = 2
+        PictureBox1.TabStop = False
         ' 
-        ' TextBox1
+        ' Button2
         ' 
-        TextBox1.Cursor = Cursors.IBeam
-        TextBox1.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TextBox1.Location = New Point(685, 73)
-        TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(250, 26)
-        TextBox1.TabIndex = 6
-        TextBox1.Text = "Search"
+        Button2.BackColor = Color.LightBlue
+        Button2.Cursor = Cursors.Hand
+        Button2.FlatStyle = FlatStyle.Flat
+        Button2.Font = New Font("Arial", 12F)
+        Button2.Location = New Point(233, 206)
+        Button2.Margin = New Padding(3, 4, 3, 4)
+        Button2.Name = "Button2"
+        Button2.Size = New Size(156, 43)
+        Button2.TabIndex = 4
+        Button2.Text = "Save"
+        Button2.UseVisualStyleBackColor = False
         ' 
-        ' DataGridView1
+        ' Button3
         ' 
-        DataGridView1.BackgroundColor = SystemColors.ButtonHighlight
-        DataGridView1.BorderStyle = BorderStyle.None
-        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Cursor = Cursors.Hand
-        DataGridView1.GridColor = Color.White
-        DataGridView1.Location = New Point(38, 137)
-        DataGridView1.Name = "DataGridView1"
-        DataGridView1.RowHeadersWidth = 51
-        DataGridView1.Size = New Size(897, 391)
-        DataGridView1.TabIndex = 11
+        Button3.BackColor = Color.LightBlue
+        Button3.Cursor = Cursors.Hand
+        Button3.FlatStyle = FlatStyle.Flat
+        Button3.Font = New Font("Arial", 12F)
+        Button3.Location = New Point(395, 206)
+        Button3.Margin = New Padding(3, 4, 3, 4)
+        Button3.Name = "Button3"
+        Button3.Size = New Size(156, 43)
+        Button3.TabIndex = 5
+        Button3.Text = "Clear"
+        Button3.UseVisualStyleBackColor = False
+        ' 
+        ' ComboBox1
+        ' 
+        ComboBox1.FormattingEnabled = True
+        ComboBox1.Location = New Point(71, 146)
+        ComboBox1.Name = "ComboBox1"
+        ComboBox1.Size = New Size(480, 27)
+        ComboBox1.TabIndex = 6
         ' 
         ' Form3
         ' 
-        AutoScaleDimensions = New SizeF(9F, 18F)
+        AutoScaleDimensions = New SizeF(9F, 19F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
-        ClientSize = New Size(982, 553)
-        ControlBox = False
-        Controls.Add(DataGridView1)
+        ClientSize = New Size(609, 467)
+        Controls.Add(ComboBox1)
+        Controls.Add(Button3)
+        Controls.Add(Button2)
+        Controls.Add(PictureBox1)
         Controls.Add(Button1)
-        Controls.Add(Label2)
-        Controls.Add(TextBox1)
-        Controls.Add(Panel1)
-        Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Controls.Add(Label1)
+        Font = New Font("Arial", 10F)
+        Margin = New Padding(3, 4, 3, 4)
         Name = "Form3"
-        Text = "Borrowed Books"
-        Panel1.ResumeLayout(False)
-        Panel1.PerformLayout()
+        Text = "Barcode"
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
 
-    Friend WithEvents Panel1 As Panel
     Friend WithEvents Label1 As Label
-    Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents Label2 As Label
-    Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Button1 As Button
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Button3 As Button
+    Friend WithEvents ComboBox1 As ComboBox
 End Class
