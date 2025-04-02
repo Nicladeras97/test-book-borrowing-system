@@ -276,6 +276,7 @@ Partial Class Form10
         Controls.Add(lblBookTitle)
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Name = "Form10"
+        WindowState = FormWindowState.Maximized
         ResumeLayout(False)
         PerformLayout()
     End Sub

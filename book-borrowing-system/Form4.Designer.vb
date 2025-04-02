@@ -22,6 +22,7 @@ Partial Class Form4
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form4))
         Button2 = New Button()
         Button1 = New Button()
         Button4 = New Button()
@@ -123,8 +124,10 @@ Partial Class Form4
         Controls.Add(Button2)
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ForeColor = SystemColors.ActiveCaptionText
+        Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Name = "Form4"
         Text = "     "
+        WindowState = FormWindowState.Maximized
         ResumeLayout(False)
     End Sub
     Friend WithEvents Button2 As Button
