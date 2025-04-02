@@ -7,15 +7,10 @@ Public Class Form1
     Dim cmd As MySqlCommand
 
     Private Sub OK_Click(sender As Object, e As EventArgs) Handles OK.Click
-
-        Me.Hide()
-
-
         Form14.Show()
-
+        Me.Hide()
         Try
             conn.Open()
-
 
             Dim query As String = "SELECT Password FROM librarians WHERE Username=@Username"
             cmd = New MySqlCommand(query, conn)
@@ -64,4 +59,8 @@ Public Class Form1
         Me.Close()
     End Sub
 
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim barcode As New Form3
+        barcode.Show()
+    End Sub
 End Class
