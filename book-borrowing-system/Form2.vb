@@ -5,7 +5,13 @@ Public Class Form2
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadBookAccnos()
+        Button1.Enabled = False
     End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+        Button1.Enabled = ComboBox1.SelectedItem IsNot Nothing
+    End Sub
+
 
     Private Sub LoadBookAccnos()
         ComboBox1.Items.Clear()
