@@ -47,7 +47,7 @@ Partial Class Form10
         ' 
         lblBookTitle.AutoSize = True
         lblBookTitle.Font = New Font("Arial", 12F)
-        lblBookTitle.Location = New Point(80, 267)
+        lblBookTitle.Location = New Point(382, 272)
         lblBookTitle.Name = "lblBookTitle"
         lblBookTitle.Size = New Size(46, 23)
         lblBookTitle.TabIndex = 25
@@ -57,7 +57,7 @@ Partial Class Form10
         ' 
         lblAuthor.AutoSize = True
         lblAuthor.Font = New Font("Arial", 12F)
-        lblAuthor.Location = New Point(80, 315)
+        lblAuthor.Location = New Point(382, 320)
         lblAuthor.Name = "lblAuthor"
         lblAuthor.Size = New Size(67, 23)
         lblAuthor.TabIndex = 26
@@ -67,7 +67,7 @@ Partial Class Form10
         ' 
         lblISBN.AutoSize = True
         lblISBN.Font = New Font("Arial", 12F)
-        lblISBN.Location = New Point(80, 218)
+        lblISBN.Location = New Point(382, 223)
         lblISBN.Name = "lblISBN"
         lblISBN.Size = New Size(55, 23)
         lblISBN.TabIndex = 27
@@ -77,7 +77,7 @@ Partial Class Form10
         ' 
         lblCopies.AutoSize = True
         lblCopies.Font = New Font("Arial", 12F)
-        lblCopies.Location = New Point(80, 513)
+        lblCopies.Location = New Point(382, 518)
         lblCopies.Name = "lblCopies"
         lblCopies.Size = New Size(71, 23)
         lblCopies.TabIndex = 28
@@ -87,7 +87,7 @@ Partial Class Form10
         ' 
         lblCategory.AutoSize = True
         lblCategory.Font = New Font("Arial", 12F)
-        lblCategory.Location = New Point(80, 462)
+        lblCategory.Location = New Point(382, 467)
         lblCategory.Name = "lblCategory"
         lblCategory.Size = New Size(75, 23)
         lblCategory.TabIndex = 29
@@ -97,7 +97,7 @@ Partial Class Form10
         ' 
         lblYear.AutoSize = True
         lblYear.Font = New Font("Arial", 12F)
-        lblYear.Location = New Point(80, 365)
+        lblYear.Location = New Point(382, 370)
         lblYear.Name = "lblYear"
         lblYear.Size = New Size(141, 23)
         lblYear.TabIndex = 31
@@ -106,50 +106,50 @@ Partial Class Form10
         ' TextBox3
         ' 
         TextBox3.Font = New Font("Arial", 12F)
-        TextBox3.Location = New Point(258, 267)
+        TextBox3.Location = New Point(560, 272)
         TextBox3.Name = "TextBox3"
         TextBox3.Size = New Size(480, 30)
-        TextBox3.TabIndex = 33
+        TextBox3.TabIndex = 4
         ' 
         ' TextBox4
         ' 
         TextBox4.Font = New Font("Arial", 12F)
-        TextBox4.Location = New Point(258, 315)
+        TextBox4.Location = New Point(560, 320)
         TextBox4.Name = "TextBox4"
         TextBox4.Size = New Size(480, 30)
-        TextBox4.TabIndex = 34
+        TextBox4.TabIndex = 5
         ' 
         ' TextBox5
         ' 
         TextBox5.Font = New Font("Arial", 12F)
-        TextBox5.Location = New Point(258, 218)
+        TextBox5.Location = New Point(560, 223)
         TextBox5.Name = "TextBox5"
         TextBox5.Size = New Size(480, 30)
-        TextBox5.TabIndex = 35
+        TextBox5.TabIndex = 3
         ' 
         ' TextBox6
         ' 
         TextBox6.Font = New Font("Arial", 12F)
-        TextBox6.Location = New Point(258, 513)
+        TextBox6.Location = New Point(560, 518)
         TextBox6.Name = "TextBox6"
         TextBox6.Size = New Size(480, 30)
-        TextBox6.TabIndex = 36
+        TextBox6.TabIndex = 9
         ' 
         ' TextBox7
         ' 
         TextBox7.Font = New Font("Arial", 12F)
-        TextBox7.Location = New Point(258, 462)
+        TextBox7.Location = New Point(560, 467)
         TextBox7.Name = "TextBox7"
         TextBox7.Size = New Size(480, 30)
-        TextBox7.TabIndex = 37
+        TextBox7.TabIndex = 8
         ' 
         ' TextBox8
         ' 
         TextBox8.Font = New Font("Arial", 12F)
-        TextBox8.Location = New Point(258, 365)
+        TextBox8.Location = New Point(560, 370)
         TextBox8.Name = "TextBox8"
         TextBox8.Size = New Size(480, 30)
-        TextBox8.TabIndex = 38
+        TextBox8.TabIndex = 6
         ' 
         ' Button3
         ' 
@@ -159,10 +159,10 @@ Partial Class Form10
         Button3.FlatStyle = FlatStyle.Flat
         Button3.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button3.ForeColor = SystemColors.ButtonHighlight
-        Button3.Location = New Point(422, 599)
+        Button3.Location = New Point(724, 604)
         Button3.Name = "Button3"
         Button3.Size = New Size(83, 33)
-        Button3.TabIndex = 41
+        Button3.TabIndex = 11
         Button3.Text = "Cancel"
         Button3.UseVisualStyleBackColor = False
         ' 
@@ -174,26 +174,26 @@ Partial Class Form10
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button1.ForeColor = SystemColors.ButtonHighlight
-        Button1.Location = New Point(312, 599)
+        Button1.Location = New Point(614, 604)
         Button1.Name = "Button1"
         Button1.Size = New Size(83, 33)
-        Button1.TabIndex = 42
+        Button1.TabIndex = 10
         Button1.Text = "Save"
         Button1.UseVisualStyleBackColor = False
         ' 
         ' TextBox1
         ' 
         TextBox1.Font = New Font("Arial", 12F)
-        TextBox1.Location = New Point(258, 121)
+        TextBox1.Location = New Point(560, 126)
         TextBox1.Name = "TextBox1"
         TextBox1.Size = New Size(480, 30)
-        TextBox1.TabIndex = 44
+        TextBox1.TabIndex = 1
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
         Label1.Font = New Font("Arial", 12F)
-        Label1.Location = New Point(80, 170)
+        Label1.Location = New Point(382, 175)
         Label1.Name = "Label1"
         Label1.Size = New Size(110, 23)
         Label1.TabIndex = 43
@@ -202,16 +202,16 @@ Partial Class Form10
         ' TextBox2
         ' 
         TextBox2.Font = New Font("Arial", 12F)
-        TextBox2.Location = New Point(258, 170)
+        TextBox2.Location = New Point(560, 175)
         TextBox2.Name = "TextBox2"
         TextBox2.Size = New Size(480, 30)
-        TextBox2.TabIndex = 46
+        TextBox2.TabIndex = 2
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
         Label3.Font = New Font("Arial", 12F)
-        Label3.Location = New Point(80, 121)
+        Label3.Location = New Point(382, 126)
         Label3.Name = "Label3"
         Label3.Size = New Size(55, 23)
         Label3.TabIndex = 45
@@ -223,7 +223,7 @@ Partial Class Form10
         Label2.Font = New Font("Arial", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label2.Location = New Point(258, 53)
         Label2.Name = "Label2"
-        Label2.Size = New Size(297, 40)
+        Label2.Size = New Size(896, 31)
         Label2.TabIndex = 54
         Label2.Text = "Add Book"
         Label2.TextAlign = ContentAlignment.MiddleCenter
@@ -231,16 +231,16 @@ Partial Class Form10
         ' TextBox9
         ' 
         TextBox9.Font = New Font("Arial", 12F)
-        TextBox9.Location = New Point(258, 415)
+        TextBox9.Location = New Point(560, 420)
         TextBox9.Name = "TextBox9"
         TextBox9.Size = New Size(480, 30)
-        TextBox9.TabIndex = 56
+        TextBox9.TabIndex = 7
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Arial", 12F)
-        Label4.Location = New Point(80, 415)
+        Label4.Location = New Point(382, 420)
         Label4.Name = "Label4"
         Label4.Size = New Size(90, 23)
         Label4.TabIndex = 55
@@ -251,8 +251,7 @@ Partial Class Form10
         AutoScaleDimensions = New SizeF(9F, 18F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
-        ClientSize = New Size(847, 697)
-        ControlBox = False
+        ClientSize = New Size(1446, 688)
         Controls.Add(TextBox9)
         Controls.Add(Label4)
         Controls.Add(Label2)
@@ -276,7 +275,6 @@ Partial Class Form10
         Controls.Add(lblBookTitle)
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Name = "Form10"
-        WindowState = FormWindowState.Maximized
         ResumeLayout(False)
         PerformLayout()
     End Sub

@@ -8,6 +8,8 @@ Public Class Form9
     Private Sub Form9_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             conn.Open()
+            ComboBox2.Focus()
+            ComboBox2.DropDownStyle = ComboBoxStyle.DropDown
             Dim query As String = "SELECT condition_id, condition_status FROM book_condition"
             cmd = New MySqlCommand(query, conn)
             reader = cmd.ExecuteReader()
@@ -33,7 +35,7 @@ Public Class Form9
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Dim accNo As String = ComboBox2.SelectedItem?.ToString()
+        Dim accNo As String = ComboBox2.Text
 
         If String.IsNullOrEmpty(accNo) Then
             MessageBox.Show("Please select an Accession Number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -346,10 +348,10 @@ Public Class Form9
     End Sub
 
 
-    Private Sub Back_Click(sender As Object, e As EventArgs) Handles Back.Click
+    Private Sub Back_Click(sender As Object, e As EventArgs)
         Dim back As New Form4
         back.Show()
-        Me.Hide()
+        Hide()
     End Sub
 
 End Class

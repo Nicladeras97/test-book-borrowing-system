@@ -22,12 +22,14 @@ Partial Class Form3
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form3))
         Label1 = New Label()
         Button1 = New Button()
         PictureBox1 = New PictureBox()
         Button2 = New Button()
         Button3 = New Button()
         ComboBox1 = New ComboBox()
+        Button4 = New Button()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -35,7 +37,7 @@ Partial Class Form3
         ' 
         Label1.AutoSize = True
         Label1.Font = New Font("Arial", 20F)
-        Label1.Location = New Point(161, 62)
+        Label1.Location = New Point(277, 134)
         Label1.Name = "Label1"
         Label1.Size = New Size(286, 39)
         Label1.TabIndex = 0
@@ -47,10 +49,10 @@ Partial Class Form3
         Button1.Cursor = Cursors.Hand
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Font = New Font("Arial", 12F)
-        Button1.Location = New Point(71, 206)
+        Button1.Location = New Point(187, 358)
         Button1.Margin = New Padding(3, 4, 3, 4)
         Button1.Name = "Button1"
-        Button1.Size = New Size(156, 43)
+        Button1.Size = New Size(156, 76)
         Button1.TabIndex = 1
         Button1.Text = "Generate"
         Button1.UseVisualStyleBackColor = False
@@ -58,11 +60,12 @@ Partial Class Form3
         ' PictureBox1
         ' 
         PictureBox1.BackgroundImageLayout = ImageLayout.None
-        PictureBox1.Location = New Point(161, 271)
+        PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
+        PictureBox1.Location = New Point(780, 252)
         PictureBox1.Margin = New Padding(3, 4, 3, 4)
         PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(286, 174)
-        PictureBox1.SizeMode = PictureBoxSizeMode.CenterImage
+        PictureBox1.Size = New Size(549, 182)
+        PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox1.TabIndex = 2
         PictureBox1.TabStop = False
         ' 
@@ -72,10 +75,10 @@ Partial Class Form3
         Button2.Cursor = Cursors.Hand
         Button2.FlatStyle = FlatStyle.Flat
         Button2.Font = New Font("Arial", 12F)
-        Button2.Location = New Point(233, 206)
+        Button2.Location = New Point(349, 358)
         Button2.Margin = New Padding(3, 4, 3, 4)
         Button2.Name = "Button2"
-        Button2.Size = New Size(156, 43)
+        Button2.Size = New Size(156, 76)
         Button2.TabIndex = 4
         Button2.Text = "Save"
         Button2.UseVisualStyleBackColor = False
@@ -86,28 +89,44 @@ Partial Class Form3
         Button3.Cursor = Cursors.Hand
         Button3.FlatStyle = FlatStyle.Flat
         Button3.Font = New Font("Arial", 12F)
-        Button3.Location = New Point(395, 206)
+        Button3.Location = New Point(511, 358)
         Button3.Margin = New Padding(3, 4, 3, 4)
         Button3.Name = "Button3"
-        Button3.Size = New Size(156, 43)
+        Button3.Size = New Size(156, 76)
         Button3.TabIndex = 5
         Button3.Text = "Clear"
         Button3.UseVisualStyleBackColor = False
         ' 
         ' ComboBox1
         ' 
+        ComboBox1.Font = New Font("Arial", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(71, 146)
+        ComboBox1.Location = New Point(187, 252)
         ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(480, 27)
-        ComboBox1.TabIndex = 6
+        ComboBox1.Size = New Size(480, 46)
+        ComboBox1.TabIndex = 1
+        ' 
+        ' Button4
+        ' 
+        Button4.BackColor = Color.LightBlue
+        Button4.Cursor = Cursors.Hand
+        Button4.FlatStyle = FlatStyle.Flat
+        Button4.Font = New Font("Arial", 12F)
+        Button4.Location = New Point(187, 476)
+        Button4.Margin = New Padding(3, 4, 3, 4)
+        Button4.Name = "Button4"
+        Button4.Size = New Size(480, 76)
+        Button4.TabIndex = 6
+        Button4.Text = "Generate All Books"
+        Button4.UseVisualStyleBackColor = False
         ' 
         ' Form3
         ' 
         AutoScaleDimensions = New SizeF(9F, 19F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
-        ClientSize = New Size(609, 467)
+        ClientSize = New Size(1446, 659)
+        Controls.Add(Button4)
         Controls.Add(ComboBox1)
         Controls.Add(Button3)
         Controls.Add(Button2)
@@ -117,7 +136,6 @@ Partial Class Form3
         Font = New Font("Arial", 10F)
         Margin = New Padding(3, 4, 3, 4)
         Name = "Form3"
-        Text = "Barcode"
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
@@ -129,4 +147,5 @@ Partial Class Form3
     Friend WithEvents Button2 As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents Button4 As Button
 End Class

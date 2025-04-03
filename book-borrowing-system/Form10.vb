@@ -3,6 +3,33 @@
 Public Class Form10
     Public Property Accno As String = ""
 
+    Private Sub Form10_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Button1.Enabled = False
+    End Sub
+
+    Private Sub ValidateFields()
+        Button1.Enabled = Not (String.IsNullOrWhiteSpace(TextBox3.Text) OrElse
+                           String.IsNullOrWhiteSpace(TextBox4.Text) OrElse
+                           String.IsNullOrWhiteSpace(TextBox8.Text) OrElse
+                           String.IsNullOrWhiteSpace(TextBox7.Text) OrElse
+                           String.IsNullOrWhiteSpace(TextBox1.Text) OrElse
+                           String.IsNullOrWhiteSpace(TextBox2.Text) OrElse
+                           String.IsNullOrWhiteSpace(TextBox5.Text) OrElse
+                           String.IsNullOrWhiteSpace(TextBox9.Text))
+    End Sub
+
+    Private Sub TextBox_TextChanged(sender As Object, e As EventArgs) Handles TextBox3.TextChanged,
+                                                                          TextBox4.TextChanged,
+                                                                          TextBox8.TextChanged,
+                                                                          TextBox7.TextChanged,
+                                                                          TextBox1.TextChanged,
+                                                                          TextBox2.TextChanged,
+                                                                          TextBox5.TextChanged,
+                                                                          TextBox9.TextChanged
+        ValidateFields()
+    End Sub
+
+
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If String.IsNullOrWhiteSpace(TextBox3.Text) OrElse  ' Title
            String.IsNullOrWhiteSpace(TextBox4.Text) OrElse  ' Author
@@ -100,7 +127,7 @@ Public Class Form10
     End Function
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Dim close As New Form5
+        Dim close As New Form4
         close.Show()
         Me.Hide()
     End Sub

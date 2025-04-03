@@ -22,7 +22,6 @@ Partial Class Form6
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Button2 = New Button()
         Button3 = New Button()
@@ -74,24 +73,16 @@ Partial Class Form6
         DataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
         DataGridView1.BackgroundColor = SystemColors.ButtonHighlight
         DataGridView1.BorderStyle = BorderStyle.Fixed3D
-        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = Color.LightBlue
-        DataGridViewCellStyle1.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle1.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = Color.LightBlue
-        DataGridViewCellStyle1.SelectionForeColor = SystemColors.ControlText
-        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
-        DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = Color.LightBlue
+        DataGridViewCellStyle2.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = Color.LightBlue
+        DataGridViewCellStyle2.SelectionForeColor = SystemColors.ControlText
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+        DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridView1.Cursor = Cursors.Hand
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = SystemColors.Window
-        DataGridViewCellStyle2.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle2.ForeColor = SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
-        DataGridView1.DefaultCellStyle = DataGridViewCellStyle2
         DataGridView1.EnableHeadersVisualStyles = False
         DataGridView1.GridColor = SystemColors.ControlDark
         DataGridView1.Location = New Point(38, 99)
@@ -101,7 +92,7 @@ Partial Class Form6
         DataGridView1.RowHeadersVisible = False
         DataGridView1.RowHeadersWidth = 51
         DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        DataGridView1.Size = New Size(1397, 573)
+        DataGridView1.Size = New Size(1365, 500)
         DataGridView1.TabIndex = 14
         ' 
         ' Button4
@@ -122,7 +113,7 @@ Partial Class Form6
         ' 
         Button6.Cursor = Cursors.Hand
         Button6.FlatStyle = FlatStyle.Flat
-        Button6.Location = New Point(993, 697)
+        Button6.Location = New Point(985, 618)
         Button6.Name = "Button6"
         Button6.Size = New Size(66, 28)
         Button6.TabIndex = 23
@@ -131,7 +122,7 @@ Partial Class Form6
         ' 
         ' Label5
         ' 
-        Label5.Location = New Point(538, 699)
+        Label5.Location = New Point(530, 620)
         Label5.Name = "Label5"
         Label5.Size = New Size(449, 24)
         Label5.TabIndex = 22
@@ -142,7 +133,7 @@ Partial Class Form6
         ' 
         Button7.Cursor = Cursors.Hand
         Button7.FlatStyle = FlatStyle.Flat
-        Button7.Location = New Point(466, 697)
+        Button7.Location = New Point(458, 618)
         Button7.Name = "Button7"
         Button7.Size = New Size(66, 28)
         Button7.TabIndex = 21
@@ -188,9 +179,9 @@ Partial Class Form6
         ' ComboBox1
         ' 
         ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(336, 40)
+        ComboBox1.Location = New Point(389, 40)
         ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(306, 26)
+        ComboBox1.Size = New Size(253, 26)
         ComboBox1.TabIndex = 32
         ' 
         ' Button1
@@ -212,8 +203,7 @@ Partial Class Form6
         AutoScaleDimensions = New SizeF(9F, 18F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
-        ClientSize = New Size(1482, 753)
-        ControlBox = False
+        ClientSize = New Size(1446, 688)
         Controls.Add(Button1)
         Controls.Add(ComboBox1)
         Controls.Add(Label3)
@@ -229,7 +219,6 @@ Partial Class Form6
         Controls.Add(Button3)
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Name = "Form6"
-        Text = "   "
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()

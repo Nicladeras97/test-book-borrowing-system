@@ -82,7 +82,7 @@ Public Class Form13
                     MessageBox.Show("Book updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End Using
 
-                Dim back As New Form5
+                Dim back As New Form4
                 back.Show()
                 Me.Hide()
 
@@ -93,7 +93,7 @@ Public Class Form13
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Dim cancel As New Form5
+        Dim cancel As New Form4
         cancel.Show()
         Me.Hide()
     End Sub

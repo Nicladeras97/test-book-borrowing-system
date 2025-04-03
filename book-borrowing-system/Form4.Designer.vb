@@ -23,117 +23,223 @@ Partial Class Form4
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form4))
-        Button2 = New Button()
+        MenuStrip1 = New MenuStrip()
+        LendReceivedToolStripMenuItem = New ToolStripMenuItem()
+        LendABookToolStripMenuItem = New ToolStripMenuItem()
+        ReceivedABookToolStripMenuItem = New ToolStripMenuItem()
+        ManageBooksToolStripMenuItem = New ToolStripMenuItem()
+        AddBooksToolStripMenuItem = New ToolStripMenuItem()
+        EditBooksToolStripMenuItem = New ToolStripMenuItem()
+        DeleteBooksToolStripMenuItem = New ToolStripMenuItem()
+        ImportToolStripMenuItem = New ToolStripMenuItem()
+        DownloadTemplateToolStripMenuItem = New ToolStripMenuItem()
+        REportsToolStripMenuItem = New ToolStripMenuItem()
+        BarcodeToolStripMenuItem = New ToolStripMenuItem()
+        CreateToolStripMenuItem = New ToolStripMenuItem()
+        SettingToolStripMenuItem = New ToolStripMenuItem()
+        Panel1 = New Panel()
         Button1 = New Button()
-        Button4 = New Button()
-        Button5 = New Button()
-        Button6 = New Button()
-        Button7 = New Button()
+        Label1 = New Label()
+        PictureBox1 = New PictureBox()
+        MenuStrip1.SuspendLayout()
+        Panel1.SuspendLayout()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
-        ' Button2
+        ' MenuStrip1
         ' 
-        Button2.BackColor = Color.LightBlue
-        Button2.BackgroundImageLayout = ImageLayout.Center
-        Button2.FlatAppearance.BorderSize = 0
-        Button2.FlatStyle = FlatStyle.Flat
-        Button2.Location = New Point(355, 313)
-        Button2.Name = "Button2"
-        Button2.Size = New Size(314, 62)
-        Button2.TabIndex = 15
-        Button2.Text = "Manage Books"
-        Button2.UseVisualStyleBackColor = False
+        MenuStrip1.AutoSize = False
+        MenuStrip1.BackColor = Color.Gray
+        MenuStrip1.BackgroundImageLayout = ImageLayout.None
+        MenuStrip1.Dock = DockStyle.Left
+        MenuStrip1.Font = New Font("Arial", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        MenuStrip1.ImageScalingSize = New Size(20, 20)
+        MenuStrip1.Items.AddRange(New ToolStripItem() {LendReceivedToolStripMenuItem, ManageBooksToolStripMenuItem, BarcodeToolStripMenuItem, SettingToolStripMenuItem})
+        MenuStrip1.Location = New Point(0, 0)
+        MenuStrip1.Name = "MenuStrip1"
+        MenuStrip1.Size = New Size(274, 749)
+        MenuStrip1.Stretch = False
+        MenuStrip1.TabIndex = 1
+        MenuStrip1.Text = "MenuStrip1"
+        ' 
+        ' LendReceivedToolStripMenuItem
+        ' 
+        LendReceivedToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {LendABookToolStripMenuItem, ReceivedABookToolStripMenuItem})
+        LendReceivedToolStripMenuItem.ForeColor = Color.White
+        LendReceivedToolStripMenuItem.Name = "LendReceivedToolStripMenuItem"
+        LendReceivedToolStripMenuItem.Padding = New Padding(20, 0, 20, 0)
+        LendReceivedToolStripMenuItem.Size = New Size(267, 44)
+        LendReceivedToolStripMenuItem.Text = "Lend/Received"
+        ' 
+        ' LendABookToolStripMenuItem
+        ' 
+        LendABookToolStripMenuItem.Name = "LendABookToolStripMenuItem"
+        LendABookToolStripMenuItem.Size = New Size(377, 44)
+        LendABookToolStripMenuItem.Text = "Lend a book"
+        ' 
+        ' ReceivedABookToolStripMenuItem
+        ' 
+        ReceivedABookToolStripMenuItem.Name = "ReceivedABookToolStripMenuItem"
+        ReceivedABookToolStripMenuItem.Size = New Size(377, 44)
+        ReceivedABookToolStripMenuItem.Text = "Received a book"
+        ' 
+        ' ManageBooksToolStripMenuItem
+        ' 
+        ManageBooksToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {AddBooksToolStripMenuItem, EditBooksToolStripMenuItem, DeleteBooksToolStripMenuItem, ImportToolStripMenuItem, DownloadTemplateToolStripMenuItem, REportsToolStripMenuItem})
+        ManageBooksToolStripMenuItem.ForeColor = SystemColors.ButtonHighlight
+        ManageBooksToolStripMenuItem.Name = "ManageBooksToolStripMenuItem"
+        ManageBooksToolStripMenuItem.Size = New Size(267, 44)
+        ManageBooksToolStripMenuItem.Text = "Manage Books"
+        ' 
+        ' AddBooksToolStripMenuItem
+        ' 
+        AddBooksToolStripMenuItem.Name = "AddBooksToolStripMenuItem"
+        AddBooksToolStripMenuItem.Size = New Size(425, 44)
+        AddBooksToolStripMenuItem.Text = "Add"
+        ' 
+        ' EditBooksToolStripMenuItem
+        ' 
+        EditBooksToolStripMenuItem.Name = "EditBooksToolStripMenuItem"
+        EditBooksToolStripMenuItem.Size = New Size(425, 44)
+        EditBooksToolStripMenuItem.Text = "Edit"
+        ' 
+        ' DeleteBooksToolStripMenuItem
+        ' 
+        DeleteBooksToolStripMenuItem.Name = "DeleteBooksToolStripMenuItem"
+        DeleteBooksToolStripMenuItem.Size = New Size(425, 44)
+        DeleteBooksToolStripMenuItem.Text = "Delete"
+        ' 
+        ' ImportToolStripMenuItem
+        ' 
+        ImportToolStripMenuItem.Name = "ImportToolStripMenuItem"
+        ImportToolStripMenuItem.Size = New Size(425, 44)
+        ImportToolStripMenuItem.Text = "Import"
+        ' 
+        ' DownloadTemplateToolStripMenuItem
+        ' 
+        DownloadTemplateToolStripMenuItem.Name = "DownloadTemplateToolStripMenuItem"
+        DownloadTemplateToolStripMenuItem.Size = New Size(425, 44)
+        DownloadTemplateToolStripMenuItem.Text = "Download Template"
+        ' 
+        ' REportsToolStripMenuItem
+        ' 
+        REportsToolStripMenuItem.Name = "REportsToolStripMenuItem"
+        REportsToolStripMenuItem.Size = New Size(425, 44)
+        REportsToolStripMenuItem.Text = "Reports"
+        ' 
+        ' BarcodeToolStripMenuItem
+        ' 
+        BarcodeToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {CreateToolStripMenuItem})
+        BarcodeToolStripMenuItem.ForeColor = SystemColors.ButtonHighlight
+        BarcodeToolStripMenuItem.Name = "BarcodeToolStripMenuItem"
+        BarcodeToolStripMenuItem.Size = New Size(267, 44)
+        BarcodeToolStripMenuItem.Text = "Barcode"
+        ' 
+        ' CreateToolStripMenuItem
+        ' 
+        CreateToolStripMenuItem.Name = "CreateToolStripMenuItem"
+        CreateToolStripMenuItem.Size = New Size(215, 44)
+        CreateToolStripMenuItem.Text = "Create"
+        ' 
+        ' SettingToolStripMenuItem
+        ' 
+        SettingToolStripMenuItem.ForeColor = SystemColors.ButtonHighlight
+        SettingToolStripMenuItem.Name = "SettingToolStripMenuItem"
+        SettingToolStripMenuItem.Size = New Size(267, 44)
+        SettingToolStripMenuItem.Text = "Setting"
+        ' 
+        ' Panel1
+        ' 
+        Panel1.BackColor = Color.Transparent
+        Panel1.Controls.Add(Button1)
+        Panel1.Controls.Add(Label1)
+        Panel1.Controls.Add(PictureBox1)
+        Panel1.Dock = DockStyle.Top
+        Panel1.Location = New Point(274, 0)
+        Panel1.Name = "Panel1"
+        Panel1.Size = New Size(1096, 70)
+        Panel1.TabIndex = 2
         ' 
         ' Button1
         ' 
-        Button1.BackColor = Color.LightBlue
-        Button1.BackgroundImageLayout = ImageLayout.Center
+        Button1.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        Button1.BackgroundImage = My.Resources.Resources.Vector__6_
+        Button1.BackgroundImageLayout = ImageLayout.Zoom
+        Button1.Cursor = Cursors.Hand
         Button1.FlatAppearance.BorderSize = 0
         Button1.FlatStyle = FlatStyle.Flat
-        Button1.Location = New Point(691, 313)
+        Button1.Location = New Point(1042, 21)
         Button1.Name = "Button1"
-        Button1.Size = New Size(314, 62)
-        Button1.TabIndex = 16
-        Button1.Text = "Book Reports"
-        Button1.UseVisualStyleBackColor = False
+        Button1.Size = New Size(28, 32)
+        Button1.TabIndex = 2
+        Button1.UseVisualStyleBackColor = True
         ' 
-        ' Button4
+        ' Label1
         ' 
-        Button4.BackColor = Color.LightBlue
-        Button4.BackgroundImageLayout = ImageLayout.Center
-        Button4.FlatAppearance.BorderSize = 0
-        Button4.FlatStyle = FlatStyle.Flat
-        Button4.Location = New Point(691, 225)
-        Button4.Name = "Button4"
-        Button4.Size = New Size(314, 62)
-        Button4.TabIndex = 17
-        Button4.Text = "Received Book"
-        Button4.UseVisualStyleBackColor = False
+        Label1.AutoSize = True
+        Label1.Font = New Font("Arial", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.ForeColor = SystemColors.ButtonHighlight
+        Label1.Location = New Point(94, 21)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(385, 33)
+        Label1.TabIndex = 1
+        Label1.Text = "Book- Management System"
         ' 
-        ' Button5
+        ' PictureBox1
         ' 
-        Button5.BackColor = Color.LightBlue
-        Button5.BackgroundImageLayout = ImageLayout.Center
-        Button5.FlatAppearance.BorderSize = 0
-        Button5.FlatStyle = FlatStyle.Flat
-        Button5.Location = New Point(517, 401)
-        Button5.Name = "Button5"
-        Button5.Size = New Size(314, 62)
-        Button5.TabIndex = 18
-        Button5.Text = "Automated Send Email"
-        Button5.UseVisualStyleBackColor = False
-        ' 
-        ' Button6
-        ' 
-        Button6.BackColor = Color.LightBlue
-        Button6.BackgroundImageLayout = ImageLayout.Center
-        Button6.FlatAppearance.BorderSize = 0
-        Button6.FlatStyle = FlatStyle.Flat
-        Button6.Location = New Point(355, 225)
-        Button6.Name = "Button6"
-        Button6.Size = New Size(314, 62)
-        Button6.TabIndex = 19
-        Button6.Text = "Lend Book"
-        Button6.UseVisualStyleBackColor = False
-        ' 
-        ' Button7
-        ' 
-        Button7.BackgroundImage = My.Resources.Resources.logout
-        Button7.BackgroundImageLayout = ImageLayout.Zoom
-        Button7.Cursor = Cursors.Hand
-        Button7.FlatAppearance.BorderSize = 0
-        Button7.FlatStyle = FlatStyle.Flat
-        Button7.Location = New Point(46, 75)
-        Button7.Name = "Button7"
-        Button7.Size = New Size(30, 26)
-        Button7.TabIndex = 20
-        Button7.UseVisualStyleBackColor = True
+        PictureBox1.BackgroundImage = My.Resources.Resources.cmilogo
+        PictureBox1.BackgroundImageLayout = ImageLayout.Zoom
+        PictureBox1.Location = New Point(0, 0)
+        PictureBox1.Name = "PictureBox1"
+        PictureBox1.Size = New Size(72, 70)
+        PictureBox1.TabIndex = 0
+        PictureBox1.TabStop = False
         ' 
         ' Form4
         ' 
         AutoScaleDimensions = New SizeF(9F, 18F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
+        BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
+        BackgroundImageLayout = ImageLayout.Stretch
         ClientSize = New Size(1370, 749)
         ControlBox = False
-        Controls.Add(Button7)
-        Controls.Add(Button6)
-        Controls.Add(Button5)
-        Controls.Add(Button4)
-        Controls.Add(Button1)
-        Controls.Add(Button2)
+        Controls.Add(Panel1)
+        Controls.Add(MenuStrip1)
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ForeColor = SystemColors.ActiveCaptionText
+        FormBorderStyle = FormBorderStyle.None
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
+        MainMenuStrip = MenuStrip1
+        MinimizeBox = False
         Name = "Form4"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "     "
+        TransparencyKey = Color.White
         WindowState = FormWindowState.Maximized
+        MenuStrip1.ResumeLayout(False)
+        MenuStrip1.PerformLayout()
+        Panel1.ResumeLayout(False)
+        Panel1.PerformLayout()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
-    Friend WithEvents Button2 As Button
+    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents LendReceivedToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LendABookToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ReceivedABookToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ManageBooksToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AddBooksToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents EditBooksToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DeleteBooksToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents BarcodeToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SettingToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ImportToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DownloadTemplateToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents REportsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CreateToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Button1 As Button
-    Friend WithEvents Button4 As Button
-    Friend WithEvents Button5 As Button
-    Friend WithEvents Button6 As Button
-    Friend WithEvents Button7 As Button
+    Friend WithEvents Label1 As Label
 End Class

@@ -23,7 +23,6 @@ Partial Class Form9
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Label2 = New Label()
-        Back = New Button()
         Button3 = New Button()
         Label21 = New Label()
         Label22 = New Label()
@@ -72,19 +71,6 @@ Partial Class Form9
         Label2.TabIndex = 21
         Label2.Text = "Book Title"
         ' 
-        ' Back
-        ' 
-        Back.BackgroundImage = My.Resources.Resources.back
-        Back.BackgroundImageLayout = ImageLayout.Zoom
-        Back.Cursor = Cursors.Hand
-        Back.FlatAppearance.BorderSize = 0
-        Back.FlatStyle = FlatStyle.Flat
-        Back.Location = New Point(31, 26)
-        Back.Name = "Back"
-        Back.Size = New Size(30, 40)
-        Back.TabIndex = 40
-        Back.UseVisualStyleBackColor = True
-        ' 
         ' Button3
         ' 
         Button3.BackColor = SystemColors.HotTrack
@@ -93,11 +79,11 @@ Partial Class Form9
         Button3.FlatStyle = FlatStyle.Flat
         Button3.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button3.ForeColor = SystemColors.ButtonHighlight
-        Button3.Location = New Point(999, 662)
+        Button3.Location = New Point(1000, 626)
         Button3.Name = "Button3"
         Button3.Size = New Size(135, 35)
-        Button3.TabIndex = 45
-        Button3.Text = "Return"
+        Button3.TabIndex = 5
+        Button3.Text = "Received"
         Button3.UseVisualStyleBackColor = False
         ' 
         ' Label21
@@ -247,7 +233,7 @@ Partial Class Form9
         DateTimePicker1.Location = New Point(934, 560)
         DateTimePicker1.Name = "DateTimePicker1"
         DateTimePicker1.Size = New Size(482, 26)
-        DateTimePicker1.TabIndex = 70
+        DateTimePicker1.TabIndex = 3
         ' 
         ' Label7
         ' 
@@ -416,7 +402,7 @@ Partial Class Form9
         Button4.Location = New Point(621, 210)
         Button4.Name = "Button4"
         Button4.Size = New Size(75, 26)
-        Button4.TabIndex = 87
+        Button4.TabIndex = 4
         Button4.Text = "Check"
         Button4.UseVisualStyleBackColor = False
         ' 
@@ -426,7 +412,7 @@ Partial Class Form9
         ComboBox1.Location = New Point(934, 210)
         ComboBox1.Name = "ComboBox1"
         ComboBox1.Size = New Size(482, 26)
-        ComboBox1.TabIndex = 91
+        ComboBox1.TabIndex = 2
         ' 
         ' Label27
         ' 
@@ -444,35 +430,35 @@ Partial Class Form9
         ComboBox2.Location = New Point(258, 210)
         ComboBox2.Name = "ComboBox2"
         ComboBox2.Size = New Size(357, 26)
-        ComboBox2.TabIndex = 92
+        ComboBox2.TabIndex = 1
         ' 
         ' Button1
         ' 
-        Button1.BackColor = SystemColors.AppWorkspace
+        Button1.BackColor = Color.IndianRed
         Button1.Cursor = Cursors.Hand
         Button1.FlatAppearance.BorderSize = 0
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button1.ForeColor = SystemColors.ButtonHighlight
-        Button1.Location = New Point(1281, 662)
+        Button1.Location = New Point(1282, 626)
         Button1.Name = "Button1"
         Button1.Size = New Size(135, 35)
-        Button1.TabIndex = 93
+        Button1.TabIndex = 7
         Button1.Text = "Lost"
         Button1.UseVisualStyleBackColor = False
         ' 
         ' Button2
         ' 
-        Button2.BackColor = Color.Green
+        Button2.BackColor = Color.Peru
         Button2.Cursor = Cursors.Hand
         Button2.FlatAppearance.BorderSize = 0
         Button2.FlatStyle = FlatStyle.Flat
         Button2.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button2.ForeColor = SystemColors.ButtonHighlight
-        Button2.Location = New Point(1140, 662)
+        Button2.Location = New Point(1141, 626)
         Button2.Name = "Button2"
         Button2.Size = New Size(135, 35)
-        Button2.TabIndex = 94
+        Button2.TabIndex = 6
         Button2.Text = "Damaged"
         Button2.UseVisualStyleBackColor = False
         ' 
@@ -481,8 +467,7 @@ Partial Class Form9
         AutoScaleDimensions = New SizeF(9F, 18F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
-        ClientSize = New Size(1482, 753)
-        ControlBox = False
+        ClientSize = New Size(1464, 706)
         Controls.Add(Button2)
         Controls.Add(Button1)
         Controls.Add(ComboBox2)
@@ -519,16 +504,13 @@ Partial Class Form9
         Controls.Add(Label9)
         Controls.Add(Label23)
         Controls.Add(Button3)
-        Controls.Add(Back)
         Controls.Add(Label2)
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Name = "Form9"
-        Text = "Receiving Book"
         ResumeLayout(False)
         PerformLayout()
     End Sub
     Friend WithEvents Label2 As Label
-    Friend WithEvents Back As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents Label21 As Label
     Friend WithEvents Label22 As Label

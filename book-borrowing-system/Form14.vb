@@ -61,8 +61,9 @@ Public Class Form14
             txtConfirmPassword.Clear()
 
             ' Redirect to login
+            Dim login As New Form1
+            login.Show()
             Me.Hide()
-            Form1.Show()
 
         Catch ex As Exception
             MessageBox.Show("Error: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -71,9 +72,36 @@ Public Class Form14
         End Try
     End Sub
 
-    Private Sub BtnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
+    Private Sub btnBack_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles btnBack.LinkClicked
+        Dim back As New Form1
+        back.Show()
         Me.Hide()
-        Form1.Show() ' Assuming Form1 is your login form
     End Sub
 
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        PictureBox1.Image = My.Resources.Eye_closed
+        txtPassword.UseSystemPasswordChar = True
+        PictureBox3.Image = My.Resources.Eye_closed
+        txtConfirmPassword.UseSystemPasswordChar = True
+    End Sub
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+        If txtPassword.UseSystemPasswordChar Then
+            txtPassword.UseSystemPasswordChar = False
+            PictureBox1.Image = My.Resources.eye
+        Else
+            txtPassword.UseSystemPasswordChar = True
+            PictureBox1.Image = My.Resources.Eye_closed
+        End If
+    End Sub
+
+    Private Sub PictureBox3_Click(sender As Object, e As EventArgs) Handles PictureBox3.Click
+        If txtConfirmPassword.UseSystemPasswordChar Then
+            txtConfirmPassword.UseSystemPasswordChar = False
+            PictureBox3.Image = My.Resources.eye
+        Else
+            txtConfirmPassword.UseSystemPasswordChar = True
+            PictureBox3.Image = My.Resources.Eye_closed
+        End If
+    End Sub
 End Class

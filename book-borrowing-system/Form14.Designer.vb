@@ -22,6 +22,7 @@ Partial Class Form14
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form14))
         Panel1 = New Panel()
         txtUsername = New TextBox()
         btnBack = New LinkLabel()
@@ -29,60 +30,63 @@ Partial Class Form14
         txtConfirmPassword = New TextBox()
         Label5 = New Label()
         txtPassword = New TextBox()
-        PictureBox1 = New PictureBox()
         Label4 = New Label()
         Label3 = New Label()
         PasswordLabel = New Label()
         btnSignUp = New Button()
         UsernameLabel = New Label()
         txtFullName = New TextBox()
-        Label2 = New Label()
+        Panel2 = New Panel()
         Label1 = New Label()
-        LogoPictureBox = New PictureBox()
+        PictureBox2 = New PictureBox()
+        PictureBox1 = New PictureBox()
+        PictureBox3 = New PictureBox()
         Panel1.SuspendLayout()
+        Panel2.SuspendLayout()
+        CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
-        CType(LogoPictureBox, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Panel1
         ' 
-        Panel1.BackColor = Color.LightBlue
+        Panel1.Anchor = AnchorStyles.None
+        Panel1.BackColor = Color.White
+        Panel1.Controls.Add(PictureBox3)
+        Panel1.Controls.Add(PictureBox1)
         Panel1.Controls.Add(txtUsername)
         Panel1.Controls.Add(btnBack)
         Panel1.Controls.Add(Label6)
         Panel1.Controls.Add(txtConfirmPassword)
         Panel1.Controls.Add(Label5)
         Panel1.Controls.Add(txtPassword)
-        Panel1.Controls.Add(PictureBox1)
         Panel1.Controls.Add(Label4)
         Panel1.Controls.Add(Label3)
         Panel1.Controls.Add(PasswordLabel)
         Panel1.Controls.Add(btnSignUp)
         Panel1.Controls.Add(UsernameLabel)
         Panel1.Controls.Add(txtFullName)
-        Panel1.Location = New Point(911, 87)
-        Panel1.Margin = New Padding(3, 4, 3, 4)
+        Panel1.Location = New Point(470, 132)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(410, 526)
-        Panel1.TabIndex = 9
+        Panel1.Size = New Size(482, 532)
+        Panel1.TabIndex = 10
         ' 
         ' txtUsername
         ' 
         txtUsername.BorderStyle = BorderStyle.FixedSingle
         txtUsername.Cursor = Cursors.IBeam
-        txtUsername.Location = New Point(205, 253)
-        txtUsername.Margin = New Padding(3, 4, 3, 4)
+        txtUsername.Location = New Point(238, 220)
         txtUsername.Name = "txtUsername"
-        txtUsername.Size = New Size(173, 27)
-        txtUsername.TabIndex = 14
+        txtUsername.Size = New Size(173, 25)
+        txtUsername.TabIndex = 2
         ' 
         ' btnBack
         ' 
         btnBack.AutoSize = True
-        btnBack.Location = New Point(161, 472)
+        btnBack.Location = New Point(194, 444)
         btnBack.Name = "btnBack"
-        btnBack.Size = New Size(98, 20)
-        btnBack.TabIndex = 13
+        btnBack.Size = New Size(94, 17)
+        btnBack.TabIndex = 6
         btnBack.TabStop = True
         btnBack.Text = "Login instead"
         ' 
@@ -90,7 +94,7 @@ Partial Class Form14
         ' 
         Label6.AutoSize = True
         Label6.Font = New Font("Arial", 9.75F)
-        Label6.Location = New Point(37, 347)
+        Label6.Location = New Point(70, 300)
         Label6.Name = "Label6"
         Label6.Size = New Size(143, 19)
         Label6.TabIndex = 12
@@ -100,18 +104,16 @@ Partial Class Form14
         ' 
         txtConfirmPassword.BorderStyle = BorderStyle.FixedSingle
         txtConfirmPassword.Cursor = Cursors.IBeam
-        txtConfirmPassword.Location = New Point(205, 347)
-        txtConfirmPassword.Margin = New Padding(3, 4, 3, 4)
+        txtConfirmPassword.Location = New Point(238, 300)
         txtConfirmPassword.Name = "txtConfirmPassword"
-        txtConfirmPassword.PasswordChar = "*"c
-        txtConfirmPassword.Size = New Size(173, 27)
-        txtConfirmPassword.TabIndex = 11
+        txtConfirmPassword.Size = New Size(151, 25)
+        txtConfirmPassword.TabIndex = 4
         ' 
         ' Label5
         ' 
         Label5.AutoSize = True
         Label5.Font = New Font("Arial", 9.75F)
-        Label5.Location = New Point(37, 299)
+        Label5.Location = New Point(70, 259)
         Label5.Name = "Label5"
         Label5.Size = New Size(80, 19)
         Label5.TabIndex = 8
@@ -122,30 +124,17 @@ Partial Class Form14
         ' 
         txtPassword.BorderStyle = BorderStyle.FixedSingle
         txtPassword.Cursor = Cursors.IBeam
-        txtPassword.Location = New Point(205, 299)
-        txtPassword.Margin = New Padding(3, 4, 3, 4)
+        txtPassword.Location = New Point(238, 259)
         txtPassword.Name = "txtPassword"
-        txtPassword.PasswordChar = "*"c
-        txtPassword.Size = New Size(173, 27)
-        txtPassword.TabIndex = 9
-        ' 
-        ' PictureBox1
-        ' 
-        PictureBox1.Image = My.Resources.Resources.book
-        PictureBox1.Location = New Point(187, 31)
-        PictureBox1.Margin = New Padding(3, 4, 3, 4)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(34, 40)
-        PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox1.TabIndex = 7
-        PictureBox1.TabStop = False
+        txtPassword.Size = New Size(151, 25)
+        txtPassword.TabIndex = 3
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label4.ForeColor = SystemColors.ActiveCaptionText
-        Label4.Location = New Point(124, 151)
+        Label4.Location = New Point(154, 117)
         Label4.Name = "Label4"
         Label4.Size = New Size(172, 17)
         Label4.TabIndex = 6
@@ -156,17 +145,17 @@ Partial Class Form14
         Label3.AutoSize = True
         Label3.Font = New Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label3.ForeColor = SystemColors.ActiveCaptionText
-        Label3.Location = New Point(134, 98)
+        Label3.Location = New Point(101, 60)
         Label3.Name = "Label3"
-        Label3.Size = New Size(156, 40)
+        Label3.Size = New Size(276, 40)
         Label3.TabIndex = 5
-        Label3.Text = "Sign Up!"
+        Label3.Text = "Create Account!"
         ' 
         ' PasswordLabel
         ' 
         PasswordLabel.AutoSize = True
         PasswordLabel.Font = New Font("Arial", 9.75F)
-        PasswordLabel.Location = New Point(37, 253)
+        PasswordLabel.Location = New Point(70, 220)
         PasswordLabel.Name = "PasswordLabel"
         PasswordLabel.Size = New Size(83, 19)
         PasswordLabel.TabIndex = 2
@@ -182,11 +171,10 @@ Partial Class Form14
         btnSignUp.FlatStyle = FlatStyle.Flat
         btnSignUp.Font = New Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnSignUp.ForeColor = Color.White
-        btnSignUp.Location = New Point(37, 408)
-        btnSignUp.Margin = New Padding(3, 4, 3, 4)
+        btnSignUp.Location = New Point(70, 390)
         btnSignUp.Name = "btnSignUp"
-        btnSignUp.Size = New Size(341, 40)
-        btnSignUp.TabIndex = 4
+        btnSignUp.Size = New Size(341, 34)
+        btnSignUp.TabIndex = 5
         btnSignUp.Text = "SIGNUP"
         btnSignUp.UseVisualStyleBackColor = False
         ' 
@@ -194,7 +182,7 @@ Partial Class Form14
         ' 
         UsernameLabel.AutoSize = True
         UsernameLabel.Font = New Font("Arial", 9.75F)
-        UsernameLabel.Location = New Point(37, 205)
+        UsernameLabel.Location = New Point(70, 179)
         UsernameLabel.Name = "UsernameLabel"
         UsernameLabel.Size = New Size(81, 19)
         UsernameLabel.TabIndex = 0
@@ -205,66 +193,91 @@ Partial Class Form14
         ' 
         txtFullName.BorderStyle = BorderStyle.FixedSingle
         txtFullName.Cursor = Cursors.IBeam
-        txtFullName.Location = New Point(205, 205)
-        txtFullName.Margin = New Padding(3, 4, 3, 4)
+        txtFullName.Location = New Point(238, 179)
         txtFullName.Name = "txtFullName"
-        txtFullName.Size = New Size(173, 27)
+        txtFullName.Size = New Size(173, 25)
         txtFullName.TabIndex = 1
         ' 
-        ' Label2
+        ' Panel2
         ' 
-        Label2.AutoSize = True
-        Label2.FlatStyle = FlatStyle.Flat
-        Label2.Font = New Font("Arial", 36F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(60, 158)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(227, 67)
-        Label2.TabIndex = 12
-        Label2.Text = "System"
+        Panel2.BackColor = Color.Transparent
+        Panel2.Controls.Add(Label1)
+        Panel2.Controls.Add(PictureBox2)
+        Panel2.Dock = DockStyle.Top
+        Panel2.Location = New Point(0, 0)
+        Panel2.Name = "Panel2"
+        Panel2.Size = New Size(1464, 70)
+        Panel2.TabIndex = 11
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.FlatStyle = FlatStyle.Flat
-        Label1.Font = New Font("Arial", 48F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label1.Location = New Point(60, 65)
+        Label1.Font = New Font("Arial", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.ForeColor = SystemColors.ButtonHighlight
+        Label1.Location = New Point(94, 21)
         Label1.Name = "Label1"
-        Label1.Size = New Size(750, 93)
-        Label1.TabIndex = 11
-        Label1.Text = "Book Management"
+        Label1.Size = New Size(385, 33)
+        Label1.TabIndex = 1
+        Label1.Text = "Book- Management System"
         ' 
-        ' LogoPictureBox
+        ' PictureBox2
         ' 
-        LogoPictureBox.Image = My.Resources.Resources.book
-        LogoPictureBox.Location = New Point(268, 306)
-        LogoPictureBox.Margin = New Padding(3, 4, 3, 4)
-        LogoPictureBox.Name = "LogoPictureBox"
-        LogoPictureBox.Size = New Size(334, 307)
-        LogoPictureBox.SizeMode = PictureBoxSizeMode.Zoom
-        LogoPictureBox.TabIndex = 10
-        LogoPictureBox.TabStop = False
+        PictureBox2.BackgroundImage = My.Resources.Resources.cmilogo
+        PictureBox2.BackgroundImageLayout = ImageLayout.Zoom
+        PictureBox2.Location = New Point(0, 0)
+        PictureBox2.Name = "PictureBox2"
+        PictureBox2.Size = New Size(72, 70)
+        PictureBox2.TabIndex = 0
+        PictureBox2.TabStop = False
+        ' 
+        ' PictureBox1
+        ' 
+        PictureBox1.BackgroundImageLayout = ImageLayout.Center
+        PictureBox1.BorderStyle = BorderStyle.Fixed3D
+        PictureBox1.Cursor = Cursors.Hand
+        PictureBox1.Location = New Point(387, 259)
+        PictureBox1.Name = "PictureBox1"
+        PictureBox1.Size = New Size(31, 25)
+        PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox1.TabIndex = 13
+        PictureBox1.TabStop = False
+        ' 
+        ' PictureBox3
+        ' 
+        PictureBox3.BackgroundImageLayout = ImageLayout.Center
+        PictureBox3.BorderStyle = BorderStyle.Fixed3D
+        PictureBox3.Cursor = Cursors.Hand
+        PictureBox3.Location = New Point(387, 300)
+        PictureBox3.Name = "PictureBox3"
+        PictureBox3.Size = New Size(31, 25)
+        PictureBox3.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox3.TabIndex = 14
+        PictureBox3.TabStop = False
         ' 
         ' Form14
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(8F, 17F)
         AutoScaleMode = AutoScaleMode.Font
-        BackColor = Color.White
-        ClientSize = New Size(1482, 753)
+        BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
+        BackgroundImageLayout = ImageLayout.Stretch
+        ClientSize = New Size(1464, 706)
         ControlBox = False
-        Controls.Add(Label2)
-        Controls.Add(Label1)
-        Controls.Add(LogoPictureBox)
+        Controls.Add(Panel2)
         Controls.Add(Panel1)
+        Font = New Font("Arial", 9F)
+        FormBorderStyle = FormBorderStyle.None
         Name = "Form14"
-        Text = "     "
+        Text = "Formsignup"
+        WindowState = FormWindowState.Maximized
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
+        Panel2.ResumeLayout(False)
+        Panel2.PerformLayout()
+        CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
-        CType(LogoPictureBox, ComponentModel.ISupportInitialize).EndInit()
+        CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
-        PerformLayout()
     End Sub
-
     Friend WithEvents Panel1 As Panel
     Friend WithEvents txtUsername As TextBox
     Friend WithEvents btnBack As LinkLabel
@@ -272,14 +285,15 @@ Partial Class Form14
     Friend WithEvents txtConfirmPassword As TextBox
     Friend WithEvents Label5 As Label
     Friend WithEvents txtPassword As TextBox
-    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents PasswordLabel As Label
     Friend WithEvents btnSignUp As Button
     Friend WithEvents UsernameLabel As Label
     Friend WithEvents txtFullName As TextBox
-    Friend WithEvents Label2 As Label
+    Friend WithEvents Panel2 As Panel
     Friend WithEvents Label1 As Label
-    Friend WithEvents LogoPictureBox As PictureBox
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents PictureBox3 As PictureBox
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

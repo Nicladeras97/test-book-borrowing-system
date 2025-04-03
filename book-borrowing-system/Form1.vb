@@ -7,8 +7,6 @@ Public Class Form1
     Dim cmd As MySqlCommand
 
     Private Sub OK_Click(sender As Object, e As EventArgs) Handles OK.Click
-        Form14.Show()
-        Me.Hide()
         Try
             conn.Open()
 
@@ -43,24 +41,34 @@ Public Class Form1
         End Try
     End Sub
 
-
     Private Function ComputeSHA256(password As String) As String
         Dim hashBytes As Byte() = SHA256.HashData(Encoding.UTF8.GetBytes(password))
         Return BitConverter.ToString(hashBytes).Replace("-", "").ToLower()
     End Function
 
-
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+        Dim register As New Form14
+        register.Show()
         Me.Hide()
-        Form14.Show()
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Me.Close()
+        Application.Exit()
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Dim barcode As New Form3
-        barcode.Show()
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        PictureBox2.Image = My.Resources.Eye_closed
+        PasswordTextBox.UseSystemPasswordChar = True
     End Sub
+
+    Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
+        If PasswordTextBox.UseSystemPasswordChar Then
+            PasswordTextBox.UseSystemPasswordChar = False
+            PictureBox2.Image = My.Resources.eye
+        Else
+            PasswordTextBox.UseSystemPasswordChar = True
+            PictureBox2.Image = My.Resources.Eye_closed
+        End If
+    End Sub
+
 End Class
