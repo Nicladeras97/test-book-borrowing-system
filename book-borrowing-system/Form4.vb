@@ -3,15 +3,6 @@ Imports OfficeOpenXml
 Imports System.IO
 
 Public Class Form4
-    Private Sub LendABookToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LendABookToolStripMenuItem.Click
-        Dim lend As New Form8
-        lend.Show()
-    End Sub
-
-    Private Sub ReceivedABookToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReceivedABookToolStripMenuItem.Click
-        Dim received As New Form9
-        received.Show()
-    End Sub
 
     Private Sub AddBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddBooksToolStripMenuItem.Click
         Dim add As New Form10
@@ -181,4 +172,15 @@ Public Class Form4
         Dim delete As New Form2
         delete.Show()
     End Sub
+
+    Private Sub ReceivedBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReceivedBooksToolStripMenuItem.Click
+        Dim received As New Form9
+        received.Show
+    End Sub
+
+    Private Sub LendReceivedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LendReceivedToolStripMenuItem.Click
+        Dim lend As New Form8
+        lend.Show()
+    End Sub
+
 End Class

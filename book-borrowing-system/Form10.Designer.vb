@@ -45,6 +45,7 @@ Partial Class Form10
         ' 
         ' lblBookTitle
         ' 
+        lblBookTitle.Anchor = AnchorStyles.None
         lblBookTitle.AutoSize = True
         lblBookTitle.Font = New Font("Arial", 12F)
         lblBookTitle.Location = New Point(382, 272)
@@ -55,6 +56,7 @@ Partial Class Form10
         ' 
         ' lblAuthor
         ' 
+        lblAuthor.Anchor = AnchorStyles.None
         lblAuthor.AutoSize = True
         lblAuthor.Font = New Font("Arial", 12F)
         lblAuthor.Location = New Point(382, 320)
@@ -65,6 +67,7 @@ Partial Class Form10
         ' 
         ' lblISBN
         ' 
+        lblISBN.Anchor = AnchorStyles.None
         lblISBN.AutoSize = True
         lblISBN.Font = New Font("Arial", 12F)
         lblISBN.Location = New Point(382, 223)
@@ -75,6 +78,7 @@ Partial Class Form10
         ' 
         ' lblCopies
         ' 
+        lblCopies.Anchor = AnchorStyles.None
         lblCopies.AutoSize = True
         lblCopies.Font = New Font("Arial", 12F)
         lblCopies.Location = New Point(382, 518)
@@ -85,6 +89,7 @@ Partial Class Form10
         ' 
         ' lblCategory
         ' 
+        lblCategory.Anchor = AnchorStyles.None
         lblCategory.AutoSize = True
         lblCategory.Font = New Font("Arial", 12F)
         lblCategory.Location = New Point(382, 467)
@@ -95,6 +100,7 @@ Partial Class Form10
         ' 
         ' lblYear
         ' 
+        lblYear.Anchor = AnchorStyles.None
         lblYear.AutoSize = True
         lblYear.Font = New Font("Arial", 12F)
         lblYear.Location = New Point(382, 370)
@@ -105,6 +111,7 @@ Partial Class Form10
         ' 
         ' TextBox3
         ' 
+        TextBox3.Anchor = AnchorStyles.None
         TextBox3.Font = New Font("Arial", 12F)
         TextBox3.Location = New Point(560, 272)
         TextBox3.Name = "TextBox3"
@@ -113,6 +120,7 @@ Partial Class Form10
         ' 
         ' TextBox4
         ' 
+        TextBox4.Anchor = AnchorStyles.None
         TextBox4.Font = New Font("Arial", 12F)
         TextBox4.Location = New Point(560, 320)
         TextBox4.Name = "TextBox4"
@@ -121,6 +129,7 @@ Partial Class Form10
         ' 
         ' TextBox5
         ' 
+        TextBox5.Anchor = AnchorStyles.None
         TextBox5.Font = New Font("Arial", 12F)
         TextBox5.Location = New Point(560, 223)
         TextBox5.Name = "TextBox5"
@@ -129,6 +138,7 @@ Partial Class Form10
         ' 
         ' TextBox6
         ' 
+        TextBox6.Anchor = AnchorStyles.None
         TextBox6.Font = New Font("Arial", 12F)
         TextBox6.Location = New Point(560, 518)
         TextBox6.Name = "TextBox6"
@@ -137,6 +147,7 @@ Partial Class Form10
         ' 
         ' TextBox7
         ' 
+        TextBox7.Anchor = AnchorStyles.None
         TextBox7.Font = New Font("Arial", 12F)
         TextBox7.Location = New Point(560, 467)
         TextBox7.Name = "TextBox7"
@@ -145,6 +156,7 @@ Partial Class Form10
         ' 
         ' TextBox8
         ' 
+        TextBox8.Anchor = AnchorStyles.None
         TextBox8.Font = New Font("Arial", 12F)
         TextBox8.Location = New Point(560, 370)
         TextBox8.Name = "TextBox8"
@@ -153,6 +165,7 @@ Partial Class Form10
         ' 
         ' Button3
         ' 
+        Button3.Anchor = AnchorStyles.None
         Button3.BackColor = Color.Gray
         Button3.Cursor = Cursors.Hand
         Button3.FlatAppearance.BorderSize = 0
@@ -168,6 +181,7 @@ Partial Class Form10
         ' 
         ' Button1
         ' 
+        Button1.Anchor = AnchorStyles.None
         Button1.BackColor = Color.Green
         Button1.Cursor = Cursors.Hand
         Button1.FlatAppearance.BorderSize = 0
@@ -183,6 +197,7 @@ Partial Class Form10
         ' 
         ' TextBox1
         ' 
+        TextBox1.Anchor = AnchorStyles.None
         TextBox1.Font = New Font("Arial", 12F)
         TextBox1.Location = New Point(560, 126)
         TextBox1.Name = "TextBox1"
@@ -191,6 +206,7 @@ Partial Class Form10
         ' 
         ' Label1
         ' 
+        Label1.Anchor = AnchorStyles.None
         Label1.AutoSize = True
         Label1.Font = New Font("Arial", 12F)
         Label1.Location = New Point(382, 175)
@@ -201,6 +217,7 @@ Partial Class Form10
         ' 
         ' TextBox2
         ' 
+        TextBox2.Anchor = AnchorStyles.None
         TextBox2.Font = New Font("Arial", 12F)
         TextBox2.Location = New Point(560, 175)
         TextBox2.Name = "TextBox2"
@@ -209,6 +226,7 @@ Partial Class Form10
         ' 
         ' Label3
         ' 
+        Label3.Anchor = AnchorStyles.None
         Label3.AutoSize = True
         Label3.Font = New Font("Arial", 12F)
         Label3.Location = New Point(382, 126)
@@ -219,17 +237,18 @@ Partial Class Form10
         ' 
         ' Label2
         ' 
-        Label2.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        Label2.Anchor = AnchorStyles.None
         Label2.Font = New Font("Arial", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(258, 53)
+        Label2.Location = New Point(382, 53)
         Label2.Name = "Label2"
-        Label2.Size = New Size(896, 31)
+        Label2.Size = New Size(658, 41)
         Label2.TabIndex = 54
         Label2.Text = "Add Book"
         Label2.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' TextBox9
         ' 
+        TextBox9.Anchor = AnchorStyles.None
         TextBox9.Font = New Font("Arial", 12F)
         TextBox9.Location = New Point(560, 420)
         TextBox9.Name = "TextBox9"
@@ -238,6 +257,7 @@ Partial Class Form10
         ' 
         ' Label4
         ' 
+        Label4.Anchor = AnchorStyles.None
         Label4.AutoSize = True
         Label4.Font = New Font("Arial", 12F)
         Label4.Location = New Point(382, 420)

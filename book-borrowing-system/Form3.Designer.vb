@@ -49,7 +49,7 @@ Partial Class Form3
         Button1.Cursor = Cursors.Hand
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Font = New Font("Arial", 12F)
-        Button1.Location = New Point(187, 358)
+        Button1.Location = New Point(186, 306)
         Button1.Margin = New Padding(3, 4, 3, 4)
         Button1.Name = "Button1"
         Button1.Size = New Size(156, 76)
@@ -61,11 +61,11 @@ Partial Class Form3
         ' 
         PictureBox1.BackgroundImageLayout = ImageLayout.None
         PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
-        PictureBox1.Location = New Point(780, 252)
+        PictureBox1.Location = New Point(928, 252)
         PictureBox1.Margin = New Padding(3, 4, 3, 4)
         PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(549, 182)
-        PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
+        PictureBox1.Size = New Size(300, 150)
+        PictureBox1.SizeMode = PictureBoxSizeMode.AutoSize
         PictureBox1.TabIndex = 2
         PictureBox1.TabStop = False
         ' 
@@ -75,7 +75,7 @@ Partial Class Form3
         Button2.Cursor = Cursors.Hand
         Button2.FlatStyle = FlatStyle.Flat
         Button2.Font = New Font("Arial", 12F)
-        Button2.Location = New Point(349, 358)
+        Button2.Location = New Point(348, 306)
         Button2.Margin = New Padding(3, 4, 3, 4)
         Button2.Name = "Button2"
         Button2.Size = New Size(156, 76)
@@ -89,7 +89,7 @@ Partial Class Form3
         Button3.Cursor = Cursors.Hand
         Button3.FlatStyle = FlatStyle.Flat
         Button3.Font = New Font("Arial", 12F)
-        Button3.Location = New Point(511, 358)
+        Button3.Location = New Point(510, 306)
         Button3.Margin = New Padding(3, 4, 3, 4)
         Button3.Name = "Button3"
         Button3.Size = New Size(156, 76)
@@ -99,11 +99,11 @@ Partial Class Form3
         ' 
         ' ComboBox1
         ' 
-        ComboBox1.Font = New Font("Arial", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        ComboBox1.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ComboBox1.FormattingEnabled = True
         ComboBox1.Location = New Point(187, 252)
         ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(480, 46)
+        ComboBox1.Size = New Size(480, 31)
         ComboBox1.TabIndex = 1
         ' 
         ' Button4
@@ -112,7 +112,7 @@ Partial Class Form3
         Button4.Cursor = Cursors.Hand
         Button4.FlatStyle = FlatStyle.Flat
         Button4.Font = New Font("Arial", 12F)
-        Button4.Location = New Point(187, 476)
+        Button4.Location = New Point(186, 424)
         Button4.Margin = New Padding(3, 4, 3, 4)
         Button4.Name = "Button4"
         Button4.Size = New Size(480, 76)

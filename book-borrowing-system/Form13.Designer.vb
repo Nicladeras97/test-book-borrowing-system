@@ -48,6 +48,7 @@ Partial Class Form13
         ' 
         ' Label1
         ' 
+        Label1.Anchor = AnchorStyles.None
         Label1.AutoSize = True
         Label1.Font = New Font("Arial", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label1.Location = New Point(561, 79)
@@ -58,6 +59,7 @@ Partial Class Form13
         ' 
         ' Label2
         ' 
+        Label2.Anchor = AnchorStyles.None
         Label2.AutoSize = True
         Label2.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label2.Location = New Point(367, 230)
@@ -68,6 +70,7 @@ Partial Class Form13
         ' 
         ' Label3
         ' 
+        Label3.Anchor = AnchorStyles.None
         Label3.AutoSize = True
         Label3.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label3.Location = New Point(367, 270)
@@ -78,6 +81,7 @@ Partial Class Form13
         ' 
         ' TextBox2
         ' 
+        TextBox2.Anchor = AnchorStyles.None
         TextBox2.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TextBox2.Location = New Point(561, 230)
         TextBox2.Name = "TextBox2"
@@ -86,6 +90,7 @@ Partial Class Form13
         ' 
         ' Label4
         ' 
+        Label4.Anchor = AnchorStyles.None
         Label4.AutoSize = True
         Label4.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label4.Location = New Point(367, 398)
@@ -96,6 +101,7 @@ Partial Class Form13
         ' 
         ' TextBox3
         ' 
+        TextBox3.Anchor = AnchorStyles.None
         TextBox3.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TextBox3.Location = New Point(561, 270)
         TextBox3.Name = "TextBox3"
@@ -104,6 +110,7 @@ Partial Class Form13
         ' 
         ' Label5
         ' 
+        Label5.Anchor = AnchorStyles.None
         Label5.AutoSize = True
         Label5.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label5.Location = New Point(367, 311)
@@ -114,6 +121,7 @@ Partial Class Form13
         ' 
         ' TextBox4
         ' 
+        TextBox4.Anchor = AnchorStyles.None
         TextBox4.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TextBox4.Location = New Point(561, 311)
         TextBox4.Name = "TextBox4"
@@ -122,6 +130,7 @@ Partial Class Form13
         ' 
         ' Label6
         ' 
+        Label6.Anchor = AnchorStyles.None
         Label6.AutoSize = True
         Label6.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label6.Location = New Point(367, 441)
@@ -132,6 +141,7 @@ Partial Class Form13
         ' 
         ' TextBox5
         ' 
+        TextBox5.Anchor = AnchorStyles.None
         TextBox5.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TextBox5.Location = New Point(561, 398)
         TextBox5.Name = "TextBox5"
@@ -140,6 +150,7 @@ Partial Class Form13
         ' 
         ' Label7
         ' 
+        Label7.Anchor = AnchorStyles.None
         Label7.AutoSize = True
         Label7.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label7.Location = New Point(367, 479)
@@ -150,6 +161,7 @@ Partial Class Form13
         ' 
         ' TextBox6
         ' 
+        TextBox6.Anchor = AnchorStyles.None
         TextBox6.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TextBox6.Location = New Point(561, 441)
         TextBox6.Name = "TextBox6"
@@ -158,6 +170,7 @@ Partial Class Form13
         ' 
         ' Button1
         ' 
+        Button1.Anchor = AnchorStyles.None
         Button1.BackColor = Color.Green
         Button1.Cursor = Cursors.Hand
         Button1.FlatStyle = FlatStyle.Flat
@@ -172,6 +185,7 @@ Partial Class Form13
         ' 
         ' Button2
         ' 
+        Button2.Anchor = AnchorStyles.None
         Button2.BackColor = Color.Red
         Button2.Cursor = Cursors.Hand
         Button2.FlatStyle = FlatStyle.Flat
@@ -186,6 +200,7 @@ Partial Class Form13
         ' 
         ' Label8
         ' 
+        Label8.Anchor = AnchorStyles.None
         Label8.AutoSize = True
         Label8.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label8.Location = New Point(367, 155)
@@ -196,6 +211,7 @@ Partial Class Form13
         ' 
         ' TextBox7
         ' 
+        TextBox7.Anchor = AnchorStyles.None
         TextBox7.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TextBox7.Location = New Point(561, 479)
         TextBox7.Name = "TextBox7"
@@ -204,6 +220,7 @@ Partial Class Form13
         ' 
         ' Label9
         ' 
+        Label9.Anchor = AnchorStyles.None
         Label9.AutoSize = True
         Label9.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label9.Location = New Point(367, 191)
@@ -214,6 +231,7 @@ Partial Class Form13
         ' 
         ' TextBox8
         ' 
+        TextBox8.Anchor = AnchorStyles.None
         TextBox8.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TextBox8.Location = New Point(561, 191)
         TextBox8.Name = "TextBox8"
@@ -223,6 +241,7 @@ Partial Class Form13
         ' 
         ' TextBox1
         ' 
+        TextBox1.Anchor = AnchorStyles.None
         TextBox1.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TextBox1.Location = New Point(561, 356)
         TextBox1.Name = "TextBox1"
@@ -231,6 +250,7 @@ Partial Class Form13
         ' 
         ' Label11
         ' 
+        Label11.Anchor = AnchorStyles.None
         Label11.AutoSize = True
         Label11.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label11.Location = New Point(367, 356)
@@ -241,6 +261,7 @@ Partial Class Form13
         ' 
         ' ComboBox1
         ' 
+        ComboBox1.Anchor = AnchorStyles.None
         ComboBox1.FormattingEnabled = True
         ComboBox1.Location = New Point(561, 151)
         ComboBox1.Name = "ComboBox1"
@@ -249,6 +270,7 @@ Partial Class Form13
         ' 
         ' Button4
         ' 
+        Button4.Anchor = AnchorStyles.None
         Button4.BackColor = Color.DarkGreen
         Button4.FlatAppearance.BorderSize = 0
         Button4.FlatStyle = FlatStyle.Flat
