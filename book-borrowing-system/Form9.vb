@@ -173,8 +173,8 @@ Public Class Form9
 
             MessageBox.Show("Book successfully returned!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-            Dim form4 As New Form4
-            form4.Show()
+            Dim menu As New Form15
+            menu.Show()
             Hide()
 
         Catch ex As Exception
@@ -273,8 +273,8 @@ Public Class Form9
             End If
 
 
-            Dim form4 As New Form4
-            form4.Show()
+            Dim menu As New Form15
+            menu.Show()
             Hide()
 
         Catch ex As Exception
@@ -386,8 +386,8 @@ Public Class Form9
             transaction.Commit()
 
             MessageBox.Show("Book marked as lost.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Dim form4 As New Form4
-            form4.Show()
+            Dim menu As New Form15
+            menu.Show()
             Hide()
         Catch ex As Exception
             MessageBox.Show("Error during lost book processing: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -397,7 +397,7 @@ Public Class Form9
     End Sub
 
     Private Sub Back_Click(sender As Object, e As EventArgs)
-        Dim back As New Form4
+        Dim back As New Form15
         back.Show()
         Hide()
     End Sub

@@ -93,7 +93,7 @@ Public Class Form2
                     MessageBox.Show("Book deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End Using
 
-                Dim back As New Form4
+                Dim back As New Form15
                 back.Show()
                 Me.Hide()
 
@@ -104,8 +104,10 @@ Public Class Form2
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Dim cancel As New Form4
+        Dim cancel As New Form15
         cancel.Show()
         Me.Hide()
     End Sub
+
+
 End Class

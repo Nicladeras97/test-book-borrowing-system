@@ -53,7 +53,7 @@ Partial Class Form13
         Label1.Font = New Font("Arial", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label1.Location = New Point(561, 79)
         Label1.Name = "Label1"
-        Label1.Size = New Size(295, 40)
+        Label1.Size = New Size(241, 32)
         Label1.TabIndex = 1
         Label1.Text = "Edit Book Details"
         ' 
@@ -64,7 +64,7 @@ Partial Class Form13
         Label2.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label2.Location = New Point(367, 230)
         Label2.Name = "Label2"
-        Label2.Size = New Size(46, 23)
+        Label2.Size = New Size(36, 18)
         Label2.TabIndex = 3
         Label2.Text = "Title"
         ' 
@@ -75,7 +75,7 @@ Partial Class Form13
         Label3.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label3.Location = New Point(367, 270)
         Label3.Name = "Label3"
-        Label3.Size = New Size(67, 23)
+        Label3.Size = New Size(53, 18)
         Label3.TabIndex = 5
         Label3.Text = "Author"
         ' 
@@ -85,7 +85,7 @@ Partial Class Form13
         TextBox2.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TextBox2.Location = New Point(561, 230)
         TextBox2.Name = "TextBox2"
-        TextBox2.Size = New Size(474, 30)
+        TextBox2.Size = New Size(474, 26)
         TextBox2.TabIndex = 3
         ' 
         ' Label4
@@ -95,7 +95,7 @@ Partial Class Form13
         Label4.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label4.Location = New Point(367, 398)
         Label4.Name = "Label4"
-        Label4.Size = New Size(81, 23)
+        Label4.Size = New Size(65, 18)
         Label4.TabIndex = 7
         Label4.Text = "Section "
         ' 
@@ -105,7 +105,7 @@ Partial Class Form13
         TextBox3.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TextBox3.Location = New Point(561, 270)
         TextBox3.Name = "TextBox3"
-        TextBox3.Size = New Size(474, 30)
+        TextBox3.Size = New Size(474, 26)
         TextBox3.TabIndex = 4
         ' 
         ' Label5
@@ -115,7 +115,7 @@ Partial Class Form13
         Label5.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label5.Location = New Point(367, 311)
         Label5.Name = "Label5"
-        Label5.Size = New Size(141, 23)
+        Label5.Size = New Size(112, 18)
         Label5.TabIndex = 9
         Label5.Text = "Year Published"
         ' 
@@ -125,7 +125,7 @@ Partial Class Form13
         TextBox4.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TextBox4.Location = New Point(561, 311)
         TextBox4.Name = "TextBox4"
-        TextBox4.Size = New Size(474, 30)
+        TextBox4.Size = New Size(474, 26)
         TextBox4.TabIndex = 5
         ' 
         ' Label6
@@ -135,7 +135,7 @@ Partial Class Form13
         Label6.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label6.Location = New Point(367, 441)
         Label6.Name = "Label6"
-        Label6.Size = New Size(55, 23)
+        Label6.Size = New Size(44, 18)
         Label6.TabIndex = 11
         Label6.Text = "Rack"
         ' 
@@ -145,7 +145,7 @@ Partial Class Form13
         TextBox5.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TextBox5.Location = New Point(561, 398)
         TextBox5.Name = "TextBox5"
-        TextBox5.Size = New Size(474, 30)
+        TextBox5.Size = New Size(474, 26)
         TextBox5.TabIndex = 7
         ' 
         ' Label7
@@ -155,7 +155,7 @@ Partial Class Form13
         Label7.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label7.Location = New Point(367, 479)
         Label7.Name = "Label7"
-        Label7.Size = New Size(110, 23)
+        Label7.Size = New Size(88, 18)
         Label7.TabIndex = 13
         Label7.Text = "LC Call No."
         ' 
@@ -165,7 +165,7 @@ Partial Class Form13
         TextBox6.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TextBox6.Location = New Point(561, 441)
         TextBox6.Name = "TextBox6"
-        TextBox6.Size = New Size(474, 30)
+        TextBox6.Size = New Size(474, 26)
         TextBox6.TabIndex = 8
         ' 
         ' Button1
@@ -205,7 +205,7 @@ Partial Class Form13
         Label8.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label8.Location = New Point(367, 155)
         Label8.Name = "Label8"
-        Label8.Size = New Size(135, 23)
+        Label8.Size = New Size(109, 18)
         Label8.TabIndex = 17
         Label8.Text = "Accession No."
         ' 
@@ -215,7 +215,7 @@ Partial Class Form13
         TextBox7.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TextBox7.Location = New Point(561, 479)
         TextBox7.Name = "TextBox7"
-        TextBox7.Size = New Size(474, 30)
+        TextBox7.Size = New Size(474, 26)
         TextBox7.TabIndex = 9
         ' 
         ' Label9
@@ -225,7 +225,7 @@ Partial Class Form13
         Label9.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label9.Location = New Point(367, 191)
         Label9.Name = "Label9"
-        Label9.Size = New Size(55, 23)
+        Label9.Size = New Size(44, 18)
         Label9.TabIndex = 19
         Label9.Text = "ISBN"
         ' 
@@ -236,7 +236,7 @@ Partial Class Form13
         TextBox8.Location = New Point(561, 191)
         TextBox8.Name = "TextBox8"
         TextBox8.ReadOnly = True
-        TextBox8.Size = New Size(474, 30)
+        TextBox8.Size = New Size(474, 26)
         TextBox8.TabIndex = 18
         ' 
         ' TextBox1
@@ -245,7 +245,7 @@ Partial Class Form13
         TextBox1.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TextBox1.Location = New Point(561, 356)
         TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(474, 30)
+        TextBox1.Size = New Size(474, 26)
         TextBox1.TabIndex = 6
         ' 
         ' Label11
@@ -255,7 +255,7 @@ Partial Class Form13
         Label11.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label11.Location = New Point(367, 356)
         Label11.Name = "Label11"
-        Label11.Size = New Size(90, 23)
+        Label11.Size = New Size(73, 18)
         Label11.TabIndex = 21
         Label11.Text = "Publisher"
         ' 
@@ -265,7 +265,7 @@ Partial Class Form13
         ComboBox1.FormattingEnabled = True
         ComboBox1.Location = New Point(561, 151)
         ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(393, 25)
+        ComboBox1.Size = New Size(393, 23)
         ComboBox1.TabIndex = 1
         ' 
         ' Button4
@@ -284,7 +284,7 @@ Partial Class Form13
         ' 
         ' Form13
         ' 
-        AutoScaleDimensions = New SizeF(8F, 17F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(1446, 688)
@@ -311,7 +311,9 @@ Partial Class Form13
         Controls.Add(Label2)
         Controls.Add(Label1)
         Font = New Font("Arial", 9F)
+        Location = New Point(266, 111)
         Name = "Form13"
+        StartPosition = FormStartPosition.Manual
         ResumeLayout(False)
         PerformLayout()
     End Sub

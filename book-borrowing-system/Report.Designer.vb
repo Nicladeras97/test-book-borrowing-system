@@ -99,13 +99,15 @@ Partial Class Report
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(905, 495)
+        ClientSize = New Size(1614, 614)
         Controls.Add(ListBox2)
         Controls.Add(ListBox1)
         Controls.Add(Button1)
         Controls.Add(DataGridView1)
         Controls.Add(Label2)
+        Location = New Point(266, 111)
         Name = "Report"
+        StartPosition = FormStartPosition.Manual
         Text = "Report"
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
