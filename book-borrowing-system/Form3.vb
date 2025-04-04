@@ -25,19 +25,23 @@ Public Class Form3
     End Sub
 
     Private Sub GenerateBarcode()
-        Dim Generator As New BarcodeEncoder
-        Generator.BackColor = Color.White
-        Generator.LabelFont = New Font("Arial", 7, FontStyle.Regular)
-        Generator.IncludeLabel = True
-        Generator.CustomLabel = ComboBox1.Text
         Try
-            Dim barcodeImage As New Bitmap(Generator.Encode(BarcodeFormat.Code128, ComboBox1.Text), New Size(300, 1000))
+            Dim encoder As New BarcodeEncoder()
+            encoder.BackColor = Color.White
+            encoder.LabelFont = New Font("Arial", 7, FontStyle.Regular)
+            encoder.IncludeLabel = True
+            encoder.CustomLabel = ComboBox1.Text
 
-            PictureBox1.Image = New Bitmap(Generator.Encode(BarcodeFormat.Code128, ComboBox1.Text))
+            ' Generate barcode with correct encoding format
+            Dim barcodeImage As Bitmap = encoder.Encode(BarcodeFormat.Code128, ComboBox1.Text)
+
+            ' Display barcode in PictureBox1
+            PictureBox1.Image = barcodeImage
         Catch ex As Exception
             MessageBox.Show("Error generating barcode: " & ex.Message)
         End Try
     End Sub
+
 
     Private Sub SaveBarcode()
         Dim SD As New SaveFileDialog
@@ -77,7 +81,7 @@ Public Class Form3
                         Dim accno As String = reader("Accno").ToString()
                         barcodeGenerator.CustomLabel = accno
 
-                        Dim barcodeImage As Bitmap = New Bitmap(barcodeGenerator.Encode(BarcodeFormat.Code93, accno))
+                        Dim barcodeImage As Bitmap = barcodeGenerator.Encode(BarcodeFormat.Code128, accno)
 
                         Dim filePath As String = Path.Combine(saveFolder, accno & ".png")
                         barcodeImage.Save(filePath, Imaging.ImageFormat.Png)
@@ -113,7 +117,4 @@ Public Class Form3
         LoadBooks()
     End Sub
 
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
-
-    End Sub
 End Class

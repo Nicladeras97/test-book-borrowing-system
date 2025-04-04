@@ -216,4 +216,8 @@ Public Class Form15
         Logout.Show()
         Me.Hide()
     End Sub
+
+    Private Sub RepairBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RepairBooksToolStripMenuItem.Click
+
+    End Sub
 End Class
