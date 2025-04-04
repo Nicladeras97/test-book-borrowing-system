@@ -251,6 +251,7 @@ Partial Class Form15
         ' 
         ' PictureBox3
         ' 
+        PictureBox3.BackColor = Color.Transparent
         PictureBox3.Location = New Point(718, 128)
         PictureBox3.Name = "PictureBox3"
         PictureBox3.Size = New Size(505, 457)

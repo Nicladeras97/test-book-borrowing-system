@@ -344,6 +344,7 @@ Partial Class Form2
         Margin = New Padding(3, 2, 3, 2)
         Name = "Form2"
         StartPosition = FormStartPosition.Manual
+        Text = "Delete Book"
         ResumeLayout(False)
         PerformLayout()
     End Sub
