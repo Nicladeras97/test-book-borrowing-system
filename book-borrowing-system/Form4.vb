@@ -4,6 +4,7 @@ Imports System.IO
 
 Public Class Form4
 
+
     Private Sub AddBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddBooksToolStripMenuItem.Click
         Dim add As New Form10
         add.Show()
@@ -162,10 +163,10 @@ Public Class Form4
         Hide()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs)
         Dim logout As New Form1
-        logout.Show()
-        Me.Hide()
+        logout.Show
+        Hide
     End Sub
 
     Private Sub DeleteBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteBooksToolStripMenuItem.Click
@@ -175,7 +176,7 @@ Public Class Form4
 
     Private Sub ReceivedBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReceivedBooksToolStripMenuItem.Click
         Dim received As New Form9
-        received.Show
+        received.Show()
     End Sub
 
     Private Sub LendReceivedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LendReceivedToolStripMenuItem.Click
@@ -183,4 +184,31 @@ Public Class Form4
         lend.Show()
     End Sub
 
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+
+    End Sub
+
+    Private Sub Form4_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs)
+        Form1.Show()
+        Hide()
+
+    End Sub
+
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+        Panel1.BackColor = Color.FromArgb(100, 0, 0, 0)
+    End Sub
+
+    Private Sub Button1_Click_2(sender As Object, e As EventArgs) Handles Button1.Click
+        Form1.Show()
+        Hide()
+
+    End Sub
+
+    Private Sub MenuStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles MenuStrip1.ItemClicked
+
+    End Sub
 End Class

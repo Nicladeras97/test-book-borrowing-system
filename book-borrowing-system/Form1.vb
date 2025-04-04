@@ -22,7 +22,7 @@ Public Class Form1
 
 
                 If storedHash.ToString() = enteredHash Then
-                    Form4.Show()
+                    Form15.Show()
                     Me.Hide()
                 Else
                     MsgBox("Invalid Username or Password!", MsgBoxStyle.Critical)
@@ -71,4 +71,9 @@ Public Class Form1
         End If
     End Sub
 
+    Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
+        Panel2.BackColor = Color.FromArgb(100, 0, 0, 0)
+
+
+    End Sub
 End Class
