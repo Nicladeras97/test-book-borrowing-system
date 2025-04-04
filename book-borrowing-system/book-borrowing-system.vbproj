@@ -17,6 +17,7 @@
   <ItemGroup>
     <PackageReference Include="ClosedXML" Version="0.104.2" />
     <PackageReference Include="EPPlus" Version="8.0.1" />
+    <PackageReference Include="MessagingToolkit.Barcode" Version="1.7.0.2" />
     <PackageReference Include="Microsoft.Office.Interop.Excel" Version="15.0.4795.1001" />
     <PackageReference Include="MySql.Data" Version="9.2.0" />
   </ItemGroup>

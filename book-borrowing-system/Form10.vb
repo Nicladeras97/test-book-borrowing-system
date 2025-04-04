@@ -60,7 +60,7 @@ Public Class Form10
             Return
         End If
 
-        Dim accnoList As List(Of String) = GenerateAccnos(title, section, year, copies)
+        Dim accnoList As List(Of String) = GenerateAccnos(copies)
 
         Dim connString As String = "server=localhost; user=root; password=; database=book-borrowing;"
         Using conn As New MySqlConnection(connString)
@@ -93,38 +93,41 @@ Public Class Form10
             End Try
         End Using
     End Sub
-
-    Private Function GenerateAccnos(title As String, section As String, year As String, copies As Integer) As List(Of String)
+    Private Function GenerateAccnos(copies As Integer) As List(Of String)
         Dim accnoList As New List(Of String)
-        Dim sectionPrefix As String = section.Substring(0, 3).ToUpper()
-        Dim latestCopyNumber As Integer = 0
 
         Dim connString As String = "server=localhost; user=root; password=; database=book-borrowing;"
         Using conn As New MySqlConnection(connString)
             conn.Open()
 
-            Dim query As String = "SELECT Accno FROM books WHERE Title = @Title ORDER BY Accno DESC LIMIT 1"
-            Using cmd As New MySqlCommand(query, conn)
-                cmd.Parameters.AddWithValue("@Title", title)
-                Dim result As Object = cmd.ExecuteScalar()
-
-                If result IsNot Nothing Then
-                    Dim lastAccno As String = result.ToString()
-                    Dim parts() As String = lastAccno.Split("-"c)
-                    If parts.Length > 1 Then
-                        Integer.TryParse(parts(1), latestCopyNumber)
-                    End If
-                End If
-            End Using
+            For i As Integer = 1 To copies
+                Dim accno As String = GenerateNextAccno(conn)
+                accnoList.Add(accno)
+            Next
         End Using
-
-        For i As Integer = 1 To copies
-            latestCopyNumber += 1
-            accnoList.Add($"{sectionPrefix}{year}-{latestCopyNumber:D2}")
-        Next
 
         Return accnoList
     End Function
+
+    Private Function GenerateNextAccno(conn As MySqlConnection) As String
+        Dim year As String = DateTime.Now.Year.ToString()
+        Dim query As String = $"SELECT MAX(Accno) FROM books WHERE Accno LIKE '{year}%'"
+
+        Using cmd As New MySqlCommand(query, conn)
+            Dim lastAccno As Object = cmd.ExecuteScalar()
+            Dim nextNumber As Integer = 1
+
+            If lastAccno IsNot DBNull.Value AndAlso lastAccno IsNot Nothing Then
+                Dim lastNumberPart As String = lastAccno.ToString().Substring(4, 6)
+                If Integer.TryParse(lastNumberPart, nextNumber) Then
+                    nextNumber += 1
+                End If
+            End If
+
+            Return $"{year}{nextNumber:000000}-01"
+        End Using
+    End Function
+
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Dim close As New Form15

@@ -10,7 +10,7 @@ Public Class Form6
         ComboBox1.Items.AddRange(New String() {"Books Inventory", "Book Activity Summary", "Borrowed Books", "Overdue Books", "Lost Books", "Damaged Books", "Books with Multiple Copies", "Borrowers"})
         ComboBox1.SelectedIndex = 0
 
-        ComboBox2.Items.AddRange(New String() {"1", "25", "50", "100", "500"})
+        ComboBox2.Items.AddRange(New String() {"1", "25", "50", "100", "500", "700", "1000"})
         ComboBox2.SelectedIndex = 1
 
         DateTimePicker1.Format = DateTimePickerFormat.Custom
@@ -31,12 +31,15 @@ Public Class Form6
         LoadReport()
     End Sub
 
-
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim query As String = ""
         Dim startDate As String = DateTimePicker1.Value.ToString("MMMM dd, yyyy")
         Dim endDate As String = DateTimePicker2.Value.ToString("MMMM dd, yyyy")
-        Dim rowLimit As String = ComboBox2.SelectedItem.ToString()
+        Dim rowLimit As String = ""
+        If ComboBox2.SelectedItem IsNot Nothing Then
+            rowLimit = " LIMIT " & ComboBox2.SelectedItem.ToString()
+        End If
+
 
         Select Case ComboBox1.SelectedItem.ToString()
             Case "Books Inventory"
