@@ -5,6 +5,9 @@ Public Class Form2
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadBookAccnos()
+        Button1.Enabled = False
+        Button1.ForeColor = Color.White
+        Button1.UseVisualStyleBackColor = False
     End Sub
 
     Private Sub LoadBookAccnos()
@@ -59,7 +62,11 @@ Public Class Form2
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If ComboBox1.Text Is Nothing Then
+        ' Ensure the button keeps the desired ForeColor
+        Button1.ForeColor = Color.White
+        Button1.UseVisualStyleBackColor = False
+
+        If ComboBox1.SelectedItem Is Nothing Then
             MessageBox.Show("Please select an Accno to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
@@ -70,6 +77,7 @@ Public Class Form2
             Try
                 conn.Open()
 
+                ' Check if the book is currently borrowed
                 Dim checkQuery As String = "SELECT COUNT(*) FROM books_borrowed WHERE book_id = @Accno"
                 Using checkCmd As New MySqlCommand(checkQuery, conn)
                     checkCmd.Parameters.AddWithValue("@Accno", selectedAccNo)
@@ -80,6 +88,7 @@ Public Class Form2
                     End If
                 End Using
 
+                ' Delete the book record
                 Dim deleteQuery As String = "DELETE FROM books WHERE Accno = @Accno"
                 Using deleteCmd As New MySqlCommand(deleteQuery, conn)
                     deleteCmd.Parameters.AddWithValue("@Accno", selectedAccNo)
@@ -87,6 +96,7 @@ Public Class Form2
                     MessageBox.Show("Book deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End Using
 
+                ' Go back to the previous form
                 Dim back As New Form15
                 back.Show()
                 Me.Hide()
@@ -102,6 +112,7 @@ Public Class Form2
         cancel.Show()
         Me.Hide()
     End Sub
+
 
 
 End Class

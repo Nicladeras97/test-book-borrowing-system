@@ -196,17 +196,36 @@ Public Class Form15
         Inherits ToolStripProfessionalRenderer
 
         Protected Overrides Sub OnRenderMenuItemBackground(e As ToolStripItemRenderEventArgs)
-
-            Dim hoverColor As Color = Color.FromArgb(20, 0, 0, 0)
+            Dim isSubItem As Boolean = TypeOf e.Item.Owner Is ToolStripDropDownMenu
 
             If e.Item.Selected Then
-                e.Graphics.FillRectangle(New SolidBrush(Color.Gray), e.Item.ContentRectangle)
-
+                ' Hover effect for sub-items
+                If isSubItem Then
+                    e.Graphics.FillRectangle(New SolidBrush(Color.FromArgb(150, 50, 50, 50)), e.Item.ContentRectangle)
+                Else
+                    ' Hover effect for top-level menu items
+                    e.Graphics.FillRectangle(New SolidBrush(Color.FromArgb(150, 30, 30, 30)), e.Item.ContentRectangle)
+                End If
             Else
-                e.Graphics.FillRectangle(New SolidBrush(Color.Transparent), e.Item.ContentRectangle)
+                ' Background when not hovered
+                If isSubItem Then
+                    e.Graphics.FillRectangle(New SolidBrush(Color.FromArgb(100, 20, 20, 20)), e.Item.ContentRectangle)
+                Else
+                    e.Graphics.FillRectangle(New SolidBrush(Color.Transparent), e.Item.ContentRectangle)
+                End If
             End If
         End Sub
+
+        Protected Overrides Sub OnRenderItemText(e As ToolStripItemTextRenderEventArgs)
+            e.TextColor = Color.White
+            MyBase.OnRenderItemText(e)
+        End Sub
+
+        Protected Overrides Sub OnRenderToolStripBorder(e As ToolStripRenderEventArgs)
+            ' Optional: remove border
+        End Sub
     End Class
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MenuStrip1.Renderer = New CustomRenderer()
     End Sub
@@ -218,6 +237,7 @@ Public Class Form15
     End Sub
 
     Private Sub RepairBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RepairBooksToolStripMenuItem.Click
-
+        Dim repair As New Form5
+        repair.Show()
     End Sub
 End Class

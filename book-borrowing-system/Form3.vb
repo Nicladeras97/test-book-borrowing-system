@@ -32,10 +32,10 @@ Public Class Form3
             encoder.IncludeLabel = True
             encoder.CustomLabel = ComboBox1.Text
 
-            ' Generate barcode with correct encoding format
+
             Dim barcodeImage As Bitmap = encoder.Encode(BarcodeFormat.Code128, ComboBox1.Text)
 
-            ' Display barcode in PictureBox1
+
             PictureBox1.Image = barcodeImage
         Catch ex As Exception
             MessageBox.Show("Error generating barcode: " & ex.Message)
@@ -81,7 +81,7 @@ Public Class Form3
                         Dim accno As String = reader("Accno").ToString()
                         barcodeGenerator.CustomLabel = accno
 
-                        Dim barcodeImage As Bitmap = barcodeGenerator.Encode(BarcodeFormat.Code128, accno)
+                        Dim barcodeImage As Bitmap = barcodeGenerator.Encode(BarcodeFormat.Code93, accno)
 
                         Dim filePath As String = Path.Combine(saveFolder, accno & ".png")
                         barcodeImage.Save(filePath, Imaging.ImageFormat.Png)
