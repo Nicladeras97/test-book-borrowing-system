@@ -26,9 +26,6 @@ Partial Class Form6
         Button2 = New Button()
         DataGridView1 = New DataGridView()
         Button4 = New Button()
-        Button6 = New Button()
-        Label5 = New Label()
-        Button7 = New Button()
         Label3 = New Label()
         Label2 = New Label()
         DateTimePicker2 = New DateTimePicker()
@@ -81,7 +78,7 @@ Partial Class Form6
         DataGridView1.RowHeadersVisible = False
         DataGridView1.RowHeadersWidth = 51
         DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        DataGridView1.Size = New Size(1365, 553)
+        DataGridView1.Size = New Size(1365, 596)
         DataGridView1.TabIndex = 14
         ' 
         ' Button4
@@ -97,37 +94,6 @@ Partial Class Form6
         Button4.TabIndex = 15
         Button4.Text = "Print"
         Button4.UseVisualStyleBackColor = False
-        ' 
-        ' Button6
-        ' 
-        Button6.Cursor = Cursors.Hand
-        Button6.FlatStyle = FlatStyle.Flat
-        Button6.Location = New Point(995, 741)
-        Button6.Name = "Button6"
-        Button6.Size = New Size(66, 28)
-        Button6.TabIndex = 23
-        Button6.Text = "Next"
-        Button6.UseVisualStyleBackColor = True
-        ' 
-        ' Label5
-        ' 
-        Label5.Location = New Point(540, 743)
-        Label5.Name = "Label5"
-        Label5.Size = New Size(449, 24)
-        Label5.TabIndex = 22
-        Label5.Text = "1/10"
-        Label5.TextAlign = ContentAlignment.MiddleCenter
-        ' 
-        ' Button7
-        ' 
-        Button7.Cursor = Cursors.Hand
-        Button7.FlatStyle = FlatStyle.Flat
-        Button7.Location = New Point(468, 741)
-        Button7.Name = "Button7"
-        Button7.Size = New Size(66, 28)
-        Button7.TabIndex = 21
-        Button7.Text = "Back"
-        Button7.UseVisualStyleBackColor = True
         ' 
         ' Label3
         ' 
@@ -218,9 +184,6 @@ Partial Class Form6
         ClientSize = New Size(1446, 790)
         Controls.Add(ComboBox2)
         Controls.Add(GroupBox1)
-        Controls.Add(Button6)
-        Controls.Add(Label5)
-        Controls.Add(Button7)
         Controls.Add(Button4)
         Controls.Add(Button2)
         Controls.Add(DataGridView1)
@@ -234,9 +197,6 @@ Partial Class Form6
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents Button2 As Button
     Friend WithEvents Button4 As Button
-    Friend WithEvents Button6 As Button
-    Friend WithEvents Label5 As Label
-    Friend WithEvents Button7 As Button
     Friend WithEvents DateTimePicker1 As DateTimePicker
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label

@@ -39,6 +39,7 @@ Partial Class Form4
         Button1 = New Button()
         Label1 = New Label()
         PictureBox1 = New PictureBox()
+        RepairBooksToolStripMenuItem = New ToolStripMenuItem()
         MenuStrip1.SuspendLayout()
         Panel1.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -78,7 +79,7 @@ Partial Class Form4
         ' 
         ' ManageBooksToolStripMenuItem
         ' 
-        ManageBooksToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {AddBooksToolStripMenuItem, EditBooksToolStripMenuItem, DeleteBooksToolStripMenuItem, ImportToolStripMenuItem, DownloadTemplateToolStripMenuItem, REportsToolStripMenuItem})
+        ManageBooksToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {AddBooksToolStripMenuItem, EditBooksToolStripMenuItem, DeleteBooksToolStripMenuItem, ImportToolStripMenuItem, DownloadTemplateToolStripMenuItem, REportsToolStripMenuItem, RepairBooksToolStripMenuItem})
         ManageBooksToolStripMenuItem.ForeColor = SystemColors.ActiveCaptionText
         ManageBooksToolStripMenuItem.Name = "ManageBooksToolStripMenuItem"
         ManageBooksToolStripMenuItem.Size = New Size(293, 44)
@@ -181,6 +182,12 @@ Partial Class Form4
         PictureBox1.TabIndex = 0
         PictureBox1.TabStop = False
         ' 
+        ' RepairBooksToolStripMenuItem
+        ' 
+        RepairBooksToolStripMenuItem.Name = "RepairBooksToolStripMenuItem"
+        RepairBooksToolStripMenuItem.Size = New Size(425, 44)
+        RepairBooksToolStripMenuItem.Text = "Repair Books"
+        ' 
         ' Form4
         ' 
         AutoScaleDimensions = New SizeF(9F, 18F)
@@ -227,4 +234,5 @@ Partial Class Form4
     Friend WithEvents Button1 As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents ReceivedBooksToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents RepairBooksToolStripMenuItem As ToolStripMenuItem
 End Class

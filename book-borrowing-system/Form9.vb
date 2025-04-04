@@ -10,7 +10,7 @@ Public Class Form9
             conn.Open()
             ComboBox2.Focus()
             ComboBox2.DropDownStyle = ComboBoxStyle.DropDown
-            Dim query As String = "SELECT condition_id, condition_status FROM book_condition"
+            Dim query As String = "SELECT condition_id, condition_status FROM book_condition WHERE condition_id NOT IN (3, 4)"
             cmd = New MySqlCommand(query, conn)
             reader = cmd.ExecuteReader()
 
@@ -82,8 +82,9 @@ Public Class Form9
         End Try
     End Sub
 
+    'Return Good
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Dim accNo = ComboBox2.SelectedItem?.ToString
+        Dim accNo = ComboBox2.SelectedItem?.ToString()
 
         If String.IsNullOrEmpty(accNo) Then
             MessageBox.Show("Please select a book to return.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -100,6 +101,7 @@ Public Class Form9
             Dim getBorrowerQuery = "SELECT borrower_id, due_date, condition_id FROM books_borrowed WHERE book_id = @Accno"
             Dim borrowerCmd As New MySqlCommand(getBorrowerQuery, conn)
             borrowerCmd.Parameters.AddWithValue("@Accno", accNo)
+
             Dim borrowerReader = borrowerCmd.ExecuteReader()
 
             If borrowerReader.Read() Then
@@ -114,11 +116,12 @@ Public Class Form9
             End If
             borrowerReader.Close()
 
-            Dim selectedCondition = ComboBox1.SelectedItem.ToString
+            Dim selectedCondition = ComboBox1.SelectedItem.ToString()
             Dim selectedConditionID As Integer
             Dim conditionQuery = "SELECT condition_id FROM book_condition WHERE condition_status = @ConditionStatus"
             Dim conditionCmd As New MySqlCommand(conditionQuery, conn)
             conditionCmd.Parameters.AddWithValue("@ConditionStatus", selectedCondition)
+
             Dim conditionReader = conditionCmd.ExecuteReader()
 
             If conditionReader.Read() Then
@@ -132,7 +135,7 @@ Public Class Form9
             conditionReader.Close()
 
             If selectedConditionID <> originalConditionID Then
-                MessageBox.Show("Book condition has changed! Use the 'Damaged' return option instead.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                MessageBox.Show("The condition of the book has changed. You cannot return it until the condition is verified and updated.", "Condition Change", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 conn.Close()
                 Exit Sub
             End If
@@ -154,7 +157,13 @@ Public Class Form9
             returnCmd.Parameters.AddWithValue("@BookID", accNo)
             returnCmd.Parameters.AddWithValue("@ConditionID", selectedConditionID)
             returnCmd.Parameters.AddWithValue("@ReturnDate", Date.Now.ToString("yyyy-MM-dd"))
-            returnCmd.Parameters.AddWithValue("@PenaltyFee", penaltyAmount)
+
+            If penaltyAmount > 0 Then
+                returnCmd.Parameters.AddWithValue("@PenaltyFee", penaltyAmount)
+            Else
+                returnCmd.Parameters.AddWithValue("@PenaltyFee", 0)
+            End If
+
             returnCmd.ExecuteNonQuery()
 
             Dim deleteQuery = "DELETE FROM books_borrowed WHERE book_id = @Accno"
@@ -163,9 +172,11 @@ Public Class Form9
             deleteCmd.ExecuteNonQuery()
 
             MessageBox.Show("Book successfully returned!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
             Dim form4 As New Form4
             form4.Show()
             Hide()
+
         Catch ex As Exception
             MessageBox.Show("Error during book return: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
@@ -173,6 +184,8 @@ Public Class Form9
         End Try
     End Sub
 
+
+    'Returned Damaged
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Dim accNo = ComboBox2.SelectedItem?.ToString()
 
@@ -186,7 +199,6 @@ Public Class Form9
 
             Dim originalConditionID As Integer
             Dim borrowerID As Integer
-
             Dim getBorrowerQuery = "SELECT borrower_id, condition_id FROM books_borrowed WHERE book_id = @Accno"
             Dim borrowerCmd As New MySqlCommand(getBorrowerQuery, conn)
             borrowerCmd.Parameters.AddWithValue("@Accno", accNo)
@@ -202,13 +214,6 @@ Public Class Form9
                 Exit Sub
             End If
             borrowerReader.Close()
-
-            Dim selectedCondition = ComboBox1.SelectedItem.ToString()
-            If selectedCondition = "Good" Or selectedCondition = "New" Then
-                MessageBox.Show("Book condition is still good. Cannot mark as damaged.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                conn.Close()
-                Exit Sub
-            End If
 
             Dim damagePenaltyInput = InputBox("Enter penalty amount for the damaged book:", "Damage Penalty")
             Dim damagePenaltyAmount As Double
@@ -226,10 +231,52 @@ Public Class Form9
             damageCmd.Parameters.AddWithValue("@PenaltyFee", damagePenaltyAmount)
             damageCmd.ExecuteNonQuery()
 
-            MessageBox.Show("Book marked as damaged.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Dim result As DialogResult = MessageBox.Show("Do you want to mark this book for repair?", "Repair Option", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+            If result = DialogResult.Yes Then
+                Dim checkRepairQuery = "SELECT COUNT(*) FROM books_deleted WHERE Accno = @Accno"
+                Dim checkRepairCmd As New MySqlCommand(checkRepairQuery, conn)
+                checkRepairCmd.Parameters.AddWithValue("@Accno", accNo)
+                Dim repairCount As Integer = Convert.ToInt32(checkRepairCmd.ExecuteScalar())
+
+                If repairCount > 0 Then
+                    MessageBox.Show("This book is already marked for repair.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Else
+                    Dim repairQuery = "INSERT INTO books_deleted (Accno, Title, Author, Year, Publisher, ISBN, Section, CallNumber, Rack, ConditionID, DeletedDate, borrower_id) " &
+                                        "SELECT b.Accno, b.Title, b.Author, b.Year, b.Publisher, b.ISBN, b.Section, b.CallNumber, b.Rack, 5, @DeletionDate, r.BorrowerID " &
+                                        "FROM books b JOIN returned_books r ON b.Accno = r.BookID WHERE r.BookID = @Accno AND r.ConditionID = 3"
+
+                    Dim repairCmd As New MySqlCommand(repairQuery, conn)
+                    repairCmd.Parameters.AddWithValue("@DeletionDate", Date.Now.ToString("yyyy-MM-dd"))
+                    repairCmd.Parameters.AddWithValue("@Accno", accNo)
+                    repairCmd.ExecuteNonQuery()
+
+                    Dim removeBorrowedQuery = "DELETE FROM books_borrowed WHERE book_id = @Accno"
+                    Dim removeBorrowedCmd As New MySqlCommand(removeBorrowedQuery, conn)
+                    removeBorrowedCmd.Parameters.AddWithValue("@Accno", accNo)
+                    removeBorrowedCmd.ExecuteNonQuery()
+
+                    Dim deleteQuery = "DELETE FROM books WHERE Accno = @Accno"
+                    Dim deleteCmd As New MySqlCommand(deleteQuery, conn)
+                    deleteCmd.Parameters.AddWithValue("@Accno", accNo)
+                    deleteCmd.ExecuteNonQuery()
+
+                    MessageBox.Show("Book marked for repair, moved to the deleted books list, and removed from the borrowing records.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+            Else
+                Dim removeBorrowedQuery = "DELETE FROM books_borrowed WHERE book_id = @Accno"
+                Dim removeBorrowedCmd As New MySqlCommand(removeBorrowedQuery, conn)
+                removeBorrowedCmd.Parameters.AddWithValue("@Accno", accNo)
+                removeBorrowedCmd.ExecuteNonQuery()
+
+                MessageBox.Show("Book marked as damaged and remains available for borrowing.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+
+
             Dim form4 As New Form4
             form4.Show()
             Hide()
+
         Catch ex As Exception
             MessageBox.Show("Error during damaged book processing: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
@@ -237,6 +284,8 @@ Public Class Form9
         End Try
     End Sub
 
+
+    'Lost
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim accNo = ComboBox2.SelectedItem?.ToString()
 
@@ -346,7 +395,6 @@ Public Class Form9
             conn.Close()
         End Try
     End Sub
-
 
     Private Sub Back_Click(sender As Object, e As EventArgs)
         Dim back As New Form4
