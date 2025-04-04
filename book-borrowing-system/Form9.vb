@@ -12,12 +12,6 @@ Public Class Form9
             ComboBox2.DropDownStyle = ComboBoxStyle.DropDown
             Dim query As String = "SELECT condition_id, condition_status FROM book_condition WHERE condition_id NOT IN (3, 4)"
             cmd = New MySqlCommand(query, conn)
-            reader = cmd.ExecuteReader()
-
-            While reader.Read()
-                ComboBox1.Items.Add(reader("condition_status").ToString())
-            End While
-            reader.Close()
 
             Dim queryAccno As String = "SELECT book_id FROM books_borrowed"
             cmd = New MySqlCommand(queryAccno, conn)
@@ -70,7 +64,7 @@ Public Class Form9
                 Label31.Text = reader("Course_Strand").ToString()
                 Label28.Text = reader("ContactNumber").ToString()
                 Label26.Text = reader("Email").ToString()
-                ComboBox1.SelectedItem = reader("condition_status").ToString()
+                Label1.Text = reader("condition_status").ToString()
             Else
                 MessageBox.Show("Book record not found or not borrowed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
@@ -84,7 +78,7 @@ Public Class Form9
 
     'Return Good
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Dim accNo = ComboBox2.SelectedItem?.ToString()
+        Dim accNo = ComboBox2.Text?.ToString()
 
         If String.IsNullOrEmpty(accNo) Then
             MessageBox.Show("Please select a book to return.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -116,30 +110,6 @@ Public Class Form9
             End If
             borrowerReader.Close()
 
-            Dim selectedCondition = ComboBox1.SelectedItem.ToString()
-            Dim selectedConditionID As Integer
-            Dim conditionQuery = "SELECT condition_id FROM book_condition WHERE condition_status = @ConditionStatus"
-            Dim conditionCmd As New MySqlCommand(conditionQuery, conn)
-            conditionCmd.Parameters.AddWithValue("@ConditionStatus", selectedCondition)
-
-            Dim conditionReader = conditionCmd.ExecuteReader()
-
-            If conditionReader.Read() Then
-                selectedConditionID = Convert.ToInt32(conditionReader("condition_id"))
-            Else
-                MessageBox.Show("Error: Condition not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                conditionReader.Close()
-                conn.Close()
-                Exit Sub
-            End If
-            conditionReader.Close()
-
-            If selectedConditionID <> originalConditionID Then
-                MessageBox.Show("The condition of the book has changed. You cannot return it until the condition is verified and updated.", "Condition Change", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                conn.Close()
-                Exit Sub
-            End If
-
             Dim penaltyAmount As Double = 0
             If Date.Now > dueDate Then
                 Dim overdueDays = (Date.Now - dueDate).Days
@@ -155,7 +125,7 @@ Public Class Form9
             Dim returnCmd As New MySqlCommand(returnQuery, conn)
             returnCmd.Parameters.AddWithValue("@BorrowerID", borrowerID)
             returnCmd.Parameters.AddWithValue("@BookID", accNo)
-            returnCmd.Parameters.AddWithValue("@ConditionID", selectedConditionID)
+            returnCmd.Parameters.AddWithValue("@ConditionID", originalConditionID)
             returnCmd.Parameters.AddWithValue("@ReturnDate", Date.Now.ToString("yyyy-MM-dd"))
 
             If penaltyAmount > 0 Then
@@ -183,7 +153,6 @@ Public Class Form9
             conn.Close()
         End Try
     End Sub
-
 
     'Returned Damaged
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click

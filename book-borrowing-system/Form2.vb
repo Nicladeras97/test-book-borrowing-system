@@ -5,13 +5,7 @@ Public Class Form2
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadBookAccnos()
-        Button1.Enabled = False
     End Sub
-
-    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
-        Button1.Enabled = ComboBox1.SelectedItem IsNot Nothing
-    End Sub
-
 
     Private Sub LoadBookAccnos()
         ComboBox1.Items.Clear()
@@ -32,12 +26,12 @@ Public Class Form2
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        If ComboBox1.SelectedItem Is Nothing Then
+        If ComboBox1.Text Is Nothing Then
             MessageBox.Show("Please select an Accno.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
 
-        Dim selectedAccNo As String = ComboBox1.SelectedItem.ToString()
+        Dim selectedAccNo As String = ComboBox1.Text.ToString()
         Using conn As New MySqlConnection(connString)
             Try
                 conn.Open()
@@ -65,12 +59,12 @@ Public Class Form2
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If ComboBox1.SelectedItem Is Nothing Then
+        If ComboBox1.Text Is Nothing Then
             MessageBox.Show("Please select an Accno to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
 
-        Dim selectedAccNo As String = ComboBox1.SelectedItem.ToString()
+        Dim selectedAccNo As String = ComboBox1.Text.ToString()
 
         Using conn As New MySqlConnection(connString)
             Try

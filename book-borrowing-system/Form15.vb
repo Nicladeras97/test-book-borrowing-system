@@ -187,16 +187,6 @@ Public Class Form15
         barcode.Show()
     End Sub
 
-    Private Sub RepairBooksToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles RepairBooksToolStripMenuItem.Click
-        Dim repair As New Form5
-        repair.Show()
-    End Sub
-
-    Private Sub SettingsToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles SettingsToolStripMenuItem.Click
-        Dim message As New Report
-        message.Show()
-    End Sub
-
     Private Sub MenuStrip1_Paint(sender As Object, e As PaintEventArgs) Handles MenuStrip1.Paint
 
         MenuStrip1.BackColor = Color.FromArgb(100, 0, 0, 0)
@@ -225,6 +215,5 @@ Public Class Form15
         Dim Logout As New Form1
         Logout.Show()
         Me.Hide()
-
     End Sub
 End Class

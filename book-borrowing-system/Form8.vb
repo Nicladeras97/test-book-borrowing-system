@@ -101,7 +101,7 @@ Public Class Form8
                             TextBox3.Text = reader("ContactNumber").ToString()
                             TextBox4.Text = reader("Email").ToString()
                         Else
-                            MessageBox.Show("Student not found. Please input details.", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                            MessageBox.Show("No record found. Please input details.", "No record found", MessageBoxButtons.OK, MessageBoxIcon.None)
                             TextBox2.Clear()
                             TextBox5.Clear()
                             TextBox6.Clear()

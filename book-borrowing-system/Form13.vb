@@ -26,12 +26,12 @@ Public Class Form13
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        If ComboBox1.SelectedItem Is Nothing Then
-            MessageBox.Show("Please select an Accno.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        If String.IsNullOrWhiteSpace(ComboBox1.Text) Then
+            MessageBox.Show("Please enter or select a book.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
 
-        Dim selectedAccNo As String = ComboBox1.SelectedItem.ToString()
+        Dim selectedAccNo As String = ComboBox1.Text.ToString()
         Using conn As New MySqlConnection(connString)
             Try
                 conn.Open()
