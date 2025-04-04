@@ -152,11 +152,6 @@ Public Class Form4
         report.Show()
     End Sub
 
-    Private Sub CreateToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CreateToolStripMenuItem.Click
-        Dim barcode As New Form3
-        barcode.Show()
-    End Sub
-
     Private Sub LogoutToolStripMenuItem_Click(sender As Object, e As EventArgs)
         Dim logout As New Form1
         logout.Show()
@@ -184,31 +179,18 @@ Public Class Form4
         lend.Show()
     End Sub
 
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
-
+    Private Sub RepairBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RepairBooksToolStripMenuItem.Click
+        Dim repair As New Form5
+        repair.Show()
     End Sub
 
-    Private Sub Form4_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+    Private Sub BarcodeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BarcodeToolStripMenuItem.Click
+        Dim barcode As New Form3
+        barcode.Show()
     End Sub
 
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs)
-        Form1.Show()
-        Hide()
-
-    End Sub
-
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
-        Panel1.BackColor = Color.FromArgb(100, 0, 0, 0)
-    End Sub
-
-    Private Sub Button1_Click_2(sender As Object, e As EventArgs) Handles Button1.Click
-        Form1.Show()
-        Hide()
-
-    End Sub
-
-    Private Sub MenuStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles MenuStrip1.ItemClicked
-
+    Private Sub SettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SettingsToolStripMenuItem.Click
+        Dim message As New Report
+        message.Show()
     End Sub
 End Class

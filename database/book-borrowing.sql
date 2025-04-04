@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 01, 2025 at 10:16 AM
+-- Generation Time: Apr 04, 2025 at 03:54 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -49,7 +49,7 @@ INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, 
 ('The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Scribner', '123456789', 'Fiction', '2025-03-31', 'REF E 222 CE74 2001', 'R2', '2025000002-01'),
 ('The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Scribner', '123456789', 'Fiction', '2025-03-31', 'REF E 222 CE74 2001', 'R2', '2025000008-01'),
 ('The Invisible Life of Addie LaRue', 'Agatha Christie', 1998, 'Vintage', '978-1-5265-210-7', 'Section', '2025-04-01', 'SHS A 260 CA66 1998', 'CA66', '2025000009-00'),
-('Atomic Habits', 'James Clear', 2004, 'Little, Brown and Company', '978-1-5635-708-4', 'SHS', '2025-04-01', 'FIL B 369 CB35 2004', 'CB35', '2025000010-00'),
+('Atomic Habits', 'James Clear', 2004, 'Little, Brown and Company', '978-1-5635-708-4', 'SHS', NULL, 'FIL B 369 CB35 2004', 'CB35', '2025000010-00'),
 ('A Man Called Ove', 'Stephen King', 1994, 'Doubleday', '978-1-9880-351-5', 'Filipiniana', '2025-04-01', 'RES C 500 KC26 1994', 'KC26', '2025000011-00'),
 ('Daisy Jones & The Six', 'Fredrik Backman', 1986, 'Hachette Book Group', '978-1-3314-390-6', 'Reserved', '2025-04-01', 'SHS D 466 BD80 1986', 'BD80', '2025000012-00'),
 ('Daisy Jones & The Six', 'TJ Klune', 1992, 'Penguin Random House', '978-1-8297-256-7', 'SHS', '2025-04-01', 'FIL E 810 KE71 1992', 'KE71', '2025000013-00'),
@@ -161,7 +161,7 @@ INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, 
 ('The Book Thief', 'Agatha Christie', 1996, 'St. Martin\'s Press', '978-1-3559-880-3', 'Reference', '2025-04-01', 'REF D 422 CD43 1996', 'CD43', '2025000119-00'),
 ('The Silent Patient', 'Delia Owens', 2016, 'G.P. Putnam\'s Sons', '978-1-4596-288-9', 'Reference', '2025-04-01', 'SHS E 713 OE96 2016', 'OE96', '2025000120-00'),
 ('The Invisible Life of Addie LaRue', 'Matt Haig', 2010, 'Knopf Publishing Group', '978-1-2966-810-7', 'SHS', '2025-04-01', 'SHS F 368 HF65 2010', 'HF65', '2025000121-00'),
-('A Man Called Ove', 'Andy Weir', 2008, 'G.P. Putnam\'s Sons', '978-1-1804-970-4', 'SHS', '2025-04-01', 'FIL G 525 WG50 2008', 'WG50', '2025000122-00'),
+('A Man Called Ove', 'Andy Weir', 2008, 'G.P. Putnam\'s Sons', '978-1-1804-970-4', 'SHS', NULL, 'FIL G 525 WG50 2008', 'WG50', '2025000122-00'),
 ('Circe', 'Tracy Deonn', 2017, 'Vintage', '978-1-6734-175-10', 'Filipiniana', '2025-04-01', 'FIL H 576 DH19 2017', 'DH19', '2025000123-00'),
 ('The Night Circus', 'Andy Weir', 1997, 'Simon & Schuster', '978-1-7192-699-7', 'Filipiniana', '2025-04-01', 'RES I 963 WI58 1997', 'WI58', '2025000124-00'),
 ('A Man Called Ove', 'Erin Morgenstern', 1989, 'Scholastic', '978-1-7659-384-5', 'Reserved', '2025-04-01', 'SHS J 275 MJ97 1989', 'MJ97', '2025000125-00'),
@@ -215,7 +215,6 @@ INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, 
 ('The Night Circus', 'Andy Weir', 2011, 'Bloomsbury Publishing', '978-1-1113-221-4', 'Reserved', '2025-04-01', 'RES B 337 WB32 2011', 'WB32', '2025000173-00'),
 ('A Man Called Ove', 'James Clear', 2016, 'Vintage', '978-1-9807-589-5', 'Reserved', '2025-04-01', 'RES C 687 CC28 2016', 'CC28', '2025000174-00'),
 ('A Man Called Ove', 'Delia Owens', 1998, 'Little, Brown and Company', '978-1-2211-451-4', 'Reserved', '2025-04-01', 'RES D 882 OD79 1998', 'OD79', '2025000175-00'),
-('The Alchemist', 'Stephen King', 2020, 'Grand Central Publishing', '978-1-5260-803-7', 'Reserved', '2025-04-01', 'REF E 958 KE47 2020', 'KE47', '2025000176-00'),
 ('Daisy Jones & The Six', 'Erin Morgenstern', 1986, 'Farrar, Straus and Giroux', '978-1-6252-422-3', 'Reference', '2025-04-01', 'FIL F 727 MF11 1986', 'MF11', '2025000177-00'),
 ('Legendborn', 'Madeline Miller', 1993, 'HarperCollins', '978-1-5116-469-9', 'Filipiniana', '2025-04-01', 'FIL G 484 MG69 1993', 'MG69', '2025000178-00'),
 ('Educated', 'Markus Zusak', 1995, 'Crown Publishing', '978-1-8720-170-7', 'Filipiniana', '2025-04-01', 'REF H 791 ZH29 1995', 'ZH29', '2025000179-00'),
@@ -246,7 +245,6 @@ INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, 
 ('A Man Called Ove', 'Agatha Christie', 2011, 'Tor Books', '978-1-4231-970-5', 'Filipiniana', '2025-04-01', 'SHS G 196 CG97 2011', 'CG97', '2025000204-00'),
 ('Daisy Jones & The Six', 'James Clear', 2010, 'Grand Central Publishing', '978-1-2606-741-7', 'SHS', '2025-04-01', 'RES H 780 CH97 2010', 'CH97', '2025000205-00'),
 ('The Seven Husbands of Evelyn Hugo', 'Madeline Miller', 2014, 'Bloomsbury Publishing', '978-1-7148-440-3', 'Reserved', '2025-04-01', 'FIL I 463 MI61 2014', 'MI61', '2025000206-00'),
-('A Man Called Ove', 'Fredrik Backman', 1997, 'Hachette Book Group', '978-1-3428-742-8', 'Filipiniana', '2025-04-01', 'REF J 291 BJ46 1997', 'BJ46', '2025000207-00'),
 ('Verity', 'Andy Weir', 1981, 'Doubleday', '978-1-8431-619-2', 'Reference', '2025-04-01', 'RES K 909 WK56 1981', 'WK56', '2025000208-00'),
 ('Educated', 'Andy Weir', 2013, 'Penguin Random House', '978-1-2148-918-7', 'Reserved', '2025-04-01', 'SHS L 463 WL19 2013', 'WL19', '2025000209-00'),
 ('The Silent Patient', 'Matt Haig', 2007, 'G.P. Putnam\'s Sons', '978-1-2006-898-9', 'SHS', '2025-04-01', 'REF M 812 HM94 2007', 'HM94', '2025000210-00'),
@@ -295,7 +293,6 @@ INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, 
 ('Becoming', 'J.K. Rowling', 1986, 'Scholastic', '978-1-8736-548-10', 'Reserved', '2025-04-01', 'SHS D 961 RD58 1986', 'RD58', '2025000253-00'),
 ('The Invisible Life of Addie LaRue', 'Fredrik Backman', 2023, 'Harlequin', '978-1-6908-156-4', 'SHS', '2025-04-01', 'FIL E 938 BE65 2023', 'BE65', '2025000254-00'),
 ('Project Hail Mary', 'Stephen King', 2008, 'Simon & Schuster', '978-1-2413-205-3', 'Filipiniana', '2025-04-01', 'REF F 529 KF41 2008', 'KF41', '2025000255-00'),
-('A Man Called Ove', 'Fredrik Backman', 1982, 'Bantam Books', '978-1-1954-616-7', 'Reference', '2025-04-01', 'RES G 635 BG47 1982', 'BG47', '2025000256-00'),
 ('Verity', 'TJ Klune', 1980, 'Little, Brown and Company', '978-1-2739-594-3', 'Reserved', '2025-04-01', 'SHS H 136 KH49 1980', 'KH49', '2025000257-00'),
 ('The Seven Husbands of Evelyn Hugo', 'Tara Westover', 2004, 'Bantam Books', '978-1-3660-876-4', 'SHS', '2025-04-01', 'RES I 821 WI90 2004', 'WI90', '2025000258-00'),
 ('The Alchemist', 'J.K. Rowling', 2011, 'Knopf Publishing Group', '978-1-8147-446-7', 'Reserved', '2025-04-01', 'FIL J 686 RJ50 2011', 'RJ50', '2025000259-00'),
@@ -361,13 +358,12 @@ INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, 
 ('The Seven Husbands of Evelyn Hugo', 'Agatha Christie', 1988, 'St. Martin\'s Press', '978-1-8660-940-8', 'Reference', '2025-04-01', 'RES R 599 CR71 1988', 'CR71', '2025000319-00'),
 ('A Man Called Ove', 'TJ Klune', 2001, 'Harlequin', '978-1-9165-535-10', 'Reserved', '2025-04-01', 'SHS S 896 KS23 2001', 'KS23', '2025000320-00'),
 ('It Ends With Us', 'Agatha Christie', 2005, 'Ballantine Books', '978-1-5438-945-4', 'SHS', '2025-04-01', 'RES T 357 CT21 2005', 'CT21', '2025000321-00'),
-('The House in the Cerulean Sea', 'Paulo Coelho', 2011, 'Scholastic', '978-1-8211-258-6', 'Reserved', '2025-04-01', 'REF U 631 CU42 2011', 'CU42', '2025000322-00');
-INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, `AddedDate`, `CallNumber`, `Rack`, `Accno`) VALUES
+('The House in the Cerulean Sea', 'Paulo Coelho', 2011, 'Scholastic', '978-1-8211-258-6', 'Reserved', '2025-04-01', 'REF U 631 CU42 2011', 'CU42', '2025000322-00'),
 ('The Song of Achilles', 'J.K. Rowling', 1984, 'G.P. Putnam\'s Sons', '978-1-8064-809-7', 'Reference', '2025-04-01', 'RES V 970 RV94 1984', 'RV94', '2025000323-00'),
 ('The Seven Husbands of Evelyn Hugo', 'Paulo Coelho', 2013, 'Little, Brown and Company', '978-1-1966-222-1', 'Reserved', '2025-04-01', 'FIL W 270 CW48 2013', 'CW48', '2025000324-00'),
-('The Midnight Library', 'Tara Westover', 2019, 'Macmillan Publishers', '978-1-3282-821-10', 'Filipiniana', '2025-04-01', 'RES X 537 WX90 2019', 'WX90', '2025000325-00'),
+('The Midnight Library', 'Tara Westover', 2019, 'Macmillan Publishers', '978-1-3282-821-10', 'Filipiniana', '2025-04-01', 'RES X 537 WX90 2019', 'WX90', '2025000325-00');
+INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, `AddedDate`, `CallNumber`, `Rack`, `Accno`) VALUES
 ('Legendborn', 'Madeline Miller', 2024, 'Penguin Random House', '978-1-8294-801-4', 'Reserved', '2025-04-01', 'SHS Y 649 MY67 2024', 'MY67', '2025000326-00'),
-('A Man Called Ove', 'J.K. Rowling', 1985, 'Harlequin', '978-1-2990-651-2', 'SHS', '2025-04-01', 'FIL Z 557 RZ55 1985', 'RZ55', '2025000327-00'),
 ('Project Hail Mary', 'Andy Weir', 1992, 'Scholastic', '978-1-9308-177-1', 'Filipiniana', '2025-04-01', 'RES A 912 WA89 1992', 'WA89', '2025000328-00'),
 ('Project Hail Mary', 'Erin Morgenstern', 2011, 'Ballantine Books', '978-1-7845-947-2', 'Reserved', '2025-04-01', 'RES B 874 MB22 2011', 'MB22', '2025000329-00'),
 ('The Book Thief', 'Delia Owens', 2004, 'Simon & Schuster', '978-1-8426-613-8', 'Reserved', '2025-04-01', 'FIL C 365 OC36 2004', 'OC36', '2025000330-00'),
@@ -626,6 +622,13 @@ CREATE TABLE `books_borrowed` (
   `notify_id` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `books_borrowed`
+--
+
+INSERT INTO `books_borrowed` (`borrow_id`, `borrower_id`, `book_id`, `condition_id`, `date_borrowed`, `due_date`, `time`, `notify_id`) VALUES
+(49, 1, '2025000175-00', 1, '2025-04-03', '2025-04-14', '17:05:13', 4);
+
 -- --------------------------------------------------------
 
 --
@@ -652,12 +655,11 @@ CREATE TABLE `books_deleted` (
 --
 
 INSERT INTO `books_deleted` (`Accno`, `Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, `CallNumber`, `Rack`, `ConditionID`, `DeletedDate`, `borrower_id`) VALUES
-('2025000003-02', 'The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Scribner', '123456789', 'Fiction', 'REF E 222 CE74 2001', 'R2', 4, '2025-04-01 06:05:05', NULL),
-('2025000004-00', 'The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Scribner', '123456789', 'Fiction', 'REF E 222 CE74 2001', 'R2', 4, '2025-04-01 05:42:32', NULL),
 ('2025000005-01', 'The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Scribner', '123456789', 'Fiction', 'REF E 222 CE74 2001', 'R2', 4, '2025-04-01 06:13:11', 1),
-('2025000006-02', 'The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Scribner', '123456789', 'Fiction', 'REF E 222 CE74 2001', 'R2', 4, '2025-03-31 15:46:01', NULL),
-('2025000007-00', 'The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Scribner', '123456789', 'Fiction', 'REF E 222 CE74 2001', 'R2', 4, '2025-04-01 05:19:14', NULL),
-('2025000009-02', 'The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Scribner', '123456789', 'Fiction', 'REF E 222 CE74 2001', 'R2', 4, '2025-03-31 15:50:01', NULL);
+('2025000176-00', 'The Alchemist', 'Stephen King', 2020, 'Grand Central Publishing', '978-1-5260-803-7', 'Reserved', 'REF E 958 KE47 2020', 'KE47', 5, '2025-04-03 16:00:00', 8),
+('2025000207-00', 'A Man Called Ove', 'Fredrik Backman', 1997, 'Hachette Book Group', '978-1-3428-742-8', 'Filipiniana', 'REF J 291 BJ46 1997', 'BJ46', 4, '2025-04-03 14:28:16', 8),
+('2025000256-00', 'A Man Called Ove', 'Fredrik Backman', 1982, 'Bantam Books', '978-1-1954-616-7', 'Reference', 'RES G 635 BG47 1982', 'BG47', 4, '2025-04-03 08:57:21', 5),
+('2025000327-00', 'A Man Called Ove', 'J.K. Rowling', 1985, 'Harlequin', '978-1-2990-651-2', 'SHS', 'FIL Z 557 RZ55 1985', 'RZ55', 5, '2025-04-03 16:00:00', 8);
 
 -- --------------------------------------------------------
 
@@ -678,7 +680,8 @@ INSERT INTO `book_condition` (`condition_id`, `condition_status`) VALUES
 (1, 'New'),
 (2, 'Good'),
 (3, 'Damaged'),
-(4, 'Lost');
+(4, 'Lost'),
+(5, 'Repair');
 
 -- --------------------------------------------------------
 
@@ -735,7 +738,8 @@ CREATE TABLE `librarians` (
 
 INSERT INTO `librarians` (`LibraryID`, `FullName`, `Username`, `Password`) VALUES
 (3, 'Dale Wood', 'dalehoods', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
-(4, 'user', 'user', 'user');
+(4, 'user', 'user', 'user'),
+(5, 'library', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918');
 
 -- --------------------------------------------------------
 
@@ -758,7 +762,17 @@ CREATE TABLE `returned_books` (
 
 INSERT INTO `returned_books` (`return_id`, `BorrowerID`, `BookID`, `ConditionID`, `Return Date`, `Penalty Fee`) VALUES
 (18, 1, '2025000008-01', 3, '2025-03-31', 0),
-(20, 1, '2025000001-00', 3, '2025-04-01', 0);
+(20, 1, '2025000001-00', 3, '2025-04-01', 0),
+(28, 5, '2025000042-00', 2, '2025-04-03', 12),
+(30, 1, '2025000175-00', 3, '2025-04-03', 0),
+(41, 8, '2025000125-00', 3, '2025-04-04', 100),
+(43, 1, '2025000175-00', 3, '2025-04-04', 100),
+(44, 1, '2025000556-00', 1, '2025-04-04', 0),
+(45, 1, '2025000175-00', 3, '2025-04-04', 120),
+(47, 1, '2025000175-00', 3, '2025-04-04', 100),
+(49, 8, '2025000125-00', 3, '2025-04-04', 1),
+(50, 8, '2025000125-00', 3, '2025-04-04', 1),
+(51, 8, '2025000125-00', 3, '2025-04-04', 0);
 
 -- --------------------------------------------------------
 
@@ -786,7 +800,8 @@ INSERT INTO `users` (`UserID`, `StudNo`, `FullName`, `Year_Section`, `Course_Str
 (4, '211154', 'April', '4 A', 'BSCS', '09124356786', 'aprilreyes@gmail.com\r\n'),
 (5, '201107', 'Kimberly', '4 A', 'BSCS', '09123456789', 'kimberlyjeresano@gmail.com'),
 (6, '211321', 'Dale', '4 A', 'BSCS', '09123456789', 'dalesoriano@gmail.com'),
-(7, '211008', 'Allysa', '4 A', 'BSCS', '09123455856', 'allysapacunio0023@gmail.com');
+(7, '211008', 'Allysa', '4 A', 'BSCS', '09123455856', 'allysapacunio0023@gmail.com'),
+(8, '211241', 'Monica Cano', '4A', 'BSCS', '09368417320', 'nicladeras97@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -859,7 +874,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `books_borrowed`
 --
 ALTER TABLE `books_borrowed`
-  MODIFY `borrow_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `borrow_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `book_condition`
@@ -877,19 +892,19 @@ ALTER TABLE `email_message`
 -- AUTO_INCREMENT for table `librarians`
 --
 ALTER TABLE `librarians`
-  MODIFY `LibraryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `LibraryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `returned_books`
 --
 ALTER TABLE `returned_books`
-  MODIFY `return_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `return_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
@@ -901,7 +916,8 @@ ALTER TABLE `users`
 ALTER TABLE `books_borrowed`
   ADD CONSTRAINT `BORROWER` FOREIGN KEY (`borrower_id`) REFERENCES `users` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `Book_id` FOREIGN KEY (`book_id`) REFERENCES `books` (`Accno`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `condition_id` FOREIGN KEY (`condition_id`) REFERENCES `book_condition` (`condition_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `condition_id` FOREIGN KEY (`condition_id`) REFERENCES `book_condition` (`condition_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_book_id` FOREIGN KEY (`book_id`) REFERENCES `books` (`Accno`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `books_deleted`

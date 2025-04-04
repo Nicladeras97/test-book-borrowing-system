@@ -33,12 +33,13 @@ Partial Class Form4
         ImportToolStripMenuItem = New ToolStripMenuItem()
         DownloadTemplateToolStripMenuItem = New ToolStripMenuItem()
         REportsToolStripMenuItem = New ToolStripMenuItem()
+        RepairBooksToolStripMenuItem = New ToolStripMenuItem()
         BarcodeToolStripMenuItem = New ToolStripMenuItem()
-        CreateToolStripMenuItem = New ToolStripMenuItem()
-        PictureBox1 = New PictureBox()
         Panel1 = New Panel()
         Button1 = New Button()
         Label1 = New Label()
+        PictureBox1 = New PictureBox()
+        SettingsToolStripMenuItem = New ToolStripMenuItem()
         MenuStrip1.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
@@ -52,7 +53,7 @@ Partial Class Form4
         MenuStrip1.Dock = DockStyle.None
         MenuStrip1.Font = New Font("Arial", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         MenuStrip1.ImageScalingSize = New Size(20, 20)
-        MenuStrip1.Items.AddRange(New ToolStripItem() {LendReceivedToolStripMenuItem, ReceivedBooksToolStripMenuItem, ManageBooksToolStripMenuItem, BarcodeToolStripMenuItem})
+        MenuStrip1.Items.AddRange(New ToolStripItem() {LendReceivedToolStripMenuItem, ReceivedBooksToolStripMenuItem, ManageBooksToolStripMenuItem, BarcodeToolStripMenuItem, SettingsToolStripMenuItem})
         MenuStrip1.LayoutStyle = ToolStripLayoutStyle.VerticalStackWithOverflow
         MenuStrip1.Location = New Point(82, 121)
         MenuStrip1.Margin = New Padding(50)
@@ -84,9 +85,8 @@ Partial Class Form4
         ' 
         ' ManageBooksToolStripMenuItem
         ' 
-        ManageBooksToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {AddBooksToolStripMenuItem, EditBooksToolStripMenuItem, DeleteBooksToolStripMenuItem, ImportToolStripMenuItem, DownloadTemplateToolStripMenuItem, REportsToolStripMenuItem})
-        ManageBooksToolStripMenuItem.ForeColor = SystemColors.ButtonHighlight
-        ManageBooksToolStripMenuItem.Margin = New Padding(0, 50, 0, 50)
+        ManageBooksToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {AddBooksToolStripMenuItem, EditBooksToolStripMenuItem, DeleteBooksToolStripMenuItem, ImportToolStripMenuItem, DownloadTemplateToolStripMenuItem, REportsToolStripMenuItem, RepairBooksToolStripMenuItem})
+        ManageBooksToolStripMenuItem.ForeColor = SystemColors.ActiveCaptionText
         ManageBooksToolStripMenuItem.Name = "ManageBooksToolStripMenuItem"
         ManageBooksToolStripMenuItem.Padding = New Padding(0, 10, 0, 10)
         ManageBooksToolStripMenuItem.Size = New Size(293, 56)
@@ -129,33 +129,20 @@ Partial Class Form4
         REportsToolStripMenuItem.Size = New Size(349, 36)
         REportsToolStripMenuItem.Text = "Reports"
         ' 
+        ' RepairBooksToolStripMenuItem
+        ' 
+        RepairBooksToolStripMenuItem.Name = "RepairBooksToolStripMenuItem"
+        RepairBooksToolStripMenuItem.Size = New Size(425, 44)
+        RepairBooksToolStripMenuItem.Text = "Repair Books"
+        ' 
         ' BarcodeToolStripMenuItem
         ' 
-        BarcodeToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {CreateToolStripMenuItem})
-        BarcodeToolStripMenuItem.ForeColor = SystemColors.ButtonHighlight
-        BarcodeToolStripMenuItem.Margin = New Padding(0, 50, 0, 50)
+        BarcodeToolStripMenuItem.ForeColor = SystemColors.ActiveCaptionText
         BarcodeToolStripMenuItem.Name = "BarcodeToolStripMenuItem"
         BarcodeToolStripMenuItem.Padding = New Padding(0, 10, 0, 10)
         BarcodeToolStripMenuItem.Size = New Size(293, 56)
         BarcodeToolStripMenuItem.Text = "Barcode"
         BarcodeToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft
-        ' 
-        ' CreateToolStripMenuItem
-        ' 
-        CreateToolStripMenuItem.Name = "CreateToolStripMenuItem"
-        CreateToolStripMenuItem.Size = New Size(173, 36)
-        CreateToolStripMenuItem.Text = "Create"
-        ' 
-        ' PictureBox1
-        ' 
-        PictureBox1.BackColor = Color.Transparent
-        PictureBox1.BackgroundImage = My.Resources.Resources.cmilogo
-        PictureBox1.BackgroundImageLayout = ImageLayout.Zoom
-        PictureBox1.Location = New Point(0, 2)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(107, 91)
-        PictureBox1.TabIndex = 0
-        PictureBox1.TabStop = False
         ' 
         ' Panel1
         ' 
@@ -197,6 +184,22 @@ Partial Class Form4
         Label1.TabIndex = 2
         Label1.Text = "Book- Management System"
         ' 
+        ' PictureBox1
+        ' 
+        PictureBox1.BackgroundImage = My.Resources.Resources.cmilogo
+        PictureBox1.BackgroundImageLayout = ImageLayout.Zoom
+        PictureBox1.Location = New Point(0, 0)
+        PictureBox1.Name = "PictureBox1"
+        PictureBox1.Size = New Size(133, 120)
+        PictureBox1.TabIndex = 0
+        PictureBox1.TabStop = False
+        ' 
+        ' SettingsToolStripMenuItem
+        ' 
+        SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
+        SettingsToolStripMenuItem.Size = New Size(293, 44)
+        SettingsToolStripMenuItem.Text = "Settings"
+        ' 
         ' Form4
         ' 
         AutoScaleMode = AutoScaleMode.None
@@ -236,10 +239,11 @@ Partial Class Form4
     Friend WithEvents ImportToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DownloadTemplateToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents REportsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CreateToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents ReceivedBooksToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label1 As Label
     Friend WithEvents Button1 As Button
+    Friend WithEvents Label1 As Label
+    Friend WithEvents ReceivedBooksToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents RepairBooksToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SettingsToolStripMenuItem As ToolStripMenuItem
 End Class

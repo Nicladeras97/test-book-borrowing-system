@@ -33,7 +33,7 @@ Public Class Form8
         Using conn As New MySqlConnection(connString)
             Try
                 conn.Open()
-                Dim query As String = "SELECT condition_id, condition_status FROM book_condition WHERE condition_id <> 4"
+                Dim query As String = "SELECT condition_id, condition_status FROM book_condition WHERE condition_id NOT IN (3, 4)"
                 Using cmd As New MySqlCommand(query, conn)
                     Dim reader As MySqlDataReader = cmd.ExecuteReader()
                     While reader.Read()
@@ -178,7 +178,7 @@ Public Class Form8
                     End If
                 End Using
 
-                Dim insertQuery As String = "INSERT INTO books_borrowed (borrower_id, book_id, condition_id, date_borrowed, due_date, time) VALUES (@UserId, @BookId, @ConditionId, @DateBorrowed, @DueDate, @Time)"
+                Dim insertQuery As String = "INSERT INTO books_borrowed (borrower_id, book_id, condition_id, date_borrowed, due_date, time, notify_id) VALUES (@UserId, @BookId, @ConditionId, @DateBorrowed, @DueDate, @Time, @NotifyID)"
 
                 Using cmd As New MySqlCommand(insertQuery, conn)
                     cmd.Parameters.AddWithValue("@UserId", userId)
@@ -187,6 +187,7 @@ Public Class Form8
                     cmd.Parameters.AddWithValue("@DateBorrowed", DateTime.Now.Date)
                     cmd.Parameters.AddWithValue("@DueDate", DateTimePicker2.Value)
                     cmd.Parameters.AddWithValue("@Time", DateTime.Now.ToString("HH:mm:ss"))
+                    cmd.Parameters.AddWithValue("@NotifyID", 4)
                     cmd.ExecuteNonQuery()
 
                     MessageBox.Show("Book successfully borrowed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
