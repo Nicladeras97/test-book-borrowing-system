@@ -80,7 +80,7 @@ Public Class Form9
                 End If
             End If
 
-            Dim returnQuery = "INSERT INTO returned_books (BorrowerID, BookID, ConditionID, `Return Date`, `Penalty Fee`) VALUES (@BorrowerID, @BookID, @ConditionID, @ReturnDate, @PenaltyFee)"
+            Dim returnQuery = "INSERT INTO returned_books (BorrowerID, BookID, ConditionID, Return Date, Penalty Fee) VALUES (@BorrowerID, @BookID, @ConditionID, @ReturnDate, @PenaltyFee)"
             Dim returnCmd As New MySqlCommand(returnQuery, conn)
             returnCmd.Parameters.AddWithValue("@BorrowerID", borrowerID)
             returnCmd.Parameters.AddWithValue("@BookID", accNo)
@@ -151,7 +151,7 @@ Public Class Form9
                 Exit Sub
             End If
 
-            Dim damageQuery = "INSERT INTO returned_books (BorrowerID, BookID, ConditionID, `Return Date`, `Penalty Fee`) VALUES (@BorrowerID, @BookID, 3, @ReturnDate, @PenaltyFee)"
+            Dim damageQuery = "INSERT INTO returned_books (BorrowerID, BookID, ConditionID, Return Date, Penalty Fee) VALUES (@BorrowerID, @BookID, 3, @ReturnDate, @PenaltyFee)"
             Dim damageCmd As New MySqlCommand(damageQuery, conn)
             damageCmd.Parameters.AddWithValue("@BorrowerID", borrowerID)
             damageCmd.Parameters.AddWithValue("@BookID", accNo)
@@ -279,7 +279,7 @@ Public Class Form9
                 Exit Sub
             End If
 
-            Dim insertLostBookQuery As String = "INSERT INTO returned_books (BorrowerID, BookID, ConditionID, `Return Date`, `Penalty Fee`) VALUES (@BorrowerID, @BookID, 4, @ReturnDate, @PenaltyFee)"
+            Dim insertLostBookQuery As String = "INSERT INTO returned_books (BorrowerID, BookID, ConditionID, Return Date, Penalty Fee) VALUES (@BorrowerID, @BookID, 4, @ReturnDate, @PenaltyFee)"
             Dim insertLostCmd As New MySqlCommand(insertLostBookQuery, conn, transaction)
             insertLostCmd.Parameters.AddWithValue("@BorrowerID", borrowerID)
             insertLostCmd.Parameters.AddWithValue("@BookID", accNo)
