@@ -236,5 +236,8 @@ Public Class Form15
         Me.Hide()
     End Sub
 
-
+    Private Sub RepairBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RepairBooksToolStripMenuItem.Click
+        Dim repair As New Form5
+        repair.Show()
+    End Sub
 End Class
