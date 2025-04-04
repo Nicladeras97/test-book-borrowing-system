@@ -4,11 +4,14 @@ Public Class Form9
     Dim conn As New MySqlConnection("server=localhost; user=root; password=; database=book-borrowing")
     Dim cmd As MySqlCommand
     Dim reader As MySqlDataReader
+    Private WithEvents BarcodeTimer As New Timer()
+    Private scanAccno As String = ""
 
     Private Sub Form9_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             conn.Open()
             ComboBox2.Focus()
+            BarcodeTimer.Interval = 500
             ComboBox2.DropDownStyle = ComboBoxStyle.DropDown
             Dim query As String = "SELECT condition_id, condition_status FROM book_condition WHERE condition_id NOT IN (3, 4)"
             cmd = New MySqlCommand(query, conn)
@@ -30,50 +33,6 @@ Public Class Form9
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         Dim accNo As String = ComboBox2.Text
-
-        If String.IsNullOrEmpty(accNo) Then
-            MessageBox.Show("Please select an Accession Number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Exit Sub
-        End If
-
-        Try
-            conn.Open()
-            Dim query As String = "SELECT b.*, bb.borrower_id, bb.date_borrowed, bb.due_date, u.FullName, u.StudNo, u.Year_Section, u.Course_Strand, u.ContactNumber, u.Email, bc.condition_status " &
-                                  "FROM books AS b " &
-                                  "JOIN books_borrowed AS bb ON b.Accno = bb.book_id " &
-                                  "JOIN users AS u ON bb.borrower_id = u.UserID " &
-                                  "JOIN book_condition AS bc ON bb.condition_id = bc.condition_id " &
-                                  "WHERE b.Accno = @Accno"
-
-            cmd = New MySqlCommand(query, conn)
-            cmd.Parameters.AddWithValue("@Accno", accNo)
-            reader = cmd.ExecuteReader()
-
-            If reader.Read() Then
-                Label2.Text = reader("Title").ToString()
-                Label23.Text = reader("ISBN").ToString()
-                Label18.Text = reader("Author").ToString()
-                Label20.Text = reader("Year").ToString()
-                Label22.Text = reader("Publisher").ToString()
-                Label10.Text = reader("Section").ToString()
-                Label15.Text = reader("Rack").ToString()
-                Label14.Text = reader("CallNumber").ToString()
-                Label25.Text = reader("StudNo").ToString()
-                Label24.Text = reader("FullName").ToString()
-                Label11.Text = reader("Year_Section").ToString()
-                Label31.Text = reader("Course_Strand").ToString()
-                Label28.Text = reader("ContactNumber").ToString()
-                Label26.Text = reader("Email").ToString()
-                Label1.Text = reader("condition_status").ToString()
-            Else
-                MessageBox.Show("Book record not found or not borrowed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End If
-        Catch ex As Exception
-            MessageBox.Show("Error retrieving book details: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Finally
-            reader.Close()
-            conn.Close()
-        End Try
     End Sub
 
     'Return Good
@@ -371,4 +330,66 @@ Public Class Form9
         Hide()
     End Sub
 
+    Private Sub ProcessBarcodeAccno(barcode As String)
+        Dim accNo As String = ComboBox2.Text
+
+        If String.IsNullOrEmpty(accNo) Then
+            MessageBox.Show("Please select an Accession Number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
+        Try
+            conn.Open()
+            Dim query As String = "SELECT b.*, bb.borrower_id, bb.date_borrowed, bb.due_date, u.FullName, u.StudNo, u.Year_Section, u.Course_Strand, u.ContactNumber, u.Email, bc.condition_status " &
+                                  "FROM books AS b " &
+                                  "JOIN books_borrowed AS bb ON b.Accno = bb.book_id " &
+                                  "JOIN users AS u ON bb.borrower_id = u.UserID " &
+                                  "JOIN book_condition AS bc ON bb.condition_id = bc.condition_id " &
+                                  "WHERE b.Accno = @Accno"
+
+            cmd = New MySqlCommand(query, conn)
+            cmd.Parameters.AddWithValue("@Accno", barcode)
+            reader = cmd.ExecuteReader()
+
+            If reader.Read() Then
+                Label2.Text = reader("Title").ToString()
+                Label23.Text = reader("ISBN").ToString()
+                Label18.Text = reader("Author").ToString()
+                Label20.Text = reader("Year").ToString()
+                Label22.Text = reader("Publisher").ToString()
+                Label10.Text = reader("Section").ToString()
+                Label15.Text = reader("Rack").ToString()
+                Label14.Text = reader("CallNumber").ToString()
+                Label25.Text = reader("StudNo").ToString()
+                Label24.Text = reader("FullName").ToString()
+                Label11.Text = reader("Year_Section").ToString()
+                Label31.Text = reader("Course_Strand").ToString()
+                Label28.Text = reader("ContactNumber").ToString()
+                Label26.Text = reader("Email").ToString()
+                Label1.Text = reader("condition_status").ToString()
+            Else
+                MessageBox.Show("Book record not found or not borrowed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error retrieving book details: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            reader.Close()
+            conn.Close()
+        End Try
+    End Sub
+
+    Private Sub ComboBox2_TextChanged(sender As Object, e As EventArgs) Handles ComboBox2.TextChanged
+        If String.IsNullOrWhiteSpace(ComboBox2.Text) Then Return
+
+        scanAccno = ComboBox2.Text.Trim()
+        BarcodeTimer.Stop()
+        BarcodeTimer.Start()
+    End Sub
+
+    Private Sub BarcodeTimer_Tick(sender As Object, e As EventArgs) Handles BarcodeTimer.Tick
+        BarcodeTimer.Stop()
+        If scanAccno.Length >= 13 Then
+            ProcessBarcodeAccno(scanAccno)
+        End If
+    End Sub
 End Class

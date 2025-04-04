@@ -22,7 +22,8 @@ Public Class Form1
 
 
                 If storedHash.ToString() = enteredHash Then
-                    Form15.Show()
+                    Dim login As New Form15
+                    login.Show()
                     Me.Hide()
                 Else
                     MsgBox("Invalid Username or Password!", MsgBoxStyle.Critical)

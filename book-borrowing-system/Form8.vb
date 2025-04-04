@@ -2,12 +2,17 @@
 
 Public Class Form8
     Dim connString As String = "server=localhost;user id=root;password=;database=book-borrowing"
+    Private WithEvents BarcodeTimer As New Timer()
+    Private scanAccno As String = ""
+    Private scanStudno As String = ""
+    Private scanType As String = ""
 
     Private Sub Form8_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ComboBox2.Focus()
         LoadBooks()
         LoadBookConditions()
         ComboBox2.DropDownStyle = ComboBoxStyle.DropDown
+        BarcodeTimer.Interval = 500
     End Sub
 
     Private Sub LoadBooks()
@@ -51,55 +56,24 @@ Public Class Form8
         ComboBox1.ValueMember = "Value"
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        If String.IsNullOrWhiteSpace(ComboBox2.Text) Then
-            MessageBox.Show("Please enter or select a book.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return
-        End If
-
-        Dim selectedAccNo As String = ComboBox2.Text
-        Using conn As New MySqlConnection(connString)
-            Try
-                conn.Open()
-                Dim query As String = "SELECT * FROM books WHERE Accno = @Accno"
-                Using cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@Accno", selectedAccNo)
-                    Using reader As MySqlDataReader = cmd.ExecuteReader()
-                        If reader.Read() Then
-                            ComboBox2.Text = reader("Accno").ToString()
-                            Label2.Text = reader("Title").ToString()
-                            Label10.Text = reader("Author").ToString()
-                            Label20.Text = reader("Year").ToString()
-                            Label22.Text = reader("Publisher").ToString()
-                            Label3.Text = reader("ISBN").ToString()
-                            Label26.Text = reader("Section").ToString()
-                            Label15.Text = reader("Rack").ToString()
-                            Label14.Text = reader("CallNumber").ToString()
-                        Else
-                            MessageBox.Show("Book not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        End If
-                    End Using
-                End Using
-            Catch ex As Exception
-                MessageBox.Show("Error retrieving book details: " & ex.Message)
-            End Try
-        End Using
+    Private Sub Button4_Click(sender As Object, e As EventArgs)
+        Dim accNo = ComboBox2.Text
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs)
         Using conn As New MySqlConnection(connString)
             Try
                 conn.Open()
-                Dim query As String = "SELECT FullName, Year_Section, Course_Strand, ContactNumber, Email FROM users WHERE StudNo = @StudNo"
+                Dim query = "SELECT FullName, Year_Section, Course_Strand, ContactNumber, Email FROM users WHERE StudNo = @StudNo"
                 Using cmd As New MySqlCommand(query, conn)
                     cmd.Parameters.AddWithValue("@StudNo", TextBox1.Text)
-                    Using reader As MySqlDataReader = cmd.ExecuteReader()
-                        If reader.Read() Then
-                            TextBox2.Text = reader("FullName").ToString()
-                            TextBox5.Text = reader("Year_Section").ToString()
-                            TextBox6.Text = reader("Course_Strand").ToString()
-                            TextBox3.Text = reader("ContactNumber").ToString()
-                            TextBox4.Text = reader("Email").ToString()
+                    Using reader = cmd.ExecuteReader
+                        If reader.Read Then
+                            TextBox2.Text = reader("FullName").ToString
+                            TextBox5.Text = reader("Year_Section").ToString
+                            TextBox6.Text = reader("Course_Strand").ToString
+                            TextBox3.Text = reader("ContactNumber").ToString
+                            TextBox4.Text = reader("Email").ToString
                         Else
                             MessageBox.Show("No record found. Please input details.", "No record found", MessageBoxButtons.OK, MessageBoxIcon.None)
                             TextBox2.Clear()
@@ -203,11 +177,112 @@ Public Class Form8
         End Using
     End Sub
 
-
     Private Sub Button2_Click(sender As Object, e As EventArgs)
         Dim back As New Form15
         back.Show()
         Hide()
+    End Sub
+
+    Private Sub ProcessBarcodeAccno(barcode As String)
+        Using conn As New MySqlConnection(connString)
+            Try
+                conn.Open()
+
+                Dim borrowedQuery As String = "SELECT COUNT(*) FROM books_borrowed WHERE book_id = @Accno"
+                Using borrowedCmd As New MySqlCommand(borrowedQuery, conn)
+                    borrowedCmd.Parameters.AddWithValue("@Accno", barcode)
+                    Dim count As Integer = Convert.ToInt32(borrowedCmd.ExecuteScalar())
+
+                    If count > 0 Then
+                        MessageBox.Show("This book is already borrowed.", "Borrowed Book", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        ComboBox2.Text = ""
+                        Exit Sub
+                    End If
+                End Using
+
+                Dim bookQuery As String = "SELECT * FROM books WHERE Accno = @Accno"
+                Using bookCmd As New MySqlCommand(bookQuery, conn)
+                    bookCmd.Parameters.AddWithValue("@Accno", barcode)
+                    Using reader As MySqlDataReader = bookCmd.ExecuteReader()
+                        If reader.Read() Then
+                            Label2.Text = reader("Title").ToString()
+                            Label10.Text = reader("Author").ToString()
+                            Label20.Text = reader("Year").ToString()
+                            Label22.Text = reader("Publisher").ToString()
+                            Label3.Text = reader("ISBN").ToString()
+                            Label26.Text = reader("Section").ToString()
+                            Label15.Text = reader("Rack").ToString()
+                            Label14.Text = reader("CallNumber").ToString()
+                        Else
+                            MessageBox.Show("Book not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            ComboBox2.Text = ""
+                        End If
+                    End Using
+                End Using
+
+            Catch ex As Exception
+                MessageBox.Show("Error retrieving book details: " & ex.Message)
+            End Try
+        End Using
+    End Sub
+
+
+    Private Sub ProcessBarcodeStudno(studentID As String)
+        Using conn As New MySqlConnection(connString)
+            Try
+                conn.Open()
+                Dim query As String = "SELECT FullName, Year_Section, Course_Strand, ContactNumber, Email FROM users WHERE StudNo = @StudNo"
+                Using cmd As New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@StudNo", studentID)
+                    Using reader As MySqlDataReader = cmd.ExecuteReader()
+                        If reader.Read() Then
+                            TextBox2.Text = reader("FullName").ToString()
+                            TextBox5.Text = reader("Year_Section").ToString()
+                            TextBox6.Text = reader("Course_Strand").ToString()
+                            TextBox3.Text = reader("ContactNumber").ToString()
+                            TextBox4.Text = reader("Email").ToString()
+                        Else
+                            MessageBox.Show("No student found with that ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            TextBox2.Clear()
+                            TextBox5.Clear()
+                            TextBox6.Clear()
+                            TextBox3.Clear()
+                            TextBox4.Clear()
+                        End If
+                    End Using
+                End Using
+            Catch ex As Exception
+                MessageBox.Show("Error retrieving student data: " & ex.Message)
+            End Try
+        End Using
+    End Sub
+
+    Private Sub ComboBox2_TextChanged(sender As Object, e As EventArgs) Handles ComboBox2.TextChanged
+        If String.IsNullOrWhiteSpace(ComboBox2.Text) Then Return
+
+        scanAccno = ComboBox2.Text.Trim()
+        scanType = "accno"
+        BarcodeTimer.Stop()
+        BarcodeTimer.Start()
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+        If String.IsNullOrWhiteSpace(TextBox1.Text) Then Return
+
+        scanStudno = TextBox1.Text.Trim()
+        scanType = "studno"
+        BarcodeTimer.Stop()
+        BarcodeTimer.Start()
+    End Sub
+
+    Private Sub BarcodeTimer_Tick(sender As Object, e As EventArgs) Handles BarcodeTimer.Tick
+        BarcodeTimer.Stop()
+
+        If scanType = "accno" AndAlso scanAccno.Length >= 11 Then
+            ProcessBarcodeAccno(scanAccno)
+        ElseIf scanType = "studno" AndAlso scanStudno.Length >= 6 Then
+            ProcessBarcodeStudno(scanStudno)
+        End If
     End Sub
 
 End Class
