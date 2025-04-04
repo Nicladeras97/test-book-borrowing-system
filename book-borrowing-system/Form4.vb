@@ -151,11 +151,6 @@ Public Class Form4
         report.Show()
     End Sub
 
-    Private Sub CreateToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CreateToolStripMenuItem.Click
-        Dim barcode As New Form3
-        barcode.Show()
-    End Sub
-
     Private Sub LogoutToolStripMenuItem_Click(sender As Object, e As EventArgs)
         Dim logout As New Form1
         logout.Show()
@@ -186,5 +181,15 @@ Public Class Form4
     Private Sub RepairBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RepairBooksToolStripMenuItem.Click
         Dim repair As New Form5
         repair.Show()
+    End Sub
+
+    Private Sub BarcodeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BarcodeToolStripMenuItem.Click
+        Dim barcode As New Form3
+        barcode.Show()
+    End Sub
+
+    Private Sub SettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SettingsToolStripMenuItem.Click
+        Dim message As New Report
+        message.Show()
     End Sub
 End Class

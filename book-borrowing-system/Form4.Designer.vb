@@ -33,13 +33,13 @@ Partial Class Form4
         ImportToolStripMenuItem = New ToolStripMenuItem()
         DownloadTemplateToolStripMenuItem = New ToolStripMenuItem()
         REportsToolStripMenuItem = New ToolStripMenuItem()
+        RepairBooksToolStripMenuItem = New ToolStripMenuItem()
         BarcodeToolStripMenuItem = New ToolStripMenuItem()
-        CreateToolStripMenuItem = New ToolStripMenuItem()
         Panel1 = New Panel()
         Button1 = New Button()
         Label1 = New Label()
         PictureBox1 = New PictureBox()
-        RepairBooksToolStripMenuItem = New ToolStripMenuItem()
+        SettingsToolStripMenuItem = New ToolStripMenuItem()
         MenuStrip1.SuspendLayout()
         Panel1.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -53,7 +53,7 @@ Partial Class Form4
         MenuStrip1.Dock = DockStyle.None
         MenuStrip1.Font = New Font("Arial", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         MenuStrip1.ImageScalingSize = New Size(20, 20)
-        MenuStrip1.Items.AddRange(New ToolStripItem() {LendReceivedToolStripMenuItem, ReceivedBooksToolStripMenuItem, ManageBooksToolStripMenuItem, BarcodeToolStripMenuItem})
+        MenuStrip1.Items.AddRange(New ToolStripItem() {LendReceivedToolStripMenuItem, ReceivedBooksToolStripMenuItem, ManageBooksToolStripMenuItem, BarcodeToolStripMenuItem, SettingsToolStripMenuItem})
         MenuStrip1.LayoutStyle = ToolStripLayoutStyle.VerticalStackWithOverflow
         MenuStrip1.Location = New Point(0, 123)
         MenuStrip1.Name = "MenuStrip1"
@@ -121,19 +121,18 @@ Partial Class Form4
         REportsToolStripMenuItem.Size = New Size(425, 44)
         REportsToolStripMenuItem.Text = "Reports"
         ' 
+        ' RepairBooksToolStripMenuItem
+        ' 
+        RepairBooksToolStripMenuItem.Name = "RepairBooksToolStripMenuItem"
+        RepairBooksToolStripMenuItem.Size = New Size(425, 44)
+        RepairBooksToolStripMenuItem.Text = "Repair Books"
+        ' 
         ' BarcodeToolStripMenuItem
         ' 
-        BarcodeToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {CreateToolStripMenuItem})
         BarcodeToolStripMenuItem.ForeColor = SystemColors.ActiveCaptionText
         BarcodeToolStripMenuItem.Name = "BarcodeToolStripMenuItem"
         BarcodeToolStripMenuItem.Size = New Size(293, 44)
         BarcodeToolStripMenuItem.Text = "Barcode"
-        ' 
-        ' CreateToolStripMenuItem
-        ' 
-        CreateToolStripMenuItem.Name = "CreateToolStripMenuItem"
-        CreateToolStripMenuItem.Size = New Size(215, 44)
-        CreateToolStripMenuItem.Text = "Create"
         ' 
         ' Panel1
         ' 
@@ -182,11 +181,11 @@ Partial Class Form4
         PictureBox1.TabIndex = 0
         PictureBox1.TabStop = False
         ' 
-        ' RepairBooksToolStripMenuItem
+        ' SettingsToolStripMenuItem
         ' 
-        RepairBooksToolStripMenuItem.Name = "RepairBooksToolStripMenuItem"
-        RepairBooksToolStripMenuItem.Size = New Size(425, 44)
-        RepairBooksToolStripMenuItem.Text = "Repair Books"
+        SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
+        SettingsToolStripMenuItem.Size = New Size(293, 44)
+        SettingsToolStripMenuItem.Text = "Settings"
         ' 
         ' Form4
         ' 
@@ -228,11 +227,11 @@ Partial Class Form4
     Friend WithEvents ImportToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DownloadTemplateToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents REportsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CreateToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Panel1 As Panel
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Button1 As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents ReceivedBooksToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents RepairBooksToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SettingsToolStripMenuItem As ToolStripMenuItem
 End Class
