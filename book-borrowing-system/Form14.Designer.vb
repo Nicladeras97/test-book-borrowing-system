@@ -68,19 +68,20 @@ Partial Class Form14
         Panel1.Controls.Add(btnSignUp)
         Panel1.Controls.Add(UsernameLabel)
         Panel1.Controls.Add(txtFullName)
-        Panel1.Location = New Point(484, 184)
+        Panel1.Location = New Point(450, 184)
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(587, 549)
         Panel1.TabIndex = 10
         ' 
         ' Label2
         ' 
+        Label2.Anchor = AnchorStyles.Bottom
         Label2.AutoSize = True
         Label2.BackColor = Color.Transparent
         Label2.Font = New Font("Arial", 14F)
-        Label2.Location = New Point(24, 461)
+        Label2.Location = New Point(12, 461)
         Label2.Name = "Label2"
-        Label2.Size = New Size(226, 22)
+        Label2.Size = New Size(290, 27)
         Label2.TabIndex = 15
         Label2.Text = "Already have an account?"
         ' 
@@ -114,17 +115,18 @@ Partial Class Form14
         txtUsername.Font = New Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         txtUsername.Location = New Point(204, 218)
         txtUsername.Name = "txtUsername"
-        txtUsername.Size = New Size(358, 29)
+        txtUsername.Size = New Size(358, 35)
         txtUsername.TabIndex = 2
         ' 
         ' btnBack
         ' 
+        btnBack.Anchor = AnchorStyles.Bottom
         btnBack.AutoSize = True
         btnBack.BackColor = Color.Transparent
         btnBack.Font = New Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnBack.Location = New Point(246, 461)
+        btnBack.Location = New Point(296, 461)
         btnBack.Name = "btnBack"
-        btnBack.Size = New Size(64, 22)
+        btnBack.Size = New Size(79, 27)
         btnBack.TabIndex = 6
         btnBack.TabStop = True
         btnBack.Text = "Log In"
@@ -135,7 +137,7 @@ Partial Class Form14
         Label6.Font = New Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label6.Location = New Point(22, 304)
         Label6.Name = "Label6"
-        Label6.Size = New Size(166, 22)
+        Label6.Size = New Size(208, 27)
         Label6.TabIndex = 12
         Label6.Text = "Confirm Password"
         ' 
@@ -146,7 +148,7 @@ Partial Class Form14
         txtConfirmPassword.Font = New Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         txtConfirmPassword.Location = New Point(204, 300)
         txtConfirmPassword.Name = "txtConfirmPassword"
-        txtConfirmPassword.Size = New Size(358, 29)
+        txtConfirmPassword.Size = New Size(358, 35)
         txtConfirmPassword.TabIndex = 4
         ' 
         ' Label5
@@ -155,7 +157,7 @@ Partial Class Form14
         Label5.Font = New Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label5.Location = New Point(22, 261)
         Label5.Name = "Label5"
-        Label5.Size = New Size(94, 22)
+        Label5.Size = New Size(117, 27)
         Label5.TabIndex = 8
         Label5.Text = "Password"
         Label5.TextAlign = ContentAlignment.MiddleLeft
@@ -167,7 +169,7 @@ Partial Class Form14
         txtPassword.Font = New Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         txtPassword.Location = New Point(204, 259)
         txtPassword.Name = "txtPassword"
-        txtPassword.Size = New Size(358, 29)
+        txtPassword.Size = New Size(358, 35)
         txtPassword.TabIndex = 3
         ' 
         ' Label4
@@ -177,18 +179,19 @@ Partial Class Form14
         Label4.ForeColor = SystemColors.ActiveCaptionText
         Label4.Location = New Point(217, 102)
         Label4.Name = "Label4"
-        Label4.Size = New Size(172, 17)
+        Label4.Size = New Size(223, 22)
         Label4.TabIndex = 6
         Label4.Text = "Please enter your details."
         ' 
         ' Label3
         ' 
+        Label3.Anchor = AnchorStyles.None
         Label3.AutoSize = True
         Label3.Font = New Font("Arial", 26.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label3.ForeColor = SystemColors.ActiveCaptionText
         Label3.Location = New Point(160, 61)
         Label3.Name = "Label3"
-        Label3.Size = New Size(280, 41)
+        Label3.Size = New Size(357, 51)
         Label3.TabIndex = 5
         Label3.Text = "Create Account!"
         ' 
@@ -198,7 +201,7 @@ Partial Class Form14
         PasswordLabel.Font = New Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         PasswordLabel.Location = New Point(22, 220)
         PasswordLabel.Name = "PasswordLabel"
-        PasswordLabel.Size = New Size(97, 22)
+        PasswordLabel.Size = New Size(122, 27)
         PasswordLabel.TabIndex = 2
         PasswordLabel.Text = "Username"
         PasswordLabel.TextAlign = ContentAlignment.MiddleLeft
@@ -225,7 +228,7 @@ Partial Class Form14
         UsernameLabel.Font = New Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         UsernameLabel.Location = New Point(24, 179)
         UsernameLabel.Name = "UsernameLabel"
-        UsernameLabel.Size = New Size(95, 22)
+        UsernameLabel.Size = New Size(123, 27)
         UsernameLabel.TabIndex = 0
         UsernameLabel.Text = "Full Name"
         UsernameLabel.TextAlign = ContentAlignment.MiddleLeft
@@ -237,7 +240,7 @@ Partial Class Form14
         txtFullName.Font = New Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         txtFullName.Location = New Point(204, 179)
         txtFullName.Name = "txtFullName"
-        txtFullName.Size = New Size(358, 29)
+        txtFullName.Size = New Size(358, 35)
         txtFullName.TabIndex = 1
         ' 
         ' Panel2
@@ -259,7 +262,7 @@ Partial Class Form14
         Label1.ImageAlign = ContentAlignment.MiddleLeft
         Label1.Location = New Point(113, 27)
         Label1.Name = "Label1"
-        Label1.Size = New Size(506, 44)
+        Label1.Size = New Size(639, 55)
         Label1.TabIndex = 1
         Label1.Text = "Book- Management System"
         ' 
@@ -275,7 +278,7 @@ Partial Class Form14
         ' 
         ' Form14
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 17F)
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
         BackgroundImageLayout = ImageLayout.Stretch

@@ -6,6 +6,9 @@ Imports OfficeOpenXml
 Public Class Form15
     Public Property LoggedInUsername As String
 
+
+
+
     Private Sub LoadFormToMainPanel(form As Form)
         mainPanel.Controls.Clear()
         form.TopLevel = False
@@ -14,6 +17,7 @@ Public Class Form15
         mainPanel.Controls.Add(form)
         form.Show()
     End Sub
+
 
     Private Sub ReceivedBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReceivedBooksToolStripMenuItem.Click
         LoadFormToMainPanel(New Form9)
@@ -24,14 +28,17 @@ Public Class Form15
         LoadFormToMainPanel(New Form10)
     End Sub
 
+    '  load Edit Books form
     Private Sub EditBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditBooksToolStripMenuItem.Click
         LoadFormToMainPanel(New Form13)
     End Sub
 
+    ' load Delete Books form
     Private Sub DeleteBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteBooksToolStripMenuItem.Click
         LoadFormToMainPanel(New Form2)
     End Sub
 
+    ' load Import Books form
     Private Sub ImportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImportToolStripMenuItem.Click
         Dim openFileDialog As New OpenFileDialog
         openFileDialog.Filter = "Excel Files (.xlsx)|.xlsx"
@@ -111,6 +118,7 @@ Public Class Form15
         Throw New NotImplementedException()
     End Function
 
+    'load Download Template form
     Private Sub DownloadTemplateToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DownloadTemplateToolStripMenuItem.Click
         Try
             ExcelPackage.License.SetNonCommercialPersonal("book-borrowing-system")
@@ -150,29 +158,37 @@ Public Class Form15
         End Try
     End Sub
 
+
+    '  load Reports form
     Private Sub ReportsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles REportsToolStripMenuItem.Click
         LoadFormToMainPanel(New Form6)
     End Sub
 
+    ' load Repair Books form
     Private Sub RepairBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RepairBooksToolStripMenuItem.Click
         LoadFormToMainPanel(New Form5)
     End Sub
 
+    '  load Barcode form
     Private Sub BarcodeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BarcodeToolStripMenuItem.Click
         LoadFormToMainPanel(New Form3)
     End Sub
 
+    ' load Settings form
     Private Sub SettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SettingsToolStripMenuItem.Click
         LoadFormToMainPanel(New Report)
     End Sub
 
+    ' Set the MenuStrip and mainPanel Docking behavior on Form Load
     Private Sub Form15_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Set MenuStrip to dock on the left side
         MenuStrip1.Dock = DockStyle.Left
         mainPanel.Dock = DockStyle.Fill
         MenuStrip1.Renderer = New CustomRenderer()
         MenuStrip1.BringToFront()
         mainPanel.BringToFront()
 
+        ' Display first name or username
         Try
             Using conn As New MySqlConnection("server=localhost; user=root; password=; database=book-borrowing;")
                 conn.Open()
@@ -198,13 +214,18 @@ Public Class Form15
 
 
     Private Function GetUserFirstName() As String
+        ' For the sake of the example, let's assume it's already set.
+        ' Replace this with your actual login-fetching code
         If String.IsNullOrEmpty(LoggedInUsername) Then
+            ' Default value in case the username is not set
             Return "Guest"
         End If
 
         Return LoggedInUsername
     End Function
 
+
+    ' Custom rendering for the MenuStrip
     Public Class CustomRenderer
         Inherits ToolStripProfessionalRenderer
 
@@ -254,6 +275,7 @@ Public Class Form15
         Hide()
     End Sub
 
+
     Private Sub SetCurrentUserFirstName(username As String)
 
         Dim query As String = "SELECT FirstName FROM Users WHERE Username = @username"
@@ -277,4 +299,7 @@ Public Class Form15
         MenuStrip1.BackColor = Color.FromArgb(100, 0, 0, 0)
     End Sub
 
+
 End Class
+
+
