@@ -81,7 +81,7 @@ Public Class Form3
                         Dim accno As String = reader("Accno").ToString()
                         barcodeGenerator.CustomLabel = accno
 
-                        Dim barcodeImage As Bitmap = barcodeGenerator.Encode(BarcodeFormat.Code93, accno)
+                        Dim barcodeImage As Bitmap = barcodeGenerator.Encode(BarcodeFormat.Code128, accno)
 
                         Dim filePath As String = Path.Combine(saveFolder, accno & ".png")
                         barcodeImage.Save(filePath, Imaging.ImageFormat.Png)
@@ -116,5 +116,6 @@ Public Class Form3
     Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadBooks()
     End Sub
+
 
 End Class

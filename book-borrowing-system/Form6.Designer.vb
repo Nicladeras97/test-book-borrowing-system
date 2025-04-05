@@ -100,7 +100,7 @@ Partial Class Form6
         Label3.AutoSize = True
         Label3.Location = New Point(573, 28)
         Label3.Name = "Label3"
-        Label3.Size = New Size(20, 16)
+        Label3.Size = New Size(25, 19)
         Label3.TabIndex = 31
         Label3.Text = "To"
         ' 
@@ -109,7 +109,7 @@ Partial Class Form6
         Label2.AutoSize = True
         Label2.Location = New Point(312, 28)
         Label2.Name = "Label2"
-        Label2.Size = New Size(37, 16)
+        Label2.Size = New Size(47, 19)
         Label2.TabIndex = 30
         Label2.Text = "From"
         ' 
@@ -119,7 +119,7 @@ Partial Class Form6
         DateTimePicker2.Format = DateTimePickerFormat.Custom
         DateTimePicker2.Location = New Point(604, 23)
         DateTimePicker2.Name = "DateTimePicker2"
-        DateTimePicker2.Size = New Size(189, 22)
+        DateTimePicker2.Size = New Size(189, 26)
         DateTimePicker2.TabIndex = 29
         ' 
         ' DateTimePicker1
@@ -128,7 +128,7 @@ Partial Class Form6
         DateTimePicker1.Format = DateTimePickerFormat.Custom
         DateTimePicker1.Location = New Point(366, 22)
         DateTimePicker1.Name = "DateTimePicker1"
-        DateTimePicker1.Size = New Size(201, 22)
+        DateTimePicker1.Size = New Size(201, 26)
         DateTimePicker1.TabIndex = 0
         ' 
         ' ComboBox1
@@ -136,7 +136,7 @@ Partial Class Form6
         ComboBox1.FormattingEnabled = True
         ComboBox1.Location = New Point(20, 22)
         ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(253, 24)
+        ComboBox1.Size = New Size(253, 26)
         ComboBox1.TabIndex = 32
         ' 
         ' Button1
@@ -173,12 +173,12 @@ Partial Class Form6
         ComboBox2.FormattingEnabled = True
         ComboBox2.Location = New Point(1040, 40)
         ComboBox2.Name = "ComboBox2"
-        ComboBox2.Size = New Size(162, 27)
+        ComboBox2.Size = New Size(162, 32)
         ComboBox2.TabIndex = 34
         ' 
         ' Form6
         ' 
-        AutoScaleDimensions = New SizeF(7F, 16F)
+        AutoScaleDimensions = New SizeF(9F, 18F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(1446, 790)
@@ -191,6 +191,7 @@ Partial Class Form6
         Location = New Point(266, 111)
         Name = "Form6"
         StartPosition = FormStartPosition.Manual
+        Text = "Book Reports"
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         GroupBox1.ResumeLayout(False)
         GroupBox1.PerformLayout()

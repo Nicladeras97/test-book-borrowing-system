@@ -1,32 +1,52 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.IO
+Imports MySql.Data.MySqlClient
 Imports OfficeOpenXml
-Imports System.IO
+
 
 Public Class Form15
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
-        Panel1.BackColor = Color.FromArgb(100, 0, 0, 0)
+    Public Property LoggedInUsername As String
 
+
+
+
+    Private Sub LoadFormToMainPanel(form As Form)
+        mainPanel.Controls.Clear()
+        form.TopLevel = False
+        form.FormBorderStyle = FormBorderStyle.None
+        form.Dock = DockStyle.Fill
+        mainPanel.Controls.Add(form)
+        form.Show()
     End Sub
+
+
+    Private Sub ReceivedBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReceivedBooksToolStripMenuItem.Click
+        LoadFormToMainPanel(New Form9)
+    End Sub
+
 
     Private Sub AddBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddBooksToolStripMenuItem.Click
-        Dim add As New Form10
-        add.Show()
+        LoadFormToMainPanel(New Form10)
     End Sub
 
+    '  load Edit Books form
     Private Sub EditBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditBooksToolStripMenuItem.Click
-        Dim edit As New Form13
-        edit.Show()
+        LoadFormToMainPanel(New Form13)
     End Sub
 
+    ' load Delete Books form
+    Private Sub DeleteBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteBooksToolStripMenuItem.Click
+        LoadFormToMainPanel(New Form2)
+    End Sub
+
+    ' load Import Books form
     Private Sub ImportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImportToolStripMenuItem.Click
         Dim openFileDialog As New OpenFileDialog
-        openFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx"
+        openFileDialog.Filter = "Excel Files (.xlsx)|.xlsx"
 
         If openFileDialog.ShowDialog = DialogResult.OK Then
             ImportExcelToDatabase(openFileDialog.FileName)
         End If
     End Sub
-
     Private Sub ImportExcelToDatabase(filePath As String)
         Try
             ExcelPackage.License.SetNonCommercialPersonal("book-borrowing-system")
@@ -60,8 +80,8 @@ Public Class Form15
                                 Dim newAccno As String = GenerateNextAccno(conn, copyIndex)
 
                                 Dim insertQuery As String = "
-                                INSERT INTO books (Accno, Title, Author, Year, Publisher, Section, AddedDate, CallNumber, Rack, ISBN)
-                                VALUES (@Accno, @Title, @Author, @Year, @Publisher, @Section, @AddedDate, @CallNumber, @Rack, @ISBN)"
+                            INSERT INTO books (Accno, Title, Author, Year, Publisher, Section, AddedDate, CallNumber, Rack, ISBN)
+                            VALUES (@Accno, @Title, @Author, @Year, @Publisher, @Section, @AddedDate, @CallNumber, @Rack, @ISBN)"
 
                                 Using cmd As New MySqlCommand(insertQuery, conn, transaction)
                                     cmd.Parameters.AddWithValue("@Accno", newAccno)
@@ -95,28 +115,16 @@ Public Class Form15
     End Sub
 
     Private Function GenerateNextAccno(conn As MySqlConnection, copyIndex As Integer) As String
-        Dim year As String = DateTime.Now.Year.ToString()
-        Dim query As String = $"SELECT MAX(Accno) FROM books WHERE Accno LIKE '{year}%'"
-
-        Using cmd As New MySqlCommand(query, conn)
-            Dim lastAccno As Object = cmd.ExecuteScalar()
-            Dim nextNumber As Integer = 1
-
-            If lastAccno IsNot DBNull.Value AndAlso lastAccno IsNot Nothing Then
-                Dim lastNumber As String = lastAccno.ToString().Substring(4, 6)
-                nextNumber = Integer.Parse(lastNumber) + 1
-            End If
-
-            Return $"{year}{nextNumber:000000}-{copyIndex:00}"
-        End Using
+        Throw New NotImplementedException()
     End Function
 
+    'load Download Template form
     Private Sub DownloadTemplateToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DownloadTemplateToolStripMenuItem.Click
         Try
             ExcelPackage.License.SetNonCommercialPersonal("book-borrowing-system")
 
             Dim saveFileDialog As New SaveFileDialog()
-            saveFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx"
+            saveFileDialog.Filter = "Excel Files (.xlsx)|.xlsx"
             saveFileDialog.FileName = "Book_Import_Template.xlsx"
 
             If saveFileDialog.ShowDialog() = DialogResult.OK Then
@@ -150,48 +158,74 @@ Public Class Form15
         End Try
     End Sub
 
-    Private Sub REportsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles REportsToolStripMenuItem.Click
-        Dim report As New Form6
-        report.Show()
+
+    '  load Reports form
+    Private Sub ReportsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles REportsToolStripMenuItem.Click
+        LoadFormToMainPanel(New Form6)
     End Sub
 
-    Private Sub LogoutToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        Dim logout As New Form1
-        logout.Show()
-        Hide()
+    ' load Repair Books form
+    Private Sub RepairBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RepairBooksToolStripMenuItem.Click
+        LoadFormToMainPanel(New Form5)
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs)
-        Dim logout As New Form1
-        logout.Show()
-        Hide()
-    End Sub
-
-    Private Sub DeleteBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteBooksToolStripMenuItem.Click
-        Dim delete As New Form2
-        delete.Show()
-    End Sub
-
-    Private Sub ReceivedBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReceivedBooksToolStripMenuItem.Click
-        Dim received As New Form9
-        received.Show()
-    End Sub
-
-    Private Sub LendReceivedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LendReceivedToolStripMenuItem.Click
-        Dim lend As New Form8
-        lend.Show()
-    End Sub
-
+    '  load Barcode form
     Private Sub BarcodeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BarcodeToolStripMenuItem.Click
-        Dim barcode As New Form3
-        barcode.Show()
+        LoadFormToMainPanel(New Form3)
     End Sub
 
-    Private Sub MenuStrip1_Paint(sender As Object, e As PaintEventArgs) Handles MenuStrip1.Paint
-
-        MenuStrip1.BackColor = Color.FromArgb(100, 0, 0, 0)
+    ' load Settings form
+    Private Sub SettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SettingsToolStripMenuItem.Click
+        LoadFormToMainPanel(New Report)
     End Sub
 
+    ' Set the MenuStrip and mainPanel Docking behavior on Form Load
+    Private Sub Form15_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Set MenuStrip to dock on the left side
+        MenuStrip1.Dock = DockStyle.Left
+        mainPanel.Dock = DockStyle.Fill
+        MenuStrip1.Renderer = New CustomRenderer()
+        MenuStrip1.BringToFront()
+        mainPanel.BringToFront()
+
+        ' Display first name or username
+        Try
+            Using conn As New MySqlConnection("server=localhost; user=root; password=; database=book-borrowing;")
+                conn.Open()
+                Dim query As String = "SELECT Fullname FROM librarians WHERE Username=@Username"
+                Using cmd As New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@Username", LoggedInUsername)
+                    Dim fullNameObj As Object = cmd.ExecuteScalar()
+                    If fullNameObj IsNot Nothing Then
+                        Dim fullName As String = fullNameObj.ToString()
+                        Dim firstName As String = fullName.Split(" "c)(0)
+                        Label3.Text = firstName
+                    Else
+                        Label3.Text = LoggedInUsername
+                    End If
+                End Using
+            End Using
+        Catch ex As Exception
+            Label3.Text = LoggedInUsername
+        End Try
+    End Sub
+
+
+
+
+    Private Function GetUserFirstName() As String
+        ' For the sake of the example, let's assume it's already set.
+        ' Replace this with your actual login-fetching code
+        If String.IsNullOrEmpty(LoggedInUsername) Then
+            ' Default value in case the username is not set
+            Return "Guest"
+        End If
+
+        Return LoggedInUsername
+    End Function
+
+
+    ' Custom rendering for the MenuStrip
     Public Class CustomRenderer
         Inherits ToolStripProfessionalRenderer
 
@@ -201,7 +235,7 @@ Public Class Form15
             If e.Item.Selected Then
                 ' Hover effect for sub-items
                 If isSubItem Then
-                    e.Graphics.FillRectangle(New SolidBrush(Color.FromArgb(150, 50, 50, 50)), e.Item.ContentRectangle)
+                    e.Graphics.FillRectangle(New SolidBrush(Color.FromArgb(150, 30, 30, 30)), e.Item.ContentRectangle)
                 Else
                     ' Hover effect for top-level menu items
                     e.Graphics.FillRectangle(New SolidBrush(Color.FromArgb(150, 30, 30, 30)), e.Item.ContentRectangle)
@@ -222,22 +256,53 @@ Public Class Form15
         End Sub
 
         Protected Overrides Sub OnRenderToolStripBorder(e As ToolStripRenderEventArgs)
-            ' Optional: remove border
+
         End Sub
     End Class
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        MenuStrip1.Renderer = New CustomRenderer()
+    Private Sub LogoutToolStripMeuItem_Click(sender As Object, e As EventArgs)
+        Dim logout As New Form1
+        logout.Show()
+        Hide()
+
     End Sub
+
+    Private Sub LendReceivedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LendReceivedToolStripMenuItem.Click
+        LoadFormToMainPanel(New Form8)
+    End Sub
+
 
     Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
-        Dim Logout As New Form1
-        Logout.Show()
-        Me.Hide()
+        Dim logout As New Form1
+        logout.Show()
+        Hide()
     End Sub
 
-    Private Sub RepairBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RepairBooksToolStripMenuItem.Click
-        Dim repair As New Form5
-        repair.Show()
+
+    Private Sub SetCurrentUserFirstName(username As String)
+
+        Dim query As String = "SELECT FirstName FROM Users WHERE Username = @username"
+        Using conn As New MySqlConnection("server=localhost; user=root; password=; database=book-borrowing;")
+            conn.Open()
+            Using cmd As New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@username", username)
+                Dim result = cmd.ExecuteScalar()
+                If result IsNot Nothing Then
+                    LoggedInUsername = result.ToString()
+                End If
+            End Using
+        End Using
     End Sub
+
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+        Panel1.BackColor = Color.FromArgb(100, 0, 0, 0)
+    End Sub
+
+    Private Sub MenuStrip1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+        MenuStrip1.BackColor = Color.FromArgb(100, 0, 0, 0)
+    End Sub
+
+
 End Class
+
+

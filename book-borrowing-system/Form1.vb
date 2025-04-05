@@ -22,7 +22,8 @@ Public Class Form1
 
 
                 If storedHash.ToString() = enteredHash Then
-                    Dim login As New Form15
+                    Dim login As New Form15()
+                    login.LoggedInUsername = UsernameTextBox.Text
                     login.Show()
                     Me.Hide()
                 Else

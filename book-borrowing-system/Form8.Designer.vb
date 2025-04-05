@@ -60,7 +60,7 @@ Partial Class Form8
         ' 
         ' Label2
         ' 
-        Label2.Font = New Font("Arial", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label2.Font = New Font("Arial", 25.8000011F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
         Label2.Location = New Point(76, 21)
         Label2.Name = "Label2"
         Label2.Size = New Size(1330, 164)
@@ -190,7 +190,7 @@ Partial Class Form8
         Label14.BorderStyle = BorderStyle.Fixed3D
         Label14.FlatStyle = FlatStyle.Flat
         Label14.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label14.Location = New Point(228, 540)
+        Label14.Location = New Point(228, 541)
         Label14.Name = "Label14"
         Label14.Size = New Size(448, 23)
         Label14.TabIndex = 30
@@ -234,7 +234,7 @@ Partial Class Form8
         Label10.BorderStyle = BorderStyle.Fixed3D
         Label10.FlatStyle = FlatStyle.Flat
         Label10.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label10.Location = New Point(228, 245)
+        Label10.Location = New Point(228, 250)
         Label10.Name = "Label10"
         Label10.Size = New Size(448, 25)
         Label10.TabIndex = 39
@@ -270,7 +270,7 @@ Partial Class Form8
         Label24.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label24.Location = New Point(735, 391)
         Label24.Name = "Label24"
-        Label24.Size = New Size(193, 37)
+        Label24.Size = New Size(160, 30)
         Label24.TabIndex = 42
         Label24.Text = "Course/Strand"
         ' 
@@ -441,6 +441,7 @@ Partial Class Form8
         Location = New Point(266, 111)
         Name = "Form8"
         StartPosition = FormStartPosition.Manual
+        Text = "Borrow Books"
         ResumeLayout(False)
         PerformLayout()
     End Sub

@@ -22,7 +22,7 @@ Partial Class Form5
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         DataGridView1 = New DataGridView()
         Button1 = New Button()
         Label1 = New Label()
@@ -42,14 +42,14 @@ Partial Class Form5
         DataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
         DataGridView1.BackgroundColor = SystemColors.ButtonHighlight
         DataGridView1.BorderStyle = BorderStyle.Fixed3D
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = Color.LightBlue
-        DataGridViewCellStyle2.Font = New Font("Arial", 9F)
-        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = Color.LightBlue
-        DataGridViewCellStyle2.SelectionForeColor = SystemColors.ControlText
-        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
-        DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = Color.LightBlue
+        DataGridViewCellStyle1.Font = New Font("Arial", 9F)
+        DataGridViewCellStyle1.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = Color.LightBlue
+        DataGridViewCellStyle1.SelectionForeColor = SystemColors.ControlText
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
+        DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridView1.Cursor = Cursors.Hand
         DataGridView1.EnableHeadersVisualStyles = False
@@ -119,7 +119,7 @@ Partial Class Form5
         Controls.Add(DataGridView1)
         Font = New Font("Arial", 9F)
         Name = "Form5"
-        Text = "Form5"
+        Text = "Repair Book"
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()

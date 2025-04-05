@@ -42,6 +42,7 @@ Partial Class Form15
         BarcodeToolStripMenuItem = New ToolStripMenuItem()
         SettingsToolStripMenuItem = New ToolStripMenuItem()
         PictureBox3 = New PictureBox()
+        mainPanel = New Panel()
         Panel1.SuspendLayout()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -56,9 +57,10 @@ Partial Class Form15
         Panel1.Controls.Add(Label3)
         Panel1.Controls.Add(Label1)
         Panel1.Controls.Add(PictureBox1)
+        Panel1.Dock = DockStyle.Top
         Panel1.Location = New Point(0, 0)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(2219, 124)
+        Panel1.Size = New Size(1942, 124)
         Panel1.TabIndex = 6
         ' 
         ' PictureBox2
@@ -68,10 +70,10 @@ Partial Class Form15
         PictureBox2.BackgroundImage = CType(resources.GetObject("PictureBox2.BackgroundImage"), Image)
         PictureBox2.BackgroundImageLayout = ImageLayout.Center
         PictureBox2.Cursor = Cursors.Hand
-        PictureBox2.Location = New Point(2118, 16)
+        PictureBox2.Location = New Point(1869, 0)
         PictureBox2.Margin = New Padding(3, 4, 3, 4)
         PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(86, 89)
+        PictureBox2.Size = New Size(61, 124)
         PictureBox2.TabIndex = 8
         PictureBox2.TabStop = False
         ' 
@@ -79,13 +81,14 @@ Partial Class Form15
         ' 
         Label3.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Label3.BackColor = Color.Transparent
-        Label3.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label3.Font = New Font("Arial", 22.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label3.ForeColor = SystemColors.ButtonHighlight
-        Label3.Location = New Point(1929, 36)
+        Label3.ImageAlign = ContentAlignment.MiddleLeft
+        Label3.Location = New Point(1619, 32)
         Label3.Name = "Label3"
-        Label3.Size = New Size(128, 59)
+        Label3.Size = New Size(214, 69)
         Label3.TabIndex = 9
-        Label3.Text = "Rhea"
+        Label3.TextAlign = ContentAlignment.MiddleRight
         ' 
         ' Label1
         ' 
@@ -117,17 +120,17 @@ Partial Class Form15
         MenuStrip1.AutoSize = False
         MenuStrip1.BackColor = SystemColors.ActiveBorder
         MenuStrip1.BackgroundImageLayout = ImageLayout.None
-        MenuStrip1.Dock = DockStyle.None
+        MenuStrip1.Dock = DockStyle.Left
         MenuStrip1.Font = New Font("Arial", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         MenuStrip1.ImageScalingSize = New Size(20, 20)
         MenuStrip1.Items.AddRange(New ToolStripItem() {LendReceivedToolStripMenuItem, ReceivedBooksToolStripMenuItem, ManageBooksToolStripMenuItem, BarcodeToolStripMenuItem, SettingsToolStripMenuItem})
-        MenuStrip1.LayoutStyle = ToolStripLayoutStyle.Table
-        MenuStrip1.Location = New Point(0, 123)
+        MenuStrip1.LayoutStyle = ToolStripLayoutStyle.VerticalStackWithOverflow
+        MenuStrip1.Location = New Point(0, 124)
         MenuStrip1.Margin = New Padding(57, 67, 57, 67)
         MenuStrip1.Name = "MenuStrip1"
         MenuStrip1.Padding = New Padding(7, 3, 0, 3)
         MenuStrip1.RenderMode = ToolStripRenderMode.Professional
-        MenuStrip1.Size = New Size(295, 1440)
+        MenuStrip1.Size = New Size(295, 911)
         MenuStrip1.TabIndex = 7
         MenuStrip1.Text = "MenuStrip1"
         ' 
@@ -138,7 +141,7 @@ Partial Class Form15
         LendReceivedToolStripMenuItem.Margin = New Padding(0, 20, 0, 20)
         LendReceivedToolStripMenuItem.Name = "LendReceivedToolStripMenuItem"
         LendReceivedToolStripMenuItem.Padding = New Padding(0, 0, 80, 40)
-        LendReceivedToolStripMenuItem.Size = New Size(295, 84)
+        LendReceivedToolStripMenuItem.Size = New Size(287, 84)
         LendReceivedToolStripMenuItem.Text = "Lend Books"
         LendReceivedToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft
         ' 
@@ -149,7 +152,7 @@ Partial Class Form15
         ReceivedBooksToolStripMenuItem.Margin = New Padding(0, 0, 0, 20)
         ReceivedBooksToolStripMenuItem.Name = "ReceivedBooksToolStripMenuItem"
         ReceivedBooksToolStripMenuItem.Padding = New Padding(0, 0, 25, 40)
-        ReceivedBooksToolStripMenuItem.Size = New Size(309, 84)
+        ReceivedBooksToolStripMenuItem.Size = New Size(287, 84)
         ReceivedBooksToolStripMenuItem.Text = "Received Books"
         ReceivedBooksToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft
         ' 
@@ -161,7 +164,7 @@ Partial Class Form15
         ManageBooksToolStripMenuItem.Margin = New Padding(0, 0, 0, 20)
         ManageBooksToolStripMenuItem.Name = "ManageBooksToolStripMenuItem"
         ManageBooksToolStripMenuItem.Padding = New Padding(0, 0, 45, 40)
-        ManageBooksToolStripMenuItem.Size = New Size(306, 84)
+        ManageBooksToolStripMenuItem.Size = New Size(287, 84)
         ManageBooksToolStripMenuItem.Text = "Manage Books"
         ManageBooksToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft
         ' 
@@ -236,7 +239,7 @@ Partial Class Form15
         BarcodeToolStripMenuItem.Margin = New Padding(0, 0, 0, 20)
         BarcodeToolStripMenuItem.Name = "BarcodeToolStripMenuItem"
         BarcodeToolStripMenuItem.Padding = New Padding(0, 10, 125, 40)
-        BarcodeToolStripMenuItem.Size = New Size(283, 94)
+        BarcodeToolStripMenuItem.Size = New Size(287, 94)
         BarcodeToolStripMenuItem.Text = "Barcode"
         BarcodeToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft
         ' 
@@ -247,7 +250,7 @@ Partial Class Form15
         SettingsToolStripMenuItem.Margin = New Padding(0, 0, 0, 20)
         SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
         SettingsToolStripMenuItem.Padding = New Padding(0, 0, 127, 40)
-        SettingsToolStripMenuItem.Size = New Size(281, 84)
+        SettingsToolStripMenuItem.Size = New Size(287, 84)
         SettingsToolStripMenuItem.Text = "Settings"
         SettingsToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft
         ' 
@@ -260,9 +263,18 @@ Partial Class Form15
         PictureBox3.TabIndex = 8
         PictureBox3.TabStop = False
         ' 
+        ' mainPanel
+        ' 
+        mainPanel.BackColor = Color.Transparent
+        mainPanel.Dock = DockStyle.Fill
+        mainPanel.Location = New Point(0, 0)
+        mainPanel.Name = "mainPanel"
+        mainPanel.Size = New Size(1942, 1035)
+        mainPanel.TabIndex = 9
+        ' 
         ' Form15
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
@@ -272,6 +284,7 @@ Partial Class Form15
         Controls.Add(PictureBox3)
         Controls.Add(MenuStrip1)
         Controls.Add(Panel1)
+        Controls.Add(mainPanel)
         DoubleBuffered = True
         FormBorderStyle = FormBorderStyle.None
         Margin = New Padding(3, 4, 3, 4)
@@ -279,7 +292,7 @@ Partial Class Form15
         MinimizeBox = False
         Name = "Form15"
         SizeGripStyle = SizeGripStyle.Hide
-        StartPosition = FormStartPosition.CenterParent
+        StartPosition = FormStartPosition.CenterScreen
         WindowState = FormWindowState.Maximized
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
@@ -310,4 +323,6 @@ Partial Class Form15
     Friend WithEvents Label3 As Label
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents PictureBox3 As PictureBox
+    Friend WithEvents mainPanel As Panel
+
 End Class
