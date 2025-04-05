@@ -80,12 +80,12 @@ Partial Class Form15
         Label3.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Label3.BackColor = Color.Transparent
         Label3.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label3.ForeColor = SystemColors.ButtonHighlight
-        Label3.Location = New Point(1688, 27)
+        Label3.ForeColor = SystemColors.ActiveCaptionText
+        Label3.Location = New Point(1647, 27)
         Label3.Name = "Label3"
-        Label3.Size = New Size(112, 44)
+        Label3.Size = New Size(166, 44)
         Label3.TabIndex = 9
-        Label3.Text = "Rhea"
+        Label3.Text = "Username"
         ' 
         ' Label1
         ' 

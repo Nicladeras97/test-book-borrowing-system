@@ -5,7 +5,6 @@ Imports System.IO
 Public Class Form15
     Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
         Panel1.BackColor = Color.FromArgb(100, 0, 0, 0)
-
     End Sub
 
     Private Sub AddBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddBooksToolStripMenuItem.Click
@@ -199,15 +198,12 @@ Public Class Form15
             Dim isSubItem As Boolean = TypeOf e.Item.Owner Is ToolStripDropDownMenu
 
             If e.Item.Selected Then
-                ' Hover effect for sub-items
                 If isSubItem Then
                     e.Graphics.FillRectangle(New SolidBrush(Color.FromArgb(150, 50, 50, 50)), e.Item.ContentRectangle)
                 Else
-                    ' Hover effect for top-level menu items
                     e.Graphics.FillRectangle(New SolidBrush(Color.FromArgb(150, 30, 30, 30)), e.Item.ContentRectangle)
                 End If
             Else
-                ' Background when not hovered
                 If isSubItem Then
                     e.Graphics.FillRectangle(New SolidBrush(Color.FromArgb(100, 20, 20, 20)), e.Item.ContentRectangle)
                 Else
@@ -226,7 +222,9 @@ Public Class Form15
         End Sub
     End Class
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Public Property CurrentUsername As String
+
+    Private Sub Form15_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MenuStrip1.Renderer = New CustomRenderer()
     End Sub
 

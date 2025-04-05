@@ -88,7 +88,7 @@ Public Class Form3
                     End While
 
                     reader.Close()
-                    MessageBox.Show("Lahat ng barcode ay na-save sa: " & saveFolder, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    MessageBox.Show("All barcodes are saved in: " & saveFolder, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End Using
             Catch ex As Exception
                 MessageBox.Show("Error generating barcodes: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)

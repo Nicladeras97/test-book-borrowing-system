@@ -76,7 +76,7 @@ Public Class Form13
                     cmd.Parameters.AddWithValue("@Section", TextBox5.Text.Trim())
                     cmd.Parameters.AddWithValue("@Rack", TextBox6.Text.Trim())
                     cmd.Parameters.AddWithValue("@CallNumber", TextBox7.Text.Trim())
-                    cmd.Parameters.AddWithValue("@Accno", ComboBox1.SelectedItem.ToString())
+                    cmd.Parameters.AddWithValue("@Accno", ComboBox1.Text.ToString())
 
                     cmd.ExecuteNonQuery()
                     MessageBox.Show("Book updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
