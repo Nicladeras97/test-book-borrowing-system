@@ -25,23 +25,25 @@ Public Class Form3
     End Sub
 
     Private Sub GenerateBarcode()
+        Dim Generator As New BarcodeEncoder
+        Generator.BackColor = Color.White
+        Generator.LabelFont = New Font("Arial", 7, FontStyle.Regular)
+        Generator.IncludeLabel = True
+        Generator.CustomLabel = ComboBox1.Text
         Try
+            Dim barcodeImage As New Bitmap(Generator.Encode(BarcodeFormat.Code128, ComboBox1.Text), New Size(300, 150))
             Dim encoder As New BarcodeEncoder()
             encoder.BackColor = Color.White
             encoder.LabelFont = New Font("Arial", 7, FontStyle.Regular)
             encoder.IncludeLabel = True
             encoder.CustomLabel = ComboBox1.Text
 
-
-            Dim barcodeImage As Bitmap = encoder.Encode(BarcodeFormat.Code128, ComboBox1.Text)
-
-
+            PictureBox1.Image = New Bitmap(Generator.Encode(BarcodeFormat.Code128, ComboBox1.Text))
             PictureBox1.Image = barcodeImage
         Catch ex As Exception
             MessageBox.Show("Error generating barcode: " & ex.Message)
         End Try
     End Sub
-
 
     Private Sub SaveBarcode()
         Dim SD As New SaveFileDialog
@@ -88,6 +90,7 @@ Public Class Form3
                     End While
 
                     reader.Close()
+                    MessageBox.Show("Lahat ng barcode ay na-save sa: " & saveFolder, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     MessageBox.Show("All barcodes are saved in: " & saveFolder, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End Using
             Catch ex As Exception
