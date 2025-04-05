@@ -31,8 +31,8 @@ Public Class Form9
         End Try
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Dim accNo As String = ComboBox2.Text
+    Private Sub Button4_Click(sender As Object, e As EventArgs)
+        Dim accNo = ComboBox2.Text
     End Sub
 
     'Return Good
@@ -80,7 +80,7 @@ Public Class Form9
                 End If
             End If
 
-            Dim returnQuery = "INSERT INTO returned_books (BorrowerID, BookID, ConditionID, Return Date, Penalty Fee) VALUES (@BorrowerID, @BookID, @ConditionID, @ReturnDate, @PenaltyFee)"
+            Dim returnQuery = "INSERT INTO returned_books (BorrowerID, BookID, ConditionID, Return Date, OverduePenalty) VALUES (@BorrowerID, @BookID, @ConditionID, @ReturnDate, @OverduePenalty)"
             Dim returnCmd As New MySqlCommand(returnQuery, conn)
             returnCmd.Parameters.AddWithValue("@BorrowerID", borrowerID)
             returnCmd.Parameters.AddWithValue("@BookID", accNo)
@@ -88,9 +88,9 @@ Public Class Form9
             returnCmd.Parameters.AddWithValue("@ReturnDate", Date.Now.ToString("yyyy-MM-dd"))
 
             If penaltyAmount > 0 Then
-                returnCmd.Parameters.AddWithValue("@PenaltyFee", penaltyAmount)
+                returnCmd.Parameters.AddWithValue("@OverduePenalty", penaltyAmount)
             Else
-                returnCmd.Parameters.AddWithValue("@PenaltyFee", 0)
+                returnCmd.Parameters.AddWithValue("@OverduePenalty", 0)
             End If
 
             returnCmd.ExecuteNonQuery()
@@ -127,7 +127,9 @@ Public Class Form9
 
             Dim originalConditionID As Integer
             Dim borrowerID As Integer
-            Dim getBorrowerQuery = "SELECT borrower_id, condition_id FROM books_borrowed WHERE book_id = @Accno"
+            Dim dueDate As Date
+
+            Dim getBorrowerQuery = "SELECT borrower_id, condition_id, due_date FROM books_borrowed WHERE book_id = @Accno"
             Dim borrowerCmd As New MySqlCommand(getBorrowerQuery, conn)
             borrowerCmd.Parameters.AddWithValue("@Accno", accNo)
             Dim borrowerReader = borrowerCmd.ExecuteReader()
@@ -135,6 +137,7 @@ Public Class Form9
             If borrowerReader.Read() Then
                 borrowerID = Convert.ToInt32(borrowerReader("borrower_id"))
                 originalConditionID = Convert.ToInt32(borrowerReader("condition_id"))
+                dueDate = Convert.ToDateTime(borrowerReader("due_date"))
             Else
                 MessageBox.Show("Error: Borrower record not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 borrowerReader.Close()
@@ -142,6 +145,16 @@ Public Class Form9
                 Exit Sub
             End If
             borrowerReader.Close()
+
+            Dim overduePenalty As Double = 0
+            If Date.Now > dueDate Then
+                Dim penaltyInput = InputBox("This book is overdue. Enter penalty amount:", "Overdue Penalty")
+                If Not Double.TryParse(penaltyInput, overduePenalty) Then
+                    MessageBox.Show("Invalid penalty amount.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    conn.Close()
+                    Exit Sub
+                End If
+            End If
 
             Dim damagePenaltyInput = InputBox("Enter penalty amount for the damaged book:", "Damage Penalty")
             Dim damagePenaltyAmount As Double
@@ -151,12 +164,14 @@ Public Class Form9
                 Exit Sub
             End If
 
-            Dim damageQuery = "INSERT INTO returned_books (BorrowerID, BookID, ConditionID, Return Date, Penalty Fee) VALUES (@BorrowerID, @BookID, 3, @ReturnDate, @PenaltyFee)"
+            Dim damageQuery = "INSERT INTO returned_books (BorrowerID, BookID, ConditionID, `Return Date`, `Penalty Fee`, OverduePenalty) " &
+                          "VALUES (@BorrowerID, @BookID, 3, @ReturnDate, @PenaltyFee, @OverduePenalty)"
             Dim damageCmd As New MySqlCommand(damageQuery, conn)
             damageCmd.Parameters.AddWithValue("@BorrowerID", borrowerID)
             damageCmd.Parameters.AddWithValue("@BookID", accNo)
             damageCmd.Parameters.AddWithValue("@ReturnDate", Date.Now.ToString("yyyy-MM-dd"))
             damageCmd.Parameters.AddWithValue("@PenaltyFee", damagePenaltyAmount)
+            damageCmd.Parameters.AddWithValue("@OverduePenalty", overduePenalty)
             damageCmd.ExecuteNonQuery()
 
             Dim result As DialogResult = MessageBox.Show("Do you want to mark this book for repair?", "Repair Option", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
@@ -199,7 +214,6 @@ Public Class Form9
 
                 MessageBox.Show("Book marked as damaged and remains available for borrowing.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
-
 
             Dim menu As New Form15
             menu.Show()
@@ -270,6 +284,16 @@ Public Class Form9
             End If
             borrowerReader.Close()
 
+            Dim overduePenalty As Double = 0
+            If Date.Now > dueDate Then
+                Dim penaltyInput = InputBox("This book is overdue. Enter penalty amount:", "Overdue Penalty")
+                If Not Double.TryParse(penaltyInput, overduePenalty) Then
+                    MessageBox.Show("Invalid penalty amount.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    conn.Close()
+                    Exit Sub
+                End If
+            End If
+
             Dim lostPenaltyInput As String = InputBox("Enter penalty amount for the lost book:", "Lost Book Penalty")
             Dim lostPenaltyAmount As Double
             If Not Double.TryParse(lostPenaltyInput, lostPenaltyAmount) Then
@@ -279,12 +303,14 @@ Public Class Form9
                 Exit Sub
             End If
 
-            Dim insertLostBookQuery As String = "INSERT INTO returned_books (BorrowerID, BookID, ConditionID, Return Date, Penalty Fee) VALUES (@BorrowerID, @BookID, 4, @ReturnDate, @PenaltyFee)"
+            Dim insertLostBookQuery As String = "INSERT INTO returned_books (BorrowerID, BookID, ConditionID, `Return Date`, `Penalty Fee`, OverduePenalty) " &
+                                    "VALUES (@BorrowerID, @BookID, 4, @ReturnDate, @PenaltyFee, @OverduePenalty)"
             Dim insertLostCmd As New MySqlCommand(insertLostBookQuery, conn, transaction)
             insertLostCmd.Parameters.AddWithValue("@BorrowerID", borrowerID)
             insertLostCmd.Parameters.AddWithValue("@BookID", accNo)
             insertLostCmd.Parameters.AddWithValue("@ReturnDate", Date.Now.ToString("yyyy-MM-dd"))
             insertLostCmd.Parameters.AddWithValue("@PenaltyFee", lostPenaltyAmount)
+            insertLostCmd.Parameters.AddWithValue("@Overduepenalty", overduePenalty)
             insertLostCmd.ExecuteNonQuery()
 
             Dim insertDeletedQuery As String = "INSERT INTO books_deleted (Accno, Title, Author, Year, Publisher, ISBN, Section, CallNumber, Rack, ConditionID, borrower_id) VALUES (@Accno, @Title, @Author, @Year, @Publisher, @ISBN, @Section, @CallNumber, @Rack, 4, @borrower_id)"

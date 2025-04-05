@@ -100,6 +100,24 @@ Public Class Form8
             Return
         End If
 
+        If TextBox3.TextLength <> 11 Or Not IsNumeric(TextBox3.Text) Then
+            MessageBox.Show("Contact number must be exactly 11 digits.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+
+        If Not TextBox4.Text.EndsWith("@gmail.com") Then
+            MessageBox.Show("Only @gmail.com email addresses are allowed.", "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+
+        If DateTimePicker2.Value.Date < DateTime.Now.Date Then
+            MessageBox.Show("You cannot select a past date as the due date.", "Invalid Due Date", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+
         Dim accNo As String = ComboBox2.Text
         Dim studNo As String = TextBox1.Text
         Dim fullName As String = TextBox2.Text
@@ -282,6 +300,29 @@ Public Class Form8
             ProcessBarcodeAccno(scanAccno)
         ElseIf scanType = "studno" AndAlso scanStudno.Length >= 6 Then
             ProcessBarcodeStudno(scanStudno)
+        End If
+    End Sub
+
+    Private Sub TextBox3_TextChanged(sender As Object, e As EventArgs) Handles TextBox3.TextChanged
+        If TextBox3.TextLength > 11 Then
+            MessageBox.Show("It must contain 11 digits.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            TextBox3.Text = TextBox3.Text.Substring(0, 11)
+            TextBox3.SelectionStart = TextBox3.TextLength
+        End If
+    End Sub
+
+    Private Sub DateTimePicker2_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker2.ValueChanged
+        If DateTimePicker2.Value.Date < DateTime.Now.Date Then
+            MessageBox.Show("It must be earlier in the expected due date.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            DateTimePicker2.Value = DateTime.Now.Date
+        End If
+    End Sub
+
+
+    Private Sub TextBox4_Leave(sender As Object, e As EventArgs) Handles TextBox4.Leave
+        If Not TextBox4.Text.ToLower().EndsWith("@gmail.com") Then
+            MessageBox.Show("It must end with @gmail.com.", "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            TextBox4.Focus()
         End If
     End Sub
 

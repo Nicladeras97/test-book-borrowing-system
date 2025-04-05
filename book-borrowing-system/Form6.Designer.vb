@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form6
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,22 +20,17 @@ Partial Class Form6
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Button2 = New Button()
         DataGridView1 = New DataGridView()
         Button4 = New Button()
-        Label3 = New Label()
-        Label2 = New Label()
-        DateTimePicker2 = New DateTimePicker()
-        DateTimePicker1 = New DateTimePicker()
         ComboBox1 = New ComboBox()
-        Button1 = New Button()
-        GroupBox1 = New GroupBox()
         ComboBox2 = New ComboBox()
+        TextBox1 = New TextBox()
+        Label1 = New Label()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
-        GroupBox1.SuspendLayout()
         SuspendLayout()
         ' 
         ' Button2
@@ -47,7 +42,7 @@ Partial Class Form6
         Button2.ForeColor = Color.White
         Button2.Location = New Point(1314, 39)
         Button2.Name = "Button2"
-        Button2.Size = New Size(89, 33)
+        Button2.Size = New Size(89, 28)
         Button2.TabIndex = 7
         Button2.Text = "Export"
         Button2.UseVisualStyleBackColor = False
@@ -59,26 +54,26 @@ Partial Class Form6
         DataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
         DataGridView1.BackgroundColor = SystemColors.ButtonHighlight
         DataGridView1.BorderStyle = BorderStyle.Fixed3D
-        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = Color.LightBlue
-        DataGridViewCellStyle1.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle1.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = Color.LightBlue
-        DataGridViewCellStyle1.SelectionForeColor = SystemColors.ControlText
-        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
-        DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = Color.LightBlue
+        DataGridViewCellStyle2.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = Color.LightBlue
+        DataGridViewCellStyle2.SelectionForeColor = SystemColors.ControlText
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+        DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridView1.Cursor = Cursors.Hand
         DataGridView1.EnableHeadersVisualStyles = False
         DataGridView1.GridColor = SystemColors.ControlDark
-        DataGridView1.Location = New Point(38, 161)
+        DataGridView1.Location = New Point(38, 87)
         DataGridView1.MultiSelect = False
         DataGridView1.Name = "DataGridView1"
         DataGridView1.ReadOnly = True
         DataGridView1.RowHeadersVisible = False
         DataGridView1.RowHeadersWidth = 51
         DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        DataGridView1.Size = New Size(1365, 596)
+        DataGridView1.Size = New Size(1365, 670)
         DataGridView1.TabIndex = 14
         ' 
         ' Button4
@@ -90,7 +85,7 @@ Partial Class Form6
         Button4.ForeColor = Color.White
         Button4.Location = New Point(1219, 39)
         Button4.Name = "Button4"
-        Button4.Size = New Size(89, 33)
+        Button4.Size = New Size(89, 28)
         Button4.TabIndex = 15
         Button4.Text = "Print"
         Button4.UseVisualStyleBackColor = False
@@ -133,57 +128,50 @@ Partial Class Form6
         ' 
         ' ComboBox1
         ' 
+        ComboBox1.Font = New Font("Arial", 12.0F)
         ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(20, 22)
+        ComboBox1.Location = New Point(772, 41)
         ComboBox1.Name = "ComboBox1"
         ComboBox1.Size = New Size(253, 26)
         ComboBox1.TabIndex = 32
         ' 
-        ' Button1
-        ' 
-        Button1.BackColor = SystemColors.HotTrack
-        Button1.Cursor = Cursors.Hand
-        Button1.FlatStyle = FlatStyle.Flat
-        Button1.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Button1.ForeColor = Color.White
-        Button1.Location = New Point(1265, 22)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(76, 26)
-        Button1.TabIndex = 33
-        Button1.Text = "Filter"
-        Button1.UseVisualStyleBackColor = False
-        ' 
-        ' GroupBox1
-        ' 
-        GroupBox1.Controls.Add(DateTimePicker2)
-        GroupBox1.Controls.Add(DateTimePicker1)
-        GroupBox1.Controls.Add(Label2)
-        GroupBox1.Controls.Add(Button1)
-        GroupBox1.Controls.Add(Label3)
-        GroupBox1.Controls.Add(ComboBox1)
-        GroupBox1.Location = New Point(38, 88)
-        GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(1365, 58)
-        GroupBox1.TabIndex = 36
-        GroupBox1.TabStop = False
-        ' 
         ' ComboBox2
         ' 
-        ComboBox2.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        ComboBox2.Font = New Font("Arial", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         ComboBox2.FormattingEnabled = True
         ComboBox2.Location = New Point(1040, 40)
         ComboBox2.Name = "ComboBox2"
         ComboBox2.Size = New Size(162, 32)
         ComboBox2.TabIndex = 34
         ' 
+        ' TextBox1
+        ' 
+        TextBox1.Font = New Font("Arial", 12.0F)
+        TextBox1.Location = New Point(102, 46)
+        TextBox1.Name = "TextBox1"
+        TextBox1.Size = New Size(280, 26)
+        TextBox1.TabIndex = 37
+        ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label1.Location = New Point(38, 49)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(58, 18)
+        Label1.TabIndex = 38
+        Label1.Text = "Search"
+        ' 
         ' Form6
         ' 
-        AutoScaleDimensions = New SizeF(9F, 18F)
+        AutoScaleDimensions = New SizeF(9.0F, 18.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(1446, 790)
+        Controls.Add(ComboBox1)
+        Controls.Add(Label1)
+        Controls.Add(TextBox1)
         Controls.Add(ComboBox2)
-        Controls.Add(GroupBox1)
         Controls.Add(Button4)
         Controls.Add(Button2)
         Controls.Add(DataGridView1)
@@ -193,19 +181,15 @@ Partial Class Form6
         StartPosition = FormStartPosition.Manual
         Text = "Book Reports"
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
-        GroupBox1.ResumeLayout(False)
-        GroupBox1.PerformLayout()
         ResumeLayout(False)
+        PerformLayout()
     End Sub
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents Button2 As Button
     Friend WithEvents Button4 As Button
-    Friend WithEvents DateTimePicker1 As DateTimePicker
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents DateTimePicker2 As DateTimePicker
     Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents Button1 As Button
-    Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Label1 As Label
 End Class

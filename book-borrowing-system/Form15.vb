@@ -233,15 +233,12 @@ Public Class Form15
             Dim isSubItem As Boolean = TypeOf e.Item.Owner Is ToolStripDropDownMenu
 
             If e.Item.Selected Then
-                ' Hover effect for sub-items
                 If isSubItem Then
                     e.Graphics.FillRectangle(New SolidBrush(Color.FromArgb(150, 30, 30, 30)), e.Item.ContentRectangle)
                 Else
-                    ' Hover effect for top-level menu items
                     e.Graphics.FillRectangle(New SolidBrush(Color.FromArgb(150, 30, 30, 30)), e.Item.ContentRectangle)
                 End If
             Else
-                ' Background when not hovered
                 If isSubItem Then
                     e.Graphics.FillRectangle(New SolidBrush(Color.FromArgb(100, 20, 20, 20)), e.Item.ContentRectangle)
                 Else

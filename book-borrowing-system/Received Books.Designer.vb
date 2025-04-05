@@ -53,7 +53,6 @@ Partial Class Form9
         Label31 = New Label()
         Label10 = New Label()
         Label12 = New Label()
-        Button4 = New Button()
         Label27 = New Label()
         ComboBox2 = New ComboBox()
         Button1 = New Button()
@@ -393,19 +392,6 @@ Partial Class Form9
         Label12.TabIndex = 84
         Label12.Text = "Section"
         ' 
-        ' Button4
-        ' 
-        Button4.BackColor = Color.DarkGreen
-        Button4.FlatAppearance.BorderSize = 0
-        Button4.FlatStyle = FlatStyle.Flat
-        Button4.ForeColor = SystemColors.ButtonHighlight
-        Button4.Location = New Point(621, 210)
-        Button4.Name = "Button4"
-        Button4.Size = New Size(75, 26)
-        Button4.TabIndex = 4
-        Button4.Text = "Check"
-        Button4.UseVisualStyleBackColor = False
-        ' 
         ' Label27
         ' 
         Label27.AutoSize = True
@@ -421,7 +407,7 @@ Partial Class Form9
         ComboBox2.FormattingEnabled = True
         ComboBox2.Location = New Point(258, 210)
         ComboBox2.Name = "ComboBox2"
-        ComboBox2.Size = New Size(357, 24)
+        ComboBox2.Size = New Size(438, 24)
         ComboBox2.TabIndex = 1
         ' 
         ' Button1
@@ -476,7 +462,6 @@ Partial Class Form9
         Controls.Add(Button1)
         Controls.Add(ComboBox2)
         Controls.Add(Label27)
-        Controls.Add(Button4)
         Controls.Add(Label10)
         Controls.Add(Label12)
         Controls.Add(Label30)
@@ -546,7 +531,6 @@ Partial Class Form9
     Friend WithEvents Label31 As Label
     Friend WithEvents Label10 As Label
     Friend WithEvents Label12 As Label
-    Friend WithEvents Button4 As Button
     Friend WithEvents Label27 As Label
     Friend WithEvents ComboBox2 As ComboBox
     Friend WithEvents Button1 As Button
