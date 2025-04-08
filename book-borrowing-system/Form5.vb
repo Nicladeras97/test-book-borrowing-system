@@ -1,12 +1,21 @@
 ﻿Imports MySql.Data.MySqlClient
+Imports System.Drawing
 
 Public Class Form5
     Dim connString As String = "server=localhost; user=root; password=; database=book-borrowing"
 
     Private Sub Form5_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
+
+            ComboBox1.Font = New Font("Segoe UI", 12, FontStyle.Regular)
+            ComboBox2.Font = New Font("Segoe UI", 12, FontStyle.Regular)
+
+            ComboBox1.DrawMode = DrawMode.OwnerDrawFixed
+            ComboBox2.DrawMode = DrawMode.OwnerDrawFixed
+
             ComboBox1.DropDownStyle = ComboBoxStyle.DropDown
             ComboBox1.Focus()
+
             ComboBox2.Items.Add("1")
             ComboBox2.Items.Add("10")
             ComboBox2.Items.Add("25")
@@ -15,10 +24,31 @@ Public Class Form5
             ComboBox2.Items.Add("500")
             ComboBox2.Items.Add("1000")
             ComboBox2.SelectedIndex = 0
+
             LoadRepairBooks(25)
         Catch ex As Exception
             MessageBox.Show("Error loading repair books: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+    End Sub
+
+
+    Private Sub ComboBox1_DrawItem(sender As Object, e As DrawItemEventArgs) Handles ComboBox1.DrawItem
+        If e.Index < 0 Then Return
+        e.DrawBackground()
+        Using myFont As New Font("Segoe UI", 12)
+            e.Graphics.DrawString(ComboBox1.Items(e.Index).ToString(), myFont, Brushes.Black, e.Bounds)
+        End Using
+        e.DrawFocusRectangle()
+    End Sub
+
+
+    Private Sub ComboBox2_DrawItem(sender As Object, e As DrawItemEventArgs) Handles ComboBox2.DrawItem
+        If e.Index < 0 Then Return
+        e.DrawBackground()
+        Using myFont As New Font("Segoe UI", 12)
+            e.Graphics.DrawString(ComboBox2.Items(e.Index).ToString(), myFont, Brushes.Black, e.Bounds)
+        End Using
+        e.DrawFocusRectangle()
     End Sub
 
     Private Sub ComboBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles ComboBox1.KeyDown
@@ -28,13 +58,12 @@ Public Class Form5
         End If
     End Sub
 
-
     Private Sub LoadRepairBooks(recordCount As Integer)
         Using conn As New MySqlConnection(connString)
             Try
                 conn.Open()
-
-                Dim query As String = "SELECT Accno, Title, CallNumber, Rack FROM books_deleted WHERE ConditionID = 5 LIMIT @RecordCount"
+                Dim query As String = "SELECT b.Accno, b.Title, b.CallNumber, b.Rack, b.`Penalty Fee` " &
+                                      "FROM books_deleted b WHERE b.ConditionID = 5 LIMIT @RecordCount"
                 Dim cmd As New MySqlCommand(query, conn)
                 cmd.Parameters.AddWithValue("@RecordCount", recordCount)
                 Dim reader As MySqlDataReader = cmd.ExecuteReader()
@@ -45,13 +74,16 @@ Public Class Form5
                 End While
                 reader.Close()
 
-                Dim dgvQuery As String = "SELECT Accno, Title, CallNumber, Rack FROM books_deleted WHERE ConditionID = 5 LIMIT @RecordCount"
+
+                Dim dgvQuery As String = "SELECT b.Accno, b.Title, b.CallNumber, b.Rack, b.`Penalty Fee` " &
+                                         "FROM books_deleted b WHERE b.ConditionID = 5 LIMIT @RecordCount"
                 Dim dgvCmd As New MySqlCommand(dgvQuery, conn)
                 dgvCmd.Parameters.AddWithValue("@RecordCount", recordCount)
                 Dim dgvAdapter As New MySqlDataAdapter(dgvCmd)
                 Dim dgvTable As New DataTable()
                 dgvAdapter.Fill(dgvTable)
                 DataGridView1.DataSource = dgvTable
+                DataGridView1.Columns(4).HeaderText = "Penalty Fee"
 
             Catch ex As MySqlException
                 MessageBox.Show("Database error: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -63,7 +95,6 @@ Public Class Form5
 
     Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox2.SelectedIndexChanged
         Dim recordCount As Integer = Convert.ToInt32(ComboBox2.SelectedItem.ToString())
-
         LoadRepairBooks(recordCount)
     End Sub
 
@@ -139,6 +170,4 @@ Public Class Form5
             MessageBox.Show("Error returning repaired book: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
-
 End Class

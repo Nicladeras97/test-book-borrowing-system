@@ -40,7 +40,7 @@ Partial Class Form3
         Label1.Font = New Font("Arial", 28.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label1.Location = New Point(350, 60)
         Label1.Name = "Label1"
-        Label1.Size = New Size(429, 55)
+        Label1.Size = New Size(347, 45)
         Label1.TabIndex = 0
         Label1.Text = "Generate Barcode"
         ' 
@@ -66,7 +66,7 @@ Partial Class Form3
         PictureBox1.Anchor = AnchorStyles.None
         PictureBox1.BackgroundImageLayout = ImageLayout.None
         PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
-        PictureBox1.Location = New Point(401, 468)
+        PictureBox1.Location = New Point(418, 451)
         PictureBox1.Margin = New Padding(3, 4, 3, 4)
         PictureBox1.Name = "PictureBox1"
         PictureBox1.Size = New Size(300, 150)
@@ -115,7 +115,7 @@ Partial Class Form3
         ComboBox1.FormattingEnabled = True
         ComboBox1.Location = New Point(270, 147)
         ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(578, 31)
+        ComboBox1.Size = New Size(578, 26)
         ComboBox1.TabIndex = 1
         ' 
         ' Button4
@@ -136,7 +136,7 @@ Partial Class Form3
         ' 
         ' Form3
         ' 
-        AutoScaleDimensions = New SizeF(9F, 19F)
+        AutoScaleDimensions = New SizeF(7F, 16F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(1129, 659)

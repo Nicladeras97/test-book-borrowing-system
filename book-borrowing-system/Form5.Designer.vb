@@ -23,6 +23,7 @@ Partial Class Form5
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         DataGridView1 = New DataGridView()
         Button1 = New Button()
         Label1 = New Label()
@@ -37,24 +38,26 @@ Partial Class Form5
         DataGridView1.AllowUserToDeleteRows = False
         DataGridView1.AllowUserToResizeColumns = False
         DataGridView1.AllowUserToResizeRows = False
+        DataGridViewCellStyle1.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         DataGridView1.Anchor = AnchorStyles.None
         DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         DataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
         DataGridView1.BackgroundColor = SystemColors.ButtonHighlight
         DataGridView1.BorderStyle = BorderStyle.Fixed3D
-        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = Color.LightBlue
-        DataGridViewCellStyle1.Font = New Font("Arial", 9F)
-        DataGridViewCellStyle1.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = Color.LightBlue
-        DataGridViewCellStyle1.SelectionForeColor = SystemColors.ControlText
-        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
-        DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = Color.LightBlue
+        DataGridViewCellStyle2.Font = New Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = Color.LightBlue
+        DataGridViewCellStyle2.SelectionForeColor = SystemColors.ControlText
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+        DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridView1.Cursor = Cursors.Hand
         DataGridView1.EnableHeadersVisualStyles = False
         DataGridView1.GridColor = SystemColors.ControlDark
-        DataGridView1.Location = New Point(34, 168)
+        DataGridView1.Location = New Point(0, 0)
         DataGridView1.MultiSelect = False
         DataGridView1.Name = "DataGridView1"
         DataGridView1.ReadOnly = True
@@ -62,16 +65,18 @@ Partial Class Form5
         DataGridView1.RowHeadersVisible = False
         DataGridView1.RowHeadersWidth = 51
         DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        DataGridView1.Size = New Size(952, 470)
+        DataGridView1.Size = New Size(1036, 672)
         DataGridView1.TabIndex = 15
         ' 
         ' Button1
         ' 
-        Button1.BackColor = Color.LightBlue
+        Button1.Anchor = AnchorStyles.Top
+        Button1.BackColor = SystemColors.HotTrack
         Button1.FlatAppearance.BorderSize = 0
         Button1.FlatStyle = FlatStyle.Flat
-        Button1.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Button1.Location = New Point(876, 106)
+        Button1.Font = New Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Button1.ForeColor = Color.White
+        Button1.Location = New Point(855, 33)
         Button1.Name = "Button1"
         Button1.Size = New Size(110, 35)
         Button1.TabIndex = 16
@@ -80,35 +85,39 @@ Partial Class Form5
         ' 
         ' Label1
         ' 
+        Label1.Anchor = AnchorStyles.Top
         Label1.AutoSize = True
-        Label1.Font = New Font("Arial", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label1.Location = New Point(34, 26)
+        Label1.BackColor = Color.Transparent
+        Label1.Font = New Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.Location = New Point(56, 32)
         Label1.Name = "Label1"
-        Label1.Size = New Size(199, 39)
+        Label1.Size = New Size(177, 32)
         Label1.TabIndex = 17
         Label1.Text = "Repair Book"
         ' 
         ' ComboBox1
         ' 
+        ComboBox1.Anchor = AnchorStyles.Top
         ComboBox1.Font = New Font("Arial", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(502, 107)
+        ComboBox1.Location = New Point(482, 37)
         ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(206, 34)
+        ComboBox1.Size = New Size(206, 29)
         ComboBox1.TabIndex = 18
         ' 
         ' ComboBox2
         ' 
+        ComboBox2.Anchor = AnchorStyles.Top
         ComboBox2.Font = New Font("Arial", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ComboBox2.FormattingEnabled = True
-        ComboBox2.Location = New Point(714, 107)
+        ComboBox2.Location = New Point(694, 37)
         ComboBox2.Name = "ComboBox2"
-        ComboBox2.Size = New Size(155, 34)
+        ComboBox2.Size = New Size(155, 29)
         ComboBox2.TabIndex = 19
         ' 
         ' Form5
         ' 
-        AutoScaleDimensions = New SizeF(8F, 17F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(1036, 672)

@@ -28,19 +28,21 @@ Public Class Form2
         End Using
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        If ComboBox1.Text Is Nothing Then
-            MessageBox.Show("Please select an Accno.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+    Private Sub ComboBox1_TextChanged(sender As Object, e As EventArgs) Handles ComboBox1.TextChanged
+        Dim accno As String = ComboBox1.Text.Trim()
+
+        If String.IsNullOrWhiteSpace(accno) Then
+            ClearLabels()
+            Button1.Enabled = False
             Return
         End If
 
-        Dim selectedAccNo As String = ComboBox1.Text.ToString()
         Using conn As New MySqlConnection(connString)
             Try
                 conn.Open()
                 Dim query As String = "SELECT * FROM books WHERE Accno = @Accno"
                 Using cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@Accno", selectedAccNo)
+                    cmd.Parameters.AddWithValue("@Accno", accno)
                     Dim reader As MySqlDataReader = cmd.ExecuteReader()
                     If reader.Read() Then
                         Label10.Text = reader("Title").ToString()
@@ -51,8 +53,10 @@ Public Class Form2
                         Label15.Text = reader("Section").ToString()
                         Label17.Text = reader("CallNumber").ToString()
                         Label16.Text = reader("Rack").ToString()
+                        Button1.Enabled = True
                     Else
-                        MessageBox.Show("Book not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        ClearLabels()
+                        Button1.Enabled = False
                     End If
                 End Using
             Catch ex As Exception
@@ -61,23 +65,32 @@ Public Class Form2
         End Using
     End Sub
 
+    Private Sub ClearLabels()
+        Label10.Text = ""
+        Label12.Text = ""
+        Label13.Text = ""
+        Label14.Text = ""
+        Label23.Text = ""
+        Label15.Text = ""
+        Label17.Text = ""
+        Label16.Text = ""
+    End Sub
+
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        ' Ensure the button keeps the desired ForeColor
         Button1.ForeColor = Color.White
         Button1.UseVisualStyleBackColor = False
 
-        If ComboBox1.SelectedItem Is Nothing Then
+        Dim selectedAccNo As String = ComboBox1.Text.Trim()
+
+        If String.IsNullOrWhiteSpace(selectedAccNo) Then
             MessageBox.Show("Please select an Accno to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
-
-        Dim selectedAccNo As String = ComboBox1.Text.ToString()
 
         Using conn As New MySqlConnection(connString)
             Try
                 conn.Open()
 
-                ' Check if the book is currently borrowed
                 Dim checkQuery As String = "SELECT COUNT(*) FROM books_borrowed WHERE book_id = @Accno"
                 Using checkCmd As New MySqlCommand(checkQuery, conn)
                     checkCmd.Parameters.AddWithValue("@Accno", selectedAccNo)
@@ -88,7 +101,6 @@ Public Class Form2
                     End If
                 End Using
 
-                ' Delete the book record
                 Dim deleteQuery As String = "DELETE FROM books WHERE Accno = @Accno"
                 Using deleteCmd As New MySqlCommand(deleteQuery, conn)
                     deleteCmd.Parameters.AddWithValue("@Accno", selectedAccNo)
@@ -96,7 +108,6 @@ Public Class Form2
                     MessageBox.Show("Book deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End Using
 
-                ' Go back to the previous form
                 Dim back As New Form15
                 back.Show()
                 Me.Hide()
@@ -112,7 +123,4 @@ Public Class Form2
         cancel.Show()
         Me.Hide()
     End Sub
-
-
-
 End Class

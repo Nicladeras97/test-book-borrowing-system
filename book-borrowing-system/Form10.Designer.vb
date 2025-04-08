@@ -50,7 +50,7 @@ Partial Class Form10
         lblBookTitle.Font = New Font("Arial", 12F)
         lblBookTitle.Location = New Point(382, 272)
         lblBookTitle.Name = "lblBookTitle"
-        lblBookTitle.Size = New Size(46, 23)
+        lblBookTitle.Size = New Size(36, 18)
         lblBookTitle.TabIndex = 25
         lblBookTitle.Text = "Title"
         ' 
@@ -61,7 +61,7 @@ Partial Class Form10
         lblAuthor.Font = New Font("Arial", 12F)
         lblAuthor.Location = New Point(382, 320)
         lblAuthor.Name = "lblAuthor"
-        lblAuthor.Size = New Size(67, 23)
+        lblAuthor.Size = New Size(53, 18)
         lblAuthor.TabIndex = 26
         lblAuthor.Text = "Author"
         ' 
@@ -72,7 +72,7 @@ Partial Class Form10
         lblISBN.Font = New Font("Arial", 12F)
         lblISBN.Location = New Point(382, 223)
         lblISBN.Name = "lblISBN"
-        lblISBN.Size = New Size(55, 23)
+        lblISBN.Size = New Size(44, 18)
         lblISBN.TabIndex = 27
         lblISBN.Text = "ISBN"
         ' 
@@ -83,7 +83,7 @@ Partial Class Form10
         lblCopies.Font = New Font("Arial", 12F)
         lblCopies.Location = New Point(382, 518)
         lblCopies.Name = "lblCopies"
-        lblCopies.Size = New Size(71, 23)
+        lblCopies.Size = New Size(59, 18)
         lblCopies.TabIndex = 28
         lblCopies.Text = "Copies"
         ' 
@@ -94,7 +94,7 @@ Partial Class Form10
         lblCategory.Font = New Font("Arial", 12F)
         lblCategory.Location = New Point(382, 467)
         lblCategory.Name = "lblCategory"
-        lblCategory.Size = New Size(75, 23)
+        lblCategory.Size = New Size(61, 18)
         lblCategory.TabIndex = 29
         lblCategory.Text = "Section"
         ' 
@@ -105,7 +105,7 @@ Partial Class Form10
         lblYear.Font = New Font("Arial", 12F)
         lblYear.Location = New Point(382, 370)
         lblYear.Name = "lblYear"
-        lblYear.Size = New Size(141, 23)
+        lblYear.Size = New Size(112, 18)
         lblYear.TabIndex = 31
         lblYear.Text = "Year Published"
         ' 
@@ -115,7 +115,7 @@ Partial Class Form10
         TextBox3.Font = New Font("Arial", 12F)
         TextBox3.Location = New Point(560, 272)
         TextBox3.Name = "TextBox3"
-        TextBox3.Size = New Size(480, 30)
+        TextBox3.Size = New Size(480, 26)
         TextBox3.TabIndex = 4
         ' 
         ' TextBox4
@@ -124,7 +124,7 @@ Partial Class Form10
         TextBox4.Font = New Font("Arial", 12F)
         TextBox4.Location = New Point(560, 320)
         TextBox4.Name = "TextBox4"
-        TextBox4.Size = New Size(480, 30)
+        TextBox4.Size = New Size(480, 26)
         TextBox4.TabIndex = 5
         ' 
         ' TextBox5
@@ -133,7 +133,7 @@ Partial Class Form10
         TextBox5.Font = New Font("Arial", 12F)
         TextBox5.Location = New Point(560, 223)
         TextBox5.Name = "TextBox5"
-        TextBox5.Size = New Size(480, 30)
+        TextBox5.Size = New Size(480, 26)
         TextBox5.TabIndex = 3
         ' 
         ' TextBox6
@@ -142,7 +142,7 @@ Partial Class Form10
         TextBox6.Font = New Font("Arial", 12F)
         TextBox6.Location = New Point(560, 518)
         TextBox6.Name = "TextBox6"
-        TextBox6.Size = New Size(480, 30)
+        TextBox6.Size = New Size(480, 26)
         TextBox6.TabIndex = 9
         ' 
         ' TextBox7
@@ -151,7 +151,7 @@ Partial Class Form10
         TextBox7.Font = New Font("Arial", 12F)
         TextBox7.Location = New Point(560, 467)
         TextBox7.Name = "TextBox7"
-        TextBox7.Size = New Size(480, 30)
+        TextBox7.Size = New Size(480, 26)
         TextBox7.TabIndex = 8
         ' 
         ' TextBox8
@@ -160,7 +160,7 @@ Partial Class Form10
         TextBox8.Font = New Font("Arial", 12F)
         TextBox8.Location = New Point(560, 370)
         TextBox8.Name = "TextBox8"
-        TextBox8.Size = New Size(480, 30)
+        TextBox8.Size = New Size(480, 26)
         TextBox8.TabIndex = 6
         ' 
         ' Button3
@@ -201,7 +201,7 @@ Partial Class Form10
         TextBox1.Font = New Font("Arial", 12F)
         TextBox1.Location = New Point(560, 126)
         TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(480, 30)
+        TextBox1.Size = New Size(480, 26)
         TextBox1.TabIndex = 1
         ' 
         ' Label1
@@ -211,7 +211,7 @@ Partial Class Form10
         Label1.Font = New Font("Arial", 12F)
         Label1.Location = New Point(382, 175)
         Label1.Name = "Label1"
-        Label1.Size = New Size(110, 23)
+        Label1.Size = New Size(88, 18)
         Label1.TabIndex = 43
         Label1.Text = "LC Call No."
         ' 
@@ -221,7 +221,7 @@ Partial Class Form10
         TextBox2.Font = New Font("Arial", 12F)
         TextBox2.Location = New Point(560, 175)
         TextBox2.Name = "TextBox2"
-        TextBox2.Size = New Size(480, 30)
+        TextBox2.Size = New Size(480, 26)
         TextBox2.TabIndex = 2
         ' 
         ' Label3
@@ -231,15 +231,15 @@ Partial Class Form10
         Label3.Font = New Font("Arial", 12F)
         Label3.Location = New Point(382, 126)
         Label3.Name = "Label3"
-        Label3.Size = New Size(55, 23)
+        Label3.Size = New Size(44, 18)
         Label3.TabIndex = 45
         Label3.Text = "Rack"
         ' 
         ' Label2
         ' 
         Label2.Anchor = AnchorStyles.None
-        Label2.Font = New Font("Arial", 28.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(382, 38)
+        Label2.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label2.Location = New Point(394, 38)
         Label2.Name = "Label2"
         Label2.Size = New Size(658, 54)
         Label2.TabIndex = 54
@@ -252,7 +252,7 @@ Partial Class Form10
         TextBox9.Font = New Font("Arial", 12F)
         TextBox9.Location = New Point(560, 420)
         TextBox9.Name = "TextBox9"
-        TextBox9.Size = New Size(480, 30)
+        TextBox9.Size = New Size(480, 26)
         TextBox9.TabIndex = 7
         ' 
         ' Label4
@@ -262,13 +262,13 @@ Partial Class Form10
         Label4.Font = New Font("Arial", 12F)
         Label4.Location = New Point(382, 420)
         Label4.Name = "Label4"
-        Label4.Size = New Size(90, 23)
+        Label4.Size = New Size(73, 18)
         Label4.TabIndex = 55
         Label4.Text = "Publisher"
         ' 
         ' Form10
         ' 
-        AutoScaleDimensions = New SizeF(9F, 18F)
+        AutoScaleDimensions = New SizeF(7F, 16F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(1446, 688)

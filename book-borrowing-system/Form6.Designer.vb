@@ -22,7 +22,7 @@ Partial Class Form6
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Button2 = New Button()
         DataGridView1 = New DataGridView()
         Button4 = New Button()
@@ -35,6 +35,7 @@ Partial Class Form6
         ' 
         ' Button2
         ' 
+        Button2.Anchor = AnchorStyles.None
         Button2.BackColor = SystemColors.HotTrack
         Button2.Cursor = Cursors.Hand
         Button2.FlatStyle = FlatStyle.Flat
@@ -50,18 +51,19 @@ Partial Class Form6
         ' DataGridView1
         ' 
         DataGridView1.AllowUserToAddRows = False
+        DataGridView1.Anchor = AnchorStyles.None
         DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         DataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
         DataGridView1.BackgroundColor = SystemColors.ButtonHighlight
         DataGridView1.BorderStyle = BorderStyle.Fixed3D
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = Color.LightBlue
-        DataGridViewCellStyle2.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = Color.LightBlue
-        DataGridViewCellStyle2.SelectionForeColor = SystemColors.ControlText
-        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
-        DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = Color.LightBlue
+        DataGridViewCellStyle1.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle1.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = Color.LightBlue
+        DataGridViewCellStyle1.SelectionForeColor = SystemColors.ControlText
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
+        DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridView1.Cursor = Cursors.Hand
         DataGridView1.EnableHeadersVisualStyles = False
@@ -78,6 +80,7 @@ Partial Class Form6
         ' 
         ' Button4
         ' 
+        Button4.Anchor = AnchorStyles.None
         Button4.BackColor = SystemColors.HotTrack
         Button4.Cursor = Cursors.Hand
         Button4.FlatStyle = FlatStyle.Flat
@@ -90,45 +93,10 @@ Partial Class Form6
         Button4.Text = "Print"
         Button4.UseVisualStyleBackColor = False
         ' 
-        ' Label3
-        ' 
-        Label3.AutoSize = True
-        Label3.Location = New Point(573, 28)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(25, 19)
-        Label3.TabIndex = 31
-        Label3.Text = "To"
-        ' 
-        ' Label2
-        ' 
-        Label2.AutoSize = True
-        Label2.Location = New Point(312, 28)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(47, 19)
-        Label2.TabIndex = 30
-        Label2.Text = "From"
-        ' 
-        ' DateTimePicker2
-        ' 
-        DateTimePicker2.CustomFormat = "MMMM dd, yyyy"
-        DateTimePicker2.Format = DateTimePickerFormat.Custom
-        DateTimePicker2.Location = New Point(604, 23)
-        DateTimePicker2.Name = "DateTimePicker2"
-        DateTimePicker2.Size = New Size(189, 26)
-        DateTimePicker2.TabIndex = 29
-        ' 
-        ' DateTimePicker1
-        ' 
-        DateTimePicker1.CustomFormat = "MMMM dd, yyyy"
-        DateTimePicker1.Format = DateTimePickerFormat.Custom
-        DateTimePicker1.Location = New Point(366, 22)
-        DateTimePicker1.Name = "DateTimePicker1"
-        DateTimePicker1.Size = New Size(201, 26)
-        DateTimePicker1.TabIndex = 0
-        ' 
         ' ComboBox1
         ' 
-        ComboBox1.Font = New Font("Arial", 12.0F)
+        ComboBox1.Anchor = AnchorStyles.None
+        ComboBox1.Font = New Font("Arial", 12F)
         ComboBox1.FormattingEnabled = True
         ComboBox1.Location = New Point(772, 41)
         ComboBox1.Name = "ComboBox1"
@@ -137,16 +105,18 @@ Partial Class Form6
         ' 
         ' ComboBox2
         ' 
-        ComboBox2.Font = New Font("Arial", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        ComboBox2.Anchor = AnchorStyles.None
+        ComboBox2.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         ComboBox2.FormattingEnabled = True
         ComboBox2.Location = New Point(1040, 40)
         ComboBox2.Name = "ComboBox2"
-        ComboBox2.Size = New Size(162, 32)
+        ComboBox2.Size = New Size(162, 27)
         ComboBox2.TabIndex = 34
         ' 
         ' TextBox1
         ' 
-        TextBox1.Font = New Font("Arial", 12.0F)
+        TextBox1.Anchor = AnchorStyles.None
+        TextBox1.Font = New Font("Arial", 12F)
         TextBox1.Location = New Point(102, 46)
         TextBox1.Name = "TextBox1"
         TextBox1.Size = New Size(280, 26)
@@ -154,8 +124,9 @@ Partial Class Form6
         ' 
         ' Label1
         ' 
+        Label1.Anchor = AnchorStyles.None
         Label1.AutoSize = True
-        Label1.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label1.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label1.Location = New Point(38, 49)
         Label1.Name = "Label1"
         Label1.Size = New Size(58, 18)
@@ -164,7 +135,7 @@ Partial Class Form6
         ' 
         ' Form6
         ' 
-        AutoScaleDimensions = New SizeF(9.0F, 18.0F)
+        AutoScaleDimensions = New SizeF(7F, 16F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(1446, 790)

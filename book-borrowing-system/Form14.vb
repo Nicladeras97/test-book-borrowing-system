@@ -14,13 +14,12 @@ Public Class Form14
     End Function
 
     Private Sub BtnSignUp_Click(sender As Object, e As EventArgs) Handles btnSignUp.Click
-        ' Validation: Check if any field is empty
+
         If txtFullName.Text = "" Or txtUsername.Text = "" Or txtPassword.Text = "" Or txtConfirmPassword.Text = "" Then
             MessageBox.Show("All fields are required!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
 
-        ' Check if passwords match
         If txtPassword.Text <> txtConfirmPassword.Text Then
             MessageBox.Show("Passwords do not match!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
@@ -29,7 +28,7 @@ Public Class Form14
         Try
             conn.Open()
 
-            ' Check if username already exists
+
             Dim checkQuery As String = "SELECT COUNT(*) FROM librarians WHERE Username = @Username"
             Dim checkCmd As New MySqlCommand(checkQuery, conn)
             checkCmd.Parameters.AddWithValue("@Username", txtUsername.Text)
@@ -41,26 +40,26 @@ Public Class Form14
                 Exit Sub
             End If
 
-            ' Hash the password before storing it
+
             Dim hashedPassword As String = HashPassword(txtPassword.Text)
 
-            ' Insert new librarian with hashed password
+
             Dim query As String = "INSERT INTO librarians (FullName, Username, Password) VALUES (@FullName, @Username, @Password)"
             Dim cmd As New MySqlCommand(query, conn)
             cmd.Parameters.AddWithValue("@FullName", txtFullName.Text)
             cmd.Parameters.AddWithValue("@Username", txtUsername.Text)
-            cmd.Parameters.AddWithValue("@Password", hashedPassword) ' Store hashed password
+            cmd.Parameters.AddWithValue("@Password", hashedPassword)
 
             cmd.ExecuteNonQuery()
             MessageBox.Show("Account successfully created!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-            ' Clear fields
+
             txtFullName.Clear()
             txtUsername.Clear()
             txtPassword.Clear()
             txtConfirmPassword.Clear()
 
-            ' Redirect to login
+
             Dim login As New Form1
             login.Show()
             Me.Hide()

@@ -5,6 +5,7 @@ Public Class Form13
 
     Private Sub Form13_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadBookAccnos()
+        Button1.Enabled = False
     End Sub
 
     Private Sub LoadBookAccnos()
@@ -25,19 +26,21 @@ Public Class Form13
         End Using
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        If String.IsNullOrWhiteSpace(ComboBox1.Text) Then
-            MessageBox.Show("Please enter or select a book.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+    Private Sub LoadBookDetails(accno As String)
+        If String.IsNullOrWhiteSpace(accno) Then
+            ClearFields()
+            Button1.Enabled = False
             Return
         End If
 
-        Dim selectedAccNo As String = ComboBox1.Text.ToString()
+        accno = accno.Trim()
+
         Using conn As New MySqlConnection(connString)
             Try
                 conn.Open()
                 Dim query As String = "SELECT * FROM books WHERE Accno = @Accno"
                 Using cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@Accno", selectedAccNo)
+                    cmd.Parameters.AddWithValue("@Accno", accno)
                     Dim reader As MySqlDataReader = cmd.ExecuteReader()
                     If reader.Read() Then
                         TextBox2.Text = reader("Title").ToString()
@@ -48,14 +51,31 @@ Public Class Form13
                         TextBox5.Text = reader("Section").ToString()
                         TextBox7.Text = reader("CallNumber").ToString()
                         TextBox6.Text = reader("Rack").ToString()
+                        Button1.Enabled = True
                     Else
-                        MessageBox.Show("Book not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        ClearFields()
+                        Button1.Enabled = False
                     End If
                 End Using
             Catch ex As Exception
                 MessageBox.Show("Error retrieving book details: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         End Using
+    End Sub
+
+    Private Sub ClearFields()
+        TextBox1.Clear()
+        TextBox2.Clear()
+        TextBox3.Clear()
+        TextBox4.Clear()
+        TextBox5.Clear()
+        TextBox6.Clear()
+        TextBox7.Clear()
+        TextBox8.Clear()
+    End Sub
+
+    Private Sub ComboBox1_TextChanged(sender As Object, e As EventArgs) Handles ComboBox1.TextChanged
+        LoadBookDetails(ComboBox1.Text)
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -76,7 +96,7 @@ Public Class Form13
                     cmd.Parameters.AddWithValue("@Section", TextBox5.Text.Trim())
                     cmd.Parameters.AddWithValue("@Rack", TextBox6.Text.Trim())
                     cmd.Parameters.AddWithValue("@CallNumber", TextBox7.Text.Trim())
-                    cmd.Parameters.AddWithValue("@Accno", ComboBox1.Text.ToString())
+                    cmd.Parameters.AddWithValue("@Accno", ComboBox1.Text.Trim())
 
                     cmd.ExecuteNonQuery()
                     MessageBox.Show("Book updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)

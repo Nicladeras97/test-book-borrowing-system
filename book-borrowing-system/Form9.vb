@@ -80,12 +80,13 @@ Public Class Form9
                 End If
             End If
 
-            Dim returnQuery = "INSERT INTO returned_books (BorrowerID, BookID, ConditionID, Return Date, OverduePenalty) VALUES (@BorrowerID, @BookID, @ConditionID, @ReturnDate, @OverduePenalty)"
+            Dim returnQuery = "INSERT INTO returned_books (BorrowerID, BookID, ConditionID, `Return Date`, `Penalty Fee`, OverduePenalty) VALUES (@BorrowerID, @BookID, @ConditionID, @ReturnDate, @PenaltyFee, @OverduePenalty)"
             Dim returnCmd As New MySqlCommand(returnQuery, conn)
             returnCmd.Parameters.AddWithValue("@BorrowerID", borrowerID)
             returnCmd.Parameters.AddWithValue("@BookID", accNo)
             returnCmd.Parameters.AddWithValue("@ConditionID", originalConditionID)
             returnCmd.Parameters.AddWithValue("@ReturnDate", Date.Now.ToString("yyyy-MM-dd"))
+            returnCmd.Parameters.AddWithValue("@PenaltyFee", penaltyAmount)
 
             If penaltyAmount > 0 Then
                 returnCmd.Parameters.AddWithValue("@OverduePenalty", penaltyAmount)
@@ -113,7 +114,8 @@ Public Class Form9
         End Try
     End Sub
 
-    'Returned Damaged
+    'Return Damaged
+
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Dim accNo = ComboBox2.SelectedItem?.ToString()
 
@@ -165,7 +167,7 @@ Public Class Form9
             End If
 
             Dim damageQuery = "INSERT INTO returned_books (BorrowerID, BookID, ConditionID, `Return Date`, `Penalty Fee`, OverduePenalty) " &
-                          "VALUES (@BorrowerID, @BookID, 3, @ReturnDate, @PenaltyFee, @OverduePenalty)"
+                      "VALUES (@BorrowerID, @BookID, 3, @ReturnDate, @PenaltyFee, @OverduePenalty)"
             Dim damageCmd As New MySqlCommand(damageQuery, conn)
             damageCmd.Parameters.AddWithValue("@BorrowerID", borrowerID)
             damageCmd.Parameters.AddWithValue("@BookID", accNo)
@@ -185,9 +187,10 @@ Public Class Form9
                 If repairCount > 0 Then
                     MessageBox.Show("This book is already marked for repair.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Else
-                    Dim repairQuery = "INSERT INTO books_deleted (Accno, Title, Author, Year, Publisher, ISBN, Section, CallNumber, Rack, ConditionID, DeletedDate, borrower_id) " &
-                                        "SELECT b.Accno, b.Title, b.Author, b.Year, b.Publisher, b.ISBN, b.Section, b.CallNumber, b.Rack, 5, @DeletionDate, r.BorrowerID " &
-                                        "FROM books b JOIN returned_books r ON b.Accno = r.BookID WHERE r.BookID = @Accno AND r.ConditionID = 3"
+                    Dim repairQuery = "INSERT INTO books_deleted (Accno, Title, Author, Year, Publisher, ISBN, Section, CallNumber, Rack, ConditionID, DeletedDate, borrower_id, `Penalty Fee`) " &
+                  "SELECT b.Accno, b.Title, b.Author, b.Year, b.Publisher, b.ISBN, b.Section, b.CallNumber, b.Rack, 5, @DeletionDate, r.BorrowerID, r.`Penalty Fee` " &
+                  "FROM books b JOIN returned_books r ON b.Accno = r.BookID WHERE r.BookID = @Accno AND r.ConditionID = 3"
+
 
                     Dim repairCmd As New MySqlCommand(repairQuery, conn)
                     repairCmd.Parameters.AddWithValue("@DeletionDate", Date.Now.ToString("yyyy-MM-dd"))
@@ -225,6 +228,7 @@ Public Class Form9
             conn.Close()
         End Try
     End Sub
+
 
 
     'Lost

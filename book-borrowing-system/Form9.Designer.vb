@@ -62,9 +62,10 @@ Partial Class Form9
         ' 
         ' Label2
         ' 
+        Label2.Anchor = AnchorStyles.None
         Label2.BackColor = Color.Transparent
-        Label2.Font = New Font("Arial", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(80, 26)
+        Label2.Font = New Font("Arial", 24F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label2.Location = New Point(76, 21)
         Label2.Name = "Label2"
         Label2.Size = New Size(1336, 157)
         Label2.TabIndex = 21
@@ -72,6 +73,7 @@ Partial Class Form9
         ' 
         ' Button3
         ' 
+        Button3.Anchor = AnchorStyles.None
         Button3.BackColor = SystemColors.HotTrack
         Button3.Cursor = Cursors.Hand
         Button3.FlatAppearance.BorderSize = 0
@@ -87,6 +89,7 @@ Partial Class Form9
         ' 
         ' Label21
         ' 
+        Label21.Anchor = AnchorStyles.None
         Label21.AutoSize = True
         Label21.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label21.Location = New Point(77, 406)
@@ -98,6 +101,7 @@ Partial Class Form9
         ' 
         ' Label22
         ' 
+        Label22.Anchor = AnchorStyles.None
         Label22.BackColor = SystemColors.ButtonFace
         Label22.BorderStyle = BorderStyle.Fixed3D
         Label22.FlatStyle = FlatStyle.Flat
@@ -109,6 +113,7 @@ Partial Class Form9
         ' 
         ' Label19
         ' 
+        Label19.Anchor = AnchorStyles.None
         Label19.AutoSize = True
         Label19.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label19.Location = New Point(77, 357)
@@ -120,6 +125,7 @@ Partial Class Form9
         ' 
         ' Label20
         ' 
+        Label20.Anchor = AnchorStyles.None
         Label20.BackColor = SystemColors.ButtonFace
         Label20.BorderStyle = BorderStyle.Fixed3D
         Label20.FlatStyle = FlatStyle.Flat
@@ -131,6 +137,7 @@ Partial Class Form9
         ' 
         ' Label17
         ' 
+        Label17.Anchor = AnchorStyles.None
         Label17.AutoSize = True
         Label17.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label17.Location = New Point(77, 308)
@@ -142,6 +149,7 @@ Partial Class Form9
         ' 
         ' Label18
         ' 
+        Label18.Anchor = AnchorStyles.None
         Label18.BackColor = SystemColors.ButtonFace
         Label18.BorderStyle = BorderStyle.Fixed3D
         Label18.FlatStyle = FlatStyle.Flat
@@ -153,6 +161,7 @@ Partial Class Form9
         ' 
         ' Label15
         ' 
+        Label15.Anchor = AnchorStyles.None
         Label15.BackColor = SystemColors.ButtonFace
         Label15.BorderStyle = BorderStyle.Fixed3D
         Label15.FlatStyle = FlatStyle.Flat
@@ -164,6 +173,7 @@ Partial Class Form9
         ' 
         ' Label16
         ' 
+        Label16.Anchor = AnchorStyles.None
         Label16.AutoSize = True
         Label16.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label16.Location = New Point(77, 516)
@@ -174,6 +184,7 @@ Partial Class Form9
         ' 
         ' Label14
         ' 
+        Label14.Anchor = AnchorStyles.None
         Label14.BackColor = SystemColors.ButtonFace
         Label14.BorderStyle = BorderStyle.Fixed3D
         Label14.FlatStyle = FlatStyle.Flat
@@ -185,6 +196,7 @@ Partial Class Form9
         ' 
         ' Label13
         ' 
+        Label13.Anchor = AnchorStyles.None
         Label13.AutoSize = True
         Label13.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label13.Location = New Point(77, 566)
@@ -195,6 +207,7 @@ Partial Class Form9
         ' 
         ' Label9
         ' 
+        Label9.Anchor = AnchorStyles.None
         Label9.AutoSize = True
         Label9.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label9.Location = New Point(80, 256)
@@ -206,6 +219,7 @@ Partial Class Form9
         ' 
         ' Label23
         ' 
+        Label23.Anchor = AnchorStyles.None
         Label23.BackColor = SystemColors.ButtonFace
         Label23.BorderStyle = BorderStyle.Fixed3D
         Label23.FlatStyle = FlatStyle.Flat
@@ -217,6 +231,7 @@ Partial Class Form9
         ' 
         ' Label3
         ' 
+        Label3.Anchor = AnchorStyles.None
         Label3.AutoSize = True
         Label3.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label3.Location = New Point(724, 511)
@@ -227,6 +242,7 @@ Partial Class Form9
         ' 
         ' DateTimePicker1
         ' 
+        DateTimePicker1.Anchor = AnchorStyles.None
         DateTimePicker1.Cursor = Cursors.Hand
         DateTimePicker1.Format = DateTimePickerFormat.Custom
         DateTimePicker1.Location = New Point(934, 560)
@@ -236,6 +252,7 @@ Partial Class Form9
         ' 
         ' Label7
         ' 
+        Label7.Anchor = AnchorStyles.None
         Label7.AutoSize = True
         Label7.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label7.Location = New Point(724, 560)
@@ -246,6 +263,7 @@ Partial Class Form9
         ' 
         ' Label5
         ' 
+        Label5.Anchor = AnchorStyles.None
         Label5.AutoSize = True
         Label5.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label5.Location = New Point(724, 306)
@@ -256,6 +274,7 @@ Partial Class Form9
         ' 
         ' Label4
         ' 
+        Label4.Anchor = AnchorStyles.None
         Label4.AutoSize = True
         Label4.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label4.Location = New Point(724, 258)
@@ -266,6 +285,7 @@ Partial Class Form9
         ' 
         ' Label11
         ' 
+        Label11.Anchor = AnchorStyles.None
         Label11.BackColor = SystemColors.ButtonFace
         Label11.BorderStyle = BorderStyle.Fixed3D
         Label11.FlatStyle = FlatStyle.Flat
@@ -277,6 +297,7 @@ Partial Class Form9
         ' 
         ' Label24
         ' 
+        Label24.Anchor = AnchorStyles.None
         Label24.BackColor = SystemColors.ButtonFace
         Label24.BorderStyle = BorderStyle.Fixed3D
         Label24.FlatStyle = FlatStyle.Flat
@@ -288,6 +309,7 @@ Partial Class Form9
         ' 
         ' Label25
         ' 
+        Label25.Anchor = AnchorStyles.None
         Label25.BackColor = SystemColors.ButtonFace
         Label25.BorderStyle = BorderStyle.Fixed3D
         Label25.FlatStyle = FlatStyle.Flat
@@ -299,6 +321,7 @@ Partial Class Form9
         ' 
         ' Label26
         ' 
+        Label26.Anchor = AnchorStyles.None
         Label26.BackColor = SystemColors.ButtonFace
         Label26.BorderStyle = BorderStyle.Fixed3D
         Label26.FlatStyle = FlatStyle.Flat
@@ -311,6 +334,7 @@ Partial Class Form9
         ' 
         ' Label8
         ' 
+        Label8.Anchor = AnchorStyles.None
         Label8.AutoSize = True
         Label8.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label8.Location = New Point(77, 209)
@@ -322,6 +346,7 @@ Partial Class Form9
         ' 
         ' Label28
         ' 
+        Label28.Anchor = AnchorStyles.None
         Label28.BackColor = SystemColors.ButtonFace
         Label28.BorderStyle = BorderStyle.Fixed3D
         Label28.FlatStyle = FlatStyle.Flat
@@ -334,6 +359,7 @@ Partial Class Form9
         ' 
         ' Label29
         ' 
+        Label29.Anchor = AnchorStyles.None
         Label29.AutoSize = True
         Label29.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label29.Location = New Point(724, 455)
@@ -344,6 +370,7 @@ Partial Class Form9
         ' 
         ' Label6
         ' 
+        Label6.Anchor = AnchorStyles.None
         Label6.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label6.Location = New Point(724, 356)
         Label6.Name = "Label6"
@@ -353,6 +380,7 @@ Partial Class Form9
         ' 
         ' Label30
         ' 
+        Label30.Anchor = AnchorStyles.None
         Label30.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label30.Location = New Point(724, 406)
         Label30.Name = "Label30"
@@ -362,6 +390,7 @@ Partial Class Form9
         ' 
         ' Label31
         ' 
+        Label31.Anchor = AnchorStyles.None
         Label31.BackColor = SystemColors.ButtonFace
         Label31.BorderStyle = BorderStyle.Fixed3D
         Label31.FlatStyle = FlatStyle.Flat
@@ -373,6 +402,7 @@ Partial Class Form9
         ' 
         ' Label10
         ' 
+        Label10.Anchor = AnchorStyles.None
         Label10.BackColor = SystemColors.ButtonFace
         Label10.BorderStyle = BorderStyle.Fixed3D
         Label10.FlatStyle = FlatStyle.Flat
@@ -384,6 +414,7 @@ Partial Class Form9
         ' 
         ' Label12
         ' 
+        Label12.Anchor = AnchorStyles.None
         Label12.AutoSize = True
         Label12.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label12.Location = New Point(77, 462)
@@ -394,6 +425,7 @@ Partial Class Form9
         ' 
         ' Label27
         ' 
+        Label27.Anchor = AnchorStyles.None
         Label27.AutoSize = True
         Label27.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label27.Location = New Point(724, 213)
@@ -404,6 +436,7 @@ Partial Class Form9
         ' 
         ' ComboBox2
         ' 
+        ComboBox2.Anchor = AnchorStyles.None
         ComboBox2.FormattingEnabled = True
         ComboBox2.Location = New Point(258, 210)
         ComboBox2.Name = "ComboBox2"
@@ -412,6 +445,7 @@ Partial Class Form9
         ' 
         ' Button1
         ' 
+        Button1.Anchor = AnchorStyles.None
         Button1.BackColor = Color.IndianRed
         Button1.Cursor = Cursors.Hand
         Button1.FlatAppearance.BorderSize = 0
@@ -427,6 +461,7 @@ Partial Class Form9
         ' 
         ' Button2
         ' 
+        Button2.Anchor = AnchorStyles.None
         Button2.BackColor = Color.Peru
         Button2.Cursor = Cursors.Hand
         Button2.FlatAppearance.BorderSize = 0
@@ -442,6 +477,7 @@ Partial Class Form9
         ' 
         ' Label1
         ' 
+        Label1.Anchor = AnchorStyles.None
         Label1.BackColor = SystemColors.ButtonFace
         Label1.BorderStyle = BorderStyle.Fixed3D
         Label1.FlatStyle = FlatStyle.Flat
