@@ -7,8 +7,8 @@ Public Class Form5
     Private Sub Form5_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
 
-            ComboBox1.Font = New Font("Segoe UI", 12, FontStyle.Regular)
-            ComboBox2.Font = New Font("Segoe UI", 12, FontStyle.Regular)
+            ComboBox1.Font = New Font("Arial", 16, FontStyle.Regular)
+            ComboBox2.Font = New Font("Arial", 16, FontStyle.Regular)
 
             ComboBox1.DrawMode = DrawMode.OwnerDrawFixed
             ComboBox2.DrawMode = DrawMode.OwnerDrawFixed
@@ -35,7 +35,7 @@ Public Class Form5
     Private Sub ComboBox1_DrawItem(sender As Object, e As DrawItemEventArgs) Handles ComboBox1.DrawItem
         If e.Index < 0 Then Return
         e.DrawBackground()
-        Using myFont As New Font("Segoe UI", 12)
+        Using myFont As New Font("Arial", 16)
             e.Graphics.DrawString(ComboBox1.Items(e.Index).ToString(), myFont, Brushes.Black, e.Bounds)
         End Using
         e.DrawFocusRectangle()
@@ -45,7 +45,7 @@ Public Class Form5
     Private Sub ComboBox2_DrawItem(sender As Object, e As DrawItemEventArgs) Handles ComboBox2.DrawItem
         If e.Index < 0 Then Return
         e.DrawBackground()
-        Using myFont As New Font("Segoe UI", 12)
+        Using myFont As New Font("Arial", 16)
             e.Graphics.DrawString(ComboBox2.Items(e.Index).ToString(), myFont, Brushes.Black, e.Bounds)
         End Using
         e.DrawFocusRectangle()

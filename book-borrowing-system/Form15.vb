@@ -172,7 +172,7 @@ Public Class Form15
     End Sub
 
     Private Sub SettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SettingsToolStripMenuItem.Click
-        LoadFormToMainPanel(New Report)
+        LoadFormToMainPanel(New Form4)
     End Sub
 
     Private Sub Form15_Load(sender As Object, e As EventArgs) Handles MyBase.Load

@@ -48,7 +48,7 @@ Partial Class Form10
         lblBookTitle.Anchor = AnchorStyles.None
         lblBookTitle.AutoSize = True
         lblBookTitle.Font = New Font("Arial", 12F)
-        lblBookTitle.Location = New Point(382, 272)
+        lblBookTitle.Location = New Point(394, 280)
         lblBookTitle.Name = "lblBookTitle"
         lblBookTitle.Size = New Size(36, 18)
         lblBookTitle.TabIndex = 25
@@ -59,7 +59,7 @@ Partial Class Form10
         lblAuthor.Anchor = AnchorStyles.None
         lblAuthor.AutoSize = True
         lblAuthor.Font = New Font("Arial", 12F)
-        lblAuthor.Location = New Point(382, 320)
+        lblAuthor.Location = New Point(394, 328)
         lblAuthor.Name = "lblAuthor"
         lblAuthor.Size = New Size(53, 18)
         lblAuthor.TabIndex = 26
@@ -70,7 +70,7 @@ Partial Class Form10
         lblISBN.Anchor = AnchorStyles.None
         lblISBN.AutoSize = True
         lblISBN.Font = New Font("Arial", 12F)
-        lblISBN.Location = New Point(382, 223)
+        lblISBN.Location = New Point(394, 231)
         lblISBN.Name = "lblISBN"
         lblISBN.Size = New Size(44, 18)
         lblISBN.TabIndex = 27
@@ -81,7 +81,7 @@ Partial Class Form10
         lblCopies.Anchor = AnchorStyles.None
         lblCopies.AutoSize = True
         lblCopies.Font = New Font("Arial", 12F)
-        lblCopies.Location = New Point(382, 518)
+        lblCopies.Location = New Point(394, 526)
         lblCopies.Name = "lblCopies"
         lblCopies.Size = New Size(59, 18)
         lblCopies.TabIndex = 28
@@ -92,7 +92,7 @@ Partial Class Form10
         lblCategory.Anchor = AnchorStyles.None
         lblCategory.AutoSize = True
         lblCategory.Font = New Font("Arial", 12F)
-        lblCategory.Location = New Point(382, 467)
+        lblCategory.Location = New Point(394, 475)
         lblCategory.Name = "lblCategory"
         lblCategory.Size = New Size(61, 18)
         lblCategory.TabIndex = 29
@@ -103,7 +103,7 @@ Partial Class Form10
         lblYear.Anchor = AnchorStyles.None
         lblYear.AutoSize = True
         lblYear.Font = New Font("Arial", 12F)
-        lblYear.Location = New Point(382, 370)
+        lblYear.Location = New Point(394, 378)
         lblYear.Name = "lblYear"
         lblYear.Size = New Size(112, 18)
         lblYear.TabIndex = 31
@@ -166,13 +166,13 @@ Partial Class Form10
         ' Button3
         ' 
         Button3.Anchor = AnchorStyles.None
-        Button3.BackColor = Color.Gray
+        Button3.BackColor = Color.Red
         Button3.Cursor = Cursors.Hand
         Button3.FlatAppearance.BorderSize = 0
         Button3.FlatStyle = FlatStyle.Flat
-        Button3.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Button3.Font = New Font("Arial", 12F)
         Button3.ForeColor = SystemColors.ButtonHighlight
-        Button3.Location = New Point(724, 604)
+        Button3.Location = New Point(736, 603)
         Button3.Name = "Button3"
         Button3.Size = New Size(83, 33)
         Button3.TabIndex = 11
@@ -186,9 +186,9 @@ Partial Class Form10
         Button1.Cursor = Cursors.Hand
         Button1.FlatAppearance.BorderSize = 0
         Button1.FlatStyle = FlatStyle.Flat
-        Button1.Font = New Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Button1.Font = New Font("Arial", 12F)
         Button1.ForeColor = SystemColors.ButtonHighlight
-        Button1.Location = New Point(614, 604)
+        Button1.Location = New Point(626, 603)
         Button1.Name = "Button1"
         Button1.Size = New Size(83, 33)
         Button1.TabIndex = 10
@@ -209,7 +209,7 @@ Partial Class Form10
         Label1.Anchor = AnchorStyles.None
         Label1.AutoSize = True
         Label1.Font = New Font("Arial", 12F)
-        Label1.Location = New Point(382, 175)
+        Label1.Location = New Point(394, 183)
         Label1.Name = "Label1"
         Label1.Size = New Size(88, 18)
         Label1.TabIndex = 43
@@ -229,7 +229,7 @@ Partial Class Form10
         Label3.Anchor = AnchorStyles.None
         Label3.AutoSize = True
         Label3.Font = New Font("Arial", 12F)
-        Label3.Location = New Point(382, 126)
+        Label3.Location = New Point(394, 134)
         Label3.Name = "Label3"
         Label3.Size = New Size(44, 18)
         Label3.TabIndex = 45
@@ -260,7 +260,7 @@ Partial Class Form10
         Label4.Anchor = AnchorStyles.None
         Label4.AutoSize = True
         Label4.Font = New Font("Arial", 12F)
-        Label4.Location = New Point(382, 420)
+        Label4.Location = New Point(394, 428)
         Label4.Name = "Label4"
         Label4.Size = New Size(73, 18)
         Label4.TabIndex = 55

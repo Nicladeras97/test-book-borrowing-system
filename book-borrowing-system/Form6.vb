@@ -86,7 +86,7 @@ Public Class Form6
             Dim table As New DataTable()
             adapter.Fill(table)
             DataGridView1.DataSource = table
-            Label2.Text = "Page " & currentPage.ToString() & " of " & totalPages.ToString()
+
 
             Dim countQuery As String = ""
 
@@ -115,6 +115,7 @@ Public Class Form6
             conn.Close()
 
             totalPages = Math.Ceiling(totalRecords / pageSize)
+            Label2.Text = "Page " & currentPage.ToString() & " of " & totalPages.ToString()
 
         Catch ex As Exception
             MessageBox.Show("An error occurred while loading the report: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -230,4 +231,5 @@ Public Class Form6
             LoadReport()
         End If
     End Sub
+
 End Class

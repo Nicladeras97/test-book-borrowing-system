@@ -5,6 +5,7 @@ Public Class Form2
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadBookAccnos()
+        ComboBox1.Focus()
         Button1.Enabled = False
         Button1.ForeColor = Color.White
         Button1.UseVisualStyleBackColor = False

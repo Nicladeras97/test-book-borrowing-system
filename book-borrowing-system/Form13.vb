@@ -5,6 +5,7 @@ Public Class Form13
 
     Private Sub Form13_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadBookAccnos()
+        ComboBox1.Focus()
         Button1.Enabled = False
     End Sub
 

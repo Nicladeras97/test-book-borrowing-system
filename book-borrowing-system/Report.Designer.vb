@@ -34,7 +34,7 @@ Partial Class Report
         Label2.Anchor = AnchorStyles.None
         Label2.AutoSize = True
         Label2.Font = New Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(736, 43)
+        Label2.Location = New Point(736, 72)
         Label2.Name = "Label2"
         Label2.Size = New Size(185, 24)
         Label2.TabIndex = 2
@@ -73,7 +73,7 @@ Partial Class Report
         DataGridView1.Cursor = Cursors.Hand
         DataGridView1.EnableHeadersVisualStyles = False
         DataGridView1.GridColor = SystemColors.ControlDark
-        DataGridView1.Location = New Point(354, 90)
+        DataGridView1.Location = New Point(354, 119)
         DataGridView1.MultiSelect = False
         DataGridView1.Name = "DataGridView1"
         DataGridView1.ReadOnly = True
@@ -88,7 +88,7 @@ Partial Class Report
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ButtonHighlight
-        ClientSize = New Size(1614, 614)
+        ClientSize = New Size(1614, 673)
         Controls.Add(DataGridView1)
         Controls.Add(Label2)
         Location = New Point(266, 111)

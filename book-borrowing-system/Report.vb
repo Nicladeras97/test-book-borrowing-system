@@ -228,53 +228,15 @@ Public Class Report
         Hide()
     End Sub
 
+    'For sending emails with new books added
+
+
+
+
+
 End Class
 
 
 'Credits to Allysa Pacunio for this code.
 
 
-'for testing
-'remove mo nalang yung listbox after testing
-'pagremove ng listbox, remove na rin yung line 80-86 kasi para yun sa listbox (AddToListBox)
-
-
-'listbox1 = Target time from database
-'listbox2 = Concurrent time. Update every second
-'24 hours ang format ng time hours:minutes:seconds
-'ang date  = year-month-day
-
-'sample testing For due today : edit mo sa database ng borrowed book yung duedate sa date ngayon.
-'                               set mo yung time na malapit sa time ngayon. ex. 11:30 na. edit mo yug time ng 11:31:00 then run mo yung system before 11:31:00
-'                               login then punta sa report form .
-'                               wait mo mag 11:31. may timer na listbox para malaman mo kung malapit na. dapat mareceive mo yung email at exactly 11:30.
-'                               may date sa email incase na may interruptions like mahina ang internet connection 
-
-
-'sample testing For almostdue : edit mo sa database ng borrowed book yung duedate ng 7 days before today or 1 day before today.
-'                               set mo yung time na malapit sa time ngayon. ex. 11:30 na. edit mo yug time ng 11:31:00 then run mo yung system before 11:31:00
-'                               login then punta sa report form .
-'                               wait mo mag 11:31. may timer na listbox para malaman mo kung malapit na. dapat mareceive mo yung email at exactly 11:30.
-'                               may date sa email incase na may interruptions like mahina ang internet connection 
-
-'sample testing For overdue : edit mo sa database ng borrowed book yung duedate ng 1 day or more days away from today. ex. 21 ngayon set mo ng 22 or 23 or 24
-'                               set mo yung time na malapit sa time ngayon. ex. 11:30 na. edit mo yug time ng 11:31:00 then run mo yung system before 11:31:00
-'                               login then punta sa report form .
-'                               wait mo mag 11:31. may timer na listbox para malaman mo kung malapit na. dapat mareceive mo yung email at exactly 11:30.
-'                               may date sa email incase na may interruptions like mahina ang internet connection 
-
-'optional lang yung pagpunta pa sa report form. pwede na nang irun mo lang yung system then wait mo yung email.
-
-'nag uupdate ang notify id depende sa date. pagkakainsert lang ng data at 4 pa ang notify id, pag nirun mo dapat magbabago na yun unless malayo pa ang due date. 
-
-'kung gusto mo iedit yung laman ng email, edit mo yung table ng email_message then message_content. kung format naman, line 209
-
-'nagdagdag ako ng notify id sa form8, sa pagborrow yun ng book. matic na 4 ang value pag nanghiram kasi walang pang duedate.
-
-'testing nyo sa maramihan at iba ibang account. natry ko lang kasi sa dalawang account
-
-'every seconds sya nagchecheck ng date para walang delay tsaka madaling matesting
-
-'wala naman akong nadagdag sa database bukod sa naginsert ako ng data sa borrowed_books. nilink ko lang yung notify id sa table ng email message. patanggal ng (3) pag gagamitin yung database na ginamit ko para same name sa existing at nasa code pag nag import. 
-
-'Goodluck! Fighting!
