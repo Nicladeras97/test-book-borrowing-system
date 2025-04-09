@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 05, 2025 at 06:05 AM
+-- Generation Time: Apr 09, 2025 at 04:36 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -45,21 +45,13 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, `AddedDate`, `CallNumber`, `Rack`, `Accno`) VALUES
-('The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Scribner', '123456789', 'Fiction', '2025-03-31', 'REF E 222 CE74 2001', 'R2', '2025000001-00'),
-('The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Scribner', '123456789', 'Fiction', '2025-03-31', 'REF E 222 CE74 2001', 'R2', '2025000002-01'),
-('The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Scribner', '123456789', 'Fiction', '2025-03-31', 'REF E 222 CE74 2001', 'R2', '2025000008-01'),
-('The Invisible Life of Addie LaRue', 'Agatha Christie', 1998, 'Vintage', '978-1-5265-210-7', 'Section', '2025-04-01', 'SHS A 260 CA66 1998', 'CA66', '2025000009-00'),
-('Atomic Habits', 'James Clear', 2004, 'Little, Brown and Company', '978-1-5635-708-4', 'SHS', NULL, 'FIL B 369 CB35 2004', 'CB35', '2025000010-00'),
-('A Man Called Ove', 'Stephen King', 1994, 'Doubleday', '978-1-9880-351-5', 'Filipiniana', '2025-04-01', 'RES C 500 KC26 1994', 'KC26', '2025000011-00'),
+('The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Scribner', '123456789', 'Fiction', '2025-04-08', 'REF E 222 CE74 2001', 'R2', '2025000008-01'),
 ('Daisy Jones & The Six', 'Fredrik Backman', 1986, 'Hachette Book Group', '978-1-3314-390-6', 'Reserved', '2025-04-01', 'SHS D 466 BD80 1986', 'BD80', '2025000012-00'),
-('Daisy Jones & The Six', 'TJ Klune', 1992, 'Penguin Random House', '978-1-8297-256-7', 'SHS', '2025-04-01', 'FIL E 810 KE71 1992', 'KE71', '2025000013-00'),
-('A Man Called Ove', 'Tracy Deonn', 2009, 'Penguin Random House', '978-1-2233-658-5', 'Filipiniana', '2025-04-01', 'RES F 733 DF53 2009', 'DF53', '2025000014-00'),
 ('Legendborn', 'Michelle Obama', 1999, 'Ballantine Books', '978-1-8858-681-8', 'Reserved', '2025-04-01', 'SHS G 171 OG33 1999', 'OG33', '2025000015-00'),
 ('The Night Circus', 'Markus Zusak', 1992, 'Crown Publishing', '978-1-8440-905-1', 'SHS', '2025-04-01', 'SHS H 873 ZH60 1992', 'ZH60', '2025000016-00'),
 ('Project Hail Mary', 'Michelle Obama', 2020, 'HarperCollins', '978-1-4032-861-8', 'SHS', '2025-04-01', 'FIL I 455 OI32 2020', 'OI32', '2025000017-00'),
 ('The Night Circus', 'Fredrik Backman', 1983, 'Harlequin', '978-1-4929-150-8', 'Filipiniana', '2025-04-01', 'REF J 902 BJ44 1983', 'BJ44', '2025000018-00'),
 ('Verity', 'Markus Zusak', 2001, 'Ballantine Books', '978-1-9747-375-9', 'Reference', '2025-04-01', 'FIL K 952 ZK51 2001', 'ZK51', '2025000019-00'),
-('Becoming', 'Madeline Miller', 2002, 'Penguin Random House', '978-1-6197-667-5', 'Filipiniana', '2025-04-01', 'REF L 840 ML90 2002', 'ML90', '2025000020-00'),
 ('The House in the Cerulean Sea', 'Andy Weir', 1987, 'Simon & Schuster', '978-1-6129-759-2', 'Reference', '2025-04-01', 'FIL M 112 WM29 1987', 'WM29', '2025000021-00'),
 ('Educated', 'James Clear', 2008, 'Hachette Book Group', '978-1-9248-233-5', 'Filipiniana', '2025-04-01', 'RES N 316 CN70 2008', 'CN70', '2025000022-00'),
 ('It Ends With Us', 'Alex Michaelides', 1994, 'Farrar, Straus and Giroux', '978-1-2998-289-4', 'Reserved', '2025-04-01', 'SHS O 622 MO29 1994', 'MO29', '2025000023-00'),
@@ -68,6 +60,7 @@ INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, 
 ('Circe', 'Paulo Coelho', 1986, 'Crown Publishing', '978-1-2444-896-4', 'Reserved', '2025-04-01', 'RES Q 686 CQ30 1986', 'CQ30', '2025000026-00'),
 ('Daisy Jones & The Six', 'Delia Owens', 2012, 'Hachette Book Group', '978-1-4867-926-10', 'Reserved', '2025-04-01', 'FIL R 468 OR68 2012', 'OR68', '2025000027-00'),
 ('Daisy Jones & The Six', 'Taylor Jenkins Reid', 2001, 'Harlequin', '978-1-9585-247-8', 'Filipiniana', '2025-04-01', 'SHS S 442 RS20 2001', 'RS20', '2025000028-00'),
+('A Man Called Ove', 'Agatha Christie', 2018, 'HarperCollins', '978-1-4568-254-1', 'SHS', NULL, 'RES T 487 CT75 2018', 'CT75', '2025000029-00'),
 ('The Night Circus', 'Alex Michaelides', 2020, 'Macmillan Publishers', '978-1-3173-747-1', 'Reserved', '2025-04-01', 'FIL U 526 MU84 2020', 'MU84', '2025000030-00'),
 ('The Invisible Life of Addie LaRue', 'Markus Zusak', 2021, 'St. Martin\'s Press', '978-1-5951-555-9', 'Filipiniana', '2025-04-01', 'RES V 515 ZV47 2021', 'ZV47', '2025000031-00'),
 ('The Invisible Life of Addie LaRue', 'J.K. Rowling', 2002, 'Doubleday', '978-1-1290-277-3', 'Reserved', '2025-04-01', 'SHS W 483 RW84 2002', 'RW84', '2025000032-00'),
@@ -121,7 +114,7 @@ INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, 
 ('It Ends With Us', 'Paulo Coelho', 2002, 'Tor Books', '978-1-2885-414-6', 'Filipiniana', '2025-04-01', 'SHS Q 689 CQ54 2002', 'CQ54', '2025000080-00'),
 ('Daisy Jones & The Six', 'Delia Owens', 2002, 'Harlequin', '978-1-2431-311-10', 'SHS', '2025-04-01', 'FIL R 527 OR69 2002', 'OR69', '2025000081-00'),
 ('The Silent Patient', 'James Clear', 1987, 'Simon & Schuster', '978-1-2470-181-10', 'Filipiniana', '2025-04-01', 'RES S 459 CS14 1987', 'CS14', '2025000082-00'),
-('Atomic Habits', 'TJ Klune', 1985, 'Tor Books', '978-1-1481-838-7', 'Reserved', '2025-04-01', 'RES T 702 KT97 1985', 'KT97', '2025000083-00'),
+('Atomic Habits', 'TJ Klune', 1985, 'Tor Books', '978-1-1481-838-7', 'Reserved', NULL, 'RES T 702 KT97 1985', 'KT97', '2025000083-00'),
 ('The Book Thief', 'TJ Klune', 2000, 'Scholastic', '978-1-7576-152-3', 'Reserved', '2025-04-01', 'REF U 178 KU16 2000', 'KU16', '2025000084-00'),
 ('Becoming', 'Tara Westover', 1996, 'Hachette Book Group', '978-1-9750-928-9', 'Reference', '2025-04-01', 'REF V 591 WV17 1996', 'WV17', '2025000085-00'),
 ('Educated', 'Paulo Coelho', 2018, 'Doubleday', '978-1-4084-583-3', 'Reference', '2025-04-01', 'SHS W 148 CW90 2018', 'CW90', '2025000086-00'),
@@ -156,7 +149,7 @@ INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, 
 ('Where the Crawdads Sing', 'Delia Owens', 2023, 'Simon & Schuster', '978-1-4131-929-3', 'SHS', '2025-04-01', 'SHS A 439 OA83 2023', 'OA83', '2025000116-00'),
 ('Educated', 'Tracy Deonn', 2007, 'Knopf Publishing Group', '978-1-1006-816-4', 'SHS', '2025-04-01', 'REF B 411 DB61 2007', 'DB61', '2025000117-00'),
 ('Atomic Habits', 'Paulo Coelho', 1987, 'Simon & Schuster', '978-1-5661-809-3', 'Reference', '2025-04-01', 'REF C 275 CC47 1987', 'CC47', '2025000118-00'),
-('The Book Thief', 'Agatha Christie', 1996, 'St. Martin\'s Press', '978-1-3559-880-3', 'Reference', '2025-04-01', 'REF D 422 CD43 1996', 'CD43', '2025000119-00'),
+('The Book Thief', 'Agatha Christie', 1996, 'St. Martin\'s Press', '978-1-3559-880-3', 'Reference', NULL, 'REF D 422 CD43 1996', 'CD43', '2025000119-00'),
 ('The Silent Patient', 'Delia Owens', 2016, 'G.P. Putnam\'s Sons', '978-1-4596-288-9', 'Reference', '2025-04-01', 'SHS E 713 OE96 2016', 'OE96', '2025000120-00'),
 ('The Invisible Life of Addie LaRue', 'Matt Haig', 2010, 'Knopf Publishing Group', '978-1-2966-810-7', 'SHS', '2025-04-01', 'SHS F 368 HF65 2010', 'HF65', '2025000121-00'),
 ('Circe', 'Tracy Deonn', 2017, 'Vintage', '978-1-6734-175-10', 'Filipiniana', '2025-04-01', 'FIL H 576 DH19 2017', 'DH19', '2025000123-00'),
@@ -166,7 +159,6 @@ INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, 
 ('The Night Circus', 'TJ Klune', 1996, 'Knopf Publishing Group', '978-1-3682-916-1', 'Reserved', '2025-04-01', 'RES L 609 KL34 1996', 'KL34', '2025000127-00'),
 ('Daisy Jones & The Six', 'Andy Weir', 2002, 'HarperCollins', '978-1-8549-792-10', 'Reserved', '2025-04-01', 'FIL M 210 WM91 2002', 'WM91', '2025000128-00'),
 ('The Night Circus', 'Alex Michaelides', 1981, 'Hachette Book Group', '978-1-9796-419-4', 'Filipiniana', '2025-04-01', 'REF N 754 MN65 1981', 'MN65', '2025000129-00'),
-('A Man Called Ove', 'Fredrik Backman', 2001, 'Tor Books', '978-1-2589-514-2', 'Reference', NULL, 'SHS O 122 BO71 2001', 'BO71', '2025000130-00'),
 ('The Alchemist', 'Erin Morgenstern', 2011, 'Macmillan Publishers', '978-1-8883-322-2', 'SHS', '2025-04-01', 'SHS P 571 MP22 2011', 'MP22', '2025000131-00'),
 ('The Song of Achilles', 'Alex Michaelides', 2016, 'Harlequin', '978-1-1838-207-3', 'SHS', '2025-04-01', 'SHS Q 462 MQ97 2016', 'MQ97', '2025000132-00'),
 ('Project Hail Mary', 'V.E. Schwab', 2008, 'Macmillan Publishers', '978-1-9458-343-10', 'SHS', '2025-04-01', 'SHS R 237 SR90 2008', 'SR90', '2025000133-00'),
@@ -205,13 +197,14 @@ INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, 
 ('The Invisible Life of Addie LaRue', 'TJ Klune', 2000, 'HarperCollins', '978-1-6349-821-3', 'Reference', '2025-04-01', 'RES U 985 KU97 2000', 'KU97', '2025000166-00'),
 ('Daisy Jones & The Six', 'Andy Weir', 2021, 'Penguin Random House', '978-1-1353-331-5', 'Reserved', '2025-04-01', 'RES V 444 WV34 2021', 'WV34', '2025000167-00'),
 ('Daisy Jones & The Six', 'Markus Zusak', 1990, 'Little, Brown and Company', '978-1-4480-653-9', 'Reserved', '2025-04-01', 'SHS W 649 ZW26 1990', 'ZW26', '2025000168-00'),
-('Atomic Habits', 'Madeline Miller', 2001, 'Little, Brown and Company', '978-1-5634-739-10', 'SHS', '2025-04-01', 'REF X 980 MX58 2001', 'MX58', '2025000169-00'),
+('Atomic Habits', 'Madeline Miller', 2001, 'Little, Brown and Company', '978-1-5634-739-10', 'SHS', NULL, 'REF X 980 MX58 2001', 'MX58', '2025000169-00'),
 ('Atomic Habits', 'Fredrik Backman', 1980, 'Crown Publishing', '978-1-8450-563-8', 'Reference', '2025-04-01', 'RES Y 899 BY70 1980', 'BY70', '2025000170-00'),
 ('It Ends With Us', 'Tara Westover', 1991, 'Little, Brown and Company', '978-1-7086-314-2', 'Reserved', '2025-04-01', 'RES Z 589 WZ91 1991', 'WZ91', '2025000171-00'),
 ('The Night Circus', 'Tracy Deonn', 1993, 'Macmillan Publishers', '978-1-3615-565-8', 'Reserved', '2025-04-01', 'RES A 276 DA53 1993', 'DA53', '2025000172-00'),
 ('The Night Circus', 'Andy Weir', 2011, 'Bloomsbury Publishing', '978-1-1113-221-4', 'Reserved', '2025-04-01', 'RES B 337 WB32 2011', 'WB32', '2025000173-00'),
 ('A Man Called Ove', 'James Clear', 2016, 'Vintage', '978-1-9807-589-5', 'Reserved', '2025-04-01', 'RES C 687 CC28 2016', 'CC28', '2025000174-00'),
 ('A Man Called Ove', 'Delia Owens', 1998, 'Little, Brown and Company', '978-1-2211-451-4', 'Reserved', '2025-04-01', 'RES D 882 OD79 1998', 'OD79', '2025000175-00'),
+('The Alchemist', 'Stephen King', 2020, 'Grand Central Publishing', '978-1-5260-803-7', 'Reserved', NULL, 'REF E 958 KE47 2020', 'KE47', '2025000176-00'),
 ('Daisy Jones & The Six', 'Erin Morgenstern', 1986, 'Farrar, Straus and Giroux', '978-1-6252-422-3', 'Reference', '2025-04-01', 'FIL F 727 MF11 1986', 'MF11', '2025000177-00'),
 ('Legendborn', 'Madeline Miller', 1993, 'HarperCollins', '978-1-5116-469-9', 'Filipiniana', '2025-04-01', 'FIL G 484 MG69 1993', 'MG69', '2025000178-00'),
 ('Educated', 'Markus Zusak', 1995, 'Crown Publishing', '978-1-8720-170-7', 'Filipiniana', '2025-04-01', 'REF H 791 ZH29 1995', 'ZH29', '2025000179-00'),
@@ -323,7 +316,7 @@ INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, 
 ('Where the Crawdads Sing', 'Matt Haig', 2019, 'Doubleday', '978-1-4643-482-5', 'SHS', '2025-04-01', 'SHS L 136 HL56 2019', 'HL56', '2025000287-00'),
 ('A Man Called Ove', 'Tracy Deonn', 2019, 'Farrar, Straus and Giroux', '978-1-5721-833-4', 'SHS', NULL, 'FIL M 636 DM81 2019', 'DM81', '2025000288-00'),
 ('The Seven Husbands of Evelyn Hugo', 'Paulo Coelho', 2017, 'Farrar, Straus and Giroux', '978-1-8402-197-5', 'Filipiniana', '2025-04-01', 'FIL N 697 CN23 2017', 'CN23', '2025000289-00'),
-('Atomic Habits', 'J.K. Rowling', 2019, 'Bloomsbury Publishing', '978-1-8748-331-5', 'Filipiniana', '2025-04-01', 'FIL O 332 RO86 2019', 'RO86', '2025000290-00'),
+('Atomic Habits', 'J.K. Rowling', 2019, 'Bloomsbury Publishing', '978-1-8748-331-5', 'Filipiniana', NULL, 'FIL O 332 RO86 2019', 'RO86', '2025000290-00'),
 ('Circe', 'Markus Zusak', 1999, 'Little, Brown and Company', '978-1-6823-153-2', 'Filipiniana', '2025-04-01', 'FIL P 366 ZP63 1999', 'ZP63', '2025000291-00'),
 ('The Invisible Life of Addie LaRue', 'Tracy Deonn', 1984, 'St. Martin\'s Press', '978-1-7257-479-7', 'Filipiniana', '2025-04-01', 'FIL Q 227 DQ85 1984', 'DQ85', '2025000292-00'),
 ('It Ends With Us', 'Andy Weir', 1988, 'HarperCollins', '978-1-6198-753-4', 'Filipiniana', '2025-04-01', 'RES R 101 WR62 1988', 'WR62', '2025000293-00'),
@@ -361,15 +354,15 @@ INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, 
 ('The Midnight Library', 'Tara Westover', 2019, 'Macmillan Publishers', '978-1-3282-821-10', 'Filipiniana', '2025-04-01', 'RES X 537 WX90 2019', 'WX90', '2025000325-00'),
 ('Legendborn', 'Madeline Miller', 2024, 'Penguin Random House', '978-1-8294-801-4', 'Reserved', '2025-04-01', 'SHS Y 649 MY67 2024', 'MY67', '2025000326-00'),
 ('A Man Called Ove', 'J.K. Rowling', 1985, 'Harlequin', '978-1-2990-651-2', 'SHS', NULL, 'FIL Z 557 RZ55 1985', 'RZ55', '2025000327-00'),
-('Project Hail Mary', 'Andy Weir', 1992, 'Scholastic', '978-1-9308-177-1', 'Filipiniana', '2025-04-01', 'RES A 912 WA89 1992', 'WA89', '2025000328-00');
-INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, `AddedDate`, `CallNumber`, `Rack`, `Accno`) VALUES
+('Project Hail Mary', 'Andy Weir', 1992, 'Scholastic', '978-1-9308-177-1', 'Filipiniana', '2025-04-01', 'RES A 912 WA89 1992', 'WA89', '2025000328-00'),
 ('Project Hail Mary', 'Erin Morgenstern', 2011, 'Ballantine Books', '978-1-7845-947-2', 'Reserved', '2025-04-01', 'RES B 874 MB22 2011', 'MB22', '2025000329-00'),
 ('The Book Thief', 'Delia Owens', 2004, 'Simon & Schuster', '978-1-8426-613-8', 'Reserved', '2025-04-01', 'FIL C 365 OC36 2004', 'OC36', '2025000330-00'),
 ('The Silent Patient', 'Fredrik Backman', 2008, 'Scholastic', '978-1-2750-876-2', 'Filipiniana', '2025-04-01', 'REF D 160 BD31 2008', 'BD31', '2025000331-00'),
 ('Becoming', 'Stephen King', 1989, 'HarperCollins', '978-1-5529-977-3', 'Reference', '2025-04-01', 'SHS E 411 KE71 1989', 'KE71', '2025000332-00'),
 ('The Alchemist', 'Colleen Hoover', 1998, 'Harlequin', '978-1-5181-303-7', 'SHS', '2025-04-01', 'RES F 455 HF51 1998', 'HF51', '2025000333-00'),
 ('The Silent Patient', 'Erin Morgenstern', 2022, 'Macmillan Publishers', '978-1-9559-483-1', 'Reserved', '2025-04-01', 'RES G 717 MG62 2022', 'MG62', '2025000334-00'),
-('The Silent Patient', 'Agatha Christie', 2002, 'Vintage', '978-1-1642-825-1', 'Reserved', '2025-04-01', 'RES H 326 CH89 2002', 'CH89', '2025000335-00'),
+('The Silent Patient', 'Agatha Christie', 2002, 'Vintage', '978-1-1642-825-1', 'Reserved', '2025-04-01', 'RES H 326 CH89 2002', 'CH89', '2025000335-00');
+INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, `AddedDate`, `CallNumber`, `Rack`, `Accno`) VALUES
 ('Where the Crawdads Sing', 'Stephen King', 1982, 'Knopf Publishing Group', '978-1-8362-442-2', 'Reserved', '2025-04-01', 'RES I 519 KI44 1982', 'KI44', '2025000336-00'),
 ('The Silent Patient', 'Madeline Miller', 2023, 'Tor Books', '978-1-4397-812-2', 'Reserved', '2025-04-01', 'SHS J 258 MJ20 2023', 'MJ20', '2025000337-00'),
 ('Educated', 'Fredrik Backman', 2015, 'Simon & Schuster', '978-1-7657-343-4', 'SHS', '2025-04-01', 'FIL K 335 BK76 2015', 'BK76', '2025000338-00'),
@@ -418,7 +411,6 @@ INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, 
 ('The Midnight Library', 'J.K. Rowling', 1987, 'Doubleday', '978-1-3109-617-2', 'Reference', '2025-04-01', 'FIL C 751 RC50 1987', 'RC50', '2025000382-00'),
 ('The Night Circus', 'TJ Klune', 1990, 'Macmillan Publishers', '978-1-6960-549-7', 'Filipiniana', '2025-04-01', 'REF D 128 KD61 1990', 'KD61', '2025000383-00'),
 ('It Ends With Us', 'Matt Haig', 2003, 'HarperCollins', '978-1-9609-688-5', 'Reference', '2025-04-01', 'REF E 890 HE98 2003', 'HE98', '2025000384-00'),
-('Where the Crawdads Sing', 'Matt Haig', 1992, 'Bantam Books', '978-1-3280-449-1', 'Reference', '2025-04-01', 'REF F 284 HF87 1992', 'HF87', '2025000385-00'),
 ('It Ends With Us', 'Fredrik Backman', 2001, 'Penguin Random House', '978-1-4896-723-3', 'Reference', '2025-04-01', 'FIL G 812 BG49 2001', 'BG49', '2025000386-00'),
 ('The Book Thief', 'Fredrik Backman', 1980, 'Macmillan Publishers', '978-1-1511-191-4', 'Filipiniana', '2025-04-01', 'FIL H 373 BH74 1980', 'BH74', '2025000387-00'),
 ('The Alchemist', 'Madeline Miller', 2000, 'Grand Central Publishing', '978-1-7530-632-4', 'Filipiniana', '2025-04-01', 'RES I 505 MI22 2000', 'MI22', '2025000388-00'),
@@ -457,6 +449,7 @@ INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, 
 ('It Ends With Us', 'Markus Zusak', 2004, 'Farrar, Straus and Giroux', '978-1-2854-188-5', 'SHS', '2025-04-01', 'FIL P 965 ZP72 2004', 'ZP72', '2025000421-00'),
 ('Project Hail Mary', 'Madeline Miller', 1989, 'Scholastic', '978-1-5943-745-9', 'Filipiniana', '2025-04-01', 'REF Q 163 MQ59 1989', 'MQ59', '2025000422-00'),
 ('The Book Thief', 'Erin Morgenstern', 1998, 'Bloomsbury Publishing', '978-1-9696-564-7', 'Reference', '2025-04-01', 'RES R 569 MR27 1998', 'MR27', '2025000423-00'),
+('A Man Called Ove', 'Taylor Jenkins Reid', 2010, 'G.P. Putnam\'s Sons', '978-1-7524-255-1', 'Reserved', NULL, 'SHS S 777 RS36 2010', 'RS36', '2025000424-00'),
 ('The Song of Achilles', 'Stephen King', 2011, 'Harlequin', '978-1-8492-198-10', 'SHS', '2025-04-01', 'RES T 145 KT45 2011', 'KT45', '2025000425-00'),
 ('The Night Circus', 'James Clear', 2001, 'Little, Brown and Company', '978-1-3743-243-2', 'Reserved', '2025-04-01', 'FIL U 138 CU78 2001', 'CU78', '2025000426-00'),
 ('The Book Thief', 'V.E. Schwab', 2024, 'St. Martin\'s Press', '978-1-6402-646-1', 'Filipiniana', '2025-04-01', 'FIL V 682 SV97 2024', 'SV97', '2025000427-00'),
@@ -523,7 +516,7 @@ INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, 
 ('Verity', 'Tara Westover', 2023, 'HarperCollins', '978-1-9186-340-9', 'Reserved', '2025-04-01', 'SHS E 629 WE14 2023', 'WE14', '2025000488-00'),
 ('Legendborn', 'Delia Owens', 2006, 'Hachette Book Group', '978-1-2064-121-3', 'SHS', '2025-04-01', 'RES F 444 OF55 2006', 'OF55', '2025000489-00'),
 ('Educated', 'Tracy Deonn', 2003, 'Simon & Schuster', '978-1-9828-590-2', 'Reserved', '2025-04-01', 'FIL G 392 DG69 2003', 'DG69', '2025000490-00'),
-('A Man Called Ove', 'Tara Westover', 2015, 'Bantam Books', '978-1-4913-368-6', 'Filipiniana', '2025-04-01', 'SHS H 257 WH67 2015', 'WH67', '2025000491-00'),
+('A Man Called Ove', 'Tara Westover', 2015, 'Bantam Books', '978-1-4913-368-6', 'Filipiniana', NULL, 'SHS H 257 WH67 2015', 'WH67', '2025000491-00'),
 ('The Night Circus', 'Fredrik Backman', 1998, 'Macmillan Publishers', '978-1-4703-946-7', 'SHS', '2025-04-01', 'FIL I 555 BI40 1998', 'BI40', '2025000492-00'),
 ('Atomic Habits', 'Fredrik Backman', 2014, 'Crown Publishing', '978-1-3709-611-3', 'Filipiniana', '2025-04-01', 'FIL J 217 BJ12 2014', 'BJ12', '2025000493-00'),
 ('Daisy Jones & The Six', 'Delia Owens', 1993, 'Bloomsbury Publishing', '978-1-1044-147-7', 'Filipiniana', '2025-04-01', 'RES K 884 OK55 1993', 'OK55', '2025000494-00'),
@@ -538,7 +531,7 @@ INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, 
 ('The Silent Patient', 'V.E. Schwab', 1998, 'Vintage', '978-1-5641-920-8', 'Reference', '2025-04-01', 'RES T 465 ST75 1998', 'ST75', '2025000503-00'),
 ('Daisy Jones & The Six', 'Delia Owens', 2011, 'Farrar, Straus and Giroux', '978-1-1661-530-4', 'Reserved', '2025-04-01', 'RES U 771 OU93 2011', 'OU93', '2025000504-00'),
 ('The Midnight Library', 'Fredrik Backman', 2019, 'Grand Central Publishing', '978-1-2079-809-10', 'Reserved', '2025-04-01', 'SHS V 810 BV78 2019', 'BV78', '2025000505-00'),
-('A Man Called Ove', 'Stephen King', 2004, 'Grand Central Publishing', '978-1-9853-936-10', 'SHS', '2025-04-01', 'RES W 474 KW56 2004', 'KW56', '2025000506-00'),
+('A Man Called Ove', 'Stephen King', 2004, 'Grand Central Publishing', '978-1-9853-936-10', 'SHS', NULL, 'RES W 474 KW56 2004', 'KW56', '2025000506-00'),
 ('The Invisible Life of Addie LaRue', 'TJ Klune', 2012, 'Little, Brown and Company', '978-1-7921-102-10', 'Reserved', '2025-04-01', 'SHS X 321 KX20 2012', 'KX20', '2025000507-00'),
 ('Verity', 'J.K. Rowling', 2013, 'Doubleday', '978-1-6778-927-3', 'SHS', '2025-04-01', 'REF Y 283 RY11 2013', 'RY11', '2025000508-00'),
 ('Becoming', 'Stephen King', 1984, 'Macmillan Publishers', '978-1-2410-363-5', 'Reference', '2025-04-01', 'REF Z 925 KZ82 1984', 'KZ82', '2025000509-00'),
@@ -599,7 +592,15 @@ INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, 
 ('It Ends With Us', 'Markus Zusak', 1998, 'Simon & Schuster', '978-1-8126-758-9', 'SHS', '2025-04-01', 'RES C 693 ZC23 1998', 'ZC23', '2025000564-00'),
 ('The Silent Patient', 'Andy Weir', 1999, 'Little, Brown and Company', '978-1-7231-500-7', 'Reserved', '2025-04-01', 'RES D 997 WD76 1999', 'WD76', '2025000565-00'),
 ('Ibong Adarna', 'Jose Dela Cruz', 1944, 'Phoenix Publishing House', '978-9-7150-856-6', 'Reserved', '2025-04-01', 'FIL P 914 CP44 1944', 'CP44', '2025000566-00'),
-('Florante at Laura', 'Francisco Balagtas', 1838, 'Phoenix Publishing House', '979-8-8889-762-90', 'Filipiniana', '2025-04-01', 'FIL P 439 BP28 1838', 'BP28', '2025000567-00');
+('Florante at Laura', 'Francisco Balagtas', 1838, 'Phoenix Publishing House', '979-8-8889-762-90', 'Filipiniana', '2025-04-01', 'FIL P 439 BP28 1838', 'BP28', '2025000567-00'),
+('Educated', 'James Clear', 2008, '978-1-9248-233-5', 'Hachette Book Group', 'Filipiniana', '2025-04-09', 'CN70', 'RES N 316 C', '2025000568-01'),
+('Educated', 'James Clear', 2008, '978-1-9248-233-5', 'Hachette Book Group', 'Filipiniana', '2025-04-09', 'CN70', 'RES N 316 C', '2025000569-01'),
+('The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Scribner', '123456789', 'Fiction', '2025-04-09', 'REF E 222 CE74 2001', 'R2', '2025000570-00'),
+('The Great Gatsby', 'F. Scott Fitzgerald', 0, '123456789', '1925', 'Fiction', '2025-04-09', 'R2', 'REF E 222 C', '2025000571-01'),
+('Harry Potter and the Sorcerer\'s Stone', 'J.K. Rowling', 1997, 'Scholastic', '978-0439708180', 'Fiction', '2025-04-09', 'FIC E 222 CE78 1997', 'R1', '2025000572-00'),
+('Sample Things', 'Sample Things', 2011, '978-123456789', 'Sample', 'Fiction', '2025-04-09', 'R2', 'FIC 256 C56', '2025000573-01'),
+('Sample Things', 'Sample Things', 2025, '978-123456789', 'Sample Things', 'Fiction', '2025-04-09', 'S1', 'FIC 123 SAM', '2025000574-01'),
+('Sample Things', 'Sample Things', 2025, '978-123456789', 'Sample Things', 'Fiction', '2025-04-09', 'S1', 'FIC 123 SAM', '2025000575-01');
 
 -- --------------------------------------------------------
 
@@ -623,14 +624,8 @@ CREATE TABLE `books_borrowed` (
 --
 
 INSERT INTO `books_borrowed` (`borrow_id`, `borrower_id`, `book_id`, `condition_id`, `date_borrowed`, `due_date`, `time`, `notify_id`) VALUES
-(49, 1, '2025000175-00', 1, '2025-04-03', '2025-04-14', '17:05:13', 4),
-(68, 5, '2025000506-00', 2, '2025-04-05', '2025-04-22', '11:22:19', 4),
-(69, 1, '2025000190-00', 1, '2025-04-05', '2025-04-08', '11:22:38', 4),
-(71, 1, '2025000083-00', 1, '2025-04-05', '2025-04-10', '11:23:21', 4),
-(73, 1, '2025000491-00', 1, '2025-04-05', '2025-04-07', '11:24:09', 4),
-(74, 1, '2025000090-00', 1, '2025-04-05', '2025-04-05', '11:32:59', 4),
-(75, 1, '2025000169-00', 2, '2025-04-05', '2025-04-05', '11:33:28', 4),
-(76, 5, '2025000220-00', 2, '2025-04-05', '2025-04-05', '11:33:52', 4);
+(106, 8, '2025000119-00', 1, '2025-04-08', '2025-04-10', '23:16:39', 1),
+(107, 8, '2025000290-00', 2, '2025-04-08', '2025-04-08', '23:43:08', 2);
 
 -- --------------------------------------------------------
 
@@ -650,23 +645,31 @@ CREATE TABLE `books_deleted` (
   `Rack` varchar(50) DEFAULT NULL,
   `ConditionID` int(11) DEFAULT NULL,
   `DeletedDate` timestamp NOT NULL DEFAULT current_timestamp(),
-  `borrower_id` int(11) DEFAULT NULL
+  `borrower_id` int(11) DEFAULT NULL,
+  `Penalty Fee` decimal(10,0) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `books_deleted`
 --
 
-INSERT INTO `books_deleted` (`Accno`, `Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, `CallNumber`, `Rack`, `ConditionID`, `DeletedDate`, `borrower_id`) VALUES
-('2025000005-01', 'The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Scribner', '123456789', 'Fiction', 'REF E 222 CE74 2001', 'R2', 4, '2025-04-01 06:13:11', 1),
-('2025000029-00', 'A Man Called Ove', 'Agatha Christie', 2018, 'HarperCollins', '978-1-4568-254-1', 'SHS', 'RES T 487 CT75 2018', 'CT75', 5, '2025-04-03 16:00:00', 3),
-('2025000110-00', 'Atomic Habits', 'Agatha Christie', 2015, 'Bantam Books', '978-1-7543-564-4', 'Filipiniana', 'SHS U 572 CU52 2015', 'CU52', 4, '2025-04-05 03:32:21', 5),
-('2025000122-00', 'A Man Called Ove', 'Andy Weir', 2008, 'G.P. Putnam\'s Sons', '978-1-1804-970-4', 'SHS', 'FIL G 525 WG50 2008', 'WG50', 4, '2025-04-04 16:16:58', 7),
-('2025000176-00', 'The Alchemist', 'Stephen King', 2020, 'Grand Central Publishing', '978-1-5260-803-7', 'Reserved', 'REF E 958 KE47 2020', 'KE47', 5, '2025-04-03 16:00:00', 8),
-('2025000207-00', 'A Man Called Ove', 'Fredrik Backman', 1997, 'Hachette Book Group', '978-1-3428-742-8', 'Filipiniana', 'REF J 291 BJ46 1997', 'BJ46', 4, '2025-04-03 14:28:16', 8),
-('2025000256-00', 'A Man Called Ove', 'Fredrik Backman', 1982, 'Bantam Books', '978-1-1954-616-7', 'Reference', 'RES G 635 BG47 1982', 'BG47', 4, '2025-04-03 08:57:21', 5),
-('2025000369-00', 'A Man Called Ove', 'Erin Morgenstern', 2020, 'Crown Publishing', '978-1-1114-723-2', 'SHS', 'SHS P 771 MP58 2020', 'MP58', 4, '2025-04-05 03:32:07', 1),
-('2025000424-00', 'A Man Called Ove', 'Taylor Jenkins Reid', 2010, 'G.P. Putnam\'s Sons', '978-1-7524-255-1', 'Reserved', 'SHS S 777 RS36 2010', 'RS36', 5, '2025-04-04 16:00:00', 12);
+INSERT INTO `books_deleted` (`Accno`, `Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, `CallNumber`, `Rack`, `ConditionID`, `DeletedDate`, `borrower_id`, `Penalty Fee`) VALUES
+('2025000001-00', 'The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Scribner', '123456789', 'Fiction', 'REF E 222 CE74 2001', 'R2', 4, '2025-04-08 07:46:33', 1, 0),
+('2025000002-01', 'The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Scribner', '123456789', 'Fiction', 'REF E 222 CE74 2001', 'R2', 4, '2025-04-08 07:47:45', 1, 0),
+('2025000005-01', 'The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Scribner', '123456789', 'Fiction', 'REF E 222 CE74 2001', 'R2', 4, '2025-04-01 06:13:11', 1, 0),
+('2025000009-00', 'The Invisible Life of Addie LaRue', 'Agatha Christie', 1998, 'Vintage', '978-1-5265-210-7', 'Section', 'SHS A 260 CA66 1998', 'CA66', 4, '2025-04-08 08:52:15', 8, 0),
+('2025000010-00', 'Atomic Habits', 'James Clear', 2004, 'Little, Brown and Company', '978-1-5635-708-4', 'SHS', 'FIL B 369 CB35 2004', 'CB35', 4, '2025-04-09 02:19:58', 8, 0),
+('2025000011-00', 'A Man Called Ove', 'Stephen King', 1994, 'Doubleday', '978-1-9880-351-5', 'Filipiniana', 'RES C 500 KC26 1994', 'KC26', 4, '2025-04-08 08:20:05', 1, 0),
+('2025000013-00', 'Daisy Jones & The Six', 'TJ Klune', 1992, 'Penguin Random House', '978-1-8297-256-7', 'SHS', 'FIL E 810 KE71 1992', 'KE71', 4, '2025-04-09 06:46:09', 8, 0),
+('2025000014-00', 'A Man Called Ove', 'Tracy Deonn', 2009, 'Penguin Random House', '978-1-2233-658-5', 'Filipiniana', 'RES F 733 DF53 2009', 'DF53', 5, '2025-04-08 16:00:00', 8, 100),
+('2025000020-00', 'Becoming', 'Madeline Miller', 2002, 'Penguin Random House', '978-1-6197-667-5', 'Filipiniana', 'REF L 840 ML90 2002', 'ML90', 4, '2025-04-08 07:46:07', 1, 0),
+('2025000110-00', 'Atomic Habits', 'Agatha Christie', 2015, 'Bantam Books', '978-1-7543-564-4', 'Filipiniana', 'SHS U 572 CU52 2015', 'CU52', 4, '2025-04-05 03:32:21', 5, 0),
+('2025000122-00', 'A Man Called Ove', 'Andy Weir', 2008, 'G.P. Putnam\'s Sons', '978-1-1804-970-4', 'SHS', 'FIL G 525 WG50 2008', 'WG50', 4, '2025-04-04 16:16:58', 7, 0),
+('2025000130-00', 'A Man Called Ove', 'Fredrik Backman', 2001, 'Tor Books', '978-1-2589-514-2', 'Reference', 'SHS O 122 BO71 2001', 'BO71', 4, '2025-04-05 09:08:07', 13, 0),
+('2025000207-00', 'A Man Called Ove', 'Fredrik Backman', 1997, 'Hachette Book Group', '978-1-3428-742-8', 'Filipiniana', 'REF J 291 BJ46 1997', 'BJ46', 4, '2025-04-03 14:28:16', 8, 0),
+('2025000256-00', 'A Man Called Ove', 'Fredrik Backman', 1982, 'Bantam Books', '978-1-1954-616-7', 'Reference', 'RES G 635 BG47 1982', 'BG47', 4, '2025-04-03 08:57:21', 5, 0),
+('2025000369-00', 'A Man Called Ove', 'Erin Morgenstern', 2020, 'Crown Publishing', '978-1-1114-723-2', 'SHS', 'SHS P 771 MP58 2020', 'MP58', 4, '2025-04-05 03:32:07', 1, 0),
+('2025000385-00', 'Where the Crawdads Sing', 'Matt Haig', 1992, 'Bantam Books', '978-1-3280-449-1', 'Reference', 'REF F 284 HF87 1992', 'HF87', 4, '2025-04-08 08:18:41', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -745,7 +748,8 @@ CREATE TABLE `librarians` (
 
 INSERT INTO `librarians` (`LibraryID`, `FullName`, `Username`, `Password`) VALUES
 (3, 'Dale Wood', 'dalehoods', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
-(5, 'library', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918');
+(5, 'library', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),
+(6, 'Edelina Rayan', 'librarian2', 'cd6659bced90a94e1ab02e4c1c8b5e4ceceb020f66ef2c5db87c5b43c65c37ea');
 
 -- --------------------------------------------------------
 
@@ -769,7 +773,6 @@ CREATE TABLE `returned_books` (
 
 INSERT INTO `returned_books` (`return_id`, `BorrowerID`, `BookID`, `ConditionID`, `Return Date`, `Penalty Fee`, `OverduePenalty`) VALUES
 (18, 1, '2025000008-01', 3, '2025-03-31', 0.00, 0.00),
-(20, 1, '2025000001-00', 3, '2025-04-01', 0.00, 0.00),
 (28, 5, '2025000042-00', 2, '2025-04-03', 12.00, 0.00),
 (30, 1, '2025000175-00', 3, '2025-04-03', 0.00, 0.00),
 (41, 8, '2025000125-00', 3, '2025-04-04', 100.00, 0.00),
@@ -780,11 +783,21 @@ INSERT INTO `returned_books` (`return_id`, `BorrowerID`, `BookID`, `ConditionID`
 (49, 8, '2025000125-00', 3, '2025-04-04', 1.00, 0.00),
 (50, 8, '2025000125-00', 3, '2025-04-04', 1.00, 0.00),
 (51, 8, '2025000125-00', 3, '2025-04-04', 0.00, 0.00),
-(52, 3, '2025000014-00', 1, '2025-04-04', 5.00, 0.00),
 (53, 3, '2025000125-00', 1, '2025-04-04', 5.00, 0.00),
-(57, 9, '2025000011-00', 3, '2025-04-05', 1000.00, 0.00),
 (58, 10, '2025000042-00', 3, '2025-04-05', 234.00, 189.00),
-(60, 11, '2025000130-00', 3, '2025-04-05', 0.00, 0.00);
+(65, 1, '2025000175-00', 3, '2025-04-05', 121.00, 0.00),
+(67, 1, '2025000090-00', 3, '2025-04-05', 324.00, 1.00),
+(68, 5, '2025000220-00', 3, '2025-04-05', 431.00, 1.00),
+(69, 1, '2025000190-00', 3, '2025-04-05', 1.00, 0.00),
+(70, 1, '2025000190-00', 3, '2025-04-05', 1.00, 0.00),
+(71, 5, '2025000220-00', 3, '2025-04-05', 123.00, 1.00),
+(76, 1, '2025000090-00', 1, '2025-04-05', 1.00, 1.00),
+(78, 1, '2025000190-00', 3, '2025-04-05', 1.00, 0.00),
+(81, 1, '2025000175-00', 3, '2025-04-08', 200.00, 0.00),
+(97, 1, '2025000249-00', 1, '2025-04-08', 1.00, 1.00),
+(102, 5, '2025000220-00', 2, '2025-04-08', 10.00, 10.00),
+(106, 8, '2025000450-00', 1, '2025-04-08', 0.00, 0.00),
+(116, 8, '2025000012-00', 3, '2025-04-09', 1244.50, 0.00);
 
 -- --------------------------------------------------------
 
@@ -890,7 +903,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `books_borrowed`
 --
 ALTER TABLE `books_borrowed`
-  MODIFY `borrow_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `borrow_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 
 --
 -- AUTO_INCREMENT for table `book_condition`
@@ -908,19 +921,19 @@ ALTER TABLE `email_message`
 -- AUTO_INCREMENT for table `librarians`
 --
 ALTER TABLE `librarians`
-  MODIFY `LibraryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `LibraryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `returned_books`
 --
 ALTER TABLE `returned_books`
-  MODIFY `return_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `return_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables

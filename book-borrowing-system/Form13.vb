@@ -5,7 +5,6 @@ Public Class Form13
 
     Private Sub Form13_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadBookAccnos()
-        Button1.Enabled = False
     End Sub
 
     Private Sub LoadBookAccnos()
@@ -26,46 +25,37 @@ Public Class Form13
         End Using
     End Sub
 
-    Private Sub LoadBookDetails(accno As String)
-        If String.IsNullOrWhiteSpace(accno) Then
-            ClearFields()
-            Button1.Enabled = False
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+        Dim accNo As String = ComboBox1.Text.Trim()
+
+        If String.IsNullOrWhiteSpace(accNo) Then
+            MessageBox.Show("Please select a book or scan the barcode.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
-
-        accno = accno.Trim()
 
         Using conn As New MySqlConnection(connString)
             Try
                 conn.Open()
-
-                Dim checkQuery As String = "SELECT COUNT(*) FROM books_borrowed WHERE book_id = @Accno"
-                Using checkCmd As New MySqlCommand(checkQuery, conn)
-                    checkCmd.Parameters.AddWithValue("@Accno", accno)
-                    Dim count As Integer = Convert.ToInt32(checkCmd.ExecuteScalar())
-                    If count > 0 Then
-                        MessageBox.Show("This book is currently borrowed and cannot be edit.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        Return
-                    End If
-                End Using
-
                 Dim query As String = "SELECT * FROM books WHERE Accno = @Accno"
                 Using cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@Accno", accno)
+                    cmd.Parameters.AddWithValue("@Accno", accNo)
                     Dim reader As MySqlDataReader = cmd.ExecuteReader()
-                    If reader.Read() Then
-                        TextBox2.Text = reader("Title").ToString()
-                        TextBox3.Text = reader("Author").ToString()
-                        TextBox4.Text = reader("Year").ToString()
-                        TextBox1.Text = reader("Publisher").ToString()
-                        TextBox8.Text = reader("ISBN").ToString()
-                        TextBox5.Text = reader("Section").ToString()
-                        TextBox7.Text = reader("CallNumber").ToString()
-                        TextBox6.Text = reader("Rack").ToString()
-                        Button1.Enabled = True
+
+                    ClearBookDetails()
+
+                    If reader.HasRows Then
+                        While reader.Read()
+                            TextBox2.Text = reader("Title").ToString()
+                            TextBox3.Text = reader("Author").ToString()
+                            TextBox4.Text = reader("Year").ToString()
+                            TextBox1.Text = reader("Publisher").ToString()
+                            TextBox8.Text = reader("ISBN").ToString()
+                            TextBox5.Text = reader("Section").ToString()
+                            TextBox7.Text = reader("CallNumber").ToString()
+                            TextBox6.Text = reader("Rack").ToString()
+                        End While
                     Else
-                        ClearFields()
-                        Button1.Enabled = False
+                        MessageBox.Show("No books found with the given Accno.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
                 End Using
             Catch ex As Exception
@@ -74,68 +64,25 @@ Public Class Form13
         End Using
     End Sub
 
-    Private Sub ClearFields()
-        TextBox1.Clear()
+    Private Sub ClearBookDetails()
         TextBox2.Clear()
         TextBox3.Clear()
         TextBox4.Clear()
-        TextBox5.Clear()
-        TextBox6.Clear()
-        TextBox7.Clear()
+        TextBox1.Clear()
         TextBox8.Clear()
+        TextBox5.Clear()
+        TextBox7.Clear()
+        TextBox6.Clear()
     End Sub
-
-    Private Async Sub ComboBox1_TextChanged(sender As Object, e As EventArgs) Handles ComboBox1.TextChanged
-        Dim accNo As String = ComboBox1.Text.Trim()
-
-        If String.IsNullOrEmpty(accNo) Then
-            MessageBox.Show("Please select or scan a book.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            ClearFields()
-            Button1.Enabled = False
-            Return
-        End If
-
-        Button1.Enabled = False
-
-        Dim isBorrowed As Boolean = Await IsBookBorrowedAsync(accNo)
-
-        If isBorrowed Then
-            MessageBox.Show("This book is currently borrowed and cannot be edited.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            ClearFields()
-            Button1.Enabled = False
-            Return
-        End If
-
-        LoadBookDetails(accNo)
-        Button1.Enabled = True
-    End Sub
-
-    Private Async Function IsBookBorrowedAsync(accNo As String) As Task(Of Boolean)
-        Using conn As New MySqlConnection(connString)
-            Try
-                Await conn.OpenAsync()
-
-                Dim checkQuery As String = "SELECT COUNT(*) FROM books_borrowed WHERE book_id = @Accno"
-                Using cmd As New MySqlCommand(checkQuery, conn)
-                    cmd.Parameters.AddWithValue("@Accno", accNo)
-                    Dim count As Integer = Convert.ToInt32(Await cmd.ExecuteScalarAsync())
-                    Return count > 0
-                End Using
-            Catch ex As Exception
-                MessageBox.Show("Error checking borrowed status: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Return False
-            End Try
-        End Using
-    End Function
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Using conn As New MySqlConnection(connString)
             Try
                 conn.Open()
                 Dim query As String = "UPDATE books SET Title = @Title, Author = @Author, Year = @Year, 
-                                      Publisher = @Publisher, ISBN = @ISBN, 
-                                      Section = @Section, Rack = @Rack, CallNumber = @CallNumber 
-                                      WHERE Accno = @Accno"
+                                       Publisher = @Publisher, ISBN = @ISBN, 
+                                       Section = @Section, Rack = @Rack, CallNumber = @CallNumber 
+                                       WHERE Accno = @Accno"
 
                 Using cmd As New MySqlCommand(query, conn)
                     cmd.Parameters.AddWithValue("@Title", TextBox2.Text.Trim())
