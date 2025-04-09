@@ -95,39 +95,34 @@ Public Class Form10
     End Sub
     Private Function GenerateAccnos(copies As Integer) As List(Of String)
         Dim accnoList As New List(Of String)
-
         Dim connString As String = "server=localhost; user=root; password=; database=book-borrowing;"
+        Dim currentYear As String = DateTime.Now.Year.ToString()
+        Dim lastNumber As Integer = 0
+
         Using conn As New MySqlConnection(connString)
             conn.Open()
 
+            Dim query As String = $"SELECT MAX(Accno) FROM books WHERE Accno LIKE '{currentYear}%'"
+            Using cmd As New MySqlCommand(query, conn)
+                Dim lastAccno As Object = cmd.ExecuteScalar()
+                If lastAccno IsNot DBNull.Value AndAlso lastAccno IsNot Nothing Then
+                    Dim lastAccnoStr As String = lastAccno.ToString()
+                    If lastAccnoStr.Length >= 10 Then
+                        Dim numPart As String = lastAccnoStr.Substring(4, 6)
+                        Integer.TryParse(numPart, lastNumber)
+                    End If
+                End If
+            End Using
+
             For i As Integer = 1 To copies
-                Dim accno As String = GenerateNextAccno(conn)
+                lastNumber += 1
+                Dim accno As String = $"{currentYear}{lastNumber:000000}-01"
                 accnoList.Add(accno)
             Next
         End Using
 
         Return accnoList
     End Function
-
-    Private Function GenerateNextAccno(conn As MySqlConnection) As String
-        Dim year As String = DateTime.Now.Year.ToString()
-        Dim query As String = $"SELECT MAX(Accno) FROM books WHERE Accno LIKE '{year}%'"
-
-        Using cmd As New MySqlCommand(query, conn)
-            Dim lastAccno As Object = cmd.ExecuteScalar()
-            Dim nextNumber As Integer = 1
-
-            If lastAccno IsNot DBNull.Value AndAlso lastAccno IsNot Nothing Then
-                Dim lastNumberPart As String = lastAccno.ToString().Substring(4, 6)
-                If Integer.TryParse(lastNumberPart, nextNumber) Then
-                    nextNumber += 1
-                End If
-            End If
-
-            Return $"{year}{nextNumber:000000}-01"
-        End Using
-    End Function
-
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Dim close As New Form15

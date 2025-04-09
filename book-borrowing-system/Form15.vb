@@ -30,7 +30,7 @@ Public Class Form15
 
     Private Sub ImportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImportToolStripMenuItem.Click
         Dim openFileDialog As New OpenFileDialog
-        openFileDialog.Filter = "Excel Files (.xlsx)|.xlsx"
+        openFileDialog.Filter = "Excel Files (.xlsx, .xls)|*.xlsx;*.xls"
 
         If openFileDialog.ShowDialog = DialogResult.OK Then
             ImportExcelToDatabase(openFileDialog.FileName)
@@ -69,8 +69,8 @@ Public Class Form15
                                 Dim newAccno As String = GenerateNextAccno(conn, copyIndex)
 
                                 Dim insertQuery As String = "
-                            INSERT INTO books (Accno, Title, Author, Year, Publisher, Section, AddedDate, CallNumber, Rack, ISBN)
-                            VALUES (@Accno, @Title, @Author, @Year, @Publisher, @Section, @AddedDate, @CallNumber, @Rack, @ISBN)"
+                                 INSERT INTO books (Accno, Title, Author, Year, Publisher, Section, AddedDate, CallNumber, Rack, ISBN)
+                                 VALUES (@Accno, @Title, @Author, @Year, @Publisher, @Section, @AddedDate, @CallNumber, @Rack, @ISBN)"
 
                                 Using cmd As New MySqlCommand(insertQuery, conn, transaction)
                                     cmd.Parameters.AddWithValue("@Accno", newAccno)
@@ -89,7 +89,7 @@ Public Class Form15
                         Next
 
                         transaction.Commit()
-                        MessageBox.Show("Books imported successfully with multiple copies!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        MessageBox.Show("Books imported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                     Catch ex As Exception
                         transaction.Rollback()
@@ -104,7 +104,20 @@ Public Class Form15
     End Sub
 
     Private Function GenerateNextAccno(conn As MySqlConnection, copyIndex As Integer) As String
-        Throw New NotImplementedException()
+        Dim year As String = DateTime.Now.Year.ToString()
+        Dim query As String = $"SELECT MAX(Accno) FROM books WHERE Accno LIKE '{year}%'"
+
+        Using cmd As New MySqlCommand(query, conn)
+            Dim lastAccno As Object = cmd.ExecuteScalar()
+            Dim nextNumber As Integer = 1
+
+            If lastAccno IsNot DBNull.Value AndAlso lastAccno IsNot Nothing Then
+                Dim lastNumber As String = lastAccno.ToString().Substring(4, 6)
+                nextNumber = Integer.Parse(lastNumber) + 1
+            End If
+
+            Return $"{year}{nextNumber:000000}-{copyIndex:00}"
+        End Using
     End Function
 
     Private Sub DownloadTemplateToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DownloadTemplateToolStripMenuItem.Click
@@ -112,7 +125,7 @@ Public Class Form15
             ExcelPackage.License.SetNonCommercialPersonal("book-borrowing-system")
 
             Dim saveFileDialog As New SaveFileDialog()
-            saveFileDialog.Filter = "Excel Files (.xlsx)|.xlsx"
+            saveFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx"
             saveFileDialog.FileName = "Book_Import_Template.xlsx"
 
             If saveFileDialog.ShowDialog() = DialogResult.OK Then
@@ -276,7 +289,9 @@ Public Class Form15
         Label2.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy - hh:mm:ss tt")
     End Sub
 
-
+    Private Sub NewsLetterToolStripMenuItem_Click(sender As Object, e As EventArgs)
+        LoadFormToMainPanel(New Form4)
+    End Sub
 End Class
 
 

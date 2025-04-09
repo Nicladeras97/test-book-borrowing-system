@@ -265,7 +265,7 @@ Partial Class Form15
         SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
         SettingsToolStripMenuItem.Padding = New Padding(0, 0, 127, 40)
         SettingsToolStripMenuItem.Size = New Size(251, 76)
-        SettingsToolStripMenuItem.Text = "For Monitoring"
+        SettingsToolStripMenuItem.Text = "Send Emails"
         SettingsToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft
         ' 
         ' mainPanel

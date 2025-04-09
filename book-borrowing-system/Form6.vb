@@ -5,6 +5,10 @@ Imports MySql.Data.MySqlClient
 Public Class Form6
     Dim conn As New MySqlConnection("server=localhost; user=root; password=; database=book-borrowing;")
     Dim printDoc As New PrintDocument()
+    Dim currentPage As Integer = 1
+    Dim pageSize As Integer = 25
+    Dim totalRecords As Integer = 0
+    Dim totalPages As Integer = 0
 
     Private Sub Form6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ComboBox1.Items.AddRange(New String() {"Books Inventory", "Book Activity Summary", "Borrowed Books", "Overdue Books", "Lost Books", "Damaged Books", "Books with Multiple Copies", "Borrowers"})
@@ -43,7 +47,7 @@ Public Class Form6
 
             Select Case ComboBox1.SelectedItem.ToString()
                 Case "Books Inventory"
-                    query = "SELECT Accno AS 'Accession Number', Title, Author, CallNumber FROM books LIMIT " & rowLimit
+                    query = "SELECT Accno AS 'Accession Number', Title, Author, CallNumber, AddedDate FROM books LIMIT " & rowLimit
                 Case "Book Activity Summary"
                     query = "SELECT b.Accno AS 'Accession Number', b.Title, b.Author, COUNT(bb.book_id) AS 'Borrow Count' " &
                         "FROM books b LEFT JOIN books_borrowed bb ON b.Accno = bb.book_id " &
@@ -213,7 +217,7 @@ Public Class Form6
 
                 Select Case ComboBox1.SelectedItem.ToString
                     Case "Books Inventory"
-                        query = "SELECT Accno AS 'Accession Number', Title, Author, CallNumber FROM books " &
+                        query = "SELECT Accno AS 'Accession Number', Title, Author, AddedDate, CallNumber FROM books " &
                             "WHERE Title LIKE '%" & searchText & "%' OR Author LIKE '%" & searchText & "%' OR CallNumber LIKE '%" & searchText & "%' OR Accno LIKE '%" & searchText & "%' " & rowLimit
 
                     Case "Book Activity Summary"
@@ -278,4 +282,13 @@ Public Class Form6
         End If
     End Sub
 
+    'Label2 for displaying page
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        'Back Button
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        'Next Button
+    End Sub
 End Class
