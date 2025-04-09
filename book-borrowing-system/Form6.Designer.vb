@@ -22,7 +22,7 @@ Partial Class Form6
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form6))
         Button2 = New Button()
         DataGridView1 = New DataGridView()
@@ -61,14 +61,14 @@ Partial Class Form6
         DataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
         DataGridView1.BackgroundColor = SystemColors.ButtonHighlight
         DataGridView1.BorderStyle = BorderStyle.Fixed3D
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = Color.LightBlue
-        DataGridViewCellStyle2.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = Color.LightBlue
-        DataGridViewCellStyle2.SelectionForeColor = SystemColors.ControlText
-        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
-        DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = Color.LightBlue
+        DataGridViewCellStyle1.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle1.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = Color.LightBlue
+        DataGridViewCellStyle1.SelectionForeColor = SystemColors.ControlText
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
+        DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridView1.Cursor = Cursors.Hand
         DataGridView1.EnableHeadersVisualStyles = False
@@ -150,6 +150,7 @@ Partial Class Form6
         ' 
         ' Button5
         ' 
+        Button5.Anchor = AnchorStyles.None
         Button5.FlatStyle = FlatStyle.Flat
         Button5.Font = New Font("Arial", 12F)
         Button5.Location = New Point(632, 737)
@@ -161,6 +162,7 @@ Partial Class Form6
         ' 
         ' Label2
         ' 
+        Label2.Anchor = AnchorStyles.None
         Label2.Font = New Font("Arial", 12F)
         Label2.Location = New Point(713, 737)
         Label2.Name = "Label2"
@@ -171,6 +173,7 @@ Partial Class Form6
         ' 
         ' Button6
         ' 
+        Button6.Anchor = AnchorStyles.None
         Button6.FlatStyle = FlatStyle.Flat
         Button6.Font = New Font("Arial", 12F)
         Button6.Location = New Point(914, 737)

@@ -1,6 +1,8 @@
 ﻿Imports System.Drawing.Printing
 Imports ClosedXML.Excel
+Imports DocumentFormat.OpenXml.Drawing
 Imports MySql.Data.MySqlClient
+Imports OfficeOpenXml.LoadFunctions.Params
 
 Public Class Form6
     Dim conn As New MySqlConnection("server=localhost; user=root; password=; database=book-borrowing;")
@@ -26,12 +28,13 @@ Public Class Form6
         TextBox1.Focus()
     End Sub
 
-
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
         LoadReport()
     End Sub
 
     Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox2.SelectedIndexChanged
+        pageSize = Integer.Parse(ComboBox2.SelectedItem.ToString())
+        currentPage = 1
         LoadReport()
     End Sub
 
@@ -44,36 +47,36 @@ Public Class Form6
         Try
             Dim query As String = ""
             Dim rowLimit As String = If(ComboBox2.SelectedItem IsNot Nothing, ComboBox2.SelectedItem.ToString(), "25")
+            Dim offset As Integer = (currentPage - 1) * Integer.Parse(rowLimit)
 
             Select Case ComboBox1.SelectedItem.ToString()
                 Case "Books Inventory"
-                    query = "SELECT Accno AS 'Accession Number', Title, Author, CallNumber, AddedDate FROM books LIMIT " & rowLimit
+                    query = "SELECT Accno AS 'Accession Number', Title, Author, CallNumber, AddedDate FROM books LIMIT " & offset & ", " & rowLimit
                 Case "Book Activity Summary"
                     query = "SELECT b.Accno AS 'Accession Number', b.Title, b.Author, COUNT(bb.book_id) AS 'Borrow Count' " &
                         "FROM books b LEFT JOIN books_borrowed bb ON b.Accno = bb.book_id " &
                         "GROUP BY b.Accno HAVING COUNT(bb.book_id) > 0 " &
-                        "ORDER BY COUNT(bb.book_id) DESC LIMIT " & Integer.Parse(rowLimit)
+                        "ORDER BY COUNT(bb.book_id) DESC LIMIT " & offset & ", " & Integer.Parse(rowLimit)
                 Case "Borrowed Books"
                     query = "SELECT b.Accno AS 'Accession Number', b.Title, u.StudNo AS 'Student Number', u.FullName AS 'Name', bb.due_date AS 'Due Date' " &
-                        "FROM books_borrowed bb JOIN books b ON bb.book_id = b.Accno JOIN users u ON bb.borrower_id = u.UserID LIMIT " & rowLimit
+                        "FROM books_borrowed bb JOIN books b ON bb.book_id = b.Accno JOIN users u ON bb.borrower_id = u.UserID LIMIT " & offset & ", " & rowLimit
                 Case "Overdue Books"
                     query = "SELECT b.Accno AS 'Accession Number', b.Title, u.StudNo AS 'Student Number', u.FullName AS 'Name', bb.due_date AS 'Due Date', " &
                         "DATEDIFF(NOW(), bb.due_date) AS 'Overdue Days' FROM books_borrowed bb " &
                         "JOIN books b ON bb.book_id = b.Accno JOIN users u ON bb.borrower_id = u.UserID " &
-                        "WHERE bb.due_date < NOW() LIMIT " & rowLimit
+                        "WHERE bb.due_date < NOW() LIMIT " & offset & ", " & rowLimit
                 Case "Lost Books"
                     query = "SELECT bd.Accno AS 'Accession Number', bd.Title, bd.DeletedDate AS 'Date Lost', u.StudNo AS 'Student Number' " &
                         "FROM books_deleted bd LEFT JOIN users u ON bd.borrower_id = u.UserID " &
-                        "WHERE bd.DeletedDate IS NOT NULL LIMIT " & rowLimit
-
+                        "WHERE bd.DeletedDate IS NOT NULL LIMIT " & offset & ", " & rowLimit
                 Case "Damaged Books"
                     query = "SELECT u.StudNo AS 'Student Number', rb.BookID AS 'Accession Number', rb.`Return Date`, rb.`Penalty Fee`, rb.`OverduePenalty` " &
-                        "FROM returned_books rb JOIN users u ON rb.BorrowerID = u.UserID WHERE rb.ConditionID = 3 LIMIT " & rowLimit
+                        "FROM returned_books rb JOIN users u ON rb.BorrowerID = u.UserID WHERE rb.ConditionID = 3 LIMIT " & offset & ", " & rowLimit
                 Case "Books with Multiple Copies"
                     query = "SELECT b.ISBN, b.Title, GROUP_CONCAT(b.Accno SEPARATOR ', ') AS 'Accession Numbers', COUNT(*) AS 'Copies' " &
-                        "FROM books b GROUP BY b.ISBN, b.Title HAVING COUNT(*) > 1 LIMIT " & rowLimit
+                        "FROM books b GROUP BY b.ISBN, b.Title HAVING COUNT(*) > 1 LIMIT " & offset & ", " & rowLimit
                 Case "Borrowers"
-                    query = "SELECT u.UserID AS 'User ID', u.FullName AS 'Name', u.StudNo AS 'Student Number' FROM users u LIMIT " & rowLimit
+                    query = "SELECT u.UserID AS 'User ID', u.FullName AS 'Name', u.StudNo AS 'Student Number' FROM users u LIMIT " & offset & ", " & rowLimit
                 Case Else
                     MessageBox.Show("Unknown report category.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Return
@@ -83,15 +86,42 @@ Public Class Form6
             Dim table As New DataTable()
             adapter.Fill(table)
             DataGridView1.DataSource = table
+            Label2.Text = "Page " & currentPage.ToString() & " of " & totalPages.ToString()
+
+            Dim countQuery As String = ""
+
+            Select Case ComboBox1.SelectedItem.ToString()
+                Case "Books Inventory"
+                    countQuery = "SELECT COUNT(*) FROM books"
+                Case "Book Activity Summary"
+                    countQuery = "SELECT COUNT(*) FROM (SELECT b.Accno FROM books b LEFT JOIN books_borrowed bb ON b.Accno = bb.book_id GROUP BY b.Accno HAVING COUNT(bb.book_id) > 0) AS sub"
+                Case "Borrowed Books"
+                    countQuery = "SELECT COUNT(*) FROM books_borrowed"
+                Case "Overdue Books"
+                    countQuery = "SELECT COUNT(*) FROM books_borrowed WHERE due_date < NOW()"
+                Case "Lost Books"
+                    countQuery = "SELECT COUNT(*) FROM books_deleted WHERE DeletedDate IS NOT NULL"
+                Case "Damaged Books"
+                    countQuery = "SELECT COUNT(*) FROM returned_books WHERE ConditionID = 3"
+                Case "Books with Multiple Copies"
+                    countQuery = "SELECT COUNT(*) FROM (SELECT ISBN, Title FROM books GROUP BY ISBN, Title HAVING COUNT(*) > 1) AS sub"
+                Case "Borrowers"
+                    countQuery = "SELECT COUNT(*) FROM users"
+            End Select
+
+            Dim countCmd As New MySqlCommand(countQuery, conn)
+            conn.Open()
+            totalRecords = Convert.ToInt32(countCmd.ExecuteScalar())
+            conn.Close()
+
+            totalPages = Math.Ceiling(totalRecords / pageSize)
 
         Catch ex As Exception
             MessageBox.Show("An error occurred while loading the report: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
-
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-
         Try
             If DataGridView1.Rows.Count > 0 Then
                 PrintPreviewDialog1.Document = printDoc
@@ -103,7 +133,6 @@ Public Class Form6
             MessageBox.Show("Error printing report: " & ex.Message, "Print Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
 
     Private Sub PrintDocument1_PrintPage(sender As Object, e As PrintPageEventArgs)
         Dim yPos As Integer = 100
@@ -149,8 +178,6 @@ Public Class Form6
         e.HasMorePages = False
     End Sub
 
-
-
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         ExportToExcel()
     End Sub
@@ -175,120 +202,32 @@ Public Class Form6
             For col As Integer = 0 To DataGridView1.Columns.Count - 1
                 worksheet.Cell(1, col + 1).Value = DataGridView1.Columns(col).HeaderText
                 worksheet.Cell(1, col + 1).Style.Font.Bold = True
-                worksheet.Cell(1, col + 1).Style.Fill.BackgroundColor = XLColor.LightGray
             Next
 
             For row As Integer = 0 To DataGridView1.Rows.Count - 1
-                If Not DataGridView1.Rows(row).IsNewRow Then
-                    For col As Integer = 0 To DataGridView1.Columns.Count - 1
-                        worksheet.Cell(row + 2, col + 1).Value = DataGridView1.Rows(row).Cells(col).Value?.ToString()
-                    Next
-                End If
+                For col As Integer = 0 To DataGridView1.Columns.Count - 1
+                    worksheet.Cell(row + 2, col + 1).Value = DataGridView1.Rows(row).Cells(col).Value
+                Next
             Next
 
-            worksheet.Columns().AdjustToContents()
-
             workbook.SaveAs(saveFileDialog.FileName)
-
-            MessageBox.Show("Exported successfully!", "Export", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
+            MessageBox.Show("Data exported successfully.", "Export", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
-            MessageBox.Show("Error exporting to Excel: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Error exporting data: " & ex.Message, "Export Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
-        FilterResults()
-    End Sub
-
-    Private Sub FilterResults()
-        Dim searchText As String = TextBox1.Text.Trim()
-
-        If String.IsNullOrEmpty(searchText) Then
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        If currentPage > 1 Then
+            currentPage -= 1
             LoadReport()
-        Else
-            If ComboBox1.SelectedItem IsNot Nothing Then
-                Dim query As String = ""
-                Dim rowLimit = ""
-
-                If ComboBox2.SelectedItem IsNot Nothing Then
-                    rowLimit = " LIMIT " & ComboBox2.SelectedItem.ToString
-                End If
-
-                Select Case ComboBox1.SelectedItem.ToString
-                    Case "Books Inventory"
-                        query = "SELECT Accno AS 'Accession Number', Title, Author, AddedDate, CallNumber FROM books " &
-                            "WHERE Title LIKE '%" & searchText & "%' OR Author LIKE '%" & searchText & "%' OR CallNumber LIKE '%" & searchText & "%' OR Accno LIKE '%" & searchText & "%' " & rowLimit
-
-                    Case "Book Activity Summary"
-                        query = "SELECT b.Accno AS 'Accession Number', b.Title, b.Author, COUNT(bb.book_id) AS 'Borrow Count' " &
-                            "FROM books b " &
-                            "LEFT JOIN books_borrowed bb ON b.Accno = bb.book_id " &
-                            "WHERE (b.Title LIKE '%" & searchText & "%' OR b.Author LIKE '%" & searchText & "%' OR b.Accno LIKE '%" & searchText & "%') " &
-                            "GROUP BY b.Accno " &
-                            "HAVING COUNT(bb.book_id) > 0 " &
-                            "ORDER BY COUNT(bb.book_id) DESC " & rowLimit
-
-                    Case "Borrowed Books"
-                        query = "SELECT b.Accno AS 'Accession Number', b.Title, u.StudNo AS 'Student Number', u.FullName AS 'Name', bb.due_date AS 'Due Date' " &
-                            "FROM books_borrowed bb " &
-                            "JOIN books b ON bb.book_id = b.Accno " &
-                            "JOIN users u ON bb.borrower_id = u.UserID " &
-                            "WHERE u.Studno LIKE '%" & searchText & "%' OR b.Accno LIKE '%" & searchText & "%' OR b.Title LIKE '%" & searchText & "%' OR u.FullName LIKE '%" & searchText & "%' OR Author LIKE '%" & searchText & "%' " & rowLimit
-
-                    Case "Overdue Books"
-                        query = "SELECT b.Accno AS 'Accession Number', b.Title, u.StudNo AS 'Student Number', u.FullName AS 'Name', bb.due_date AS 'Due Date', " &
-                            "DATEDIFF(NOW(), bb.due_date) AS 'Overdue Days' " &
-                            "FROM books_borrowed bb " &
-                            "JOIN books b ON bb.book_id = b.Accno " &
-                            "JOIN users u ON bb.borrower_id = u.UserID " &
-                            "WHERE bb.due_date < NOW() AND (u.Studno LIKE '%" & searchText & "%' OR b.Accno LIKE '%" & searchText & "%' OR b.Title LIKE '%" & searchText & "%' OR u.FullName LIKE '%" & searchText & "%') " & rowLimit
-
-                    Case "Lost Books"
-                        query = "SELECT bd.Accno AS 'Accession Number', bd.Title, bd.DeletedDate AS 'Date Lost', u.StudNo AS 'Student Number' " &
-                                "FROM books_deleted bd " &
-                                "LEFT JOIN users u ON bd.borrower_id = u.UserID " &
-                                "WHERE bd.DeletedDate IS NOT NULL AND (bd.Accno LIKE '%" & searchText & "%' OR u.Studno LIKE '%" & searchText & "%' OR bd.Title LIKE '%" & searchText & "%' OR u.FullName LIKE '%" & searchText & "%') " & rowLimit
-
-                    Case "Damaged Books"
-                        query = "SELECT u.StudNo AS 'Student Number', rb.BookID AS 'Accession Number', rb.`Return Date`, rb.`Penalty Fee` , rb.`OverduePenalty`" &
-                            "FROM returned_books rb " &
-                            "JOIN users u ON rb.BorrowerID = u.UserID " &
-                            "WHERE rb.ConditionID = 3 AND (u.Studno LIKE '%" & searchText & "%' OR rb.BookID LIKE '%" & searchText & "%' OR u.FullName LIKE '%" & searchText & "%') " & rowLimit
-
-                    Case "Books with Multiple Copies"
-                        query = "SELECT b.ISBN, b.Title, GROUP_CONCAT(b.Accno SEPARATOR ', ') AS 'Accession Numbers', COUNT(*) AS 'Copies' " &
-                            "FROM books b " &
-                            "WHERE b.Accno LIKE '%" & searchText & "%' OR b.Title LIKE '%" & searchText & "%' OR b.ISBN LIKE '%" & searchText & "%'" &
-                            "GROUP BY b.ISBN, b.Title HAVING COUNT(*) > 1 " & rowLimit
-
-                    Case "Borrowers"
-                        query = "SELECT u.UserID AS 'User ID', u.FullName AS 'Name', u.StudNo AS 'Student Number' " &
-                            "FROM users u " &
-                            "WHERE u.FullName LIKE '%" & searchText & "%' OR u.StudNo LIKE '%" & searchText & "%' " & rowLimit
-                End Select
-
-                Try
-                    Dim adapter As New MySqlDataAdapter(query, conn)
-                    Dim table As New DataTable
-                    adapter.Fill(table)
-                    DataGridView1.DataSource = table
-                Catch ex As Exception
-                    MessageBox.Show("Error while filtering results: " & ex.Message, "Filter Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                End Try
-            Else
-                MessageBox.Show("Please select a report category from the dropdown.", "Selection Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            End If
         End If
     End Sub
 
-    'Label2 for displaying page
-
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        'Back Button
-    End Sub
-
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-        'Next Button
+        If currentPage < totalPages Then
+            currentPage += 1
+            LoadReport()
+        End If
     End Sub
 End Class
