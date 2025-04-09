@@ -22,14 +22,16 @@ Partial Class Form15
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form15))
         Panel1 = New Panel()
+        Label2 = New Label()
         PictureBox3 = New PictureBox()
         PictureBox2 = New PictureBox()
         Label3 = New Label()
         Label1 = New Label()
         MenuStrip1 = New MenuStrip()
-        LendReceivedToolStripMenuItem = New ToolStripMenuItem()
+        LendToolStripMenuItem = New ToolStripMenuItem()
         ReceivedBooksToolStripMenuItem = New ToolStripMenuItem()
         ManageBooksToolStripMenuItem = New ToolStripMenuItem()
         AddBooksToolStripMenuItem = New ToolStripMenuItem()
@@ -42,6 +44,7 @@ Partial Class Form15
         BarcodeToolStripMenuItem = New ToolStripMenuItem()
         SettingsToolStripMenuItem = New ToolStripMenuItem()
         mainPanel = New Panel()
+        Timer1 = New Timer(components)
         Panel1.SuspendLayout()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
@@ -51,6 +54,7 @@ Partial Class Form15
         ' Panel1
         ' 
         Panel1.BackColor = SystemColors.ActiveBorder
+        Panel1.Controls.Add(Label2)
         Panel1.Controls.Add(PictureBox3)
         Panel1.Controls.Add(PictureBox2)
         Panel1.Controls.Add(Label3)
@@ -61,6 +65,19 @@ Partial Class Form15
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(1698, 93)
         Panel1.TabIndex = 6
+        ' 
+        ' Label2
+        ' 
+        Label2.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        Label2.AutoSize = True
+        Label2.BackColor = Color.Transparent
+        Label2.Font = New Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label2.ForeColor = Color.White
+        Label2.Location = New Point(848, 41)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(148, 22)
+        Label2.TabIndex = 0
+        Label2.Text = "Date Time Now"
         ' 
         ' PictureBox3
         ' 
@@ -121,7 +138,7 @@ Partial Class Form15
         MenuStrip1.Dock = DockStyle.Left
         MenuStrip1.Font = New Font("Arial", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         MenuStrip1.ImageScalingSize = New Size(20, 20)
-        MenuStrip1.Items.AddRange(New ToolStripItem() {LendReceivedToolStripMenuItem, ReceivedBooksToolStripMenuItem, ManageBooksToolStripMenuItem, BarcodeToolStripMenuItem, SettingsToolStripMenuItem})
+        MenuStrip1.Items.AddRange(New ToolStripItem() {LendToolStripMenuItem, ReceivedBooksToolStripMenuItem, ManageBooksToolStripMenuItem, BarcodeToolStripMenuItem, SettingsToolStripMenuItem})
         MenuStrip1.LayoutStyle = ToolStripLayoutStyle.VerticalStackWithOverflow
         MenuStrip1.Location = New Point(0, 93)
         MenuStrip1.Margin = New Padding(50)
@@ -131,16 +148,16 @@ Partial Class Form15
         MenuStrip1.TabIndex = 7
         MenuStrip1.Text = "MenuStrip1"
         ' 
-        ' LendReceivedToolStripMenuItem
+        ' LendToolStripMenuItem
         ' 
-        LendReceivedToolStripMenuItem.BackColor = Color.Transparent
-        LendReceivedToolStripMenuItem.ForeColor = SystemColors.ButtonHighlight
-        LendReceivedToolStripMenuItem.Margin = New Padding(0, 20, 0, 20)
-        LendReceivedToolStripMenuItem.Name = "LendReceivedToolStripMenuItem"
-        LendReceivedToolStripMenuItem.Padding = New Padding(0, 0, 80, 40)
-        LendReceivedToolStripMenuItem.Size = New Size(251, 76)
-        LendReceivedToolStripMenuItem.Text = "Lend Books"
-        LendReceivedToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft
+        LendToolStripMenuItem.BackColor = Color.Transparent
+        LendToolStripMenuItem.ForeColor = SystemColors.ButtonHighlight
+        LendToolStripMenuItem.Margin = New Padding(0, 20, 0, 20)
+        LendToolStripMenuItem.Name = "LendToolStripMenuItem"
+        LendToolStripMenuItem.Padding = New Padding(0, 0, 80, 40)
+        LendToolStripMenuItem.Size = New Size(251, 76)
+        LendToolStripMenuItem.Text = "Lend Books"
+        LendToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft
         ' 
         ' ReceivedBooksToolStripMenuItem
         ' 
@@ -261,6 +278,11 @@ Partial Class Form15
         mainPanel.Size = New Size(1698, 776)
         mainPanel.TabIndex = 9
         ' 
+        ' Timer1
+        ' 
+        Timer1.Enabled = True
+        Timer1.Interval = 1000
+        ' 
         ' Form15
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -293,7 +315,7 @@ Partial Class Form15
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label1 As Label
     Friend WithEvents MenuStrip1 As MenuStrip
-    Friend WithEvents LendReceivedToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LendToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ReceivedBooksToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ManageBooksToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AddBooksToolStripMenuItem As ToolStripMenuItem
@@ -309,5 +331,7 @@ Partial Class Form15
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents PictureBox3 As PictureBox
     Friend WithEvents mainPanel As Panel
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Timer1 As Timer
 
 End Class

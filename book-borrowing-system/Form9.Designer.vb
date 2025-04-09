@@ -58,6 +58,8 @@ Partial Class Form9
         Button1 = New Button()
         Button2 = New Button()
         Label1 = New Label()
+        Label32 = New Label()
+        Label33 = New Label()
         SuspendLayout()
         ' 
         ' Label2
@@ -65,9 +67,9 @@ Partial Class Form9
         Label2.Anchor = AnchorStyles.None
         Label2.BackColor = Color.Transparent
         Label2.Font = New Font("Arial", 24F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(76, 21)
+        Label2.Location = New Point(76, 41)
         Label2.Name = "Label2"
-        Label2.Size = New Size(1336, 157)
+        Label2.Size = New Size(1336, 146)
         Label2.TabIndex = 21
         Label2.Text = "Book Title"
         ' 
@@ -487,12 +489,37 @@ Partial Class Form9
         Label1.Size = New Size(482, 25)
         Label1.TabIndex = 91
         ' 
+        ' Label32
+        ' 
+        Label32.Anchor = AnchorStyles.None
+        Label32.AutoSize = True
+        Label32.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label32.Location = New Point(1193, 14)
+        Label32.Name = "Label32"
+        Label32.Size = New Size(83, 18)
+        Label32.TabIndex = 93
+        Label32.Text = "Due Date :"
+        ' 
+        ' Label33
+        ' 
+        Label33.Anchor = AnchorStyles.None
+        Label33.AutoSize = True
+        Label33.FlatStyle = FlatStyle.Flat
+        Label33.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label33.Location = New Point(1282, 14)
+        Label33.Name = "Label33"
+        Label33.Size = New Size(103, 19)
+        Label33.TabIndex = 94
+        Label33.Text = "MM/dd/YYYY"
+        ' 
         ' Form9
         ' 
         AutoScaleDimensions = New SizeF(7F, 16F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(1464, 706)
+        Controls.Add(Label33)
+        Controls.Add(Label32)
         Controls.Add(Label1)
         Controls.Add(Button2)
         Controls.Add(Button1)
@@ -572,4 +599,6 @@ Partial Class Form9
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents Label1 As Label
+    Friend WithEvents Label32 As Label
+    Friend WithEvents Label33 As Label
 End Class

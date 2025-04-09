@@ -103,9 +103,9 @@ Public Class Form9
 
             MessageBox.Show("Book successfully returned!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
+            Me.Close()
             Dim menu As New Form15
             menu.Show()
-            Hide()
 
         Catch ex As Exception
             MessageBox.Show("Error during book return: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -117,10 +117,10 @@ Public Class Form9
     'Return Damaged
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Dim accNo = ComboBox2.SelectedItem?.ToString()
+        Dim accNo As String = ComboBox2.Text.Trim()
 
         If String.IsNullOrEmpty(accNo) Then
-            MessageBox.Show("Please select a book that is damaged.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Please select or scan a book.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
 
@@ -187,11 +187,9 @@ Public Class Form9
                 If repairCount > 0 Then
                     MessageBox.Show("This book is already marked for repair.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Else
-                    Dim repairQuery = "INSERT INTO books_deleted (Accno, Title, Author, Year, Publisher, ISBN, Section, CallNumber, Rack, ConditionID, DeletedDate, borrower_id, `Penalty Fee`) " &
-                  "SELECT b.Accno, b.Title, b.Author, b.Year, b.Publisher, b.ISBN, b.Section, b.CallNumber, b.Rack, 5, @DeletionDate, r.BorrowerID, r.`Penalty Fee` " &
-                  "FROM books b JOIN returned_books r ON b.Accno = r.BookID WHERE r.BookID = @Accno AND r.ConditionID = 3"
-
-
+                    Dim repairQuery = "INSERT IGNORE INTO books_deleted (Accno, Title, Author, Year, Publisher, ISBN, Section, CallNumber, Rack, ConditionID, DeletedDate, borrower_id, `Penalty Fee`) " &
+                                      "SELECT b.Accno, b.Title, b.Author, b.Year, b.Publisher, b.ISBN, b.Section, b.CallNumber, b.Rack, 5, @DeletionDate, r.BorrowerID, r.`Penalty Fee` " &
+                                      "FROM books b JOIN returned_books r ON b.Accno = r.BookID WHERE r.BookID = @Accno AND r.ConditionID = 3"
                     Dim repairCmd As New MySqlCommand(repairQuery, conn)
                     repairCmd.Parameters.AddWithValue("@DeletionDate", Date.Now.ToString("yyyy-MM-dd"))
                     repairCmd.Parameters.AddWithValue("@Accno", accNo)
@@ -218,9 +216,9 @@ Public Class Form9
                 MessageBox.Show("Book marked as damaged and remains available for borrowing.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
 
+            Me.Close()
             Dim menu As New Form15
             menu.Show()
-            Hide()
 
         Catch ex As Exception
             MessageBox.Show("Error during damaged book processing: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -233,10 +231,10 @@ Public Class Form9
 
     'Lost
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim accNo = ComboBox2.SelectedItem?.ToString()
+        Dim accNo As String = ComboBox2.Text.Trim()
 
         If String.IsNullOrEmpty(accNo) Then
-            MessageBox.Show("Please select a book that is lost.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Please select or scan a book.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
 
@@ -344,9 +342,10 @@ Public Class Form9
             transaction.Commit()
 
             MessageBox.Show("Book marked as lost.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+            Me.Close()
             Dim menu As New Form15
             menu.Show()
-            Hide()
         Catch ex As Exception
             MessageBox.Show("Error during lost book processing: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
@@ -397,6 +396,13 @@ Public Class Form9
                 Label28.Text = reader("ContactNumber").ToString()
                 Label26.Text = reader("Email").ToString()
                 Label1.Text = reader("condition_status").ToString()
+
+                If Not IsDBNull(reader("due_date")) Then
+                    Label33.Text = Convert.ToDateTime(reader("due_date")).ToString("MMMM dd, yyyy")
+                Else
+                    Label33.Text = "No Due Date"
+                End If
+
             Else
                 MessageBox.Show("Book record not found or not borrowed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
@@ -422,4 +428,5 @@ Public Class Form9
             ProcessBarcodeAccno(scanAccno)
         End If
     End Sub
+
 End Class

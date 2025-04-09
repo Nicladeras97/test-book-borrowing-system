@@ -23,7 +23,7 @@ Public Class Form5
             ComboBox2.Items.Add("100")
             ComboBox2.Items.Add("500")
             ComboBox2.Items.Add("1000")
-            ComboBox2.SelectedIndex = 0
+            ComboBox2.SelectedIndex = 1
 
             LoadRepairBooks(25)
         Catch ex As Exception

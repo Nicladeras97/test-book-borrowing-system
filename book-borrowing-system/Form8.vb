@@ -54,6 +54,10 @@ Public Class Form8
         End Using
         ComboBox1.DisplayMember = "Text"
         ComboBox1.ValueMember = "Value"
+
+        If ComboBox1.Items.Count > 0 Then
+            ComboBox1.SelectedIndex = 0
+        End If
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs)
@@ -185,9 +189,9 @@ Public Class Form8
                     MessageBox.Show("Book successfully borrowed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End Using
 
-                Dim back As New Form15
-                back.Show()
-                Me.Hide()
+                Me.Close()
+                Dim menu As New Form15
+                menu.Show()
 
             Catch ex As Exception
                 MessageBox.Show("Error: " & ex.Message)
@@ -231,6 +235,15 @@ Public Class Form8
                             Label26.Text = reader("Section").ToString()
                             Label15.Text = reader("Rack").ToString()
                             Label14.Text = reader("CallNumber").ToString()
+
+                            Dim displayOnlyColor As Color = Color.WhiteSmoke
+                            Label10.BackColor = displayOnlyColor    'Author
+                            Label20.BackColor = displayOnlyColor    'Year
+                            Label22.BackColor = displayOnlyColor    'Publisher
+                            Label3.BackColor = displayOnlyColor     'ISBN
+                            Label26.BackColor = displayOnlyColor    'Section
+                            Label15.BackColor = displayOnlyColor    'Rack
+                            Label16.BackColor = displayOnlyColor    'CallNumber
                         Else
                             MessageBox.Show("Book not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                             ComboBox2.Text = ""
@@ -259,13 +272,24 @@ Public Class Form8
                             TextBox6.Text = reader("Course_Strand").ToString()
                             TextBox3.Text = reader("ContactNumber").ToString()
                             TextBox4.Text = reader("Email").ToString()
+
+                            Dim displayOnlyColor As Color = Color.WhiteSmoke
+                            Dim displayTextboxes() As TextBox = {TextBox2, TextBox5, TextBox6, TextBox3, TextBox4}
+
+                            For Each tb As TextBox In displayTextboxes
+                                tb.ReadOnly = True
+                                tb.BackColor = displayOnlyColor
+                                tb.TabStop = False
+                                tb.Cursor = Cursors.Arrow
+                            Next
+
                         Else
                             MessageBox.Show("No student found with that ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                            TextBox2.Clear()
-                            TextBox5.Clear()
-                            TextBox6.Clear()
-                            TextBox3.Clear()
-                            TextBox4.Clear()
+                            TextBox2.Clear() 'Full Name
+                            TextBox5.Clear() 'Year Section
+                            TextBox6.Clear() 'Course Strand
+                            TextBox3.Clear() 'Contact Number
+                            TextBox4.Clear() 'Email
                         End If
                     End Using
                 End Using
@@ -287,7 +311,7 @@ Public Class Form8
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
         If String.IsNullOrWhiteSpace(TextBox1.Text) Then Return
 
-        scanStudno = TextBox1.Text.Trim()
+        scanStudno = TextBox1.Text.Trim
         scanType = "studno"
         BarcodeTimer.Stop()
         BarcodeTimer.Start()
@@ -320,7 +344,7 @@ Public Class Form8
 
 
     Private Sub TextBox4_Leave(sender As Object, e As EventArgs) Handles TextBox4.Leave
-        If Not TextBox4.Text.ToLower().EndsWith("@gmail.com") Then
+        If Not TextBox4.Text.ToLower.EndsWith("@gmail.com") Then
             MessageBox.Show("It must end with @gmail.com.", "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             TextBox4.Focus()
         End If

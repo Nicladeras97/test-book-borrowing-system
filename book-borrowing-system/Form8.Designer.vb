@@ -71,8 +71,8 @@ Partial Class Form8
         ' Label3
         ' 
         Label3.Anchor = AnchorStyles.None
-        Label3.BackColor = SystemColors.ButtonFace
-        Label3.BorderStyle = BorderStyle.Fixed3D
+        Label3.BackColor = Color.White
+        Label3.BorderStyle = BorderStyle.FixedSingle
         Label3.FlatStyle = FlatStyle.Flat
         Label3.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label3.Location = New Point(228, 396)
@@ -94,19 +94,23 @@ Partial Class Form8
         ' TextBox1
         ' 
         TextBox1.Anchor = AnchorStyles.None
+        TextBox1.BorderStyle = BorderStyle.FixedSingle
         TextBox1.Cursor = Cursors.IBeam
+        TextBox1.Font = New Font("Arial", 12F)
         TextBox1.Location = New Point(948, 246)
         TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(448, 22)
+        TextBox1.Size = New Size(452, 26)
         TextBox1.TabIndex = 2
         ' 
         ' TextBox2
         ' 
         TextBox2.Anchor = AnchorStyles.None
+        TextBox2.BorderStyle = BorderStyle.FixedSingle
         TextBox2.Cursor = Cursors.IBeam
+        TextBox2.Font = New Font("Arial", 12F)
         TextBox2.Location = New Point(948, 292)
         TextBox2.Name = "TextBox2"
-        TextBox2.Size = New Size(452, 22)
+        TextBox2.Size = New Size(452, 26)
         TextBox2.TabIndex = 4
         ' 
         ' Label5
@@ -123,10 +127,12 @@ Partial Class Form8
         ' TextBox3
         ' 
         TextBox3.Anchor = AnchorStyles.None
+        TextBox3.BorderStyle = BorderStyle.FixedSingle
         TextBox3.Cursor = Cursors.IBeam
+        TextBox3.Font = New Font("Arial", 12F)
         TextBox3.Location = New Point(948, 441)
         TextBox3.Name = "TextBox3"
-        TextBox3.Size = New Size(452, 22)
+        TextBox3.Size = New Size(452, 26)
         TextBox3.TabIndex = 7
         ' 
         ' Label6
@@ -170,20 +176,24 @@ Partial Class Form8
         ' DateTimePicker2
         ' 
         DateTimePicker2.Anchor = AnchorStyles.None
+        DateTimePicker2.CalendarFont = New Font("Arial", 12F)
         DateTimePicker2.Cursor = Cursors.Hand
+        DateTimePicker2.Font = New Font("Arial", 12F)
         DateTimePicker2.Format = DateTimePickerFormat.Custom
         DateTimePicker2.Location = New Point(948, 538)
         DateTimePicker2.Name = "DateTimePicker2"
-        DateTimePicker2.Size = New Size(452, 22)
+        DateTimePicker2.Size = New Size(452, 26)
         DateTimePicker2.TabIndex = 9
         ' 
         ' TextBox4
         ' 
         TextBox4.Anchor = AnchorStyles.None
+        TextBox4.BorderStyle = BorderStyle.FixedSingle
         TextBox4.Cursor = Cursors.IBeam
+        TextBox4.Font = New Font("Arial", 12F)
         TextBox4.Location = New Point(948, 486)
         TextBox4.Name = "TextBox4"
-        TextBox4.Size = New Size(452, 22)
+        TextBox4.Size = New Size(452, 26)
         TextBox4.TabIndex = 8
         ' 
         ' Label12
@@ -200,8 +210,8 @@ Partial Class Form8
         ' Label14
         ' 
         Label14.Anchor = AnchorStyles.None
-        Label14.BackColor = SystemColors.ButtonFace
-        Label14.BorderStyle = BorderStyle.Fixed3D
+        Label14.BackColor = Color.White
+        Label14.BorderStyle = BorderStyle.FixedSingle
         Label14.FlatStyle = FlatStyle.Flat
         Label14.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label14.Location = New Point(228, 541)
@@ -212,8 +222,8 @@ Partial Class Form8
         ' Label15
         ' 
         Label15.Anchor = AnchorStyles.None
-        Label15.BackColor = SystemColors.ButtonFace
-        Label15.BorderStyle = BorderStyle.Fixed3D
+        Label15.BackColor = Color.White
+        Label15.BorderStyle = BorderStyle.FixedSingle
         Label15.FlatStyle = FlatStyle.Flat
         Label15.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label15.Location = New Point(228, 490)
@@ -224,8 +234,8 @@ Partial Class Form8
         ' Label20
         ' 
         Label20.Anchor = AnchorStyles.None
-        Label20.BackColor = SystemColors.ButtonFace
-        Label20.BorderStyle = BorderStyle.Fixed3D
+        Label20.BackColor = Color.White
+        Label20.BorderStyle = BorderStyle.FixedSingle
         Label20.FlatStyle = FlatStyle.Flat
         Label20.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label20.Location = New Point(228, 296)
@@ -236,8 +246,8 @@ Partial Class Form8
         ' Label22
         ' 
         Label22.Anchor = AnchorStyles.None
-        Label22.BackColor = SystemColors.ButtonFace
-        Label22.BorderStyle = BorderStyle.Fixed3D
+        Label22.BackColor = Color.White
+        Label22.BorderStyle = BorderStyle.FixedSingle
         Label22.FlatStyle = FlatStyle.Flat
         Label22.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label22.Location = New Point(228, 346)
@@ -248,8 +258,8 @@ Partial Class Form8
         ' Label10
         ' 
         Label10.Anchor = AnchorStyles.None
-        Label10.BackColor = SystemColors.ButtonFace
-        Label10.BorderStyle = BorderStyle.Fixed3D
+        Label10.BackColor = Color.White
+        Label10.BorderStyle = BorderStyle.FixedSingle
         Label10.FlatStyle = FlatStyle.Flat
         Label10.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label10.Location = New Point(228, 250)
@@ -260,10 +270,12 @@ Partial Class Form8
         ' TextBox5
         ' 
         TextBox5.Anchor = AnchorStyles.None
+        TextBox5.BorderStyle = BorderStyle.FixedSingle
         TextBox5.Cursor = Cursors.IBeam
+        TextBox5.Font = New Font("Arial", 12F)
         TextBox5.Location = New Point(948, 342)
         TextBox5.Name = "TextBox5"
-        TextBox5.Size = New Size(452, 22)
+        TextBox5.Size = New Size(452, 26)
         TextBox5.TabIndex = 5
         ' 
         ' Label23
@@ -280,10 +292,12 @@ Partial Class Form8
         ' TextBox6
         ' 
         TextBox6.Anchor = AnchorStyles.None
+        TextBox6.BorderStyle = BorderStyle.FixedSingle
         TextBox6.Cursor = Cursors.IBeam
+        TextBox6.Font = New Font("Arial", 12F)
         TextBox6.Location = New Point(948, 392)
         TextBox6.Name = "TextBox6"
-        TextBox6.Size = New Size(452, 22)
+        TextBox6.Size = New Size(452, 26)
         TextBox6.TabIndex = 6
         ' 
         ' Label24
@@ -392,8 +406,8 @@ Partial Class Form8
         ' Label26
         ' 
         Label26.Anchor = AnchorStyles.None
-        Label26.BackColor = SystemColors.ButtonFace
-        Label26.BorderStyle = BorderStyle.Fixed3D
+        Label26.BackColor = Color.White
+        Label26.BorderStyle = BorderStyle.FixedSingle
         Label26.FlatStyle = FlatStyle.Flat
         Label26.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label26.Location = New Point(228, 444)
@@ -415,11 +429,12 @@ Partial Class Form8
         ' ComboBox1
         ' 
         ComboBox1.Anchor = AnchorStyles.None
+        ComboBox1.Font = New Font("Arial", 12F)
         ComboBox1.FormattingEnabled = True
         ComboBox1.ImeMode = ImeMode.Alpha
         ComboBox1.Location = New Point(948, 203)
         ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(448, 24)
+        ComboBox1.Size = New Size(452, 26)
         ComboBox1.TabIndex = 3
         ' 
         ' ComboBox2

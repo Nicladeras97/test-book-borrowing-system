@@ -23,6 +23,7 @@ Partial Class Form6
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form6))
         Button2 = New Button()
         DataGridView1 = New DataGridView()
         Button4 = New Button()
@@ -30,6 +31,7 @@ Partial Class Form6
         ComboBox2 = New ComboBox()
         TextBox1 = New TextBox()
         Label1 = New Label()
+        PrintPreviewDialog1 = New PrintPreviewDialog()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -133,6 +135,16 @@ Partial Class Form6
         Label1.TabIndex = 38
         Label1.Text = "Search"
         ' 
+        ' PrintPreviewDialog1
+        ' 
+        PrintPreviewDialog1.AutoScrollMargin = New Size(0, 0)
+        PrintPreviewDialog1.AutoScrollMinSize = New Size(0, 0)
+        PrintPreviewDialog1.ClientSize = New Size(400, 300)
+        PrintPreviewDialog1.Enabled = True
+        PrintPreviewDialog1.Icon = CType(resources.GetObject("PrintPreviewDialog1.Icon"), Icon)
+        PrintPreviewDialog1.Name = "PrintPreviewDialog1"
+        PrintPreviewDialog1.Visible = False
+        ' 
         ' Form6
         ' 
         AutoScaleDimensions = New SizeF(7F, 16F)
@@ -163,4 +175,7 @@ Partial Class Form6
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Button1 As Button
     Friend WithEvents Label1 As Label
+    Friend WithEvents PrintPreviewDialog1 As PrintPreviewDialog
+    Friend WithEvents Button3 As Button
+    Friend WithEvents PrintDocument1 As Printing.PrintDocument
 End Class

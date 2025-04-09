@@ -18,7 +18,7 @@ Public Class Form6
         End If
 
         DataGridView1.ClearSelection()
-        AddHandler printDoc.PrintPage, AddressOf Me.PrintDocument_PrintPage
+        AddHandler printDoc.PrintPage, AddressOf Me.PrintDocument1_PrintPage
         TextBox1.Focus()
     End Sub
 
@@ -58,11 +58,12 @@ Public Class Form6
                         "JOIN books b ON bb.book_id = b.Accno JOIN users u ON bb.borrower_id = u.UserID " &
                         "WHERE bb.due_date < NOW() LIMIT " & rowLimit
                 Case "Lost Books"
-                    query = "SELECT bd.Accno AS 'Accession Number', bd.Title, bd.CallNumber, bd.Rack, bd.DeletedDate AS 'Date Lost', u.StudNo AS 'Student Number' " &
+                    query = "SELECT bd.Accno AS 'Accession Number', bd.Title, bd.DeletedDate AS 'Date Lost', u.StudNo AS 'Student Number' " &
                         "FROM books_deleted bd LEFT JOIN users u ON bd.borrower_id = u.UserID " &
                         "WHERE bd.DeletedDate IS NOT NULL LIMIT " & rowLimit
+
                 Case "Damaged Books"
-                    query = "SELECT rb.BorrowerID AS 'Borrower ID', u.StudNo AS 'Student Number', rb.BookID AS 'Accession Number', rb.`Return Date`, rb.`Penalty Fee`, rb.`OverduePenalty` " &
+                    query = "SELECT u.StudNo AS 'Student Number', rb.BookID AS 'Accession Number', rb.`Return Date`, rb.`Penalty Fee`, rb.`OverduePenalty` " &
                         "FROM returned_books rb JOIN users u ON rb.BorrowerID = u.UserID WHERE rb.ConditionID = 3 LIMIT " & rowLimit
                 Case "Books with Multiple Copies"
                     query = "SELECT b.ISBN, b.Title, GROUP_CONCAT(b.Accno SEPARATOR ', ') AS 'Accession Numbers', COUNT(*) AS 'Copies' " &
@@ -86,9 +87,11 @@ Public Class Form6
 
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+
         Try
             If DataGridView1.Rows.Count > 0 Then
-                printDoc.Print()
+                PrintPreviewDialog1.Document = printDoc
+                PrintPreviewDialog1.ShowDialog()
             Else
                 MessageBox.Show("No data to print.", "Print", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If
@@ -97,33 +100,52 @@ Public Class Form6
         End Try
     End Sub
 
-    Private Sub PrintDocument_PrintPage(sender As Object, e As PrintPageEventArgs)
+
+    Private Sub PrintDocument1_PrintPage(sender As Object, e As PrintPageEventArgs)
         Dim yPos As Integer = 100
-        Dim xPos As Integer = 50
-        Dim lineHeight As Integer = 20
+        Dim xPos As Integer = 60
+        Dim lineHeight As Integer = 45
         Dim columnCount As Integer = DataGridView1.Columns.Count
         Dim font As New Font("Arial", 10)
         Dim brush As New SolidBrush(Color.Black)
+        Dim pageHeight As Integer = e.PageBounds.Height
+        Dim pageWidth As Integer = e.PageBounds.Width
+        Dim yMax As Integer = pageHeight - 100
+
+        Dim columnWidth As Integer = (pageWidth - 100) / columnCount
 
         For col As Integer = 0 To columnCount - 1
             e.Graphics.DrawString(DataGridView1.Columns(col).HeaderText, font, brush, xPos, yPos)
-            xPos += 150
+            xPos += columnWidth
         Next
         yPos += lineHeight
+        xPos = 50
 
         For Each row As DataGridViewRow In DataGridView1.Rows
-            xPos = 50
             If row.IsNewRow Then Continue For
 
+            If yPos + lineHeight > yMax Then
+                e.HasMorePages = True
+                Return
+            End If
+
+            xPos = 50
+
             For col As Integer = 0 To columnCount - 1
-                e.Graphics.DrawString(row.Cells(col).Value.ToString(), font, brush, xPos, yPos)
-                xPos += 150
+                Dim cellValue As String = row.Cells(col).Value.ToString()
+
+                Dim layoutRect As New RectangleF(xPos, yPos, columnWidth, lineHeight * 3)
+                e.Graphics.DrawString(cellValue, font, brush, layoutRect)
+
+                xPos += columnWidth
             Next
             yPos += lineHeight
         Next
 
         e.HasMorePages = False
     End Sub
+
+
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         ExportToExcel()
@@ -219,13 +241,13 @@ Public Class Form6
                             "WHERE bb.due_date < NOW() AND (u.Studno LIKE '%" & searchText & "%' OR b.Accno LIKE '%" & searchText & "%' OR b.Title LIKE '%" & searchText & "%' OR u.FullName LIKE '%" & searchText & "%') " & rowLimit
 
                     Case "Lost Books"
-                        query = "SELECT bd.Accno AS 'Accession Number', bd.Title, bd.CallNumber, bd.Rack, bd.DeletedDate AS 'Date Lost', u.StudNo AS 'Student Number' " &
-                            "FROM books_deleted bd " &
-                            "LEFT JOIN users u ON bd.borrower_id = u.UserID " &
-                            "WHERE bd.DeletedDate IS NOT NULL AND (u.Studno LIKE '%" & searchText & "%' OR bd.Title LIKE '%" & searchText & "%' OR u.FullName LIKE '%" & searchText & "%') " & rowLimit
+                        query = "SELECT bd.Accno AS 'Accession Number', bd.Title, bd.DeletedDate AS 'Date Lost', u.StudNo AS 'Student Number' " &
+                                "FROM books_deleted bd " &
+                                "LEFT JOIN users u ON bd.borrower_id = u.UserID " &
+                                "WHERE bd.DeletedDate IS NOT NULL AND (bd.Accno LIKE '%" & searchText & "%' OR u.Studno LIKE '%" & searchText & "%' OR bd.Title LIKE '%" & searchText & "%' OR u.FullName LIKE '%" & searchText & "%') " & rowLimit
 
                     Case "Damaged Books"
-                        query = "SELECT rb.BorrowerID AS 'Borrower ID', u.StudNo AS 'Student Number', rb.BookID AS 'Accession Number', rb.`Return Date`, rb.`Penalty Fee` , rb.`OverduePenalty`" &
+                        query = "SELECT u.StudNo AS 'Student Number', rb.BookID AS 'Accession Number', rb.`Return Date`, rb.`Penalty Fee` , rb.`OverduePenalty`" &
                             "FROM returned_books rb " &
                             "JOIN users u ON rb.BorrowerID = u.UserID " &
                             "WHERE rb.ConditionID = 3 AND (u.Studno LIKE '%" & searchText & "%' OR rb.BookID LIKE '%" & searchText & "%' OR u.FullName LIKE '%" & searchText & "%') " & rowLimit
@@ -255,6 +277,5 @@ Public Class Form6
             End If
         End If
     End Sub
-
 
 End Class

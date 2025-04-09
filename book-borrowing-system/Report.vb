@@ -77,13 +77,13 @@ Public Class Report
         End Try
     End Sub
 
-    Private Sub AddToListBox(ByVal listBox As ListBox, ByVal value As String)
-        If listBox.InvokeRequired Then
-            listBox.Invoke(Sub() listBox.Items.Add(value))
-        Else
-            listBox.Items.Add(value)
-        End If
-    End Sub
+    'Private Sub AddToListBox(ByVal listBox As ListBox, ByVal value As String)
+    '    If listBox.InvokeRequired Then
+    '        listBox.Invoke(Sub() listBox.Items.Add(value))
+    '    Else
+    '        listBox.Items.Add(value)
+    '    End If
+    'End Sub
 
     Dim due_time As String
     Dim notify_id As String
@@ -189,8 +189,8 @@ Public Class Report
                         While email_reader.Read()
                             Dim time As String = email_reader("time").ToString()
                             Dim notify_id As Integer = Convert.ToInt32(email_reader("notify_id"))
-                            AddToListBox(ListBox1, time)
-                            AddToListBox(ListBox2, currentTime)
+                            'AddToListBox(ListBox1, time)
+                            'AddToListBox(ListBox2, currentTime)
 
                             Dim email As String = email_reader("Email").ToString()
                             Dim email_subject As String = email_reader("subject").ToString()
@@ -228,11 +228,6 @@ Public Class Report
         Hide()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim back As New Form15
-        back.Show()
-        Me.Hide()
-    End Sub
 End Class
 
 

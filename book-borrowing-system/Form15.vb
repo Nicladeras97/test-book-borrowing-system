@@ -5,10 +5,6 @@ Imports OfficeOpenXml
 
 Public Class Form15
     Public Property LoggedInUsername As String
-
-
-
-
     Private Sub LoadFormToMainPanel(form As Form)
         mainPanel.Controls.Clear()
         form.TopLevel = False
@@ -18,11 +14,9 @@ Public Class Form15
         form.Show()
     End Sub
 
-
     Private Sub ReceivedBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReceivedBooksToolStripMenuItem.Click
         LoadFormToMainPanel(New Form9)
     End Sub
-
 
     Private Sub AddBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddBooksToolStripMenuItem.Click
         LoadFormToMainPanel(New Form10)
@@ -233,9 +227,6 @@ Public Class Form15
             MyBase.OnRenderItemText(e)
         End Sub
 
-        Protected Overrides Sub OnRenderToolStripBorder(e As ToolStripRenderEventArgs)
-
-        End Sub
     End Class
 
     Private Sub LogoutToolStripMeuItem_Click(sender As Object, e As EventArgs)
@@ -245,9 +236,6 @@ Public Class Form15
 
     End Sub
 
-    Private Sub LendReceivedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LendReceivedToolStripMenuItem.Click
-        LoadFormToMainPanel(New Form8)
-    End Sub
 
 
     Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
@@ -278,6 +266,14 @@ Public Class Form15
 
     Private Sub MenuStrip1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
         MenuStrip1.BackColor = Color.FromArgb(100, 0, 0, 0)
+    End Sub
+
+    Private Sub LendToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LendToolStripMenuItem.Click
+        LoadFormToMainPanel(New Form8)
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Label2.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy - hh:mm:ss tt")
     End Sub
 
 

@@ -6,7 +6,7 @@ Public Class Form1
     Dim conn As New MySqlConnection("server=localhost; user=root; password=; database=book-borrowing;")
     Dim cmd As MySqlCommand
 
-    Private Sub OK_Click(sender As Object, e As EventArgs) Handles OK.Click
+    Private Async Sub OK_Click(sender As Object, e As EventArgs) Handles OK.Click
         Try
             conn.Open()
 
@@ -20,12 +20,13 @@ Public Class Form1
 
                 Dim enteredHash As String = ComputeSHA256(PasswordTextBox.Text)
 
-
                 If storedHash.ToString() = enteredHash Then
+                    Me.Hide()
+                    Await Task.Delay(100)
+
                     Dim login As New Form15()
                     login.LoggedInUsername = UsernameTextBox.Text
                     login.Show()
-                    Me.Hide()
                 Else
                     MsgBox("Invalid Username or Password!", MsgBoxStyle.Critical)
                 End If
@@ -36,12 +37,12 @@ Public Class Form1
         Catch ex As Exception
             MsgBox("Error: " & ex.Message)
         Finally
-
             If conn.State = ConnectionState.Open Then
                 conn.Close()
             End If
         End Try
     End Sub
+
 
     Private Function ComputeSHA256(password As String) As String
         Dim hashBytes As Byte() = SHA256.HashData(Encoding.UTF8.GetBytes(password))
