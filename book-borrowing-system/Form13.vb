@@ -85,8 +85,9 @@ Public Class Form13
             Return
         End If
 
-        Dim isBorrowed As String = Await IsBookBorrowedAsync(accNo)
-        If isBorrowed Then
+        Dim isBorrowed As Boolean = Await IsBookBorrowedAsync(accNo)
+
+        If isBorrowed = True Then
             MessageBox.Show("This book is currently borrowed and cannot be edited.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             ClearFields()
             Return
@@ -105,7 +106,7 @@ Public Class Form13
                 Using cmd As New MySqlCommand(checkQuery, conn)
                     cmd.Parameters.AddWithValue("@Accno", accNo)
                     Dim count As Integer = Convert.ToInt32(Await cmd.ExecuteScalarAsync())
-                    Return count > 0
+                    Return True
                     MessageBox.Show("This book is currently borrowed and cannot be edited.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Using
             Catch ex As Exception
