@@ -60,7 +60,6 @@ Partial Class Form8
         ' 
         ' Label2
         ' 
-        Label2.Anchor = AnchorStyles.None
         Label2.Font = New Font("Arial", 24F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label2.Location = New Point(76, 21)
         Label2.Name = "Label2"
@@ -70,7 +69,6 @@ Partial Class Form8
         ' 
         ' Label3
         ' 
-        Label3.Anchor = AnchorStyles.None
         Label3.BackColor = Color.White
         Label3.BorderStyle = BorderStyle.FixedSingle
         Label3.FlatStyle = FlatStyle.Flat
@@ -82,7 +80,6 @@ Partial Class Form8
         ' 
         ' Label4
         ' 
-        Label4.Anchor = AnchorStyles.None
         Label4.AutoSize = True
         Label4.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label4.Location = New Point(735, 249)
@@ -93,7 +90,6 @@ Partial Class Form8
         ' 
         ' TextBox1
         ' 
-        TextBox1.Anchor = AnchorStyles.None
         TextBox1.BorderStyle = BorderStyle.FixedSingle
         TextBox1.Cursor = Cursors.IBeam
         TextBox1.Font = New Font("Arial", 12F)
@@ -104,7 +100,6 @@ Partial Class Form8
         ' 
         ' TextBox2
         ' 
-        TextBox2.Anchor = AnchorStyles.None
         TextBox2.BorderStyle = BorderStyle.FixedSingle
         TextBox2.Cursor = Cursors.IBeam
         TextBox2.Font = New Font("Arial", 12F)
@@ -115,7 +110,6 @@ Partial Class Form8
         ' 
         ' Label5
         ' 
-        Label5.Anchor = AnchorStyles.None
         Label5.AutoSize = True
         Label5.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label5.Location = New Point(735, 295)
@@ -126,7 +120,6 @@ Partial Class Form8
         ' 
         ' TextBox3
         ' 
-        TextBox3.Anchor = AnchorStyles.None
         TextBox3.BorderStyle = BorderStyle.FixedSingle
         TextBox3.Cursor = Cursors.IBeam
         TextBox3.Font = New Font("Arial", 12F)
@@ -137,7 +130,6 @@ Partial Class Form8
         ' 
         ' Label6
         ' 
-        Label6.Anchor = AnchorStyles.None
         Label6.AutoSize = True
         Label6.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label6.Location = New Point(735, 444)
@@ -148,7 +140,6 @@ Partial Class Form8
         ' 
         ' Label8
         ' 
-        Label8.Anchor = AnchorStyles.None
         Label8.AutoSize = True
         Label8.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label8.Location = New Point(735, 541)
@@ -159,7 +150,6 @@ Partial Class Form8
         ' 
         ' Button1
         ' 
-        Button1.Anchor = AnchorStyles.None
         Button1.BackColor = SystemColors.HotTrack
         Button1.Cursor = Cursors.Hand
         Button1.FlatAppearance.BorderSize = 0
@@ -175,7 +165,6 @@ Partial Class Form8
         ' 
         ' DateTimePicker2
         ' 
-        DateTimePicker2.Anchor = AnchorStyles.None
         DateTimePicker2.CalendarFont = New Font("Arial", 12F)
         DateTimePicker2.Cursor = Cursors.Hand
         DateTimePicker2.Font = New Font("Arial", 12F)
@@ -187,7 +176,6 @@ Partial Class Form8
         ' 
         ' TextBox4
         ' 
-        TextBox4.Anchor = AnchorStyles.None
         TextBox4.BorderStyle = BorderStyle.FixedSingle
         TextBox4.Cursor = Cursors.IBeam
         TextBox4.Font = New Font("Arial", 12F)
@@ -198,7 +186,6 @@ Partial Class Form8
         ' 
         ' Label12
         ' 
-        Label12.Anchor = AnchorStyles.None
         Label12.AutoSize = True
         Label12.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label12.Location = New Point(735, 489)
@@ -209,7 +196,6 @@ Partial Class Form8
         ' 
         ' Label14
         ' 
-        Label14.Anchor = AnchorStyles.None
         Label14.BackColor = Color.White
         Label14.BorderStyle = BorderStyle.FixedSingle
         Label14.FlatStyle = FlatStyle.Flat
@@ -221,7 +207,6 @@ Partial Class Form8
         ' 
         ' Label15
         ' 
-        Label15.Anchor = AnchorStyles.None
         Label15.BackColor = Color.White
         Label15.BorderStyle = BorderStyle.FixedSingle
         Label15.FlatStyle = FlatStyle.Flat
@@ -233,7 +218,6 @@ Partial Class Form8
         ' 
         ' Label20
         ' 
-        Label20.Anchor = AnchorStyles.None
         Label20.BackColor = Color.White
         Label20.BorderStyle = BorderStyle.FixedSingle
         Label20.FlatStyle = FlatStyle.Flat
@@ -245,7 +229,6 @@ Partial Class Form8
         ' 
         ' Label22
         ' 
-        Label22.Anchor = AnchorStyles.None
         Label22.BackColor = Color.White
         Label22.BorderStyle = BorderStyle.FixedSingle
         Label22.FlatStyle = FlatStyle.Flat
@@ -257,7 +240,6 @@ Partial Class Form8
         ' 
         ' Label10
         ' 
-        Label10.Anchor = AnchorStyles.None
         Label10.BackColor = Color.White
         Label10.BorderStyle = BorderStyle.FixedSingle
         Label10.FlatStyle = FlatStyle.Flat
@@ -269,7 +251,6 @@ Partial Class Form8
         ' 
         ' TextBox5
         ' 
-        TextBox5.Anchor = AnchorStyles.None
         TextBox5.BorderStyle = BorderStyle.FixedSingle
         TextBox5.Cursor = Cursors.IBeam
         TextBox5.Font = New Font("Arial", 12F)
@@ -280,7 +261,6 @@ Partial Class Form8
         ' 
         ' Label23
         ' 
-        Label23.Anchor = AnchorStyles.None
         Label23.AutoSize = True
         Label23.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label23.Location = New Point(735, 345)
@@ -291,7 +271,6 @@ Partial Class Form8
         ' 
         ' TextBox6
         ' 
-        TextBox6.Anchor = AnchorStyles.None
         TextBox6.BorderStyle = BorderStyle.FixedSingle
         TextBox6.Cursor = Cursors.IBeam
         TextBox6.Font = New Font("Arial", 12F)
@@ -302,7 +281,6 @@ Partial Class Form8
         ' 
         ' Label24
         ' 
-        Label24.Anchor = AnchorStyles.None
         Label24.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label24.Location = New Point(735, 391)
         Label24.Name = "Label24"
@@ -312,7 +290,6 @@ Partial Class Form8
         ' 
         ' Label9
         ' 
-        Label9.Anchor = AnchorStyles.None
         Label9.AutoSize = True
         Label9.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label9.Location = New Point(66, 206)
@@ -324,7 +301,6 @@ Partial Class Form8
         ' 
         ' Label21
         ' 
-        Label21.Anchor = AnchorStyles.None
         Label21.AutoSize = True
         Label21.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label21.Location = New Point(66, 346)
@@ -336,7 +312,6 @@ Partial Class Form8
         ' 
         ' Label19
         ' 
-        Label19.Anchor = AnchorStyles.None
         Label19.AutoSize = True
         Label19.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label19.Location = New Point(66, 300)
@@ -348,7 +323,6 @@ Partial Class Form8
         ' 
         ' Label17
         ' 
-        Label17.Anchor = AnchorStyles.None
         Label17.AutoSize = True
         Label17.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label17.Location = New Point(66, 250)
@@ -360,7 +334,6 @@ Partial Class Form8
         ' 
         ' Label16
         ' 
-        Label16.Anchor = AnchorStyles.None
         Label16.AutoSize = True
         Label16.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label16.Location = New Point(66, 491)
@@ -371,7 +344,6 @@ Partial Class Form8
         ' 
         ' Label13
         ' 
-        Label13.Anchor = AnchorStyles.None
         Label13.AutoSize = True
         Label13.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label13.Location = New Point(66, 541)
@@ -382,7 +354,6 @@ Partial Class Form8
         ' 
         ' Label11
         ' 
-        Label11.Anchor = AnchorStyles.None
         Label11.AutoSize = True
         Label11.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label11.Location = New Point(66, 397)
@@ -394,7 +365,6 @@ Partial Class Form8
         ' 
         ' Label25
         ' 
-        Label25.Anchor = AnchorStyles.None
         Label25.AutoSize = True
         Label25.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label25.Location = New Point(66, 445)
@@ -405,7 +375,6 @@ Partial Class Form8
         ' 
         ' Label26
         ' 
-        Label26.Anchor = AnchorStyles.None
         Label26.BackColor = Color.White
         Label26.BorderStyle = BorderStyle.FixedSingle
         Label26.FlatStyle = FlatStyle.Flat
@@ -417,7 +386,6 @@ Partial Class Form8
         ' 
         ' Label27
         ' 
-        Label27.Anchor = AnchorStyles.None
         Label27.AutoSize = True
         Label27.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label27.Location = New Point(735, 206)
@@ -428,7 +396,6 @@ Partial Class Form8
         ' 
         ' ComboBox1
         ' 
-        ComboBox1.Anchor = AnchorStyles.None
         ComboBox1.Font = New Font("Arial", 12F)
         ComboBox1.FormattingEnabled = True
         ComboBox1.ImeMode = ImeMode.Alpha
@@ -439,7 +406,6 @@ Partial Class Form8
         ' 
         ' ComboBox2
         ' 
-        ComboBox2.Anchor = AnchorStyles.None
         ComboBox2.FormattingEnabled = True
         ComboBox2.Location = New Point(228, 203)
         ComboBox2.Name = "ComboBox2"
@@ -486,6 +452,7 @@ Partial Class Form8
         Controls.Add(Label4)
         Controls.Add(Label3)
         Controls.Add(Label2)
+        DoubleBuffered = True
         Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Location = New Point(266, 111)
         Name = "Form8"

@@ -43,7 +43,6 @@ Partial Class Form15
         RepairBooksToolStripMenuItem = New ToolStripMenuItem()
         BarcodeToolStripMenuItem = New ToolStripMenuItem()
         SettingsToolStripMenuItem = New ToolStripMenuItem()
-        mainPanel = New Panel()
         Timer1 = New Timer(components)
         Panel1.SuspendLayout()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
@@ -268,16 +267,6 @@ Partial Class Form15
         SettingsToolStripMenuItem.Text = "Send Emails"
         SettingsToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft
         ' 
-        ' mainPanel
-        ' 
-        mainPanel.BackColor = Color.Transparent
-        mainPanel.Dock = DockStyle.Fill
-        mainPanel.Location = New Point(0, 0)
-        mainPanel.Margin = New Padding(3, 2, 3, 2)
-        mainPanel.Name = "mainPanel"
-        mainPanel.Size = New Size(1698, 776)
-        mainPanel.TabIndex = 9
-        ' 
         ' Timer1
         ' 
         Timer1.Enabled = True
@@ -294,7 +283,6 @@ Partial Class Form15
         ControlBox = False
         Controls.Add(MenuStrip1)
         Controls.Add(Panel1)
-        Controls.Add(mainPanel)
         DoubleBuffered = True
         FormBorderStyle = FormBorderStyle.None
         MaximizeBox = False
@@ -330,7 +318,6 @@ Partial Class Form15
     Friend WithEvents Label3 As Label
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents PictureBox3 As PictureBox
-    Friend WithEvents mainPanel As Panel
     Friend WithEvents Label2 As Label
     Friend WithEvents Timer1 As Timer
 
