@@ -41,13 +41,9 @@ Public Class Form2
         Using conn As New MySqlConnection(connString)
             Try
                 conn.Open()
-
-                Button1.Enabled = False
-
                 Dim isBorrowed As Boolean = Await IsBookBorrowedAsync(accno)
-
                 If isBorrowed Then
-                    MessageBox.Show("This book is currently borrowed and cannot be deleted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("This book is currently borrowed and cannot be edited.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     ClearLabels()
                     Button1.Enabled = False
                     Return
@@ -120,17 +116,6 @@ Public Class Form2
         Using conn As New MySqlConnection(connString)
             Try
                 conn.Open()
-
-                Dim checkQuery As String = "SELECT COUNT(*) FROM books_borrowed WHERE book_id = @Accno"
-                Using checkCmd As New MySqlCommand(checkQuery, conn)
-                    checkCmd.Parameters.AddWithValue("@Accno", selectedAccNo)
-                    Dim count As Integer = Convert.ToInt32(checkCmd.ExecuteScalar())
-                    If count > 0 Then
-                        MessageBox.Show("This book is currently borrowed and cannot be deleted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        Return
-                    End If
-                End Using
-
                 Dim deleteQuery As String = "DELETE FROM books WHERE Accno = @Accno"
                 Using deleteCmd As New MySqlCommand(deleteQuery, conn)
                     deleteCmd.Parameters.AddWithValue("@Accno", selectedAccNo)

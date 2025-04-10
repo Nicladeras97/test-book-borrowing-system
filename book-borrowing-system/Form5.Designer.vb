@@ -31,6 +31,8 @@ Partial Class Form5
         Label1 = New Label()
         ComboBox1 = New ComboBox()
         ComboBox2 = New ComboBox()
+        Label2 = New Label()
+        Label3 = New Label()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -67,7 +69,7 @@ Partial Class Form5
         DataGridView1.DefaultCellStyle = DataGridViewCellStyle3
         DataGridView1.EnableHeadersVisualStyles = False
         DataGridView1.GridColor = SystemColors.ControlDark
-        DataGridView1.Location = New Point(205, 159)
+        DataGridView1.Location = New Point(205, 192)
         DataGridView1.MultiSelect = False
         DataGridView1.Name = "DataGridView1"
         DataGridView1.ReadOnly = True
@@ -83,7 +85,7 @@ Partial Class Form5
         DataGridView1.RowHeadersVisible = False
         DataGridView1.RowHeadersWidth = 51
         DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        DataGridView1.Size = New Size(1036, 572)
+        DataGridView1.Size = New Size(1036, 539)
         DataGridView1.TabIndex = 15
         ' 
         ' Button1
@@ -94,9 +96,9 @@ Partial Class Form5
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Font = New Font("Arial", 16F)
         Button1.ForeColor = Color.White
-        Button1.Location = New Point(1068, 56)
+        Button1.Location = New Point(1131, 139)
         Button1.Name = "Button1"
-        Button1.Size = New Size(110, 35)
+        Button1.Size = New Size(110, 33)
         Button1.TabIndex = 16
         Button1.Text = "Return"
         Button1.UseVisualStyleBackColor = False
@@ -107,7 +109,7 @@ Partial Class Form5
         Label1.AutoSize = True
         Label1.BackColor = Color.Transparent
         Label1.Font = New Font("Arial", 28F, FontStyle.Bold)
-        Label1.Location = New Point(245, 44)
+        Label1.Location = New Point(604, 44)
         Label1.Name = "Label1"
         Label1.Size = New Size(243, 45)
         Label1.TabIndex = 17
@@ -118,7 +120,7 @@ Partial Class Form5
         ComboBox1.Anchor = AnchorStyles.None
         ComboBox1.Font = New Font("Arial", 16F)
         ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(675, 57)
+        ComboBox1.Location = New Point(426, 139)
         ComboBox1.Name = "ComboBox1"
         ComboBox1.Size = New Size(206, 32)
         ComboBox1.TabIndex = 18
@@ -128,10 +130,32 @@ Partial Class Form5
         ComboBox2.Anchor = AnchorStyles.None
         ComboBox2.Font = New Font("Arial", 16F)
         ComboBox2.FormattingEnabled = True
-        ComboBox2.Location = New Point(898, 57)
+        ComboBox2.Location = New Point(932, 139)
         ComboBox2.Name = "ComboBox2"
         ComboBox2.Size = New Size(155, 32)
         ComboBox2.TabIndex = 19
+        ' 
+        ' Label2
+        ' 
+        Label2.Anchor = AnchorStyles.None
+        Label2.AutoSize = True
+        Label2.Font = New Font("Arial", 16F)
+        Label2.Location = New Point(204, 142)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(216, 25)
+        Label2.TabIndex = 20
+        Label2.Text = "Scan/Select Acc. No."
+        ' 
+        ' Label3
+        ' 
+        Label3.Anchor = AnchorStyles.None
+        Label3.AutoSize = True
+        Label3.Font = New Font("Arial", 16F)
+        Label3.Location = New Point(767, 142)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(159, 25)
+        Label3.TabIndex = 21
+        Label3.Text = "Items per Page"
         ' 
         ' Form5
         ' 
@@ -139,6 +163,8 @@ Partial Class Form5
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(1446, 790)
+        Controls.Add(Label3)
+        Controls.Add(Label2)
         Controls.Add(ComboBox2)
         Controls.Add(ComboBox1)
         Controls.Add(Label1)
@@ -157,4 +183,6 @@ Partial Class Form5
     Friend WithEvents Label1 As Label
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label3 As Label
 End Class

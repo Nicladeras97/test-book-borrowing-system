@@ -38,6 +38,8 @@ Partial Class Form6
         Label2 = New Label()
         Button6 = New Button()
         PrintDocument1 = New Printing.PrintDocument()
+        Label3 = New Label()
+        Label4 = New Label()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -122,7 +124,7 @@ Partial Class Form6
         ComboBox1.Anchor = AnchorStyles.None
         ComboBox1.Font = New Font("Arial", 16F)
         ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(768, 37)
+        ComboBox1.Location = New Point(612, 36)
         ComboBox1.Name = "ComboBox1"
         ComboBox1.Size = New Size(253, 32)
         ComboBox1.TabIndex = 32
@@ -202,12 +204,36 @@ Partial Class Form6
         Button6.Text = "Next"
         Button6.UseVisualStyleBackColor = True
         ' 
+        ' Label3
+        ' 
+        Label3.Anchor = AnchorStyles.None
+        Label3.AutoSize = True
+        Label3.Font = New Font("Arial", 16F)
+        Label3.Location = New Point(515, 39)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(91, 25)
+        Label3.TabIndex = 42
+        Label3.Text = "Filter By"
+        ' 
+        ' Label4
+        ' 
+        Label4.Anchor = AnchorStyles.None
+        Label4.AutoSize = True
+        Label4.Font = New Font("Arial", 16F)
+        Label4.Location = New Point(871, 39)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(159, 25)
+        Label4.TabIndex = 43
+        Label4.Text = "Items per Page"
+        ' 
         ' Form6
         ' 
         AutoScaleDimensions = New SizeF(7F, 16F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(1446, 790)
+        Controls.Add(Label4)
+        Controls.Add(Label3)
         Controls.Add(Button6)
         Controls.Add(Label2)
         Controls.Add(Button5)
@@ -241,4 +267,6 @@ Partial Class Form6
     Friend WithEvents Label2 As Label
     Friend WithEvents Button6 As Button
     Friend WithEvents PrintDocument1 As Printing.PrintDocument
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label4 As Label
 End Class

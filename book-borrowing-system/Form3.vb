@@ -29,11 +29,28 @@ Public Class Form3
         Generator.LabelFont = New Font("Arial", 7, FontStyle.Regular)
         Generator.IncludeLabel = True
         Generator.CustomLabel = ComboBox1.Text
+
         Try
-            PictureBox1.Image = New Bitmap(Generator.Encode(MessagingToolkit.Barcode.BarcodeFormat.Code128, ComboBox1.Text))
+            Dim rawBarcode As Image = Generator.Encode(MessagingToolkit.Barcode.BarcodeFormat.Code128, ComboBox1.Text)
+
+            Dim scaleFactor As Integer = 3
+            Dim newWidth As Integer = rawBarcode.Width * scaleFactor
+            Dim newHeight As Integer = rawBarcode.Height * scaleFactor
+            Dim highResImage As New Bitmap(newWidth, newHeight)
+
+            Using g As Graphics = Graphics.FromImage(highResImage)
+                g.InterpolationMode = Drawing2D.InterpolationMode.NearestNeighbor
+                g.PixelOffsetMode = Drawing2D.PixelOffsetMode.HighQuality
+                g.SmoothingMode = Drawing2D.SmoothingMode.None
+                g.Clear(Color.White)
+                g.DrawImage(rawBarcode, New Rectangle(0, 0, newWidth, newHeight))
+            End Using
+
+            PictureBox1.Image = highResImage
         Catch ex As Exception
         End Try
     End Sub
+
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Dim SD As New SaveFileDialog
@@ -81,15 +98,25 @@ Public Class Form3
                         Dim accno As String = reader("Accno").ToString()
 
                         Generator.CustomLabel = accno
-                        Dim barcodeImage As Image = New Bitmap(Generator.Encode(MessagingToolkit.Barcode.BarcodeFormat.Code128, accno))
+                        Dim rawBarcode As Image = New Bitmap(Generator.Encode(MessagingToolkit.Barcode.BarcodeFormat.Code128, accno))
 
-                        Dim scaleFactor As Single = 2
-                        Dim highResImage As New Bitmap(barcodeImage, New Size(barcodeImage.Width * scaleFactor, barcodeImage.Height * scaleFactor))
+                        Dim scaleFactor As Integer = 3
+                        Dim newWidth As Integer = rawBarcode.Width * scaleFactor
+                        Dim newHeight As Integer = rawBarcode.Height * scaleFactor
+                        Dim highResImage As New Bitmap(newWidth, newHeight)
+
+                        Using g As Graphics = Graphics.FromImage(highResImage)
+                            g.InterpolationMode = Drawing2D.InterpolationMode.NearestNeighbor
+                            g.PixelOffsetMode = Drawing2D.PixelOffsetMode.HighQuality
+                            g.SmoothingMode = Drawing2D.SmoothingMode.None
+                            g.Clear(Color.White)
+                            g.DrawImage(rawBarcode, New Rectangle(0, 0, newWidth, newHeight))
+                        End Using
 
                         PictureBox1.Image = highResImage
-
                         Dim fileName As String = Path.Combine(folderPath, accno & ".png")
                         highResImage.Save(fileName, Imaging.ImageFormat.Png)
+
 
                         Application.DoEvents()
                         System.Threading.Thread.Sleep(500)

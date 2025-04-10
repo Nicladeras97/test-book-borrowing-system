@@ -29,6 +29,7 @@ Partial Class Form3
         Button3 = New Button()
         ComboBox1 = New ComboBox()
         Button4 = New Button()
+        Label2 = New Label()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -111,9 +112,9 @@ Partial Class Form3
         ComboBox1.Anchor = AnchorStyles.None
         ComboBox1.Font = New Font("Arial", 16F)
         ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(269, 156)
+        ComboBox1.Location = New Point(486, 156)
         ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(578, 32)
+        ComboBox1.Size = New Size(361, 32)
         ComboBox1.TabIndex = 1
         ' 
         ' Button4
@@ -132,12 +133,24 @@ Partial Class Form3
         Button4.Text = "Generate All Books"
         Button4.UseVisualStyleBackColor = False
         ' 
+        ' Label2
+        ' 
+        Label2.Anchor = AnchorStyles.None
+        Label2.AutoSize = True
+        Label2.Font = New Font("Arial", 16F)
+        Label2.Location = New Point(269, 159)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(216, 25)
+        Label2.TabIndex = 21
+        Label2.Text = "Scan/Select Acc. No."
+        ' 
         ' Form3
         ' 
         AutoScaleDimensions = New SizeF(7F, 16F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(1129, 659)
+        Controls.Add(Label2)
         Controls.Add(Button4)
         Controls.Add(ComboBox1)
         Controls.Add(Button3)
@@ -145,6 +158,7 @@ Partial Class Form3
         Controls.Add(PictureBox1)
         Controls.Add(Button1)
         Controls.Add(Label1)
+        DoubleBuffered = True
         Font = New Font("Arial", 10F)
         Margin = New Padding(3, 4, 3, 4)
         Name = "Form3"
@@ -161,4 +175,5 @@ Partial Class Form3
     Friend WithEvents Button3 As Button
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Button4 As Button
+    Friend WithEvents Label2 As Label
 End Class
