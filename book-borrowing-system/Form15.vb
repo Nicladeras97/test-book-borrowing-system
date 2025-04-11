@@ -567,8 +567,6 @@ Public Class Form15
 
     End Sub
 
-
-
     Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
         Dim logout As New Form1
         logout.Show()
@@ -602,8 +600,6 @@ Public Class Form15
     Private Sub LendToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LendToolStripMenuItem.Click
         Dim lend As New Form8
         lend.Show()
-
-        'LoadFormToMainPanel(New Form8)
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick

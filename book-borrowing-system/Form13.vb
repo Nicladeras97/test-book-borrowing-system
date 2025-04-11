@@ -75,11 +75,21 @@ Public Class Form13
         TextBox8.Clear()
     End Sub
 
-    Private Async Sub ComboBox1_TextChanged(sender As Object, e As EventArgs) Handles ComboBox1.TextChanged
+    Private Sub ComboBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles ComboBox1.KeyDown
+        If e.KeyCode = Keys.Enter OrElse e.KeyCode = Keys.Tab Then
+            ValidateAccnoInput()
+            e.SuppressKeyPress = True
+        End If
+    End Sub
+
+    Private Sub ComboBox1_Leave(sender As Object, e As EventArgs) Handles ComboBox1.Leave
+        ValidateAccnoInput()
+    End Sub
+
+    Private Async Sub ValidateAccnoInput()
         Dim accNo As String = ComboBox1.Text.Trim()
 
         If String.IsNullOrEmpty(accNo) Then
-            MessageBox.Show("Please select or scan a book.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             ClearFields()
             Button1.Enabled = False
             Return
@@ -87,31 +97,32 @@ Public Class Form13
 
         Dim isBorrowed As Boolean = Await IsBookBorrowedAsync(accNo)
 
-        If isBorrowed = True Then
-            MessageBox.Show("This book is currently borrowed and cannot be edited.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        If isBorrowed Then
+            MessageBox.Show("This book cannot be edited because it is either borrowed or under repair.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             ClearFields()
+            Button1.Enabled = False
             Return
         End If
 
         LoadBookDetails(accNo)
     End Sub
 
-
     Private Async Function IsBookBorrowedAsync(accNo As String) As Task(Of Boolean)
         Using conn As New MySqlConnection(connString)
             Try
                 Await conn.OpenAsync()
+                Dim checkQuery As String = "SELECT 
+                                      (SELECT COUNT(*) FROM books_borrowed WHERE book_id = @Accno) +
+                                      (SELECT COUNT(*) FROM books_deleted WHERE Accno = @Accno) AS BlockedCount"
 
-                Dim checkQuery As String = "SELECT COUNT(*) FROM books_borrowed WHERE book_id = @Accno"
                 Using cmd As New MySqlCommand(checkQuery, conn)
                     cmd.Parameters.AddWithValue("@Accno", accNo)
                     Dim count As Integer = Convert.ToInt32(Await cmd.ExecuteScalarAsync())
-                    Return True
-                    MessageBox.Show("This book is currently borrowed and cannot be edited.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return count > 0
                 End Using
             Catch ex As Exception
-                MessageBox.Show("Error checking borrowed status: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Return False
+                MessageBox.Show("Error checking book status: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return True
             End Try
         End Using
     End Function

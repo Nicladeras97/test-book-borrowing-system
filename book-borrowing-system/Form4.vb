@@ -7,101 +7,178 @@ Public Class Form4
     Private Const ConnectionString As String = "server=localhost; user=root; password=; database=book-borrowing;"
 
     Private Sub btnSendNewsletter_Click(sender As Object, e As EventArgs) Handles btnSendNewsletter.Click
-        SendNewsletter()
+        ProgressBar1.Visible = True
+        ProgressBar1.Style = ProgressBarStyle.Continuous
+        ProgressBar1.Value = 0
+        Me.Enabled = False
+        Application.DoEvents()
+
+        Try
+            SendNewsletter()
+        Finally
+            ProgressBar1.Visible = False
+            Me.Enabled = True
+        End Try
     End Sub
 
     Private Sub SendNewsletter()
         Try
             Using conn As New MySqlConnection(ConnectionString)
                 conn.Open()
-
                 If conn.State <> ConnectionState.Open Then
                     MessageBox.Show("Failed to open the database connection.")
                     Return
                 End If
 
-                Dim query As String = "SELECT u.Email, u.FullName, b.Title, b.Author, b.AccNo " &
-                                  "FROM users AS u " &
-                                  "INNER JOIN books AS b ON b.AddedDate >= @LastWeekDate"
+                Dim interestQuery As String =
+                    "SELECT DISTINCT u.Email, u.FullName, b.Section " &
+                    "FROM returned_books AS rb " &
+                    "INNER JOIN books AS b ON rb.BookID = b.Accno " &
+                    "INNER JOIN users AS u ON rb.BorrowerID = u.UserID"
 
-                Using cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@LastWeekDate", DateTime.Now.AddDays(-7))
 
+                Dim userInterests As New Dictionary(Of String, HashSet(Of String))()
+                Dim userNames As New Dictionary(Of String, String)()
+
+                Using cmd As New MySqlCommand(interestQuery, conn)
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
-                        Dim emailList As New List(Of String)
-                        Dim bookList As New HashSet(Of String)
-                        Dim emailBody As String = "Dear Valued Borrowers," & Environment.NewLine & Environment.NewLine &
-                                              "We are excited to inform you that new books have been added to the library!" & Environment.NewLine & Environment.NewLine
+                        While reader.Read()
+                            Dim email As String = reader("Email").ToString()
+                            Dim fullName As String = reader("FullName").ToString()
+                            Dim section As String = reader("Section").ToString()
 
-                        If reader.HasRows Then
-                            While reader.Read()
-                                Dim borrowerEmail As String = reader("Email").ToString()
-                                Dim bookTitle As String = reader("Title").ToString()
-                                Dim bookAuthor As String = reader("Author").ToString()
-                                Dim accNo As String = reader("AccNo").ToString()
-
-                                Dim bookIdentifier As String = $"{bookTitle} - {bookAuthor} - AccNo: {accNo}"
-                                If Not bookList.Contains(bookIdentifier) Then
-                                    bookList.Add(bookIdentifier)
-                                    emailBody &= $"Title: {bookTitle}" & Environment.NewLine &
-                                             $"Author: {bookAuthor}" & Environment.NewLine &
-                                             $"AccNo: {accNo}" & Environment.NewLine & Environment.NewLine
-                                End If
-
-                                If Not emailList.Contains(borrowerEmail) Then
-                                    emailList.Add(borrowerEmail)
-                                End If
-                            End While
-
-                            emailBody &= "Visit the library to check out these and other great books!" & Environment.NewLine & Environment.NewLine &
-                                     "Happy Reading!"
-
-                            SendBulkEmail(emailList, emailBody)
-                        Else
-                            MessageBox.Show("No new books found for the newsletter.")
-                        End If
+                            If Not userInterests.ContainsKey(email) Then
+                                userInterests(email) = New HashSet(Of String)()
+                                userNames(email) = fullName
+                            End If
+                            userInterests(email).Add(section)
+                        End While
                     End Using
                 End Using
-            End Using
 
+                If userInterests.Count = 0 Then
+                    MessageBox.Show("No user interests found.")
+                    Return
+                End If
+
+                Dim newBooksQuery As String =
+                "SELECT Title, Author, Section, Accno FROM books WHERE AddedDate = CURDATE()"
+
+                Dim newBooks As New List(Of Dictionary(Of String, String))()
+
+                Using cmd As New MySqlCommand(newBooksQuery, conn)
+                    Using reader As MySqlDataReader = cmd.ExecuteReader()
+                        While reader.Read()
+                            Dim book As New Dictionary(Of String, String) From {
+                            {"Title", reader("Title").ToString()},
+                            {"Author", reader("Author").ToString()},
+                            {"Section", reader("Section").ToString()},
+                            {"Accno", reader("Accno").ToString()}
+                        }
+                            newBooks.Add(book)
+                        End While
+                    End Using
+                End Using
+
+                If newBooks.Count = 0 Then
+                    MessageBox.Show("No newly added books today.")
+                    Return
+                End If
+
+                ProgressBar1.Value = 0
+                ProgressBar1.Maximum = userInterests.Count
+                lblStatus.Visible = True
+
+                Dim currentProgress As Integer = 0
+
+                For Each entry In userInterests
+                    Dim email As String = entry.Key
+                    Dim fullName As String = userNames(email)
+                    Dim interests As HashSet(Of String) = entry.Value
+
+                    Dim matchedBooks As New List(Of String)()
+
+                    For Each book In newBooks
+                        If interests.Contains(book("Section")) Then
+                            Dim bookDetails As String =
+                            vbCrLf & "📘 Title: " & book("Title") & vbCrLf &
+                            "✍️ Author: " & book("Author") & vbCrLf &
+                            "🔖 Section: " & book("Section") & vbCrLf &
+                            "📚 Accession No: " & book("Accno") & vbCrLf
+                            matchedBooks.Add(bookDetails)
+                        End If
+                    Next
+
+                    If matchedBooks.Count > 0 Then
+                        Dim emailBody As String =
+                        $"Hi {fullName}," & vbCrLf & vbCrLf &
+                        "Great news! We've added some exciting new books to our library that we think you'll love — based on the categories you've shown interest in before." & vbCrLf & vbCrLf &
+                        "Here are the new arrivals you might like:" & vbCrLf &
+                        String.Join("", matchedBooks) & vbCrLf &
+                        "We hope these titles spark your interest. Be sure to visit the library soon and check them out before they're gone!" & vbCrLf & vbCrLf &
+                        "Happy reading," & vbCrLf &
+                        "Your CMI Library 📖"
+
+                        Try
+                            currentProgress += 1
+                            lblStatus.Text = $"Sending to: {email} ({currentProgress} of {userInterests.Count})"
+                            Application.DoEvents()
+
+                            SendEmail(email, emailBody)
+                            Debug.WriteLine("Email sent to: " & email)
+                        Catch ex As Exception
+                            LogError("Error sending to " & email & ": " & ex.Message)
+                        Finally
+                            ProgressBar1.Value = currentProgress
+                            Application.DoEvents()
+                            Threading.Thread.Sleep(300)
+                        End Try
+                    End If
+                Next
+
+                lblStatus.Text = "Done sending all emails."
+                MessageBox.Show("Newsletter sent successfully!")
+            End Using
         Catch ex As MySqlException
             LogError("MySQL Error: " & ex.Message)
             MessageBox.Show("MySQL Error: " & ex.Message)
         Catch ex As Exception
             LogError("Error sending newsletter: " & ex.Message)
             MessageBox.Show("Error sending newsletter: " & ex.Message)
+        Finally
+            lblStatus.Visible = False
         End Try
     End Sub
 
 
 
-    Private Sub SendBulkEmail(emailList As List(Of String), emailBody As String)
+    Private Sub SendEmail(email As String, emailBody As String)
         Try
             Using smtp As New SmtpClient("smtp.gmail.com", 587),
                   mail As New MailMessage()
                 smtp.Credentials = New NetworkCredential("librarian.cmilibrary@gmail.com", "ahcn wipo tyhe wfhw")
                 smtp.EnableSsl = True
+                smtp.Timeout = 10000
 
                 mail.From = New MailAddress("librarian.cmilibrary@gmail.com")
-                mail.Subject = "New Books Added to the Library"
+                mail.To.Add(email)
+                mail.Subject = "📚 Personalized Book Recommendations Just for You!"
                 mail.Body = emailBody
 
-                For Each email As String In emailList
-                    mail.Bcc.Add(email)
-                Next
-
                 smtp.Send(mail)
-                MessageBox.Show("Newsletter sent successfully!")
             End Using
         Catch ex As Exception
-            LogError("Error sending bulk email: " & ex.Message)
-            MessageBox.Show("Error sending email: " & ex.Message)
+            Throw New Exception("Failed to send email to " & email & ": " & ex.Message)
         End Try
     End Sub
 
     Private Sub LogError(errorMessage As String)
         Dim logFilePath As String = "C:\LibrarySystem\ErrorLog.txt"
         Try
+            Dim directoryPath As String = Path.GetDirectoryName(logFilePath)
+            If Not Directory.Exists(directoryPath) Then
+                Directory.CreateDirectory(directoryPath)
+            End If
             Using writer As New StreamWriter(logFilePath, True)
                 writer.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") & " - " & errorMessage)
             End Using
@@ -109,5 +186,4 @@ Public Class Form4
             MessageBox.Show("Error logging error: " & ex.Message)
         End Try
     End Sub
-
 End Class

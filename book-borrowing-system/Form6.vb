@@ -122,6 +122,115 @@ Public Class Form6
         End Try
     End Sub
 
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+        FilterResults()
+    End Sub
+
+    Private Sub FilterResults()
+        If ComboBox1.SelectedItem Is Nothing Then
+            MessageBox.Show("Please select a report category from the dropdown.", "Selection Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        Try
+            Dim searchText As String = TextBox1.Text.Trim()
+            Dim query As String = ""
+            Dim rowLimit As String = If(ComboBox2.SelectedItem IsNot Nothing, ComboBox2.SelectedItem.ToString(), "25")
+            Dim offset As Integer = (currentPage - 1) * Integer.Parse(rowLimit)
+
+            Select Case ComboBox1.SelectedItem.ToString()
+                Case "Books Inventory"
+                    query = "SELECT Accno AS 'Accession Number', Title, Author, CallNumber, AddedDate FROM books " &
+                        "WHERE Title LIKE '%" & searchText & "%' OR Author LIKE '%" & searchText & "%' OR CallNumber LIKE '%" & searchText & "%' OR Accno LIKE '%" & searchText & "%' " &
+                        "LIMIT " & offset & ", " & rowLimit
+
+                Case "Book Activity Summary"
+                    query = "SELECT b.Accno AS 'Accession Number', b.Title, b.Author, COUNT(bb.book_id) AS 'Borrow Count' " &
+                        "FROM books b LEFT JOIN books_borrowed bb ON b.Accno = bb.book_id " &
+                        "WHERE b.Title LIKE '%" & searchText & "%' OR b.Author LIKE '%" & searchText & "%' OR b.Accno LIKE '%" & searchText & "%' " &
+                        "GROUP BY b.Accno HAVING COUNT(bb.book_id) > 0 " &
+                        "ORDER BY COUNT(bb.book_id) DESC LIMIT " & offset & ", " & rowLimit
+
+                Case "Borrowed Books"
+                    query = "SELECT b.Accno AS 'Accession Number', b.Title, u.StudNo AS 'Student Number', u.FullName AS 'Name', bb.due_date AS 'Due Date' " &
+                        "FROM books_borrowed bb JOIN books b ON bb.book_id = b.Accno JOIN users u ON bb.borrower_id = u.UserID " &
+                        "WHERE u.Studno LIKE '%" & searchText & "%' OR b.Accno LIKE '%" & searchText & "%' OR b.Title LIKE '%" & searchText & "%' OR u.FullName LIKE '%" & searchText & "%' OR b.Author LIKE '%" & searchText & "%' " &
+                        "LIMIT " & offset & ", " & rowLimit
+
+                Case "Overdue Books"
+                    query = "SELECT b.Accno AS 'Accession Number', b.Title, u.StudNo AS 'Student Number', u.FullName AS 'Name', bb.due_date AS 'Due Date', " &
+                        "DATEDIFF(NOW(), bb.due_date) AS 'Overdue Days' FROM books_borrowed bb " &
+                        "JOIN books b ON bb.book_id = b.Accno JOIN users u ON bb.borrower_id = u.UserID " &
+                        "WHERE bb.due_date < NOW() AND (u.Studno LIKE '%" & searchText & "%' OR b.Accno LIKE '%" & searchText & "%' OR b.Title LIKE '%" & searchText & "%' OR u.FullName LIKE '%" & searchText & "%') " &
+                        "LIMIT " & offset & ", " & rowLimit
+
+                Case "Lost Books"
+                    query = "SELECT bd.Accno AS 'Accession Number', bd.Title, bd.DeletedDate AS 'Date Lost', u.StudNo AS 'Student Number' " &
+                        "FROM books_deleted bd LEFT JOIN users u ON bd.borrower_id = u.UserID " &
+                        "WHERE bd.DeletedDate IS NOT NULL AND (bd.Accno LIKE '%" & searchText & "%' OR u.Studno LIKE '%" & searchText & "%' OR bd.Title LIKE '%" & searchText & "%' OR u.FullName LIKE '%" & searchText & "%') " &
+                        "LIMIT " & offset & ", " & rowLimit
+
+                Case "Damaged Books"
+                    query = "SELECT u.StudNo AS 'Student Number', rb.BookID AS 'Accession Number', rb.`Return Date`, rb.`Penalty Fee`, rb.`OverduePenalty` " &
+                        "FROM returned_books rb JOIN users u ON rb.BorrowerID = u.UserID " &
+                        "WHERE rb.ConditionID = 3 AND (u.Studno LIKE '%" & searchText & "%' OR rb.BookID LIKE '%" & searchText & "%' OR u.FullName LIKE '%" & searchText & "%') " &
+                        "LIMIT " & offset & ", " & rowLimit
+
+                Case "Books with Multiple Copies"
+                    query = "SELECT b.ISBN, b.Title, GROUP_CONCAT(b.Accno SEPARATOR ', ') AS 'Accession Numbers', COUNT(*) AS 'Copies' " &
+                        "FROM books b WHERE b.Accno LIKE '%" & searchText & "%' OR b.Title LIKE '%" & searchText & "%' OR b.ISBN LIKE '%" & searchText & "%' " &
+                        "GROUP BY b.ISBN, b.Title HAVING COUNT(*) > 1 LIMIT " & offset & ", " & rowLimit
+
+                Case "Borrowers"
+                    query = "SELECT u.UserID AS 'User ID', u.FullName AS 'Name', u.StudNo AS 'Student Number' " &
+                        "FROM users u WHERE u.FullName LIKE '%" & searchText & "%' OR u.StudNo LIKE '%" & searchText & "%' " &
+                        "LIMIT " & offset & ", " & rowLimit
+            End Select
+
+            Dim adapter As New MySqlDataAdapter(query, conn)
+            Dim table As New DataTable()
+            adapter.Fill(table)
+            DataGridView1.DataSource = table
+
+            Dim countQuery As String = ""
+
+            Select Case ComboBox1.SelectedItem.ToString()
+                Case "Books Inventory"
+                    countQuery = "SELECT COUNT(*) FROM books WHERE Title LIKE '%" & searchText & "%' OR Author LIKE '%" & searchText & "%' OR CallNumber LIKE '%" & searchText & "%' OR Accno LIKE '%" & searchText & "%'"
+                Case "Book Activity Summary"
+                    countQuery = "SELECT COUNT(*) FROM (SELECT b.Accno FROM books b LEFT JOIN books_borrowed bb ON b.Accno = bb.book_id WHERE b.Title LIKE '%" & searchText & "%' OR b.Author LIKE '%" & searchText & "%' OR b.Accno LIKE '%" & searchText & "%' GROUP BY b.Accno HAVING COUNT(bb.book_id) > 0) AS sub"
+                Case "Borrowed Books"
+                    countQuery = "SELECT COUNT(*) FROM books_borrowed bb JOIN books b ON bb.book_id = b.Accno JOIN users u ON bb.borrower_id = u.UserID " &
+                             "WHERE u.Studno LIKE '%" & searchText & "%' OR b.Accno LIKE '%" & searchText & "%' OR b.Title LIKE '%" & searchText & "%' OR u.FullName LIKE '%" & searchText & "%' OR b.Author LIKE '%" & searchText & "%'"
+                Case "Overdue Books"
+                    countQuery = "SELECT COUNT(*) FROM books_borrowed bb JOIN users u ON bb.borrower_id = u.UserID JOIN books b ON bb.book_id = b.Accno " &
+                             "WHERE bb.due_date < NOW() AND (u.Studno LIKE '%" & searchText & "%' OR b.Accno LIKE '%" & searchText & "%' OR b.Title LIKE '%" & searchText & "%' OR u.FullName LIKE '%" & searchText & "%')"
+                Case "Lost Books"
+                    countQuery = "SELECT COUNT(*) FROM books_deleted bd LEFT JOIN users u ON bd.borrower_id = u.UserID " &
+                             "WHERE bd.DeletedDate IS NOT NULL AND (bd.Accno LIKE '%" & searchText & "%' OR u.Studno LIKE '%" & searchText & "%' OR bd.Title LIKE '%" & searchText & "%' OR u.FullName LIKE '%" & searchText & "%')"
+                Case "Damaged Books"
+                    countQuery = "SELECT COUNT(*) FROM returned_books rb JOIN users u ON rb.BorrowerID = u.UserID " &
+                             "WHERE rb.ConditionID = 3 AND (u.Studno LIKE '%" & searchText & "%' OR rb.BookID LIKE '%" & searchText & "%' OR u.FullName LIKE '%" & searchText & "%')"
+                Case "Books with Multiple Copies"
+                    countQuery = "SELECT COUNT(*) FROM (SELECT ISBN, Title FROM books WHERE Accno LIKE '%" & searchText & "%' OR Title LIKE '%" & searchText & "%' OR ISBN LIKE '%" & searchText & "%' GROUP BY ISBN, Title HAVING COUNT(*) > 1) AS sub"
+                Case "Borrowers"
+                    countQuery = "SELECT COUNT(*) FROM users u WHERE u.FullName LIKE '%" & searchText & "%' OR u.StudNo LIKE '%" & searchText & "%'"
+            End Select
+
+            Dim countCmd As New MySqlCommand(countQuery, conn)
+            conn.Open()
+            totalRecords = Convert.ToInt32(countCmd.ExecuteScalar())
+            conn.Close()
+
+            totalPages = Math.Ceiling(totalRecords / pageSize)
+            Label2.Text = "Page " & currentPage.ToString() & " of " & totalPages.ToString()
+
+        Catch ex As Exception
+            MessageBox.Show("An error occurred while filtering results: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         Try
             If DataGridView1.Rows.Count > 0 Then

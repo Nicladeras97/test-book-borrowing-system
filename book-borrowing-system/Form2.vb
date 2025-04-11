@@ -29,25 +29,18 @@ Public Class Form2
         End Using
     End Sub
 
-    Private Async Sub ComboBox1_TextChanged(sender As Object, e As EventArgs) Handles ComboBox1.TextChanged
-        Dim accno As String = ComboBox1.Text.Trim()
-
+    Private Sub LoadBookDetails(accno As String)
         If String.IsNullOrWhiteSpace(accno) Then
             ClearLabels()
             Button1.Enabled = False
             Return
         End If
 
+        accno = accno.Trim()
+
         Using conn As New MySqlConnection(connString)
             Try
                 conn.Open()
-                Dim isBorrowed As Boolean = Await IsBookBorrowedAsync(accno)
-                If isBorrowed Then
-                    MessageBox.Show("This book is currently borrowed and cannot be edited.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    ClearLabels()
-                    Button1.Enabled = False
-                    Return
-                End If
                 Dim query As String = "SELECT * FROM books WHERE Accno = @Accno"
                 Using cmd As New MySqlCommand(query, conn)
                     cmd.Parameters.AddWithValue("@Accno", accno)
@@ -73,20 +66,54 @@ Public Class Form2
         End Using
     End Sub
 
+    Private Sub ComboBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles ComboBox1.KeyDown
+        If e.KeyCode = Keys.Enter OrElse e.KeyCode = Keys.Tab Then
+            ValidateAccnoInput()
+            e.SuppressKeyPress = True
+        End If
+    End Sub
+
+    Private Sub ComboBox1_Leave(sender As Object, e As EventArgs) Handles ComboBox1.Leave
+        ValidateAccnoInput()
+    End Sub
+
+    Private Async Sub ValidateAccnoInput()
+        Dim accNo As String = ComboBox1.Text.Trim()
+
+        If String.IsNullOrEmpty(accNo) Then
+            ClearLabels()
+            Button1.Enabled = False
+            Return
+        End If
+
+        Dim isBorrowed As Boolean = Await IsBookBorrowedAsync(accNo)
+
+        If isBorrowed Then
+            MessageBox.Show("This book cannot be deleted because it is either borrowed or under repair.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            ClearLabels()
+            Button1.Enabled = False
+            Return
+        End If
+
+        LoadBookDetails(accNo)
+    End Sub
+
     Private Async Function IsBookBorrowedAsync(accNo As String) As Task(Of Boolean)
         Using conn As New MySqlConnection(connString)
             Try
                 Await conn.OpenAsync()
+                Dim checkQuery As String = "SELECT 
+                                      (SELECT COUNT(*) FROM books_borrowed WHERE book_id = @Accno) +
+                                      (SELECT COUNT(*) FROM books_deleted WHERE Accno = @Accno) AS BlockedCount"
 
-                Dim checkQuery As String = "SELECT COUNT(*) FROM books_borrowed WHERE book_id = @Accno"
                 Using cmd As New MySqlCommand(checkQuery, conn)
                     cmd.Parameters.AddWithValue("@Accno", accNo)
                     Dim count As Integer = Convert.ToInt32(Await cmd.ExecuteScalarAsync())
                     Return count > 0
                 End Using
             Catch ex As Exception
-                MessageBox.Show("Error checking borrowed status: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Return False
+                MessageBox.Show("Error checking book status: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return True
             End Try
         End Using
     End Function
