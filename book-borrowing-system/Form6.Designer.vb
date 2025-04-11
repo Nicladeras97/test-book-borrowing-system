@@ -124,9 +124,9 @@ Partial Class Form6
         ComboBox1.Anchor = AnchorStyles.None
         ComboBox1.Font = New Font("Arial", 16F)
         ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(612, 36)
+        ComboBox1.Location = New Point(534, 36)
         ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(253, 32)
+        ComboBox1.Size = New Size(331, 32)
         ComboBox1.TabIndex = 32
         ' 
         ' ComboBox2
@@ -209,7 +209,7 @@ Partial Class Form6
         Label3.Anchor = AnchorStyles.None
         Label3.AutoSize = True
         Label3.Font = New Font("Arial", 16F)
-        Label3.Location = New Point(515, 39)
+        Label3.Location = New Point(437, 39)
         Label3.Name = "Label3"
         Label3.Size = New Size(91, 25)
         Label3.TabIndex = 42
