@@ -68,7 +68,7 @@ Partial Class Form14
         Panel1.Controls.Add(btnSignUp)
         Panel1.Controls.Add(UsernameLabel)
         Panel1.Controls.Add(txtFullName)
-        Panel1.Location = New Point(450, 184)
+        Panel1.Location = New Point(484, 154)
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(587, 549)
         Panel1.TabIndex = 10

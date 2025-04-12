@@ -21,12 +21,12 @@ Public Class Form1
                 Dim enteredHash As String = ComputeSHA256(PasswordTextBox.Text)
 
                 If storedHash.ToString() = enteredHash Then
-                    Me.Hide()
                     Await Task.Delay(100)
 
                     Dim login As New Form15()
                     login.LoggedInUsername = UsernameTextBox.Text
-                    login.Show()
+                    login.ShowDialog()
+                    Me.Hide()
                 Else
                     MsgBox("Invalid Username or Password!", MsgBoxStyle.Critical)
                 End If
@@ -51,7 +51,7 @@ Public Class Form1
 
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
         Dim register As New Form14
-        register.Show()
+        register.ShowDialog()
         Me.Hide()
     End Sub
 
@@ -76,7 +76,6 @@ Public Class Form1
 
     Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
         Panel2.BackColor = Color.FromArgb(100, 0, 0, 0)
-
-
     End Sub
+
 End Class

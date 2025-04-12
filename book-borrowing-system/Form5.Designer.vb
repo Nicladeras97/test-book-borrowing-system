@@ -69,7 +69,7 @@ Partial Class Form5
         DataGridView1.DefaultCellStyle = DataGridViewCellStyle3
         DataGridView1.EnableHeadersVisualStyles = False
         DataGridView1.GridColor = SystemColors.ControlDark
-        DataGridView1.Location = New Point(205, 192)
+        DataGridView1.Location = New Point(214, 177)
         DataGridView1.MultiSelect = False
         DataGridView1.Name = "DataGridView1"
         DataGridView1.ReadOnly = True
@@ -96,7 +96,7 @@ Partial Class Form5
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Font = New Font("Arial", 16F)
         Button1.ForeColor = Color.White
-        Button1.Location = New Point(1131, 139)
+        Button1.Location = New Point(1140, 124)
         Button1.Name = "Button1"
         Button1.Size = New Size(110, 33)
         Button1.TabIndex = 16
@@ -109,7 +109,7 @@ Partial Class Form5
         Label1.AutoSize = True
         Label1.BackColor = Color.Transparent
         Label1.Font = New Font("Arial", 28F, FontStyle.Bold)
-        Label1.Location = New Point(604, 44)
+        Label1.Location = New Point(613, 29)
         Label1.Name = "Label1"
         Label1.Size = New Size(243, 45)
         Label1.TabIndex = 17
@@ -120,7 +120,7 @@ Partial Class Form5
         ComboBox1.Anchor = AnchorStyles.None
         ComboBox1.Font = New Font("Arial", 16F)
         ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(426, 139)
+        ComboBox1.Location = New Point(435, 124)
         ComboBox1.Name = "ComboBox1"
         ComboBox1.Size = New Size(206, 32)
         ComboBox1.TabIndex = 18
@@ -130,7 +130,7 @@ Partial Class Form5
         ComboBox2.Anchor = AnchorStyles.None
         ComboBox2.Font = New Font("Arial", 16F)
         ComboBox2.FormattingEnabled = True
-        ComboBox2.Location = New Point(932, 139)
+        ComboBox2.Location = New Point(941, 124)
         ComboBox2.Name = "ComboBox2"
         ComboBox2.Size = New Size(155, 32)
         ComboBox2.TabIndex = 19
@@ -140,7 +140,7 @@ Partial Class Form5
         Label2.Anchor = AnchorStyles.None
         Label2.AutoSize = True
         Label2.Font = New Font("Arial", 16F)
-        Label2.Location = New Point(204, 142)
+        Label2.Location = New Point(213, 127)
         Label2.Name = "Label2"
         Label2.Size = New Size(216, 25)
         Label2.TabIndex = 20
@@ -151,7 +151,7 @@ Partial Class Form5
         Label3.Anchor = AnchorStyles.None
         Label3.AutoSize = True
         Label3.Font = New Font("Arial", 16F)
-        Label3.Location = New Point(767, 142)
+        Label3.Location = New Point(776, 127)
         Label3.Name = "Label3"
         Label3.Size = New Size(159, 25)
         Label3.TabIndex = 21
@@ -162,7 +162,7 @@ Partial Class Form5
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
-        ClientSize = New Size(1446, 790)
+        ClientSize = New Size(1464, 761)
         Controls.Add(Label3)
         Controls.Add(Label2)
         Controls.Add(ComboBox2)

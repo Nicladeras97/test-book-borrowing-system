@@ -126,7 +126,7 @@ Public Class Form10
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Dim close As New Form15
-        close.Show()
+        close.ShowDialog()
         Me.Hide()
     End Sub
 End Class

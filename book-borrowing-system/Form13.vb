@@ -163,7 +163,7 @@ Public Class Form13
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Dim cancel As New Form15
-        cancel.Show()
+        cancel.ShowDialog()
         Me.Hide()
     End Sub
 End Class

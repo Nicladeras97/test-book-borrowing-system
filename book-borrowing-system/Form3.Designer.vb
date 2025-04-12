@@ -38,7 +38,7 @@ Partial Class Form3
         Label1.Anchor = AnchorStyles.None
         Label1.AutoSize = True
         Label1.Font = New Font("Arial", 40F, FontStyle.Bold)
-        Label1.Location = New Point(317, 50)
+        Label1.Location = New Point(485, 101)
         Label1.Name = "Label1"
         Label1.Size = New Size(492, 63)
         Label1.TabIndex = 0
@@ -53,7 +53,7 @@ Partial Class Form3
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Font = New Font("Arial", 20F)
         Button1.ForeColor = Color.White
-        Button1.Location = New Point(269, 224)
+        Button1.Location = New Point(437, 275)
         Button1.Margin = New Padding(3, 4, 3, 4)
         Button1.Name = "Button1"
         Button1.Size = New Size(211, 95)
@@ -65,7 +65,7 @@ Partial Class Form3
         ' 
         PictureBox1.Anchor = AnchorStyles.None
         PictureBox1.BackgroundImageLayout = ImageLayout.None
-        PictureBox1.Location = New Point(423, 476)
+        PictureBox1.Location = New Point(591, 527)
         PictureBox1.Margin = New Padding(3, 4, 3, 4)
         PictureBox1.Name = "PictureBox1"
         PictureBox1.Size = New Size(300, 150)
@@ -82,7 +82,7 @@ Partial Class Form3
         Button2.FlatStyle = FlatStyle.Flat
         Button2.Font = New Font("Arial", 20F)
         Button2.ForeColor = Color.White
-        Button2.Location = New Point(486, 224)
+        Button2.Location = New Point(654, 275)
         Button2.Margin = New Padding(3, 4, 3, 4)
         Button2.Name = "Button2"
         Button2.Size = New Size(177, 95)
@@ -99,7 +99,7 @@ Partial Class Form3
         Button3.FlatStyle = FlatStyle.Flat
         Button3.Font = New Font("Arial", 20F)
         Button3.ForeColor = Color.White
-        Button3.Location = New Point(669, 224)
+        Button3.Location = New Point(837, 275)
         Button3.Margin = New Padding(3, 4, 3, 4)
         Button3.Name = "Button3"
         Button3.Size = New Size(178, 95)
@@ -112,7 +112,7 @@ Partial Class Form3
         ComboBox1.Anchor = AnchorStyles.None
         ComboBox1.Font = New Font("Arial", 16F)
         ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(486, 156)
+        ComboBox1.Location = New Point(654, 207)
         ComboBox1.Name = "ComboBox1"
         ComboBox1.Size = New Size(361, 32)
         ComboBox1.TabIndex = 1
@@ -125,7 +125,7 @@ Partial Class Form3
         Button4.FlatStyle = FlatStyle.Flat
         Button4.Font = New Font("Arial", 20F)
         Button4.ForeColor = Color.White
-        Button4.Location = New Point(269, 357)
+        Button4.Location = New Point(437, 408)
         Button4.Margin = New Padding(3, 4, 3, 4)
         Button4.Name = "Button4"
         Button4.Size = New Size(578, 76)
@@ -138,7 +138,7 @@ Partial Class Form3
         Label2.Anchor = AnchorStyles.None
         Label2.AutoSize = True
         Label2.Font = New Font("Arial", 16F)
-        Label2.Location = New Point(269, 159)
+        Label2.Location = New Point(437, 210)
         Label2.Name = "Label2"
         Label2.Size = New Size(216, 25)
         Label2.TabIndex = 21
@@ -149,7 +149,7 @@ Partial Class Form3
         AutoScaleDimensions = New SizeF(7F, 16F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
-        ClientSize = New Size(1129, 659)
+        ClientSize = New Size(1464, 761)
         Controls.Add(Label2)
         Controls.Add(Button4)
         Controls.Add(ComboBox1)

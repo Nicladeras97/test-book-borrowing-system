@@ -31,10 +31,6 @@ Public Class Form9
         End Try
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs)
-        Dim accNo = ComboBox2.Text
-    End Sub
-
     'Return Good
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Dim accNo = ComboBox2.Text?.ToString()
@@ -351,12 +347,6 @@ Public Class Form9
         Finally
             conn.Close()
         End Try
-    End Sub
-
-    Private Sub Back_Click(sender As Object, e As EventArgs)
-        Dim back As New Form15
-        back.Show()
-        Hide()
     End Sub
 
     Private Sub ProcessBarcodeAccno(barcode As String)

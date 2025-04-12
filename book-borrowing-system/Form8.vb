@@ -60,45 +60,11 @@ Public Class Form8
         End If
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs)
-        Dim accNo = ComboBox2.Text
-    End Sub
-
-    Private Sub Button3_Click(sender As Object, e As EventArgs)
-        Using conn As New MySqlConnection(connString)
-            Try
-                conn.Open()
-                Dim query = "SELECT FullName, Year_Section, Course_Strand, ContactNumber, Email FROM users WHERE StudNo = @StudNo"
-                Using cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@StudNo", TextBox1.Text)
-                    Using reader = cmd.ExecuteReader
-                        If reader.Read Then
-                            TextBox2.Text = reader("FullName").ToString
-                            TextBox5.Text = reader("Year_Section").ToString
-                            TextBox6.Text = reader("Course_Strand").ToString
-                            TextBox3.Text = reader("ContactNumber").ToString
-                            TextBox4.Text = reader("Email").ToString
-                        Else
-                            MessageBox.Show("No record found. Please input details.", "No record found", MessageBoxButtons.OK, MessageBoxIcon.None)
-                            TextBox2.Clear()
-                            TextBox5.Clear()
-                            TextBox6.Clear()
-                            TextBox3.Clear()
-                            TextBox4.Clear()
-                        End If
-                    End Using
-                End Using
-            Catch ex As Exception
-                MessageBox.Show("Error: " & ex.Message)
-            End Try
-        End Using
-    End Sub
-
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If String.IsNullOrWhiteSpace(TextBox1.Text) OrElse  ' StudNo
-       String.IsNullOrWhiteSpace(TextBox2.Text) OrElse  ' FullName
-       String.IsNullOrWhiteSpace(TextBox3.Text) OrElse  ' ContactNumber
-       ComboBox1.SelectedItem Is Nothing Then  ' Book Condition
+           String.IsNullOrWhiteSpace(TextBox2.Text) OrElse  ' FullName
+           String.IsNullOrWhiteSpace(TextBox3.Text) OrElse  ' ContactNumber
+           ComboBox1.SelectedItem Is Nothing Then  ' Book Condition
 
             MessageBox.Show("Please fill in all fields before borrowing.", "Incomplete Information", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
@@ -116,34 +82,34 @@ Public Class Form8
         End If
 
 
-        If DateTimePicker2.Value.Date < DateTime.Now.Date Then
+        If DateTimePicker2.Value.Date < Date.Now.Date Then
             MessageBox.Show("You cannot select a past date as the due date.", "Invalid Due Date", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
 
 
-        Dim accNo As String = ComboBox2.Text
-        Dim studNo As String = TextBox1.Text
-        Dim fullName As String = TextBox2.Text
-        Dim yearSection As String = TextBox5.Text
-        Dim course As String = TextBox6.Text
-        Dim contact As String = TextBox3.Text
-        Dim email As String = TextBox4.Text
-        Dim conditionId As Integer = DirectCast(ComboBox1.SelectedItem, Object).Value
+        Dim accNo = ComboBox2.Text
+        Dim studNo = TextBox1.Text
+        Dim fullName = TextBox2.Text
+        Dim yearSection = TextBox5.Text
+        Dim course = TextBox6.Text
+        Dim contact = TextBox3.Text
+        Dim email = TextBox4.Text
+        Dim conditionId As Integer = ComboBox1.SelectedItem.Value
 
         Using conn As New MySqlConnection(connString)
             Try
                 conn.Open()
 
                 Dim userId As Integer
-                Dim userIdQuery As String = "SELECT UserID FROM users WHERE StudNo = @StudNo"
+                Dim userIdQuery = "SELECT UserID FROM users WHERE StudNo = @StudNo"
 
                 Using userCmd As New MySqlCommand(userIdQuery, conn)
                     userCmd.Parameters.AddWithValue("@StudNo", studNo)
-                    Dim result As Object = userCmd.ExecuteScalar()
+                    Dim result = userCmd.ExecuteScalar
 
                     If result Is Nothing Then
-                        Dim insertUserQuery As String = "INSERT INTO users (StudNo, FullName, Year_Section, Course_Strand, ContactNumber, Email) VALUES (@StudNo, @FullName, @YearSection, @Course, @Contact, @Email)"
+                        Dim insertUserQuery = "INSERT INTO users (StudNo, FullName, Year_Section, Course_Strand, ContactNumber, Email) VALUES (@StudNo, @FullName, @YearSection, @Course, @Contact, @Email)"
 
                         Using insertCmd As New MySqlCommand(insertUserQuery, conn)
                             insertCmd.Parameters.AddWithValue("@StudNo", studNo)
@@ -155,18 +121,30 @@ Public Class Form8
                             insertCmd.ExecuteNonQuery()
                         End Using
 
-                        userId = CInt(New MySqlCommand("SELECT LAST_INSERT_ID()", conn).ExecuteScalar())
+                        userId = CInt(New MySqlCommand("SELECT LAST_INSERT_ID()", conn).ExecuteScalar)
                     Else
                         userId = Convert.ToInt32(result)
+                        Dim updateUserQuery = "UPDATE users SET FullName = @FullName, Year_Section = @YearSection, Course_Strand = @Course, ContactNumber = @Contact, Email = @Email WHERE StudNo = @StudNo"
+
+                        Using updateCmd As New MySqlCommand(updateUserQuery, conn)
+                            updateCmd.Parameters.AddWithValue("@FullName", fullName)
+                            updateCmd.Parameters.AddWithValue("@YearSection", yearSection)
+                            updateCmd.Parameters.AddWithValue("@Course", course)
+                            updateCmd.Parameters.AddWithValue("@Contact", contact)
+                            updateCmd.Parameters.AddWithValue("@Email", email)
+                            updateCmd.Parameters.AddWithValue("@StudNo", studNo)
+                            updateCmd.ExecuteNonQuery()
+                        End Using
+
                     End If
                 End Using
 
-                Dim checkQuery As String = "SELECT COUNT(*) FROM books_borrowed WHERE book_id = @AccNo AND borrower_id = @UserId"
+                Dim checkQuery = "SELECT COUNT(*) FROM books_borrowed WHERE book_id = @AccNo AND borrower_id = @UserId"
 
                 Using checkCmd As New MySqlCommand(checkQuery, conn)
                     checkCmd.Parameters.AddWithValue("@AccNo", accNo)
                     checkCmd.Parameters.AddWithValue("@UserId", userId)
-                    Dim count As Integer = Convert.ToInt32(checkCmd.ExecuteScalar())
+                    Dim count = Convert.ToInt32(checkCmd.ExecuteScalar)
 
                     If count > 0 Then
                         MessageBox.Show("This book is already borrowed by the student.", "Duplicate Borrow", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -174,22 +152,22 @@ Public Class Form8
                     End If
                 End Using
 
-                Dim insertQuery As String = "INSERT INTO books_borrowed (borrower_id, book_id, condition_id, date_borrowed, due_date, time, notify_id) VALUES (@UserId, @BookId, @ConditionId, @DateBorrowed, @DueDate, @Time, @NotifyID)"
+                Dim insertQuery = "INSERT INTO books_borrowed (borrower_id, book_id, condition_id, date_borrowed, due_date, time, notify_id) VALUES (@UserId, @BookId, @ConditionId, @DateBorrowed, @DueDate, @Time, @NotifyID)"
 
                 Using cmd As New MySqlCommand(insertQuery, conn)
                     cmd.Parameters.AddWithValue("@UserId", userId)
                     cmd.Parameters.AddWithValue("@BookId", accNo)
                     cmd.Parameters.AddWithValue("@ConditionId", conditionId)
-                    cmd.Parameters.AddWithValue("@DateBorrowed", DateTime.Now.Date)
+                    cmd.Parameters.AddWithValue("@DateBorrowed", Date.Now.Date)
                     cmd.Parameters.AddWithValue("@DueDate", DateTimePicker2.Value)
-                    cmd.Parameters.AddWithValue("@Time", DateTime.Now.ToString("HH:mm:ss"))
+                    cmd.Parameters.AddWithValue("@Time", Date.Now.ToString("HH:mm:ss"))
                     cmd.Parameters.AddWithValue("@NotifyID", 4)
                     cmd.ExecuteNonQuery()
 
                     MessageBox.Show("Book successfully borrowed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End Using
 
-                Me.Close()
+                Close()
                 Dim menu As New Form15
                 menu.Show()
 
@@ -197,12 +175,6 @@ Public Class Form8
                 MessageBox.Show("Error: " & ex.Message)
             End Try
         End Using
-    End Sub
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs)
-        Dim back As New Form15
-        back.Show()
-        Hide()
     End Sub
 
     Private Sub ProcessBarcodeAccno(barcode As String)
@@ -283,6 +255,8 @@ Public Class Form8
                                 tb.Cursor = Cursors.Arrow
                             Next
 
+                            Button2.Enabled = True
+
                         Else
                             MessageBox.Show("No student found with that ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                             TextBox2.Clear() 'Full Name
@@ -298,6 +272,19 @@ Public Class Form8
             End Try
         End Using
     End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim editableColor As Color = Color.White
+        Dim editableTextboxes() As TextBox = {TextBox2, TextBox5, TextBox6, TextBox3, TextBox4}
+
+        For Each tb As TextBox In editableTextboxes
+            tb.ReadOnly = False
+            tb.BackColor = editableColor
+            tb.TabStop = True
+            tb.Cursor = Cursors.IBeam
+        Next
+    End Sub
+
 
     Private Sub ComboBox2_TextChanged(sender As Object, e As EventArgs) Handles ComboBox2.TextChanged
         If String.IsNullOrWhiteSpace(ComboBox2.Text) Then Return

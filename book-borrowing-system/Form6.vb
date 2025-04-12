@@ -52,14 +52,12 @@ Public Class Form6
             Select Case ComboBox1.SelectedItem.ToString()
                 Case "Books Inventory"
                     query = "SELECT Accno AS 'Accession Number', Title, Author, CallNumber, AddedDate FROM books LIMIT " & offset & ", " & rowLimit
-                Case "Book Activity Summary"
-                    query = "SELECT b.Accno AS 'Accession Number', b.Title, b.Author, COUNT(bb.book_id) AS 'Borrow Count' " &
-                        "FROM books b LEFT JOIN books_borrowed bb ON b.Accno = bb.book_id " &
-                        "GROUP BY b.Accno HAVING COUNT(bb.book_id) > 0 " &
-                        "ORDER BY COUNT(bb.book_id) DESC LIMIT " & offset & ", " & Integer.Parse(rowLimit)
                 Case "Borrowed Books"
-                    query = "SELECT b.Accno AS 'Accession Number', b.Title, u.StudNo AS 'Student Number', u.FullName AS 'Name', bb.due_date AS 'Due Date' " &
-                        "FROM books_borrowed bb JOIN books b ON bb.book_id = b.Accno JOIN users u ON bb.borrower_id = u.UserID LIMIT " & offset & ", " & rowLimit
+                    query = "SELECT b.Accno AS 'Accession Number', b.Title, u.StudNo AS 'Student Number', u.FullName AS 'Name', rb.`Return Date` AS 'Return Date' " &
+                        "FROM returned_books rb " &
+                        "JOIN books b ON rb.BookID = b.Accno " &
+                        "JOIN users u ON rb.BorrowerID = u.UserID " &
+                        "LIMIT " & offset & ", " & rowLimit
                 Case "Overdue Books"
                     query = "SELECT b.Accno AS 'Accession Number', b.Title, u.StudNo AS 'Student Number', u.FullName AS 'Name', bb.due_date AS 'Due Date', " &
                         "DATEDIFF(NOW(), bb.due_date) AS 'Overdue Days' FROM books_borrowed bb " &
@@ -68,7 +66,8 @@ Public Class Form6
                 Case "Lost Books"
                     query = "SELECT bd.Accno AS 'Accession Number', bd.Title, bd.DeletedDate AS 'Date Lost', u.StudNo AS 'Student Number' " &
                         "FROM books_deleted bd LEFT JOIN users u ON bd.borrower_id = u.UserID " &
-                        "WHERE bd.DeletedDate IS NOT NULL LIMIT " & offset & ", " & rowLimit
+                        "WHERE bd.DeletedDate IS NOT NULL AND bd.ConditionId = 4 " &
+                        "LIMIT " & offset & ", " & rowLimit
                 Case "Damaged Books"
                     query = "SELECT u.StudNo AS 'Student Number', rb.BookID AS 'Accession Number', rb.`Return Date`, rb.`Penalty Fee`, rb.`OverduePenalty` " &
                         "FROM returned_books rb JOIN users u ON rb.BorrowerID = u.UserID WHERE rb.ConditionID = 3 LIMIT " & offset & ", " & rowLimit
@@ -93,10 +92,8 @@ Public Class Form6
             Select Case ComboBox1.SelectedItem.ToString()
                 Case "Books Inventory"
                     countQuery = "SELECT COUNT(*) FROM books"
-                Case "Book Activity Summary"
-                    countQuery = "SELECT COUNT(*) FROM (SELECT b.Accno FROM books b LEFT JOIN books_borrowed bb ON b.Accno = bb.book_id GROUP BY b.Accno HAVING COUNT(bb.book_id) > 0) AS sub"
                 Case "Borrowed Books"
-                    countQuery = "SELECT COUNT(*) FROM books_borrowed"
+                    countQuery = "SELECT COUNT(*) FROM returned_books"
                 Case "Overdue Books"
                     countQuery = "SELECT COUNT(*) FROM books_borrowed WHERE due_date < NOW()"
                 Case "Lost Books"
@@ -144,17 +141,12 @@ Public Class Form6
                         "WHERE Title LIKE '%" & searchText & "%' OR Author LIKE '%" & searchText & "%' OR CallNumber LIKE '%" & searchText & "%' OR Accno LIKE '%" & searchText & "%' " &
                         "LIMIT " & offset & ", " & rowLimit
 
-                Case "Book Activity Summary"
-                    query = "SELECT b.Accno AS 'Accession Number', b.Title, b.Author, COUNT(bb.book_id) AS 'Borrow Count' " &
-                        "FROM books b LEFT JOIN books_borrowed bb ON b.Accno = bb.book_id " &
-                        "WHERE b.Title LIKE '%" & searchText & "%' OR b.Author LIKE '%" & searchText & "%' OR b.Accno LIKE '%" & searchText & "%' " &
-                        "GROUP BY b.Accno HAVING COUNT(bb.book_id) > 0 " &
-                        "ORDER BY COUNT(bb.book_id) DESC LIMIT " & offset & ", " & rowLimit
-
-                Case "Borrowed Books"
-                    query = "SELECT b.Accno AS 'Accession Number', b.Title, u.StudNo AS 'Student Number', u.FullName AS 'Name', bb.due_date AS 'Due Date' " &
-                        "FROM books_borrowed bb JOIN books b ON bb.book_id = b.Accno JOIN users u ON bb.borrower_id = u.UserID " &
-                        "WHERE u.Studno LIKE '%" & searchText & "%' OR b.Accno LIKE '%" & searchText & "%' OR b.Title LIKE '%" & searchText & "%' OR u.FullName LIKE '%" & searchText & "%' OR b.Author LIKE '%" & searchText & "%' " &
+                Case "Borrowed Books Logs"
+                    query = "SELECT b.Accno AS 'Accession Number', b.Title, u.StudNo AS 'Student Number', u.FullName AS 'Name', rb.`Return Date` AS 'Return Date' " &
+                        "FROM returned_books rb " &
+                        "JOIN books b ON rb.BookID = b.Accno " &
+                        "JOIN users u ON rb.BorrowerID = u.UserID " &
+                        "WHERE u.StudNo LIKE '%" & searchText & "%' OR b.Accno LIKE '%" & searchText & "%' OR b.Title LIKE '%" & searchText & "%' OR u.FullName LIKE '%" & searchText & "%' OR b.Author LIKE '%" & searchText & "%' " &
                         "LIMIT " & offset & ", " & rowLimit
 
                 Case "Overdue Books"
@@ -164,13 +156,14 @@ Public Class Form6
                         "WHERE bb.due_date < NOW() AND (u.Studno LIKE '%" & searchText & "%' OR b.Accno LIKE '%" & searchText & "%' OR b.Title LIKE '%" & searchText & "%' OR u.FullName LIKE '%" & searchText & "%') " &
                         "LIMIT " & offset & ", " & rowLimit
 
-                Case "Lost Books"
+                Case "Lost Books Logs"
                     query = "SELECT bd.Accno AS 'Accession Number', bd.Title, bd.DeletedDate AS 'Date Lost', u.StudNo AS 'Student Number' " &
                         "FROM books_deleted bd LEFT JOIN users u ON bd.borrower_id = u.UserID " &
-                        "WHERE bd.DeletedDate IS NOT NULL AND (bd.Accno LIKE '%" & searchText & "%' OR u.Studno LIKE '%" & searchText & "%' OR bd.Title LIKE '%" & searchText & "%' OR u.FullName LIKE '%" & searchText & "%') " &
+                        "WHERE bd.DeletedDate IS NOT NULL AND bd.ConditionId = 4 AND " &
+                        "(bd.Accno LIKE '%" & searchText & "%' OR u.StudNo LIKE '%" & searchText & "%' OR bd.Title LIKE '%" & searchText & "%' OR u.FullName LIKE '%" & searchText & "%') " &
                         "LIMIT " & offset & ", " & rowLimit
 
-                Case "Damaged Books"
+                Case "Damaged Books Logs"
                     query = "SELECT u.StudNo AS 'Student Number', rb.BookID AS 'Accession Number', rb.`Return Date`, rb.`Penalty Fee`, rb.`OverduePenalty` " &
                         "FROM returned_books rb JOIN users u ON rb.BorrowerID = u.UserID " &
                         "WHERE rb.ConditionID = 3 AND (u.Studno LIKE '%" & searchText & "%' OR rb.BookID LIKE '%" & searchText & "%' OR u.FullName LIKE '%" & searchText & "%') " &
@@ -197,8 +190,6 @@ Public Class Form6
             Select Case ComboBox1.SelectedItem.ToString()
                 Case "Books Inventory"
                     countQuery = "SELECT COUNT(*) FROM books WHERE Title LIKE '%" & searchText & "%' OR Author LIKE '%" & searchText & "%' OR CallNumber LIKE '%" & searchText & "%' OR Accno LIKE '%" & searchText & "%'"
-                Case "Book Activity Summary"
-                    countQuery = "SELECT COUNT(*) FROM (SELECT b.Accno FROM books b LEFT JOIN books_borrowed bb ON b.Accno = bb.book_id WHERE b.Title LIKE '%" & searchText & "%' OR b.Author LIKE '%" & searchText & "%' OR b.Accno LIKE '%" & searchText & "%' GROUP BY b.Accno HAVING COUNT(bb.book_id) > 0) AS sub"
                 Case "Borrowed Books"
                     countQuery = "SELECT COUNT(*) FROM books_borrowed bb JOIN books b ON bb.book_id = b.Accno JOIN users u ON bb.borrower_id = u.UserID " &
                              "WHERE u.Studno LIKE '%" & searchText & "%' OR b.Accno LIKE '%" & searchText & "%' OR b.Title LIKE '%" & searchText & "%' OR u.FullName LIKE '%" & searchText & "%' OR b.Author LIKE '%" & searchText & "%'"

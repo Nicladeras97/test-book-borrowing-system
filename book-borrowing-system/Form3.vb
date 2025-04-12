@@ -100,9 +100,9 @@ Public Class Form3
                         Generator.CustomLabel = accno
                         Dim rawBarcode As Image = New Bitmap(Generator.Encode(MessagingToolkit.Barcode.BarcodeFormat.Code128, accno))
 
-                        Dim scaleFactor As Integer = 3
-                        Dim newWidth As Integer = rawBarcode.Width * scaleFactor
-                        Dim newHeight As Integer = rawBarcode.Height * scaleFactor
+                        'Dim scaleFactor As Integer = 3
+                        Dim newWidth As Integer = rawBarcode.Width
+                        Dim newHeight As Integer = rawBarcode.Height
                         Dim highResImage As New Bitmap(newWidth, newHeight)
 
                         Using g As Graphics = Graphics.FromImage(highResImage)

@@ -31,11 +31,10 @@ Public Class Form4
                 End If
 
                 Dim interestQuery As String =
-                    "SELECT DISTINCT u.Email, u.FullName, b.Section " &
-                    "FROM returned_books AS rb " &
-                    "INNER JOIN books AS b ON rb.BookID = b.Accno " &
-                    "INNER JOIN users AS u ON rb.BorrowerID = u.UserID"
-
+                "SELECT DISTINCT u.Email, u.FullName, b.Section " &
+                "FROM returned_books AS rb " &
+                "INNER JOIN books AS b ON rb.BookID = b.Accno " &
+                "INNER JOIN users AS u ON rb.BorrowerID = u.UserID"
 
                 Dim userInterests As New Dictionary(Of String, HashSet(Of String))()
                 Dim userNames As New Dictionary(Of String, String)()
@@ -90,6 +89,7 @@ Public Class Form4
                 lblStatus.Visible = True
 
                 Dim currentProgress As Integer = 0
+                Dim successfulSends As Integer = 0
 
                 For Each entry In userInterests
                     Dim email As String = entry.Key
@@ -120,24 +120,34 @@ Public Class Form4
                         "Your CMI Library 📖"
 
                         Try
-                            currentProgress += 1
-                            lblStatus.Text = $"Sending to: {email} ({currentProgress} of {userInterests.Count})"
+                            lblStatus.Text = $"Sending to: {email} ({currentProgress + 1} of {userInterests.Count})"
                             Application.DoEvents()
 
                             SendEmail(email, emailBody)
+                            successfulSends += 1
                             Debug.WriteLine("Email sent to: " & email)
                         Catch ex As Exception
                             LogError("Error sending to " & email & ": " & ex.Message)
                         Finally
+                            currentProgress += 1
                             ProgressBar1.Value = currentProgress
                             Application.DoEvents()
                             Threading.Thread.Sleep(300)
                         End Try
+                    Else
+                        currentProgress += 1
+                        ProgressBar1.Value = currentProgress
+                        Application.DoEvents()
                     End If
                 Next
 
                 lblStatus.Text = "Done sending all emails."
-                MessageBox.Show("Newsletter sent successfully!")
+
+                If successfulSends = 0 Then
+                    MessageBox.Show("No newsletters were sent. No matching books found.")
+                Else
+                    MessageBox.Show("Newsletter sent successfully!")
+                End If
             End Using
         Catch ex As MySqlException
             LogError("MySQL Error: " & ex.Message)

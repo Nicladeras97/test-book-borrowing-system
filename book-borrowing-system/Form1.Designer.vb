@@ -152,7 +152,7 @@ Partial Class Form1
         Label5.BackColor = Color.Transparent
         Label5.Font = New Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label5.ForeColor = SystemColors.ActiveCaptionText
-        Label5.Location = New Point(60, 469)
+        Label5.Location = New Point(60, 460)
         Label5.Name = "Label5"
         Label5.Size = New Size(206, 22)
         Label5.TabIndex = 9
@@ -164,7 +164,7 @@ Partial Class Form1
         LinkLabel1.AutoSize = True
         LinkLabel1.BackColor = Color.Transparent
         LinkLabel1.Font = New Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        LinkLabel1.Location = New Point(262, 469)
+        LinkLabel1.Location = New Point(262, 460)
         LinkLabel1.Name = "LinkLabel1"
         LinkLabel1.Size = New Size(77, 22)
         LinkLabel1.TabIndex = 8

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2025 at 09:52 AM
+-- Generation Time: Apr 12, 2025 at 01:57 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -209,7 +209,6 @@ INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, 
 ('It Ends With Us', 'Tara Westover', 1991, 'Little, Brown and Company', '978-1-7086-314-2', 'Reserved', '2025-04-11', 'RES Z 589 WZ91 1991', 'WZ91', '2025000164-00'),
 ('The Night Circus', 'Tracy Deonn', 1993, 'Macmillan Publishers', '978-1-3615-565-8', 'Reserved', '2025-04-11', 'RES A 276 DA53 1993', 'DA53', '2025000165-00'),
 ('The Night Circus', 'Andy Weir', 2011, 'Bloomsbury Publishing', '978-1-1113-221-4', 'Reserved', '2025-04-11', 'RES B 337 WB32 2011', 'WB32', '2025000166-00'),
-('A Man Called Ove', 'James Clear', 2016, 'Vintage', '978-1-9807-589-5', 'Reserved', '2025-04-11', 'RES C 687 CC28 2016', 'CC28', '2025000167-00'),
 ('A Man Called Ove', 'Delia Owens', 1998, 'Little, Brown and Company', '978-1-2211-451-4', 'Reserved', '2025-04-11', 'RES D 882 OD79 1998', 'OD79', '2025000168-00'),
 ('The Alchemist', 'Stephen King', 2020, 'Grand Central Publishing', '978-1-5260-803-7', 'Reserved', '2025-04-11', 'REF E 958 KE47 2020', 'KE47', '2025000169-00'),
 ('Daisy Jones & The Six', 'Erin Morgenstern', 1986, 'Farrar, Straus and Giroux', '978-1-6252-422-3', 'Reference', '2025-04-11', 'FIL F 727 MF11 1986', 'MF11', '2025000170-00'),
@@ -360,9 +359,9 @@ INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, 
 ('The House in the Cerulean Sea', 'Paulo Coelho', 2011, 'Scholastic', '978-1-8211-258-6', 'Reserved', '2025-04-11', 'REF U 631 CU42 2011', 'CU42', '2025000315-00'),
 ('The Song of Achilles', 'J.K. Rowling', 1984, 'G.P. Putnam\'s Sons', '978-1-8064-809-7', 'Reference', '2025-04-11', 'RES V 970 RV94 1984', 'RV94', '2025000316-00'),
 ('The Seven Husbands of Evelyn Hugo', 'Paulo Coelho', 2013, 'Little, Brown and Company', '978-1-1966-222-1', 'Reserved', '2025-04-11', 'FIL W 270 CW48 2013', 'CW48', '2025000317-00'),
-('The Midnight Library', 'Tara Westover', 2019, 'Macmillan Publishers', '978-1-3282-821-10', 'Filipiniana', '2025-04-11', 'RES X 537 WX90 2019', 'WX90', '2025000318-00');
+('The Midnight Library', 'Tara Westover', 2019, 'Macmillan Publishers', '978-1-3282-821-10', 'Filipiniana', '2025-04-11', 'RES X 537 WX90 2019', 'WX90', '2025000318-00'),
+('Legendborn', 'Madeline Miller', 2024, 'Penguin Random House', '978-1-8294-801-4', 'Reserved', '2025-04-11', 'SHS Y 649 MY67 2024', 'MY67', '2025000319-00');
 INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, `AddedDate`, `CallNumber`, `Rack`, `Accno`) VALUES
-('Legendborn', 'Madeline Miller', 2024, 'Penguin Random House', '978-1-8294-801-4', 'Reserved', '2025-04-11', 'SHS Y 649 MY67 2024', 'MY67', '2025000319-00'),
 ('A Man Called Ove', 'J.K. Rowling', 1985, 'Harlequin', '978-1-2990-651-2', 'SHS', '2025-04-11', 'FIL Z 557 RZ55 1985', 'RZ55', '2025000320-00'),
 ('Project Hail Mary', 'Andy Weir', 1992, 'Scholastic', '978-1-9308-177-1', 'Filipiniana', '2025-04-11', 'RES A 912 WA89 1992', 'WA89', '2025000321-00'),
 ('Project Hail Mary', 'Erin Morgenstern', 2011, 'Ballantine Books', '978-1-7845-947-2', 'Reserved', '2025-04-11', 'RES B 874 MB22 2011', 'MB22', '2025000322-00'),
@@ -603,7 +602,13 @@ INSERT INTO `books` (`Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, 
 ('It Ends With Us', 'Markus Zusak', 1998, 'Simon & Schuster', '978-1-8126-758-9', 'SHS', '2025-04-11', 'RES C 693 ZC23 1998', 'ZC23', '2025000557-00'),
 ('The Silent Patient', 'Andy Weir', 1999, 'Little, Brown and Company', '978-1-7231-500-7', 'Reserved', '2025-04-11', 'RES D 997 WD76 1999', 'WD76', '2025000558-00'),
 ('Ibong Adarna', 'Jose Dela Cruz', 1944, 'Phoenix Publishing House', '978-9-7150-856-6', 'Reserved', '2025-04-11', 'FIL P 914 CP44 1944', 'CP44', '2025000559-00'),
-('Florante at Laura', 'Francisco Balagtas', 1838, 'Phoenix Publishing House', '979-8-8889-762-90', 'Filipiniana', '2025-04-11', 'FIL P 439 BP28 1838', 'BP28', '2025000560-00');
+('Florante at Laura', 'Francisco Balagtas', 1838, 'Phoenix Publishing House', '979-8-8889-762-90', 'Filipiniana', '2025-04-11', 'FIL P 439 BP28 1838', 'BP28', '2025000560-00'),
+('A Sample For You', 'Sample', 2024, '978-012345678', 'Sampler', 'SHS', '2025-04-12', 'R2', 'SHS A123 20', '2025000561-01'),
+('The Invisible Life of Addie LaRue', 'Agatha Christie', 1998, 'Vintage', '978-1-5265-210-7', 'Section', '2025-04-12', 'SHS A 260 CA66 1998', 'CA66', '2025000562-00'),
+('Atomic Habits', 'James Clear', 2004, 'Little, Brown and Company', '978-1-5635-708-4', 'SHS', '2025-04-12', 'FIL B 369 CB35 2004', 'CB35', '2025000563-00'),
+('A Man Called Ove', 'Stephen King', 1994, 'Doubleday', '978-1-9880-351-5', 'Filipiniana', '2025-04-12', 'RES C 500 KC26 1994', 'KC26', '2025000564-00'),
+('Daisy Jones & The Six', 'Fredrik Backman', 1986, 'Hachette Book Group', '978-1-3314-390-6', 'Reserved', '2025-04-12', 'SHS D 466 BD80 1986', 'BD80', '2025000565-00'),
+('Daisy Jones & The Six', 'TJ Klune', 1992, 'Penguin Random House', '978-1-8297-256-7', 'SHS', '2025-04-12', 'FIL E 810 KE71 1992', 'KE71', '2025000566-00');
 
 -- --------------------------------------------------------
 
@@ -621,6 +626,13 @@ CREATE TABLE `books_borrowed` (
   `time` time NOT NULL,
   `notify_id` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `books_borrowed`
+--
+
+INSERT INTO `books_borrowed` (`borrow_id`, `borrower_id`, `book_id`, `condition_id`, `date_borrowed`, `due_date`, `time`, `notify_id`) VALUES
+(10, 2, '2025000012-00', 1, '2025-04-12', '2025-04-16', '07:28:17', 4);
 
 -- --------------------------------------------------------
 
@@ -650,7 +662,8 @@ CREATE TABLE `books_deleted` (
 
 INSERT INTO `books_deleted` (`Accno`, `Title`, `Author`, `Year`, `Publisher`, `ISBN`, `Section`, `CallNumber`, `Rack`, `ConditionID`, `DeletedDate`, `borrower_id`, `Penalty Fee`) VALUES
 ('2025000002-01', 'Noli Me Tangere', 'José Rizal', 1887, 'National Book Store', '978-9710813801', 'Filipiniana', 'FIL DS 675 R59 1887', 'DSR1', 5, '2025-04-10 16:00:00', 4, 123),
-('2025000005-00', 'Ang Mga Kaibigan ni Mama Susan', 'Bob Ong', 2010, 'Visprint Inc.', '978-9719257477', 'Circulation', 'CIR PS 9993 O54 2010', 'PSR4', 4, '2025-04-11 07:39:12', 1, 0);
+('2025000005-00', 'Ang Mga Kaibigan ni Mama Susan', 'Bob Ong', 2010, 'Visprint Inc.', '978-9719257477', 'Circulation', 'CIR PS 9993 O54 2010', 'PSR4', 4, '2025-04-11 07:39:12', 1, 0),
+('2025000167-00', 'A Man Called Ove', 'James Clear', 2016, 'Vintage', '978-1-9807-589-5', 'Reserved', 'RES C 687 CC28 2016', 'CC28', 4, '2025-04-11 23:25:48', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -753,7 +766,9 @@ CREATE TABLE `returned_books` (
 INSERT INTO `returned_books` (`return_id`, `BorrowerID`, `BookID`, `ConditionID`, `Return Date`, `Penalty Fee`, `OverduePenalty`) VALUES
 (1, 2, '2025000001-00', 1, '2025-04-11', 0.00, 0.00),
 (2, 3, '2025000003-00', 1, '2025-04-11', 0.00, 0.00),
-(3, 5, '2025000004-00', 3, '2025-04-11', 10.00, 0.00);
+(3, 5, '2025000004-00', 3, '2025-04-11', 10.00, 0.00),
+(6, 2, '2025000012-00', 1, '2025-04-12', 1.00, 1.00),
+(8, 2, '2025000013-00', 3, '2025-04-12', 2009.00, 1.00);
 
 -- --------------------------------------------------------
 
@@ -776,7 +791,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserID`, `StudNo`, `FullName`, `Year_Section`, `Course_Strand`, `ContactNumber`, `Email`) VALUES
-(1, '211083', 'Monica Cano', '4A', 'BSCS', '09368417320', 'nicladeras97@gmail.com'),
+(1, '211083', 'Monica Cano', '4A', 'BSCS', '09368417321', 'nicladeras97@gmail.com'),
 (2, '211241', 'Monica Cano', '4A', 'BSCS', '09368417320', 'nicladeras97@gmail.com'),
 (3, '211008', 'Allysa Pacunio', '4A', 'BSCS', '09123456789', 'allysapacunio0023@gmail.com'),
 (4, '210731', 'Rhea Martin', '4A', 'BSCS ', '09123456789', 'rheamartin56@gmail.com'),
@@ -853,7 +868,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `books_borrowed`
 --
 ALTER TABLE `books_borrowed`
-  MODIFY `borrow_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `borrow_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `book_condition`
@@ -877,7 +892,7 @@ ALTER TABLE `librarians`
 -- AUTO_INCREMENT for table `returned_books`
 --
 ALTER TABLE `returned_books`
-  MODIFY `return_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `return_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -39,7 +39,7 @@ Partial Class Form4
         btnSendNewsletter.FlatStyle = FlatStyle.Flat
         btnSendNewsletter.Font = New Font("Arial", 28F)
         btnSendNewsletter.ForeColor = Color.White
-        btnSendNewsletter.Location = New Point(384, 422)
+        btnSendNewsletter.Location = New Point(602, 532)
         btnSendNewsletter.Margin = New Padding(4, 3, 4, 3)
         btnSendNewsletter.Name = "btnSendNewsletter"
         btnSendNewsletter.Size = New Size(240, 75)
@@ -72,7 +72,7 @@ Partial Class Form4
         ' ProgressBar1
         ' 
         ProgressBar1.Anchor = AnchorStyles.None
-        ProgressBar1.Location = New Point(206, 359)
+        ProgressBar1.Location = New Point(424, 469)
         ProgressBar1.Name = "ProgressBar1"
         ProgressBar1.Size = New Size(611, 28)
         ProgressBar1.TabIndex = 25
@@ -82,7 +82,7 @@ Partial Class Form4
         ' 
         lblStatus.Anchor = AnchorStyles.None
         lblStatus.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblStatus.Location = New Point(206, 325)
+        lblStatus.Location = New Point(424, 435)
         lblStatus.Name = "lblStatus"
         lblStatus.Size = New Size(611, 20)
         lblStatus.TabIndex = 26
@@ -95,7 +95,7 @@ Partial Class Form4
         Panel1.BorderStyle = BorderStyle.FixedSingle
         Panel1.Controls.Add(Label2)
         Panel1.Controls.Add(Label1)
-        Panel1.Location = New Point(61, 29)
+        Panel1.Location = New Point(279, 139)
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(913, 273)
         Panel1.TabIndex = 27
@@ -105,7 +105,7 @@ Partial Class Form4
         AutoScaleDimensions = New SizeF(9F, 18F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
-        ClientSize = New Size(1029, 540)
+        ClientSize = New Size(1464, 761)
         Controls.Add(Panel1)
         Controls.Add(lblStatus)
         Controls.Add(ProgressBar1)
@@ -113,7 +113,7 @@ Partial Class Form4
         Font = New Font("Arial", 12F)
         Margin = New Padding(4, 3, 4, 3)
         Name = "Form4"
-        Text = "Form4"
+        Text = "Send Email"
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         ResumeLayout(False)

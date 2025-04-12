@@ -61,7 +61,7 @@ Public Class Form14
 
 
             Dim login As New Form1
-            login.Show()
+            login.ShowDialog()
             Me.Hide()
 
         Catch ex As Exception
@@ -73,7 +73,7 @@ Public Class Form14
 
     Private Sub btnBack_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles btnBack.LinkClicked
         Dim back As New Form1
-        back.Show()
+        back.ShowDialog()
         Me.Hide()
     End Sub
 

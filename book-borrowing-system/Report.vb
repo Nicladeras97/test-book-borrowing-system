@@ -224,15 +224,9 @@ Public Class Report
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Dim back As New Form15
-        back.Show()
+        back.ShowDialog()
         Hide()
     End Sub
-
-    'For sending emails with new books added
-
-
-
-
 
 End Class
 
