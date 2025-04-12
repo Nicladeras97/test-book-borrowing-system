@@ -164,7 +164,7 @@ Partial Class Form1
         LinkLabel1.AutoSize = True
         LinkLabel1.BackColor = Color.Transparent
         LinkLabel1.Font = New Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        LinkLabel1.Location = New Point(262, 460)
+        LinkLabel1.Location = New Point(263, 460)
         LinkLabel1.Name = "LinkLabel1"
         LinkLabel1.Size = New Size(77, 22)
         LinkLabel1.TabIndex = 8
